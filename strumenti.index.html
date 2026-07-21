@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strumenti — Corazzini</title>
+<meta name="description" content="Strumenti aperti per fare i conti prima di decidere: simulatori fiscali e contributivi liberamente accessibili, con le fonti normative in chiaro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --snow-0:#FFFFFF; --snow-50:#F6F8FA; --snow-100:#EDF1F5; --snow-200:#DEE6EC; --frost-300:#C5D4DF;
+  --slate-400:#8B9CA8; --slate-500:#607180;
+  --ink-700:#2B3B45; --ink-800:#16313F; --ink-900:#0C232F;
+  --glacier-50:#EAF4FA; --glacier-100:#CFE8F5; --glacier-300:#6FB7E0; --glacier-500:#2E90C9; --glacier-600:#1E76A8; --glacier-700:#185C84;
+  --brass-500:#B0822F;
+  --bg-page:var(--snow-50); --surface-card:var(--snow-0);
+  --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-muted:var(--slate-500); --text-faint:var(--slate-400);
+  --accent:var(--glacier-500); --accent-strong:var(--glacier-600); --accent-soft:var(--glacier-50);
+  --border:var(--snow-200); --border-strong:var(--frost-300);
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --r-md:12px; --r-lg:18px; --r-pill:999px;
+  --shadow-xs:0 1px 2px rgba(12,35,47,.06); --shadow-md:0 8px 24px rgba(12,35,47,.09);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{width:min(920px,100% - 44px);margin-inline:auto}
+h1,h2{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;line-height:1.08;letter-spacing:-.02em;margin:0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,250,.86);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:66px}
+.bear{width:38px;height:38px;flex:none;object-fit:contain}
+.brand{display:flex;flex-direction:column;line-height:1.02}
+.brand b{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--text-strong)}
+.brand span{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+.nav a{margin-left:auto;color:var(--glacier-600);text-decoration:none;font-size:.9rem;font-weight:600}
+
+.hero{padding:72px 0 40px;max-width:44ch}
+.hero .eyebrow{display:block;margin-bottom:14px}
+.hero h1{font-size:clamp(2.2rem,1.4rem + 3vw,3.2rem);text-wrap:balance}
+.hero p{margin:20px 0 0;font-size:1.12rem;line-height:1.7;color:var(--text-muted)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(276px,1fr));gap:16px;margin-bottom:64px}
+.card{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:24px 22px 22px;text-decoration:none;color:inherit;box-shadow:var(--shadow-xs);
+  transition:transform .16s var(--ease-out),box-shadow .16s var(--ease-out),border-color .16s}
+a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.card .tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);
+  background:var(--accent-soft);padding:5px 10px;border-radius:var(--r-pill);align-self:flex-start;margin-bottom:14px}
+.card h2{font-size:1.32rem;margin-bottom:9px}
+.card p{margin:0;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.card .go{margin-top:18px;font-size:.92rem;font-weight:700;color:var(--accent-strong)}
+.card .go::after{content:" →"}
+.card.soon{opacity:.7}
+.card.soon .tag{color:var(--brass-500);background:#F6EEDD}
+.card.soon .go{color:var(--text-faint)}
+.card.soon .go::after{content:""}
+
+footer{border-top:1px solid var(--border);padding:34px 0 64px;color:var(--text-faint);font-size:.82rem;line-height:1.6}
+footer p{margin:0 0 10px;max-width:70ch}
+footer .fb{display:flex;align-items:center;gap:9px;margin-bottom:16px;color:var(--text-muted)}
+footer .fb img{width:26px;height:26px}
+footer .fb b{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <img class="bear" id="b1" alt="" src="">
+    <span class="brand"><b>Corazzini</b><span>Strumenti</span></span>
+    <a href="/">Torna al sito</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Open innovation</span>
+    <h1>Strumenti aperti, per decidere sapendo</h1>
+    <p>Mettiamo a disposizione di chiunque i calcoli che di solito restano dentro uno studio. Nessuna registrazione, nessun contatto da lasciare. Ogni strumento dichiara il metodo e cita le fonti normative, così i numeri si possono verificare invece che accettare.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="./forfettario/">
+      <span class="tag">Disponibile</span>
+      <h2>Simulatore regime forfettario</h2>
+      <p>Imposta sostitutiva, contributi INPS e timeline dei versamenti F24 su cinque anni. Mostra il salto del secondo anno, quello che sorprende quasi tutti.</p>
+      <span class="go">Apri</span>
+    </a>
+
+    <div class="card soon">
+      <span class="tag">In arrivo</span>
+      <h2>Forfettario o ordinario</h2>
+      <p>Confronto del carico complessivo fra i due regimi al variare dei costi effettivi, delle detrazioni e dei carichi di famiglia.</p>
+      <span class="go">In preparazione</span>
+    </div>
+
+    <div class="card soon">
+      <span class="tag">In arrivo</span>
+      <h2>Ravvedimento operoso</h2>
+      <p>Sanzione ridotta e interessi legali a partire dalla data di scadenza e da quella in cui pensi di versare.</p>
+      <span class="go">In preparazione</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fb"><img id="b2" alt=""><b>Corazzini</b> · Pescara</div>
+    <p>Gli strumenti danno una stima e non sostituiscono un parere professionale. Servono a farsi un'idea prima di decidere, non a decidere da soli.</p>
+    <p>I calcoli avvengono nel browser di chi li usa. Nessun dato viene trasmesso o conservato.</p>
+  </footer>
+</div>
+
+<script>
+const BEAR = "data:image/png;base64,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";
+["b1","b2"].forEach(i=>{const e=document.getElementById(i); if(e) e.src=BEAR;});
+</script>
+</body>
+</html>
