@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Il debito fiscale, fase per fase — Corazzini</title>
+<meta name="description" content="Quanto costa un debito fiscale in ogni fase: ravvedimento, avviso bonario, accertamento, adesione, ricorso, cartella, rottamazione. Sanzioni, interessi e piani di rateazione a confronto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --snow-0:#FFFFFF; --snow-50:#F6F8FA; --snow-100:#EDF1F5; --snow-200:#DEE6EC; --frost-300:#C5D4DF;
+  --slate-400:#8B9CA8; --slate-500:#607180; --slate-600:#455560;
+  --ink-700:#2B3B45; --ink-800:#16313F; --ink-900:#0C232F;
+  --glacier-50:#EAF4FA; --glacier-100:#CFE8F5; --glacier-200:#A4D2EC; --glacier-300:#6FB7E0;
+  --glacier-400:#449FD4; --glacier-500:#2E90C9; --glacier-600:#1E76A8; --glacier-700:#185C84; --glacier-800:#164B6B;
+  --brass-400:#CDA45A; --brass-500:#B0822F; --brass-600:#8F6824;
+  --green-500:#2E9C6A; --green-50:#E7F4EE; --red-500:#CF4B4B; --red-50:#FAEAEA;
+  --amber-500:#D69A2E; --amber-50:#FBF1DE;
+  --bg-page:var(--snow-50); --surface-card:var(--snow-0); --surface-sunken:var(--snow-100);
+  --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-muted:var(--slate-500); --text-faint:var(--slate-400);
+  --accent:var(--glacier-500); --accent-strong:var(--glacier-600); --accent-soft:var(--glacier-50);
+  --warm:var(--brass-500); --warm-soft:#F6EEDD;
+  --border:var(--snow-200); --border-strong:var(--frost-300);
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --r-md:12px; --r-lg:18px; --r-xl:26px; --r-pill:999px;
+  --shadow-xs:0 1px 2px rgba(12,35,47,.06); --shadow-sm:0 2px 8px rgba(12,35,47,.07);
+  --shadow-md:0 8px 24px rgba(12,35,47,.09); --shadow-lg:0 18px 48px rgba(12,35,47,.13);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+.wrap{width:min(820px,100% - 44px);margin-inline:auto}
+h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,250,.86);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:66px}
+.bear{width:38px;height:38px;flex:none;object-fit:contain}
+.brand{display:flex;flex-direction:column;line-height:1.02}
+.brand b{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--text-strong)}
+.brand span{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+.nav a{margin-left:auto;color:var(--glacier-600);text-decoration:none;font-size:.9rem;font-weight:600}
+
+.hero{padding:56px 0 26px}
+.hero .eyebrow{display:block;margin-bottom:14px}
+.hero h1{font-size:clamp(2.1rem,1.4rem+2.6vw,3rem);max-width:16ch;text-wrap:balance}
+
+.card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+.card-t{padding:20px 22px 2px}
+.card-t h2{font-size:1.3rem}
+.card-t p{margin:7px 0 0;color:var(--text-muted);font-size:.88rem;line-height:1.5}
+.list{padding:4px 0}
+.row{display:flex;align-items:center;gap:14px;min-height:54px;padding:10px 22px;position:relative}
+.row+.row::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.row .lbl{flex:1;font-size:.97rem;font-weight:500;color:var(--text-strong);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.row .lbl small{display:block;width:100%;color:var(--text-faint);font-size:.76rem;line-height:1.35;margin-top:2px;font-weight:400}
+.row .ctl{flex:none;display:flex;align-items:center;gap:8px}
+.row.stack{flex-direction:column;align-items:stretch;gap:11px;padding-top:16px;padding-bottom:18px}
+.row.stack .lbl{flex:none}
+
+.info{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--frost-300);color:var(--slate-400);
+  font:700 11px/1 var(--font-serif);font-style:italic;display:inline-flex;align-items:center;justify-content:center;
+  background:none;cursor:pointer;padding:0;flex:none}
+.info:hover{border-color:var(--accent);color:var(--accent-strong)}
+.tip{position:fixed;z-index:95;max-width:min(350px,calc(100vw - 32px));background:var(--ink-900);color:var(--snow-50);
+  padding:13px 15px;border-radius:var(--r-md);font-size:.83rem;line-height:1.5;box-shadow:0 24px 60px rgba(8,25,35,.3);
+  opacity:0;pointer-events:none;transition:opacity .16s;transform:translateY(4px)}
+.tip.on{opacity:1;transform:translateY(0)}
+
+.money{padding:26px 22px 22px;text-align:center}
+.money .cap{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+.money .big{display:flex;align-items:baseline;justify-content:center;gap:6px;margin:10px 0 4px}
+.money input[type=text],.money .cur{font:800 clamp(40px,9.5vw,58px)/1 var(--font-sans);letter-spacing:-.045em;
+  color:var(--accent-strong);font-variant-numeric:tabular-nums}
+.money input[type=text]{border:0;background:transparent;text-align:right;padding:0;width:5ch}
+.money input[type=text]:focus{outline:none}
+.money .foot{font-size:.88rem;color:var(--text-muted);min-height:22px;font-weight:500}
+.money .foot b{font-weight:800;font-size:1.06rem;color:var(--text-strong)}
+
+.pick{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.pick .val{margin-left:auto;color:var(--glacier-600);font-size:.95rem;text-align:right;font-weight:600}
+.pick .val small{display:block;color:var(--text-faint);font-size:.74rem;font-weight:500}
+.pick::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(-45deg);margin-left:2px}
+.sheet-bg{position:fixed;inset:0;background:rgba(8,25,35,.38);backdrop-filter:blur(3px);z-index:90;opacity:0;pointer-events:none;transition:opacity .22s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:91;background:var(--surface-card);border-radius:var(--r-xl);width:min(490px,calc(100% - 32px));
+  left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s var(--ease-out);max-height:80vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(8,25,35,.3)}
+.sheet.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sheet header{padding:20px 22px 14px;border-bottom:1px solid var(--border)}
+.sheet header h3{font-size:1.3rem}
+.sheet header p{margin:7px 0 0;font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.sheet .opts{overflow-y:auto;padding:6px 0 8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;padding:12px 22px;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.opt:hover{background:var(--snow-50)}
+.opt .tx{flex:1}
+.opt .tx b{display:block;font-weight:500;font-size:.97rem;color:var(--text-strong)}
+.opt .tx small{color:var(--text-faint);font-size:.78rem}
+.opt .tick{flex:none;width:20px;color:var(--accent);opacity:0;font-size:1.05rem;font-weight:700}
+.opt[aria-selected=true]{background:var(--accent-soft)}
+.opt[aria-selected=true] .tick{opacity:1}
+.opt[aria-selected=true] .tx b{color:var(--accent-strong);font-weight:700}
+.sheet footer{padding:12px 22px 18px;border-top:1px solid var(--border)}
+.sheet footer button{width:100%}
+@media(max-width:560px){.sheet{top:auto;bottom:0;left:0;transform:translateY(14px);width:100%;border-radius:var(--r-xl) var(--r-xl) 0 0}.sheet.on{transform:translateY(0)}}
+
+.seg{display:flex;background:var(--surface-sunken);border-radius:var(--r-md);padding:3px;gap:3px;border:1px solid var(--border)}
+.seg label{flex:1;position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;font-size:.85rem;font-weight:600;padding:10px 8px;border-radius:9px;cursor:pointer;color:var(--text-muted);transition:all .15s}
+.seg input:checked+span{background:var(--surface-card);box-shadow:var(--shadow-xs);color:var(--accent-strong)}
+input[type=number],input[type=date]{border:0;background:transparent;color:var(--text-strong);text-align:right;font:600 .97rem/1 var(--font-sans);padding:6px 0;font-variant-numeric:tabular-nums}
+input[type=number]{width:92px}
+input[type=number]:focus,input[type=date]:focus{outline:none;color:var(--accent-strong)}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+.unit{color:var(--text-faint);font-size:.9rem;font-weight:500}
+
+/* timeline delle fasi */
+.fasi{padding:6px 22px 22px;position:relative}
+.fasi::before{content:"";position:absolute;left:calc(22px + 13px);top:16px;bottom:26px;width:2px;background:var(--snow-200)}
+.fase{position:relative;padding-left:46px;margin-bottom:14px}
+.fase::before{content:"";position:absolute;left:7px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--frost-300);box-shadow:0 0 0 4px var(--surface-card)}
+.fase.v1::before{background:var(--green-500)}
+.fase.v2::before{background:var(--accent)}
+.fase.v3::before{background:var(--amber-500)}
+.fase.v4::before{background:var(--red-500)}
+.fase.v5::before{background:var(--warm)}
+.fbox{border:1px solid var(--border);border-radius:var(--r-md);padding:16px 18px;background:var(--surface-card);transition:box-shadow .16s var(--ease-out)}
+.fase.best .fbox{border-color:var(--green-500);box-shadow:0 0 0 3px var(--green-50)}
+.fbox .h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px}
+.fbox .h h3{font-size:1.12rem}
+.fbox .h .when{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint)}
+.fbox .h .tot{margin-left:auto;font:800 1.24rem/1 var(--font-sans);letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--text-strong)}
+.fbox .sub{font-size:.85rem;color:var(--text-muted);line-height:1.5;margin-bottom:11px}
+.fbox .brk{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.fbox .brk span{font-size:.75rem;font-weight:600;padding:5px 10px;border-radius:var(--r-pill);background:var(--surface-sunken);color:var(--text-muted);font-variant-numeric:tabular-nums}
+.fbox .brk span b{color:var(--text-strong);font-weight:700}
+.fbox .rate{font-size:.8rem;color:var(--text-faint);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fbox .rate b{color:var(--text-body);font-weight:700}
+.fbox .delta{font-size:.78rem;font-weight:700;margin-top:8px}
+.fbox .delta.up{color:var(--red-500)}
+.fbox .delta.zero{color:var(--green-500)}
+.fase.off .fbox{opacity:.52;border-style:dashed}
+
+/* grafico a barre */
+.bars{padding:4px 22px 24px}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.bar .nm{width:150px;flex:none;font-size:.8rem;font-weight:600;color:var(--text-muted);text-align:right;line-height:1.25}
+.bar .tr{flex:1;height:26px;background:var(--surface-sunken);border-radius:6px;overflow:hidden;display:flex}
+.bar .tr i{display:block;height:100%}
+.bar .tr .i1{background:var(--ink-800)}
+.bar .tr .i2{background:var(--red-500)}
+.bar .tr .i3{background:var(--brass-400)}
+.bar .vl{width:92px;flex:none;text-align:right;font-size:.83rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text-strong)}
+@media(max-width:600px){.bar .nm{width:96px;font-size:.72rem}.bar .vl{width:74px;font-size:.76rem}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;padding:6px 22px 22px;font-size:.83rem;color:var(--text-muted)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:11px;height:11px;border-radius:3px;flex:none}
+
+.notice{display:flex;gap:12px;padding:15px 18px;border-radius:var(--r-md);font-size:.92rem;line-height:1.5;margin-bottom:10px;border:1px solid}
+.notice .ic{flex:none;width:20px;height:20px;border-radius:50%;color:#fff;font-size:.76rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.notice.ko{background:var(--red-50);border-color:#EFCFCF;color:#7C2B2B}.notice.ko .ic{background:var(--red-500)}
+.notice.warn{background:var(--amber-50);border-color:#EFDCB4;color:#6E4E14}.notice.warn .ic{background:var(--amber-500)}
+.notice.ok{background:var(--accent-soft);border-color:var(--glacier-100);color:var(--glacier-800)}.notice.ok .ic{background:var(--accent)}
+.notice b{font-weight:700}
+
+details{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:1.08rem;font-weight:600;color:var(--text-strong)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-3px}
+details[open] summary::after{transform:rotate(-135deg);margin-top:3px}
+summary:hover{background:var(--snow-50)}
+.det{padding:0 22px 22px}
+details .list{padding:0 0 6px}
+details .list .row:first-child::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;align-items:start}
+@media(max-width:680px){.duo{grid-template-columns:1fr}}
+.duo details{margin-bottom:0}
+.duo .row{padding-left:20px;padding-right:20px}
+.duo .row+.row::before{left:20px}
+
+.det p{margin:0 0 12px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det h4{margin:22px 0 9px;font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--text-strong)}
+.det h4:first-child{margin-top:0}
+.det ul{margin:0 0 4px;padding-left:20px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det li{margin-bottom:7px}
+.det a{color:var(--glacier-600);text-decoration:none}
+.det a:hover{text-decoration:underline}
+.srcs div{padding:11px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.srcs div:last-child{border-bottom:0}
+.srcs b{display:block;font-weight:700;font-size:.68rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+
+.act{display:flex;gap:10px;justify-content:center;padding:6px 0 16px}
+button.btn{font:700 .95rem/1 var(--font-sans);padding:14px 26px;border-radius:var(--r-pill);border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.btn:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+button.btn.sec{background:transparent;color:var(--text-body);border-color:var(--border-strong)}
+button.btn.sec:hover{background:var(--snow-100)}
+
+footer{padding:32px 0 64px;color:var(--text-faint);font-size:.82rem;line-height:1.6;text-align:center}
+footer p{margin:0 auto 10px;max-width:66ch}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:16px;color:var(--text-muted)}
+footer .fb img{width:26px;height:26px}
+footer .fb b{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);font-weight:600}
+.print-head{display:none}
+
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  body{background:#fff;font-size:9.5pt;color:#000}
+  .nav,.hero,.act,footer,.tip,.sheet,.sheet-bg,.no-print{display:none!important}
+  .print-head{display:flex;align-items:center;gap:10px;border-bottom:1.5px solid #000;padding-bottom:8px;margin-bottom:13px}
+  .print-head img{width:26px;height:26px}
+  .print-head .t{font-family:var(--font-serif);font-size:14pt;font-weight:600}
+  .print-head .s{margin-left:auto;text-align:right;font-size:8pt;color:#555}
+  .wrap{width:auto}
+  .card,details{border:.5pt solid #BBB;border-radius:8px;margin-bottom:5mm;break-inside:avoid;box-shadow:none}
+  .duo{display:block}
+  details>.det,details>.list{display:block!important}
+  summary::after{display:none}
+  .money{padding:12px}
+  .money input[type=text],.money .cur{color:#000!important;font-size:20pt}
+  .pick::after{display:none}.pick .val{color:#000}
+  .fase{break-inside:avoid}
+  .fase.best .fbox{box-shadow:none;border-width:1.5pt}
+  input{color:#000!important}
+  a{color:#000}
+  .det a::after{content:" — " attr(href);font-size:7pt;color:#666;word-break:break-all}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav no-print">
+  <div class="wrap">
+    <img class="bear" id="bearNav" alt="" src="">
+    <span class="brand"><b>Corazzini</b><span>Strumenti</span></span>
+    <a href="../">Tutti gli strumenti</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero no-print">
+    <span class="eyebrow">Strumento aperto</span>
+    <h1>Il debito fiscale, fase per fase</h1>
+  </header>
+
+  <div class="print-head">
+    <img id="bearPrint" alt="" src="">
+    <div class="t">Debito fiscale — costo per fase</div>
+    <div class="s"><div>Corazzini · corazzini.it</div><div id="printDate"></div></div>
+  </div>
+
+  <form id="f" autocomplete="off">
+    <input type="hidden" id="tipo" value="omesso">
+
+    <section class="card">
+      <div class="money">
+        <div class="cap">Imposta dovuta</div>
+        <div class="big"><input type="text" id="imp" inputmode="numeric" value="10.000" aria-label="Imposta"><span class="cur">€</span></div>
+        <div class="foot" id="impFoot"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="list">
+        <div class="row">
+          <button type="button" class="pick" data-pick="tipo"><span class="lbl">Tipo di violazione</span><span class="val" id="vTipo"></span></button>
+        </div>
+        <div class="row">
+          <div class="lbl">Scadenza originaria del versamento
+            <button type="button" class="info" data-tip="Determina due cose: quale regime sanzionatorio si applica e quanti interessi sono maturati. La violazione si considera commessa il giorno della scadenza, non quello del pagamento tardivo.">i</button>
+          </div>
+          <div class="ctl"><input type="date" id="dScad"></div>
+        </div>
+        <div class="row">
+          <div class="lbl">Data ipotizzata del pagamento</div>
+          <div class="ctl"><input type="date" id="dPag"></div>
+        </div>
+        <div class="row" id="rowSanz" hidden>
+          <div class="lbl">Sanzione minima edittale
+            <button type="button" class="info" data-tip="È la sanzione minima prevista per quella violazione, quella su cui si calcolano le riduzioni degli istituti deflattivi. Per la dichiarazione infedele il minimo è il 70% dell'imposta per le violazioni dal 1° settembre 2024, il 90% per quelle precedenti.">i</button>
+            <small>In percentuale dell'imposta</small>
+          </div>
+          <div class="ctl"><input type="number" id="sanzMin" value="70" step="1" min="0" style="width:64px"><span class="unit">%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="duo">
+      <details>
+        <summary>Altri importi</summary>
+        <div class="list">
+          <div class="row">
+            <div class="lbl">Contributi previdenziali
+              <button type="button" class="info" data-tip="INPS e casse professionali seguono un regime sanzionatorio proprio, fatto di sanzioni civili e non di sanzioni tributarie. Qui l'importo viene solo sommato al totale, senza applicarvi le riduzioni degli istituti fiscali.">i</button>
+              <small>Sommati senza riduzioni</small>
+            </div>
+            <div class="ctl"><input type="number" id="contr" value="0" step="100" min="0"><span class="unit">€</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Altri tributi non definibili<small>Tributi locali, bolli, diritti.</small></div>
+            <div class="ctl"><input type="number" id="altri" value="0" step="100" min="0"><span class="unit">€</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Spese di notifica e procedura<small>Solo nella fase di riscossione.</small></div>
+            <div class="ctl"><input type="number" id="spese" value="0" step="10" min="0"><span class="unit">€</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Tassi di interesse</summary>
+        <div class="list">
+          <div class="row">
+            <div class="lbl">Legale
+              <button type="button" class="info" data-tip="Si usa nel ravvedimento. Cambia ogni anno con decreto del MEF: se il ritardo attraversa più anni solari va spezzato per periodo. Qui il calcolo usa un tasso unico.">i</button>
+              <small>Ravvedimento · 1,60% nel 2026</small>
+            </div>
+            <div class="ctl"><input type="number" id="tLeg" value="1.60" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Ritardata iscrizione a ruolo<small>Art. 20 D.P.R. 602/73</small></div>
+            <div class="ctl"><input type="number" id="tRuolo" value="4.00" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Mora sulle somme a ruolo
+              <button type="button" class="info" data-tip="Fissato ogni anno con provvedimento del Direttore dell'Agenzia delle Entrate sulla media dei tassi bancari attivi. Verifica il provvedimento in vigore alla data che ti interessa.">i</button>
+              <small>Art. 30 D.P.R. 602/73 · da verificare</small>
+            </div>
+            <div class="ctl"><input type="number" id="tMora" value="3.50" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Rateazione avviso bonario<small>Art. 3-bis D.Lgs. 462/97</small></div>
+            <div class="ctl"><input type="number" id="tRateB" value="3.50" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Dilazione cartelle<small>Art. 21 D.P.R. 602/73</small></div>
+            <div class="ctl"><input type="number" id="tDilaz" value="4.50" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </form>
+
+  <div id="alerts"></div>
+
+  <section class="card">
+    <div class="card-t">
+      <h2>Le fasi, in ordine di costo</h2>
+      <p>Ogni riga è un momento in cui il debito si può chiudere. Più si scende, più costa. La cornice verde segna l'uscita più conveniente ancora praticabile.</p>
+    </div>
+    <div class="fasi" id="fasi"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-t"><h2>Composizione del dovuto</h2></div>
+    <div class="bars" id="bars"></div>
+    <div class="legend">
+      <span><i style="background:var(--ink-800)"></i>Imposta e altri tributi</span>
+      <span><i style="background:var(--red-500)"></i>Sanzioni</span>
+      <span><i style="background:var(--brass-400)"></i>Interessi e spese</span>
+    </div>
+  </section>
+
+  <div class="act no-print">
+    <button type="button" class="btn" id="stampa">Stampa</button>
+    <button type="button" class="btn sec" id="reset">Azzera</button>
+  </div>
+
+  <details>
+    <summary>Le fasi spiegate</summary>
+    <div class="det">
+      <h4>Ravvedimento operoso</h4>
+      <p>Finché non arriva nessun atto, la sanzione si riduce in proporzione alla rapidità con cui ti muovi. Le soglie sono 15 giorni, 30 giorni, 90 giorni, il termine della dichiarazione dell'anno dopo, e oltre. Dopo la consegna di uno schema di atto la riduzione scende a un sesto, dopo la notifica dell'atto a un quinto. Il ravvedimento si perfeziona solo se paghi imposta, sanzione e interessi tutti insieme: non è rateizzabile.</p>
+      <h4>Avviso bonario</h4>
+      <p>Arriva dal controllo automatizzato o da quello formale della dichiarazione. Non è un accertamento e non contesta il merito: rileva versamenti mancati o dati che non tornano. Pagando nei termini la sanzione si riduce a un terzo nel controllo automatizzato, a due terzi in quello formale. Si può rateizzare fino a venti rate trimestrali.</p>
+      <h4>Avviso di accertamento</h4>
+      <p>Qui la sanzione non è più quella da omesso versamento ma quella propria della violazione contestata, molto più alta. Restano tre uscite: l'adesione, che consente di discutere anche il merito e riduce le sanzioni a un terzo del minimo; l'acquiescenza, che accetta l'atto in blocco con la stessa riduzione ma senza trattativa; la definizione delle sole sanzioni, che le abbatte a un terzo lasciando aperto il contenzioso sull'imposta.</p>
+      <h4>Ricorso e conciliazione</h4>
+      <p>Con il ricorso il debito non sparisce: un terzo dell'imposta va comunque versato in pendenza di giudizio. Se durante il processo si trova un accordo, la conciliazione riduce le sanzioni al 40% del minimo in primo grado e al 50% in appello. Vanno messe in conto le spese di lite, che il modulo non stima.</p>
+      <h4>Cartella di pagamento</h4>
+      <p>Qui le riduzioni sono finite: la sanzione è piena e si aggiungono gli interessi di mora dal sessantunesimo giorno. Resta la rateazione, fino a ottantaquattro rate mensili a semplice richiesta nel biennio 2025-2026 per importi fino a 120.000 €, e resta la definizione agevolata quando il legislatore la riapre.</p>
+      <h4>Rottamazione</h4>
+      <p>La definizione agevolata azzera sanzioni, interessi di mora e aggio: resta il capitale più le spese di notifica e di procedura. È l'unica via che, arrivati alla cartella, riporta il costo sotto quello di un avviso bonario. Non dipende però dal contribuente: esiste solo quando una legge la prevede, e solo per i carichi che rientrano nel perimetro fissato.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Metodo, limiti e fonti</summary>
+    <div class="det">
+      <h4>Regime sanzionatorio applicabile</h4>
+      <p>Il D.Lgs. 87/2024 ha abbassato la sanzione per omesso versamento dal 30% al 25% e ha riscritto le riduzioni del ravvedimento. Le nuove misure valgono per le violazioni commesse dal 1° settembre 2024. La Cassazione, con la sentenza 1274/2025, ha confermato che non si applicano retroattivamente. Il modulo sceglie il regime in base alla data di scadenza che inserisci, perché è quello il giorno in cui la violazione si considera commessa.</p>
+      <p>Il Testo unico delle sanzioni tributarie, D.Lgs. 173/2024, entra in vigore il 1° gennaio 2027: per tutto il 2026 restano applicabili i D.Lgs. 471 e 472 del 1997.</p>
+      <h4>Cosa il modulo non fa</h4>
+      <ul>
+        <li>Non applica il cumulo giuridico né la continuazione. Con più violazioni collegate il conto vero è diverso, di solito più basso.</li>
+        <li>Usa un tasso legale unico. Se il ritardo attraversa più anni solari, gli interessi vanno spezzati per periodo con i tassi di ciascun anno.</li>
+        <li>Non calcola le spese di lite, il contributo unificato, né il rischio di soccombenza.</li>
+        <li>Non tratta i profili penali. Sopra certe soglie l'omesso versamento e la dichiarazione infedele diventano reato, e il pagamento integrale ha effetti sulla punibilità.</li>
+        <li>Non verifica prescrizione e decadenza, che in fase di riscossione sono spesso la difesa più efficace.</li>
+        <li>Per contributi previdenziali e tributi locali si limita a sommare gli importi: hanno regimi sanzionatori propri.</li>
+        <li>Le sanzioni civili INPS, gli interessi sulle rate e gli oneri di riscossione dei carichi anteriori al 2022 non sono modellati.</li>
+      </ul>
+      <h4>Fonti</h4>
+      <div class="srcs">
+        <div><b>Sanzione per omesso versamento</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-12-18;471" target="_blank" rel="noopener">Art. 13 D.Lgs. 471/1997, come modificato dal D.Lgs. 87/2024</a></div>
+        <div><b>Riforma sanzionatoria</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2024-06-14;87" target="_blank" rel="noopener">D.Lgs. 14 giugno 2024 n. 87, art. 5 — decorrenza dal 1° settembre 2024</a></div>
+        <div><b>Ravvedimento operoso</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-12-18;472" target="_blank" rel="noopener">Art. 13 D.Lgs. 472/1997</a></div>
+        <div><b>Avviso bonario e rateazione</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-09-18;462" target="_blank" rel="noopener">Artt. 2, 3 e 3-bis D.Lgs. 462/1997 — termine a 60 giorni dal D.Lgs. 108/2024</a></div>
+        <div><b>Adesione e acquiescenza</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-06-19;218" target="_blank" rel="noopener">Artt. 2, 8 e 15 D.Lgs. 218/1997</a></div>
+        <div><b>Conciliazione giudiziale</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1992-12-31;546" target="_blank" rel="noopener">Artt. 48, 48-bis e 48-ter D.Lgs. 546/1992</a></div>
+        <div><b>Interessi e rateazione dei ruoli</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1973-09-29;602" target="_blank" rel="noopener">Artt. 19, 20, 21 e 30 D.P.R. 602/1973 — art. 19 modificato dal D.Lgs. 110/2024</a></div>
+        <div><b>Rottamazione-quinquies</b><a href="https://www.agenziaentrateriscossione.gov.it/it/Per-saperne-di-piu/definizione-agevolata-rottamazione-quinquies/" target="_blank" rel="noopener">L. 199/2025 art. 23 — pagina ufficiale Agenzia delle Entrate-Riscossione</a></div>
+        <div><b>Tasso legale 2026</b>Fissato all'1,60% annuo con decreto del Ministero dell'Economia</div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <div class="fb"><img id="bearFoot" alt="" src=""><b>Corazzini</b> · Pescara</div>
+    <p>Questa è una stima di orientamento. Non è un parere professionale. Il conto esatto dipende dall'atto che hai in mano, dalle date effettive e da circostanze che un modulo non conosce. Prima di scegliere una via, fatti leggere l'atto da un professionista.</p>
+    <p>Il calcolo avviene nel tuo browser. Nessun dato viene trasmesso o conservato.</p>
+  </footer>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <header><h3 id="shT"></h3><p id="shP"></p></header>
+  <div class="opts" id="shO"></div>
+  <footer><button type="button" class="btn sec" id="shC">Chiudi</button></footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+"use strict";
+const BEAR="data:image/png;base64,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";
+["bearNav","bearPrint","bearFoot"].forEach(i=>{const e=document.getElementById(i); if(e) e.src=BEAR;});
+
+const eur=n=>new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n||0);
+const eur2=n=>new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR",minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0);
+const pct=n=>new Intl.NumberFormat("it-IT",{style:"percent",maximumFractionDigits:2}).format(n||0);
+const mig=n=>new Intl.NumberFormat("it-IT").format(Math.round(n||0));
+const num=s=>+String(s).replace(/[^\d]/g,"")||0;
+const $=id=>document.getElementById(id);
+const RIFORMA=new Date(2024,8,1);           /* 1° settembre 2024 */
+const gg=(a,b)=>Math.max(0,Math.round((b-a)/86400000));
+
+const OPZ={ tipo:{ titolo:"Tipo di violazione",
+  nota:"Cambia la sanzione di partenza e le fasi che si possono attraversare.",
+  voci:[
+    {v:"omesso", t:"Omesso o tardivo versamento", s:"Imposta dichiarata ma non versata · sanzione 25% o 30%"},
+    {v:"formale",t:"Errore rilevato dal controllo formale", s:"Detrazioni e oneri non documentati · art. 36-ter"},
+    {v:"infedele",t:"Dichiarazione infedele", s:"Maggiore imposta accertata · sanzione minima indicata a parte"}
+  ]}};
+
+/* ---------- motore ---------- */
+function leggi(){
+  const dS=new Date(($("dScad").value||"2025-06-30")+"T00:00:00");
+  const dP=new Date(($("dPag").value||new Date().toISOString().slice(0,10))+"T00:00:00");
+  return {
+    imp:num($("imp").value), tipo:$("tipo").value,
+    dScad:dS, dPag:dP, giorni:gg(dS,dP),
+    post:dS>=RIFORMA,
+    sanzMin:(+$("sanzMin").value||0)/100,
+    contr:+$("contr").value||0, altri:+$("altri").value||0, spese:+$("spese").value||0,
+    tLeg:(+$("tLeg").value||0)/100, tRuolo:(+$("tRuolo").value||0)/100, tMora:(+$("tMora").value||0)/100,
+    tRateB:(+$("tRateB").value||0)/100, tDilaz:(+$("tDilaz").value||0)/100
+  };
+}
+/* sanzione base per omesso versamento */
+function base(c){ return c.post ? .25 : .30; }
+/* riduzione da ravvedimento in funzione dei giorni di ritardo */
+function ravv(c){
+  const g=c.giorni, b=base(c);
+  if(g<=0)  return {q:0, et:"nessun ritardo"};
+  if(g<=14) return {q:b/10*(g/15), et:"1/10 del 15° giornaliero · "+g+" giorni"};
+  if(g<=30) return {q:b/10, et:"1/10 del minimo · entro 30 giorni"};
+  if(g<=90) return {q:b/9,  et:"1/9 del minimo · entro 90 giorni"};
+  if(g<=365)return {q:b/8,  et:"1/8 del minimo · entro la dichiarazione dell'anno"};
+  return {q:b/7, et:"1/7 del minimo · oltre l'anno"};
+}
+function interessi(cap, tasso, giorni){ return cap*tasso*giorni/365; }
+
+function fasi(c){
+  const I=c.imp, ALT=c.altri, CON=c.contr, g=c.giorni, b=base(c);
+  const out=[];
+  const add=(o)=>{ o.tot=o.cap+o.sanz+o.int; out.push(o); };
+
+  /* 1 · ravvedimento */
+  const r=ravv(c);
+  add({ id:"ravv", n:"Ravvedimento operoso", when:"prima di ogni atto", liv:1,
+    cap:I+ALT+CON, sanz:I*r.q, int:interessi(I,c.tLeg,g),
+    sub:"Ti muovi tu, prima che si muova l'ufficio. La sanzione cresce con il ritardo: "+r.et+".",
+    rate:"Non rateizzabile: imposta, sanzione e interessi vanno versati insieme.",
+    perc:r.q, attiva:true });
+
+  /* 2 · avviso bonario — non esiste per la dichiarazione infedele,
+        che nasce da un accertamento e non dal controllo della dichiarazione */
+  if(c.tipo!=="infedele"){
+  const auto=c.tipo!=="formale";
+  const qB= auto ? b/3 : b*2/3;
+  const gB= g+90;
+  add({ id:"bonario", n: auto?"Avviso bonario · controllo automatizzato":"Avviso bonario · controllo formale",
+    when:"60 giorni per pagare", liv:2,
+    cap:I+ALT+CON, sanz:I*qB, int:interessi(I,c.tRuolo,gB),
+    sub: auto ? "Sanzione ridotta a un terzo. Il termine è di 60 giorni dalla comunicazione, 90 se arriva all'intermediario."
+              : "Nel controllo formale la riduzione è a due terzi, non a un terzo: il conto è quasi il doppio.",
+    rate:"Fino a 20 rate trimestrali, interessi al "+pct(c.tRateB)+" sulle rate successive alla prima.",
+    perc:qB, attiva:true, rateOk:{n:20, per:"trimestrali", tasso:c.tRateB} });
+  }
+
+  /* 3 · accertamento */
+  if(c.tipo==="infedele"){
+    const gA=g+540;
+    const sMin=I*c.sanzMin;
+    add({ id:"adesione", n:"Accertamento con adesione", when:"entro 20 giorni dall'atto di adesione", liv:3,
+      cap:I+ALT+CON, sanz:sMin/3, int:interessi(I,c.tRuolo,gA),
+      sub:"Sanzioni a un terzo del minimo, e si discute anche l'imponibile: spesso l'imposta concordata è più bassa di quella accertata.",
+      rate:"8 rate trimestrali fino a 50.000 €, 16 rate oltre. Nessuna garanzia richiesta.",
+      perc:c.sanzMin/3, attiva:true, rateOk:{n:8, per:"trimestrali", tasso:c.tLeg} });
+    add({ id:"acquie", n:"Acquiescenza all'accertamento", when:"entro 60 giorni dalla notifica", liv:3,
+      cap:I+ALT+CON, sanz:sMin/3, int:interessi(I,c.tRuolo,gA),
+      sub:"Stessa riduzione dell'adesione, ma accetti l'atto in blocco: nessuna trattativa sull'imponibile.",
+      rate:"8 rate trimestrali fino a 50.000 €, 16 rate oltre.",
+      perc:c.sanzMin/3, attiva:true, rateOk:{n:8, per:"trimestrali", tasso:c.tLeg} });
+    add({ id:"concil", n:"Conciliazione in primo grado", when:"durante il processo", liv:4,
+      cap:I+ALT+CON, sanz:sMin*0.40, int:interessi(I,c.tRuolo,gA+365),
+      sub:"Accordo raggiunto a giudizio già incardinato. Sanzioni al 40% del minimo in primo grado, 50% in appello. Restano fuori le spese di lite.",
+      rate:"Fino a 8 o 16 rate trimestrali, come nell'adesione.",
+      perc:c.sanzMin*0.40, attiva:true, rateOk:{n:8, per:"trimestrali", tasso:c.tLeg} });
+  }
+
+  /* 4 · cartella */
+  const sanzPiena = c.tipo==="infedele" ? I*c.sanzMin : I*b;
+  const gC = g + (c.tipo==="infedele" ? 900 : 450);
+  add({ id:"cartella", n:"Cartella di pagamento", when:"60 giorni, poi mora", liv:4,
+    cap:I+ALT+CON+c.spese, sanz:sanzPiena,
+    int:interessi(I,c.tRuolo,gC)+interessi(I+sanzPiena,c.tMora,180),
+    sub:"Nessuna riduzione: sanzione piena e interessi di mora dal sessantunesimo giorno. Qui il debito è già affidato all'agente della riscossione.",
+    rate:"Fino a 84 rate mensili a semplice richiesta per importi fino a 120.000 €, nelle domande presentate nel 2025 e 2026.",
+    perc: c.tipo==="infedele"?c.sanzMin:b, attiva:true, rateOk:{n:84, per:"mensili", tasso:c.tDilaz} });
+
+  /* 5 · rottamazione */
+  add({ id:"rott", n:"Definizione agevolata", when:"quando la legge la prevede", liv:5,
+    cap:I+ALT+CON+c.spese, sanz:0, int:0,
+    sub:"Azzera sanzioni, interessi di mora e aggio: resta il capitale più le spese. Non è una scelta sempre disponibile, dipende da una legge e da un perimetro di carichi.",
+    rate:"Nella rottamazione-quinquies: unica soluzione oppure 54 rate bimestrali in 9 anni, interessi al 3% dal 1° agosto 2026.",
+    perc:0, cond:true, rateOk:{n:54, per:"bimestrali", tasso:0.03} });
+
+  return out;
+}
+
+/* ---------- rendering ---------- */
+function rataDi(tot, n, tasso, mesiPer){
+  /* ammortamento a rata costante sul residuo */
+  const i = tasso*mesiPer/12;
+  if(i<=0) return tot/n;
+  return tot*i/(1-Math.pow(1+i,-n));
+}
+function render(){
+  const c=leggi(), F=fasi(c);
+  const minTot=Math.min(...F.filter(f=>!f.cond).map(f=>f.tot));
+  const maxTot=Math.max(...F.map(f=>f.tot));
+  const rav=F[0];
+
+  $("impFoot").innerHTML = c.giorni>0
+    ? "Ritardo di <b>"+mig(c.giorni)+" giorni</b> · regime "+(c.post?"post riforma, sanzione base 25%":"ante riforma, sanzione base 30%")
+    : "Imposta il ritardo con le due date qui sotto";
+  $("rowSanz").hidden = c.tipo!=="infedele";
+
+  let h="";
+  F.forEach((f,k)=>{
+    const best = !f.cond && Math.abs(f.tot-minTot)<1;
+    const d = f.tot-rav.tot;
+    let rateTxt=f.rate;
+    if(f.rateOk && f.tot>0){
+      const mesi = f.rateOk.per==="mensili"?1:(f.rateOk.per==="bimestrali"?2:3);
+      const r=rataDi(f.tot,f.rateOk.n,f.rateOk.tasso,mesi);
+      rateTxt += " <b>"+eur(r)+"</b> a rata su "+f.rateOk.n+".";
+    }
+    h+=`<div class="fase v${f.liv} ${best?"best":""} ${f.cond?"off":""}">
+      <div class="fbox">
+        <div class="h"><h3>${f.n}</h3><span class="when">${f.when}</span><span class="tot">${eur(f.tot)}</span></div>
+        <div class="sub">${f.sub}</div>
+        <div class="brk">
+          <span>imposta e tributi <b>${eur(f.cap)}</b></span>
+          <span>sanzione ${f.perc>0?pct(f.perc):"azzerata"} <b>${eur(f.sanz)}</b></span>
+          <span>interessi <b>${eur(f.int)}</b></span>
+        </div>
+        <div class="rate">${rateTxt}</div>
+        ${k>0 ? `<div class="delta ${d>1?"up":"zero"}">${d>1?"+"+eur(d)+" rispetto al ravvedimento":(d<-1?"−"+eur(-d)+" rispetto al ravvedimento, ma solo se la legge la prevede":"allineato al ravvedimento")}</div>`:""}
+      </div>
+    </div>`;
+  });
+  $("fasi").innerHTML=h;
+
+  let b="";
+  F.forEach(f=>{
+    const w=x=>maxTot>0?(x/maxTot*100):0;
+    b+=`<div class="bar">
+      <div class="nm">${f.n.replace(" · "," ")}</div>
+      <div class="tr"><i class="i1" style="width:${w(f.cap)}%"></i><i class="i2" style="width:${w(f.sanz)}%"></i><i class="i3" style="width:${w(f.int)}%"></i></div>
+      <div class="vl">${eur(f.tot)}</div>
+    </div>`;
+  });
+  $("bars").innerHTML=b;
+
+  const A=[];
+  const peggio=F.find(x=>x.id==="cartella")||F[F.length-1];
+  A.push(["ok","i",`Fra il ravvedimento e la cartella ballano <b>${eur(peggio.tot-rav.tot)}</b>. È il prezzo di aspettare che si muova l'ufficio.`]);
+  if(!c.post) A.push(["warn","!","La scadenza è anteriore al 1° settembre 2024: si applica il regime previgente, con sanzione base del 30%. La Cassazione, con la sentenza 1274/2025, ha escluso l'applicazione retroattiva delle sanzioni più miti."]);
+  if(c.giorni>365) A.push(["warn","!","Oltre l'anno dalla scadenza. Verifica se sia già arrivato un avviso bonario o uno schema di atto: in quel caso la riduzione da ravvedimento scende a un sesto o a un quinto, e il calcolo qui sopra va corretto."]);
+  if(c.contr>0) A.push(["warn","!","I contributi previdenziali sono sommati senza riduzioni. INPS e casse applicano sanzioni civili proprie, con regole e tetti diversi da quelli tributari."]);
+  A.push(["warn","!","La rottamazione-quinquies riguarda i carichi affidati dal 1° gennaio 2000 al 31 dicembre 2023 e derivanti dai controlli sulle dichiarazioni: gli accertamenti restano fuori. Il termine per aderire è scaduto il 30 aprile 2026 e il pagamento in unica soluzione scade il 31 luglio 2026."]);
+  $("alerts").innerHTML=A.map(a=>`<div class="notice ${a[0]}"><span class="ic">${a[1]}</span><span>${a[2]}</span></div>`).join("");
+}
+
+/* ---------- interazione ---------- */
+let pickCorrente=null;
+function apriPicker(k){
+  pickCorrente=k; const o=OPZ[k], cur=$(k).value;
+  $("shT").textContent=o.titolo; $("shP").textContent=o.nota;
+  $("shO").innerHTML=o.voci.map((x,i)=>`<button type="button" class="opt" data-i="${i}" aria-selected="${String(x.v===cur)}"><span class="tx"><b>${x.t}</b><small>${x.s}</small></span><span class="tick">✓</span></button>`).join("");
+  $("sheet").classList.add("on"); $("sheetBg").classList.add("on"); document.body.classList.add("locked");
+}
+function chiudiPicker(){ $("sheet").classList.remove("on"); $("sheetBg").classList.remove("on"); document.body.classList.remove("locked"); pickCorrente=null; }
+function mostraTip(b){ const t=$("tip"); t.textContent=b.dataset.tip; t.classList.add("on");
+  const r=b.getBoundingClientRect();
+  t.style.left=Math.max(12,Math.min(window.innerWidth-t.offsetWidth-12,r.left-10))+"px"; t.style.top=(r.bottom+8)+"px"; }
+function nascondiTip(){ $("tip").classList.remove("on"); }
+document.addEventListener("click",e=>{
+  const inf=e.target.closest(".info"); if(inf){ $("tip").classList.contains("on")?nascondiTip():mostraTip(inf); return; }
+  nascondiTip();
+  const p=e.target.closest("[data-pick]"); if(p){ apriPicker(p.dataset.pick); return; }
+  const o=e.target.closest(".opt");
+  if(o&&pickCorrente){ $(pickCorrente).value=OPZ[pickCorrente].voci[+o.dataset.i].v; chiudiPicker(); sync(); }
+});
+document.addEventListener("mouseover",e=>{const i=e.target.closest(".info"); if(i) mostraTip(i);});
+document.addEventListener("mouseout",e=>{if(e.target.closest(".info")) nascondiTip();});
+$("sheetBg").addEventListener("click",chiudiPicker);
+$("shC").addEventListener("click",chiudiPicker);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){chiudiPicker();nascondiTip();}});
+
+const t=$("imp");
+const aggImp=()=>{ t.style.width=Math.max(3,t.value.length+0.2)+"ch"; };
+t.addEventListener("input",()=>{ const v=num(t.value); t.value=v?mig(v):""; aggImp(); render(); });
+t.addEventListener("blur",()=>{ const v=num(t.value); t.value=v?mig(v):"0"; aggImp(); render(); });
+
+function etichette(){
+  const x=OPZ.tipo.voci.find(v=>v.v===$("tipo").value)||OPZ.tipo.voci[0];
+  $("vTipo").innerHTML=x.t+"<small>"+x.s.split(" · ").pop()+"</small>";
+}
+function sync(){ etichette(); aggImp(); render(); }
+document.addEventListener("input",e=>{ if(e.target.closest&&e.target.closest("#f")&&e.target.id!=="imp") sync(); });
+document.addEventListener("change",e=>{ if(e.target.closest&&e.target.closest("#f")) sync(); });
+$("stampa").addEventListener("click",()=>window.print());
+$("reset").addEventListener("click",()=>{ $("f").reset(); $("tipo").value="omesso"; $("imp").value="10.000";
+  $("dScad").value="2025-06-30"; $("dPag").value=new Date().toISOString().slice(0,10); sync(); });
+$("printDate").textContent=new Date().toLocaleDateString("it-IT");
+$("dScad").value="2025-06-30";
+$("dPag").value=new Date().toISOString().slice(0,10);
+sync();
+</script>
+</body>
+</html>

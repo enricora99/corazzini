@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Sei un soggetto obbligato antiriciclaggio? — Corazzini</title>
+<meta name="description" content="Strumento gratuito per capire se la tua attività rientra fra i soggetti obbligati antiriciclaggio ex art. 3 del d.lgs. 231/2007: norma applicabile, autorità di vigilanza, soglie e adempimenti che ne discendono.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --snow-0:#FFFFFF; --snow-50:#F6F8FA; --snow-100:#EDF1F5; --snow-200:#DEE6EC; --frost-300:#C5D4DF;
+  --slate-400:#8B9CA8; --slate-500:#607180;
+  --ink-700:#2B3B45; --ink-800:#16313F; --ink-900:#0C232F;
+  --glacier-50:#EAF4FA; --glacier-100:#CFE8F5; --glacier-300:#6FB7E0; --glacier-500:#2E90C9; --glacier-600:#1E76A8; --glacier-700:#185C84;
+  --brass-500:#B0822F;
+  --green-500:#2E9C6A; --green-50:#E7F4EE;
+  --red-500:#CF4B4B; --red-50:#FAEAEA;
+  --amber-500:#D69A2E; --amber-50:#FBF1DE;
+  --bg-page:var(--snow-50); --surface-card:var(--snow-0); --surface-sunken:var(--snow-100);
+  --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-muted:var(--slate-500); --text-faint:var(--slate-400);
+  --accent:var(--glacier-500); --accent-strong:var(--glacier-600); --accent-soft:var(--glacier-50);
+  --warm:var(--brass-500); --warm-soft:#F6EEDD;
+  --border:var(--snow-200); --border-strong:var(--frost-300); --link:var(--glacier-600);
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --ls-eyebrow:.16em; --ls-tight:-.02em;
+  --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:26px; --r-pill:999px;
+  --shadow-xs:0 1px 2px rgba(12,35,47,.06); --shadow-sm:0 2px 8px rgba(12,35,47,.07); --shadow-md:0 8px 24px rgba(12,35,47,.09);
+  --ring-focus:0 0 0 3px rgba(46,144,201,.35);
+  --ease-out:cubic-bezier(.22,.61,.36,1); --ease-soft:cubic-bezier(.4,0,.2,1);
+  --dyn:#8B9CA8;
+}
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{width:min(760px,100% - 44px);margin-inline:auto}
+h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;line-height:1.08;letter-spacing:var(--ls-tight);margin:0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent-strong)}
+
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,250,.86);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:66px}
+.bear{width:38px;height:38px;flex:none;object-fit:contain}
+.brand{display:flex;flex-direction:column;line-height:1.02}
+.brand b{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--text-strong)}
+.brand span{font-size:.66rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent-strong)}
+.nav a{margin-left:auto;color:var(--link);text-decoration:none;font-size:.9rem;font-weight:600}
+
+.hero{padding:56px 0 26px}
+.hero .eyebrow{display:block;margin-bottom:14px}
+.hero h1{font-size:clamp(2.1rem,1.4rem + 2.6vw,3rem);max-width:16ch;text-wrap:balance}
+.hero p{margin:20px 0 0;font-size:1.06rem;line-height:1.7;color:var(--text-muted);max-width:56ch}
+
+.card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+.card-t{padding:20px 22px 2px}
+.card-t h2{font-size:1.28rem}
+.card-t p{margin:6px 0 0;color:var(--text-muted);font-size:.88rem;line-height:1.5}
+.list{padding:4px 0}
+.row{display:flex;align-items:center;gap:14px;min-height:54px;padding:10px 22px;position:relative}
+.row+.row::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.row .lbl{flex:1;font-size:.97rem;font-weight:500;color:var(--text-strong)}
+.row .lbl small{display:block;color:var(--text-faint);font-size:.76rem;line-height:1.35;margin-top:2px;font-weight:400}
+
+.pick{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.pick .val{margin-left:auto;color:var(--link);font-size:.95rem;text-align:right;font-weight:600;max-width:64%}
+.pick .val small{display:block;color:var(--text-faint);font-size:.74rem;font-weight:500;line-height:1.35;margin-top:2px}
+.pick::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(-45deg);margin-left:2px}
+
+.sheet-bg{position:fixed;inset:0;background:rgba(8,25,35,.38);backdrop-filter:blur(3px);z-index:90;opacity:0;pointer-events:none;transition:opacity .22s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:91;background:var(--surface-card);border-radius:var(--r-xl);width:min(520px,calc(100% - 32px));
+  left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s var(--ease-out);max-height:82vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(8,25,35,.3)}
+.sheet.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sheet header{padding:20px 22px 14px;border-bottom:1px solid var(--border)}
+.sheet header h3{font-size:1.3rem}
+.sheet header p{margin:7px 0 0;font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.sheet .opts{overflow-y:auto;padding:6px 0 8px}
+.grp{padding:14px 22px 6px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+.opt{display:flex;align-items:flex-start;gap:12px;width:100%;background:none;border:0;padding:11px 22px;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.opt:hover{background:var(--snow-50)}
+.opt .tx{flex:1}
+.opt .tx b{display:block;font-weight:500;font-size:.95rem;color:var(--text-strong);line-height:1.35}
+.opt .tx small{color:var(--text-faint);font-size:.77rem;line-height:1.4;display:block;margin-top:2px}
+.opt .tick{flex:none;width:20px;color:var(--accent);opacity:0;font-size:1.05rem;font-weight:700}
+.opt[aria-selected=true]{background:var(--accent-soft)}
+.opt[aria-selected=true] .tick{opacity:1}
+.opt[aria-selected=true] .tx b{color:var(--accent-strong);font-weight:700}
+.sheet footer{padding:12px 22px 18px;border-top:1px solid var(--border)}
+.sheet footer button{width:100%}
+@media(max-width:560px){
+  .sheet{top:auto;bottom:0;left:0;transform:translateY(14px);width:100%;border-radius:var(--r-xl) var(--r-xl) 0 0;max-height:88vh}
+  .sheet.on{transform:translateY(0)}
+}
+
+.qz{padding:18px 22px 20px;position:relative}
+.qz+.qz::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.qz .qt{font-size:.97rem;font-weight:600;color:var(--text-strong);line-height:1.45;margin-bottom:4px}
+.qz .qn{font-size:.79rem;color:var(--text-faint);line-height:1.45;margin:0 0 12px}
+.ans{display:flex;flex-direction:column;gap:8px}
+.ans label{position:relative;display:block}
+.ans input{position:absolute;opacity:0;width:0;height:0}
+.ans span{display:block;border:1px solid var(--border);background:var(--surface-card);border-radius:var(--r-md);
+  padding:12px 15px;font-size:.92rem;font-weight:500;color:var(--text-body);cursor:pointer;line-height:1.4;transition:all .14s}
+.ans span:hover{border-color:var(--border-strong)}
+.ans input:checked+span{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-strong);font-weight:600;box-shadow:var(--ring-focus)}
+
+.headline{text-align:center;padding:34px 22px 24px;
+  background:radial-gradient(120% 130% at 50% 0%, color-mix(in srgb,var(--dyn) 13%,transparent) 0%, transparent 64%);
+  transition:background .4s var(--ease-soft)}
+.headline .k{font-size:.74rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-faint)}
+.headline .v{font:800 clamp(30px,7.5vw,44px)/1.06 var(--font-sans);letter-spacing:-.038em;color:var(--dyn);margin:10px 0 8px;transition:color .35s var(--ease-soft)}
+.headline .s{font-size:.95rem;color:var(--text-muted);max-width:48ch;margin-inline:auto;line-height:1.6}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.facts div{padding:15px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.facts div:nth-child(2n){border-right:0}
+.facts .k{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
+.facts .v{font-size:.9rem;color:var(--text-strong);font-weight:600;line-height:1.4}
+@media(max-width:520px){.facts{grid-template-columns:1fr}.facts div{border-right:0}}
+.body{padding:20px 22px 22px}
+.body h4{margin:20px 0 9px;font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--text-strong)}
+.body h4:first-child{margin-top:0}
+.body ul{margin:0;padding-left:20px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.body li{margin-bottom:7px}
+.body a{color:var(--link);text-decoration:none}
+.body a:hover{text-decoration:underline}
+
+.notice{display:flex;gap:12px;padding:15px 18px;border-radius:var(--r-md);font-size:.9rem;line-height:1.55;margin:0 22px 14px;border:1px solid}
+.notice .ic{flex:none;width:20px;height:20px;border-radius:50%;color:#fff;font-size:.76rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.notice.ko{background:var(--red-50);border-color:#EFCFCF;color:#7C2B2B} .notice.ko .ic{background:var(--red-500)}
+.notice.warn{background:var(--amber-50);border-color:#EFDCB4;color:#6E4E14} .notice.warn .ic{background:var(--amber-500)}
+.notice.ok{background:var(--accent-soft);border-color:var(--glacier-100);color:#164B6B} .notice.ok .ic{background:var(--accent)}
+.notice b{font-weight:700}
+
+details{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:10px;
+  font-family:var(--font-serif);font-size:1.08rem;font-weight:600;color:var(--text-strong)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-3px}
+details[open] summary::after{transform:rotate(-135deg);margin-top:3px}
+summary:hover{background:var(--snow-50)}
+.det{padding:0 22px 22px}
+.det p{margin:0 0 12px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det h4{margin:22px 0 9px;font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--text-strong)}
+.det h4:first-child{margin-top:0}
+.det ul{margin:0 0 4px;padding-left:20px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det li{margin-bottom:7px}
+.det a{color:var(--link);text-decoration:none}
+.det a:hover{text-decoration:underline}
+.det b.tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--warm);background:var(--warm-soft);padding:3px 8px;border-radius:var(--r-pill);margin-right:7px;vertical-align:1px}
+.srcs div{padding:11px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.srcs div:last-child{border-bottom:0}
+.srcs b{display:block;font-weight:700;font-size:.68rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+
+.act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 0 16px}
+button.btn{font:700 .95rem/1 var(--font-sans);padding:14px 26px;border-radius:var(--r-pill);border:1px solid var(--accent);
+  background:var(--accent);color:#fff;cursor:pointer;transition:all .14s var(--ease-out)}
+button.btn:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+button.btn.sec{background:transparent;color:var(--text-body);border-color:var(--border-strong)}
+button.btn.sec:hover{background:var(--snow-100);color:var(--text-strong)}
+
+footer{padding:32px 0 64px;color:var(--text-faint);font-size:.82rem;line-height:1.6;text-align:center}
+footer p{margin:0 auto 10px;max-width:64ch}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:16px;color:var(--text-muted)}
+footer .fb img{width:26px;height:26px}
+footer .fb b{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);font-weight:600}
+.print-head{display:none}
+
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  body{background:#fff;font-size:9.5pt;color:#000}
+  .nav,.hero,.act,footer,.sheet,.sheet-bg,.no-print{display:none!important}
+  .print-head{display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--ink-900);padding-bottom:8px;margin-bottom:12px}
+  .print-head img{width:26px;height:26px}
+  .print-head .t{font-family:var(--font-serif);font-size:13pt;font-weight:600}
+  .print-head .s{margin-left:auto;text-align:right;font-size:7.5pt;color:#555}
+  .wrap{width:auto}
+  .card,details{border:.5pt solid #BBB;border-radius:8px;margin-bottom:5mm;break-inside:avoid;box-shadow:none}
+  details>.det{display:block!important}
+  summary::after{display:none}
+  .headline{padding:16px;background:none}
+  .headline .v{font-size:18pt;color:#000!important}
+  .pick::after{display:none}
+  .pick .val{color:#000}
+  .ans span{color:#999;padding:4px 8px}
+  .ans input:checked+span{color:#000!important;font-weight:700;box-shadow:none;background:none;border-color:#000}
+  a{color:#000;text-decoration:none}
+  .body a::after,.det a::after{content:" — " attr(href);font-size:7pt;color:#666;word-break:break-all}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav no-print">
+  <div class="wrap">
+    <img class="bear" id="bearNav" alt="" src="">
+    <span class="brand"><b>Corazzini</b><span>Strumenti</span></span>
+    <a href="../">Tutti gli strumenti</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero no-print">
+    <span class="eyebrow">Strumento aperto</span>
+    <h1>Sei un soggetto obbligato antiriciclaggio?</h1>
+    <p>La lista dell'art. 3 del decreto 231 è più lunga di quanto si creda e più corta di quanto si tema. Molte imprese scoprono di essere dentro il perimetro solo quando arriva la Guardia di Finanza; altre si adeguano per anni senza esserci mai state. Qui si vede in quale dei due casi ti trovi, e perché.</p>
+  </header>
+
+  <div class="print-head">
+    <img id="bearPrint" alt="" src="">
+    <div class="t">Verifica del perimetro soggettivo antiriciclaggio</div>
+    <div class="s">Art. 3 d.lgs. 231/2007<br>testo vigente</div>
+  </div>
+
+  <div class="card">
+    <div class="card-t">
+      <h2>La tua attività</h2>
+      <p>Scegli la voce che descrive quello che fai in concreto, non il codice ATECO. Il perimetro dell'art. 3 guarda all'attività effettivamente esercitata e ai titoli abilitativi che la assistono.</p>
+    </div>
+    <div class="list">
+      <div class="row">
+        <button type="button" class="pick" id="pAtt">
+          <span class="lbl">Attività esercitata</span>
+          <span class="val" id="vAtt">Da selezionare<small>tocca per scegliere</small></span>
+        </button>
+      </div>
+    </div>
+    <div id="boxQ"></div>
+  </div>
+
+  <div class="card" id="cardOut">
+    <div class="headline" id="hl">
+      <div class="k">Esito</div>
+      <div class="v" id="oV">—</div>
+      <div class="s" id="oS">Seleziona l'attività per iniziare.</div>
+    </div>
+    <div class="facts" id="oFacts" hidden></div>
+    <div id="oNotice"></div>
+    <div class="body" id="oBody" hidden></div>
+  </div>
+
+  <div class="act no-print">
+    <button type="button" class="btn" id="btnPrint">Stampa l'esito</button>
+    <button type="button" class="btn sec" id="btnReset">Ricomincia</button>
+  </div>
+
+  <details>
+    <summary>Cosa comporta rientrare nel perimetro</summary>
+    <div class="det">
+      <p>Essere soggetto obbligato non significa solo identificare i clienti. Significa costruire e documentare un sistema, e la sua assenza è sanzionabile di per sé.</p>
+      <h4>Adeguata verifica della clientela</h4>
+      <p>Va svolta al conferimento dell'incarico o all'instaurazione del rapporto continuativo, e comunque per l'operazione occasionale di importo pari o superiore a 15.000 euro, anche se frazionata in più operazioni collegate, ovvero per il trasferimento di fondi superiore a 1.000 euro. Alcune categorie hanno soglie proprie, più basse: vanno lette all'art. 17 e nelle disposizioni di settore.</p>
+      <h4>Autovalutazione del rischio</h4>
+      <p>Gli artt. 15 e 16 impongono di valutare il rischio connesso alla propria attività e di adottare presidi proporzionati a dimensione e natura. Per le categorie prive di organismo di autoregolamentazione non esiste un modello ufficiale: la metodologia va costruita e messa per iscritto, ed è la prima cosa che viene chiesta in sede di controllo.</p>
+      <h4>Conservazione</h4>
+      <p>Dieci anni dalla cessazione del rapporto o dall'esecuzione dell'operazione, con un sistema che garantisca accessibilità, integrità, non alterabilità e storicità dei dati.</p>
+      <h4>Segnalazione di operazioni sospette</h4>
+      <p>Dal 1° luglio 2026 si applicano le nuove Istruzioni UIF adottate con provvedimento del 18 dicembre 2025, che hanno sostituito quelle del 2011. Il cambiamento non riguarda il perimetro ma il metodo: va documentato il percorso valutativo che porta a segnalare e anche quello che porta a non segnalare. Gli indicatori di anomalia restano quelli del provvedimento UIF del 12 maggio 2023, applicabili dal 1° gennaio 2024, che ciascun soggetto obbligato deve selezionare in base all'attività concretamente svolta.</p>
+      <h4>Astensione</h4>
+      <p>Quando l'adeguata verifica non può essere completata, l'art. 42 impone di astenersi e di valutare se ricorrano i presupposti per la segnalazione.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Casi che sembrano dentro e non lo sono</summary>
+    <div class="det">
+      <p>Il perimetro dell'art. 3 è tassativo. L'elenco che segue raccoglie attività per cui l'equivoco è frequente, spesso alimentato da corsi e circolari commerciali.</p>
+      <h4><b class="tag">Fuori</b>Amministratore di condominio</h4>
+      <p>Non compare fra i soggetti obbligati dell'art. 3. Lo diventa solo se è anche iscritto all'Albo dei commercialisti o dei consulenti del lavoro, oppure se svolge attività in materia di contabilità e tributi ai sensi del comma 4 lettera b). Le Istruzioni UIF in vigore dal 1° luglio 2026 hanno riacceso il tema sulla stampa di settore, ma non hanno esteso il perimetro: incidono sul come, non sul chi.</p>
+      <h4><b class="tag">Fuori</b>Consulente aziendale, direzionale, marketing, risorse umane</h4>
+      <p>Il comma 4 lettera b) cattura chi svolge in maniera professionale attività in materia di contabilità e tributi, non la consulenza gestionale in genere. Attenzione però al confine: chi fornisce servizi relativi a società e trust — domiciliazione della sede, costituzione di società per conto terzi, fornitura di amministratori o soci fiduciari — rientra invece nel comma 5 lettera a).</p>
+      <h4><b class="tag">Fuori</b>Impresa di costruzioni che vende direttamente ciò che ha costruito</h4>
+      <p>Il comma 5 lettera e) riguarda gli agenti in affari in mediazione immobiliare, non il venditore. Il costruttore che vende senza intermediari non è soggetto obbligato; lo sono il notaio che riceve l'atto e la banca che eroga il mutuo.</p>
+      <h4><b class="tag">Fuori</b>Agente assicurativo che opera solo nei rami danni</h4>
+      <p>Gli intermediari assicurativi rientrano solo se operano nei rami vita. Chi colloca esclusivamente polizze auto, casa, infortuni o responsabilità civile resta fuori dal perimetro.</p>
+      <h4><b class="tag">Fuori</b>Concessionarie auto, nautica, gioiellerie, agenzie di viaggio</h4>
+      <p>Il commercio di beni di valore non è di per sé soggetto agli obblighi antiriciclaggio: lo sono solo arte, antichità e oro, alle condizioni indicate. Resta ferma la disciplina sulla limitazione all'uso del contante, che è cosa diversa e riguarda tutti.</p>
+      <h4><b class="tag">Fuori per ora</b>Società sportive professionistiche e agenti di calcio</h4>
+      <p>Entrano nel perimetro con il regolamento europeo, ma l'applicabilità per queste categorie è differita al 10 luglio 2029, contro il 10 luglio 2027 previsto per il resto del pacchetto.</p>
+      <h4><b class="tag">Fuori, ma coinvolti</b>Le imprese in quanto clienti</h4>
+      <p>Un'impresa non obbligata resta comunque destinataria dell'art. 22: deve fornire per iscritto al professionista o alla banca le informazioni sul titolare effettivo e sullo scopo del rapporto. Dichiarazioni false o omesse sono sanzionate penalmente dall'art. 55 comma 3. È il motivo per cui il commercialista chiede quei moduli.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Metodo e fonti</summary>
+    <div class="det">
+      <h4>Come funziona</h4>
+      <p>Lo strumento non calcola nulla: mappa l'attività dichiarata sulle categorie dell'art. 3 e sulle condizioni che le attivano. Dove la norma pone una soglia o un titolo abilitativo, la domanda serve a verificarne la presenza, perché è quella a determinare l'ingresso nel perimetro, non il tipo di impresa.</p>
+      <h4>Limiti</h4>
+      <ul>
+        <li>Una sola attività per volta. Chi ne esercita più d'una va verificato per ciascuna: gli obblighi si sommano, non si assorbono.</li>
+        <li>Le soglie specifiche dei prestatori di servizi di gioco non sono riprodotte: vanno lette all'art. 17 e nelle disposizioni dell'Agenzia delle dogane e dei monopoli.</li>
+        <li>Il quadro dei prestatori di servizi su cripto-attività è in transizione fra la disciplina nazionale e quella europea: va verificato caso per caso.</li>
+        <li>Non tiene conto delle deroghe ed esenzioni dell'art. 17 comma 7 né delle regole tecniche di categoria, che possono ridurre gli adempimenti pur restando fermo l'inquadramento.</li>
+      </ul>
+      <h4>Aggiornamento</h4>
+      <p>Verificato sul testo vigente dell'art. 3 ad agosto 2026. Il d.lgs. 10 giugno 2026 n. 122, in vigore dal 23 luglio 2026, è intervenuto sull'accesso al Registro dei titolari effettivi e sull'art. 34-bis: non ha modificato il perimetro soggettivo. Il regolamento europeo (UE) 2024/1624 amplierà la platea dei soggetti obbligati a decorrere dal 10 luglio 2027.</p>
+      <h4>Fonti</h4>
+      <div class="srcs">
+        <div><b>Perimetro soggettivo</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2007-11-21;231" target="_blank" rel="noopener">D.lgs. 21 novembre 2007 n. 231, art. 3 — testo vigente su Normattiva</a></div>
+        <div><b>Adeguata verifica, conservazione, segnalazione</b>D.lgs. 231/2007, artt. 15-17, 22, 31-32, 35 e 42</div>
+        <div><b>Indicatori di anomalia</b><a href="https://uif.bancaditalia.it/normativa/norm-indicatori-anomalia/index.html" target="_blank" rel="noopener">Provvedimento UIF 12 maggio 2023, applicabile dal 1° gennaio 2024</a></div>
+        <div><b>Istruzioni per le segnalazioni di operazioni sospette</b><a href="https://uif.bancaditalia.it/normativa/norm-antiricic/documenti/2025/Istruzioni-UIF-per-la-rilevazione-e-la-segnalazione-delle-operazioni-sospette.pdf" target="_blank" rel="noopener">Provvedimento UIF 18 dicembre 2025, in vigore dal 1° luglio 2026</a></div>
+        <div><b>Titolarità effettiva</b>D.lgs. 10 giugno 2026 n. 122, in G.U. n. 156 dell'8 luglio 2026, in vigore dal 23 luglio 2026</div>
+        <div><b>Quadro europeo</b><a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX%3A32024R1624" target="_blank" rel="noopener">Regolamento (UE) 2024/1624 — applicabile dal 10 luglio 2027</a></div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <div class="fb"><img id="bearFoot" alt="" src=""><b>Corazzini</b> · Pescara</div>
+    <p>L'esito è un orientamento sul perimetro soggettivo, non un parere. L'inquadramento definitivo dipende da come l'attività è concretamente esercitata e dai titoli che la assistono.</p>
+    <p>Tutto avviene nel tuo browser. Nessun dato viene trasmesso o conservato.</p>
+  </footer>
+
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <header><h3>Attività esercitata</h3><p>Conta ciò che fai davvero. Se svolgi più attività fra quelle elencate, verificale una alla volta: gli obblighi si sommano.</p></header>
+  <div class="opts" id="shO"></div>
+  <footer><button type="button" class="btn sec" id="shC">Chiudi</button></footer>
+</div>
+
+<script>
+"use strict";
+const BEAR = "data:image/png;base64,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";
+["bearNav","bearPrint","bearFoot"].forEach(id=>{const e=document.getElementById(id); if(e) e.src=BEAR;});
+const $ = id => document.getElementById(id);
+
+const OBB = {
+  gen: ["Adeguata verifica di cliente, esecutore e titolare effettivo (artt. 17-22)",
+        "Valutazione del rischio del cliente e autovalutazione del rischio di impresa (artt. 15-16)",
+        "Conservazione per dieci anni di dati, documenti e informazioni (artt. 31-32)",
+        "Segnalazione delle operazioni sospette alla UIF (art. 35)",
+        "Astensione quando la verifica non è completabile (art. 42)"]
+};
+
+/* ===================== catalogo attività ===================== */
+const CAT = [
+{g:"Immobiliare", items:[
+  {v:"med_imm", t:"Agenzia di mediazione immobiliare", s:"Compravendite, e in certi casi locazioni",
+   q:[{t:"Sei iscritto al Registro delle imprese come mediatore ai sensi della legge 39/1989?",
+       n:"L'iscrizione è il presupposto che la norma richiede espressamente.",
+       a:[{l:"Sì, sono iscritto",k:"si"},{l:"No, non sono iscritto",k:"no"}]},
+      {t:"Che tipo di operazioni intermedi?",
+       n:"Per la locazione la norma pone una soglia; per la compravendita no.",
+       a:[{l:"Compravendite (anche insieme a locazioni)",k:"cv"},{l:"Solo locazioni con canone mensile inferiore a 10.000 €",k:"loc_sotto"},{l:"Solo locazioni con canone mensile pari o superiore a 10.000 €",k:"loc_sopra"}]}],
+   out:{
+     "si|cv":{st:1,n:"Art. 3 co. 5 lett. e)",a:"MEF, controlli del Nucleo speciale di polizia valutaria della Guardia di finanza",w:"Al conferimento dell'incarico di mediazione, e comunque per l'operazione occasionale ≥ 15.000 € o il trasferimento di fondi > 1.000 €",
+       note:["<b>Sono clienti entrambe le parti.</b> Venditore e acquirente vanno verificati separatamente, con due fascicoli distinti. È l'errore più diffuso della categoria.","L'obbligo sorge al conferimento dell'incarico, non al rogito: la verifica va fatta prima, non davanti al notaio.","Se intermedi anche locazioni, per quelle l'obbligo scatta solo con canone mensile pari o superiore a 10.000 euro."]},
+     "si|loc_sopra":{st:1,n:"Art. 3 co. 5 lett. e)",a:"MEF, controlli del Nucleo speciale di polizia valutaria della Guardia di finanza",w:"Per le operazioni di locazione con canone mensile pari o superiore a 10.000 €",
+       note:["Sono clienti entrambe le parti del contratto intermediato.","La soglia si valuta sul canone mensile, non sul canone annuo: è una distinzione che molte circolari riportano male."]},
+     "si|loc_sotto":{st:2,n:"Art. 3 co. 5 lett. e)",a:"MEF",w:"Non per queste operazioni",
+       note:["Come mediatore immobiliare sei nella categoria dei soggetti obbligati, ma limitatamente alla locazione l'obbligo opera solo sopra i 10.000 euro di canone mensile.","Se torni a intermediare anche una sola compravendita, gli obblighi si attivano integralmente.","Resta comunque prudente predisporre le procedure: la soglia non ti esclude dalla categoria, delimita le operazioni."]},
+     "no|*":{st:0,n:"Art. 3 co. 5 lett. e)",a:"—",w:"—",
+       note:["La norma àncora l'obbligo all'iscrizione al Registro delle imprese come mediatore. Senza iscrizione non ricorre il presupposto — ma esercitare la mediazione senza iscrizione è un problema ben più serio della compliance antiriciclaggio.","Se gestisci immobili senza intermediare (property management, locazioni brevi in nome proprio) sei fuori dal perimetro."]}
+   }},
+  {v:"costr", t:"Impresa di costruzioni che vende i propri immobili", s:"Vendita diretta, senza mediazione",
+   out:{"*":{st:0,n:"Nessuna categoria dell'art. 3",a:"—",w:"—",
+     note:["La lettera e) del comma 5 riguarda l'agente in affari in mediazione immobiliare, cioè l'intermediario, non il venditore.","Gli obblighi ricadono sul notaio rogante e sulla banca che eroga il mutuo, non su di te.","Restano applicabili le norme sulla limitazione dell'uso del contante, che valgono per chiunque."]}}}
+]},
+{g:"Oro, arte e antichità", items:[
+  {v:"oro", t:"Operatore professionale in oro", s:"Iscritto all'albo tenuto dalla Banca d'Italia ex legge 7/2000",
+   out:{"*":{st:1,n:"Art. 3 co. 5 lett. d)",a:"MEF; dichiarazioni delle operazioni in oro alla UIF ai sensi della legge 7/2000",
+     w:"Al conferimento dell'incarico o all'operazione occasionale ≥ 15.000 €, anche frazionata",
+     note:["Agli obblighi del decreto 231 si somma la dichiarazione alla UIF delle operazioni in oro di valore pari o superiore a 12.500 euro, prevista dall'art. 1 della legge 7/2000. Sono adempimenti distinti e cumulativi.","L'attività di compro oro segue in aggiunta la disciplina speciale del d.lgs. 92/2017, con iscrizione nel registro tenuto dall'OAM e obbligo di tracciabilità integrale dei pagamenti."]}}},
+  {v:"comprooro", t:"Compro oro", s:"Acquisto di oro usato da privati",
+   out:{"*":{st:1,n:"Art. 3 co. 5 lett. d) e d.lgs. 92/2017",a:"MEF e OAM per il registro; Guardia di finanza per i controlli",
+     w:"Per ogni operazione di compravendita, con identificazione del cliente e tracciabilità del pagamento",
+     note:["La disciplina speciale del d.lgs. 92/2017 impone l'iscrizione nel registro degli operatori compro oro tenuto dall'OAM e il divieto di regolare le operazioni in contanti oltre i limiti previsti.","Una gioielleria che vende solo gioielli nuovi non è soggetto obbligato; se però ritira oro usato dai clienti, quella parte di attività la fa rientrare nel perimetro.","Verifica in ogni caso l'inquadramento come operatore professionale in oro: le due qualifiche non coincidono e gli obblighi differiscono."]}}},
+  {v:"arte", t:"Commercio di opere d'arte o cose antiche", s:"Anche gallerie e case d'asta",
+   q:[{t:"Qual è il valore tipico delle operazioni?",
+       n:"La soglia si valuta anche sulle operazioni frazionate o collegate fra loro.",
+       a:[{l:"Pari o superiore a 10.000 €",k:"sopra"},{l:"Sempre inferiore a 10.000 €",k:"sotto"}]}],
+   out:{
+     "sopra":{st:1,n:"Art. 3 co. 5 lett. b)",a:"MEF, controlli della Guardia di finanza",w:"Per le operazioni di valore pari o superiore a 10.000 €, anche se frazionate o collegate",
+       note:["La soglia dell'arte è 10.000 euro, non 15.000: è più bassa di quella generale dell'operazione occasionale.","Il frazionamento non aiuta: la norma considera anche le operazioni collegate, e frazionare artificiosamente è a sua volta un indicatore di anomalia.","Se conservi o commerci opere d'arte all'interno di porti franchi, l'ipotesi è quella della lettera c), con la stessa soglia."]},
+     "sotto":{st:2,n:"Art. 3 co. 5 lett. b)",a:"MEF",w:"Non per queste operazioni",
+       note:["Rientri nella categoria, ma gli obblighi si attivano solo al raggiungimento della soglia di 10.000 euro.","La verifica va fatta operazione per operazione, tenendo conto anche del collegamento fra più vendite allo stesso cliente. Una serie di vendite sotto soglia allo stesso acquirente va valutata come operazione unica.","Conviene predisporre comunque la procedura: la prima operazione sopra soglia non ti concede tempo per costruirla."]}
+   }}
+]},
+{g:"Servizi a imprese e professioni", items:[
+  {v:"tcsp", t:"Servizi relativi a società e trust", s:"Domiciliazione, costituzione per conto terzi, amministratori o soci fiduciari, trustee",
+   q:[{t:"Sei già soggetto obbligato ad altro titolo?",
+       n:"La lettera a) opera in via residuale, se non rientri già fra intermediari o professionisti.",
+       a:[{l:"No, non sono iscritto ad albi né sono un intermediario",k:"no"},{l:"Sì, sono commercialista, notaio o avvocato",k:"si"}]}],
+   out:{
+     "no":{st:1,n:"Art. 3 co. 5 lett. a)",a:"MEF, controlli della Guardia di finanza",w:"All'instaurazione del rapporto e comunque per l'operazione occasionale ≥ 15.000 €",
+       note:["Rientrano qui la costituzione di società per conto terzi, la fornitura di sede legale o indirizzo per la corrispondenza, l'assunzione di incarichi di amministratore o socio per conto altrui, l'attività di trustee.","È la categoria che sorprende di più: molte società di servizi che fanno domiciliazioni non sanno di essere soggetti obbligati.","La lettera a) opera solo se non sei già obbligato come intermediario o professionista."]},
+     "si":{st:1,n:"Art. 3 co. 4 lett. a) o c)",a:"Organismo di autoregolamentazione della categoria; MEF",w:"Secondo le regole tecniche della tua categoria",
+       note:["Sei già soggetto obbligato come professionista: la lettera a) del comma 5 non si applica in via aggiuntiva, ma i servizi societari che rendi restano da valutare nel rischio inerente della prestazione.","Per i commercialisti la costituzione di enti, trust o strutture analoghe è classificata a rischio inerente abbastanza significativo dalle Regole Tecniche CNDCEC 2025."]}
+   }},
+  {v:"ced", t:"Centro elaborazione dati o studio di contabilità non iscritto ad albi", s:"Tenuta contabilità, dichiarazioni, adempimenti fiscali",
+   out:{"*":{st:1,n:"Art. 3 co. 4 lett. b)",a:"MEF, controlli della Guardia di finanza",w:"Al conferimento dell'incarico professionale",
+     note:["La lettera b) comprende periti, consulenti e ogni altro soggetto che svolga in maniera professionale attività in materia di contabilità e tributi, incluse associazioni di categoria, CAF e patronati.","Non serve l'iscrizione a un albo: conta l'attività svolta. Un CED che tiene le scritture contabili dei clienti è soggetto obbligato quanto un commercialista.","A differenza dei professionisti iscritti, non hai un organismo di autoregolamentazione né regole tecniche di riferimento: la metodologia di valutazione del rischio va costruita e documentata. Le Regole Tecniche CNDCEC possono essere adottate per analogia, purché la scelta sia dichiarata."]}}},
+  {v:"cons", t:"Consulente aziendale, direzionale, marketing o del personale", s:"Senza contabilità né adempimenti fiscali",
+   out:{"*":{st:0,n:"Nessuna categoria dell'art. 3",a:"—",w:"—",
+     note:["Il comma 4 lettera b) cattura chi svolge attività in materia di contabilità e tributi, non la consulenza gestionale in genere.","Attenzione al confine: se fra i servizi c'è la domiciliazione della sede di società clienti, la costituzione di società per loro conto o l'assunzione di cariche fiduciarie, rientri nel comma 5 lettera a).","Se invece elabori paghe, la questione va verificata: gli adempimenti in materia di amministrazione del personale sono trattati in modo specifico dalla normativa di settore."]}}},
+  {v:"medciv", t:"Organismo di mediazione civile", s:"Ai sensi dell'art. 60 della legge 69/2009",
+   out:{"*":{st:1,n:"Art. 3 co. 5 lett. g)",a:"MEF; Ministero della giustizia per il registro degli organismi",w:"All'instaurazione del rapporto con le parti",
+     note:["Categoria spesso ignorata, anche perché l'avvocato che svolge personalmente l'incarico di mediatore è invece escluso dal perimetro dalle Regole Tecniche del Consiglio Nazionale Forense.","La posizione dell'organismo e quella del singolo mediatore vanno tenute distinte."]}}},
+  {v:"recup", t:"Recupero stragiudiziale di crediti per conto terzi", s:"Con licenza ex art. 115 TULPS",
+   out:{"*":{st:1,n:"Art. 3 co. 5 lett. h)",a:"MEF, controlli della Guardia di finanza",w:"All'instaurazione del rapporto con il committente",
+     note:["L'obbligo presuppone la licenza dell'art. 115 TULPS ed è escluso nell'ipotesi dell'art. 128-quaterdecies TUB.","Il cliente è il committente del recupero, non il debitore."]}}},
+  {v:"valori", t:"Custodia e trasporto di denaro contante e valori", s:"Con guardie particolari giurate, licenza ex art. 134 TULPS",
+   out:{"*":{st:1,n:"Art. 3 co. 5 lett. f)",a:"MEF; Banca d'Italia per organizzazione, procedure e controlli interni",w:"All'instaurazione del rapporto",
+     note:["È l'unica categoria di operatori non finanziari per cui la Banca d'Italia esercita poteri sanzionatori in materia di organizzazione, procedure e controlli interni ex artt. 7, 15 e 16.","Il trasporto valori senza guardie giurate segue una disciplina diversa."]}}}
+]},
+{g:"Assicurazioni e credito", items:[
+  {v:"assic", t:"Agente o broker assicurativo", s:"Intermediario iscritto al RUI",
+   q:[{t:"Operi nei rami vita?",
+       n:"La norma richiama i rami di attività dell'art. 2 comma 1 del Codice delle assicurazioni private.",
+       a:[{l:"Sì, colloco anche polizze vita",k:"vita"},{l:"No, solo rami danni",k:"danni"}]},
+      {t:"In che qualità sei iscritto?",
+       n:"Il perimetro copre agenti, mediatori e intermediari bancari e finanziari; non i collaboratori.",
+       a:[{l:"Agente, broker o banca (art. 109 co. 2 lett. a, b, d CAP)",k:"tit"},{l:"Collaboratore o subagente di un intermediario iscritto",k:"sub"}]}],
+   out:{
+     "vita|tit":{st:1,n:"Art. 3 co. 2 lett. o)",a:"IVASS",w:"All'instaurazione del rapporto e per le operazioni sulle polizze vita",
+       note:["Sei classificato fra gli intermediari bancari e finanziari, non fra gli operatori non finanziari: gli obblighi sono più intensi e la vigilanza è dell'IVASS, con disposizioni attuative proprie.","La quota di portafoglio danni non riduce gli obblighi: è la presenza dell'attività vita a qualificare la posizione."]},
+     "vita|sub":{st:2,n:"Art. 3 co. 2 lett. o)",a:"IVASS",w:"Attraverso l'intermediario preponente",
+       note:["I collaboratori e gli addetti all'intermediazione non sono autonomamente soggetti obbligati: gli obblighi gravano sull'intermediario per conto del quale operi.","Rientri però nella nozione di personale del soggetto obbligato, con i doveri di formazione, rilevazione delle anomalie e riservatezza che ne discendono.","Verifica con il preponente come sono ripartite in concreto le attività di identificazione e conservazione."]},
+     "danni|*":{st:0,n:"Art. 3 co. 2 lett. o)",a:"—",w:"—",
+       note:["Gli intermediari assicurativi rientrano nel perimetro solo se operano nei rami vita. Il solo collocamento di polizze auto, casa, infortuni o responsabilità civile resta fuori.","Se in futuro aggiungi anche un solo mandato vita, gli obblighi si attivano dal primo giorno."]}
+   }},
+  {v:"medcred", t:"Mediatore creditizio o agente in attività finanziaria", s:"Iscritto negli elenchi OAM",
+   out:{"*":{st:1,n:"Art. 3 co. 3 lett. b) e c)",a:"MEF; OAM per gli elenchi; Banca d'Italia e Guardia di finanza per i controlli",w:"All'instaurazione del rapporto con il cliente",
+     note:["Sei classificato fra gli altri operatori finanziari: il regime è più vicino a quello degli intermediari che a quello dei professionisti.","Le disposizioni attuative della Banca d'Italia in materia di adeguata verifica, organizzazione e conservazione sono il riferimento operativo, non le regole tecniche degli ordini professionali."]}}},
+  {v:"fiduc", t:"Società fiduciaria non iscritta all'albo ex art. 106 TUB", s:"Legge 1966/1939",
+   out:{"*":{st:1,n:"Art. 3 co. 3 lett. a)",a:"MEF e Banca d'Italia",w:"All'instaurazione del rapporto fiduciario",
+     note:["Le fiduciarie iscritte all'albo dell'art. 106 TUB rientrano invece nel comma 2 lettera s), con regime da intermediario finanziario.","L'inquadramento cambia gli adempimenti in modo sostanziale: va verificato quale delle due ipotesi ricorre."]}}}
+]},
+{g:"Altre categorie", items:[
+  {v:"gioco", t:"Prestatore di servizi di gioco", s:"Online, rete fisica o casa da gioco",
+   out:{"*":{st:1,n:"Art. 3 co. 6",a:"MEF; Agenzia delle dogane e dei monopoli",w:"Soglie specifiche per categoria di gioco, da leggere all'art. 17 e nelle disposizioni ADM",
+     note:["Le soglie di adeguata verifica per il gioco sono più basse di quella generale e differiscono fra gioco online, rete fisica e case da gioco: questo strumento non le riproduce, vanno verificate alla fonte.","La distribuzione tramite esercenti contrattualizzati non sposta gli obblighi, che restano in capo al concessionario."]}}},
+  {v:"cripto", t:"Prestatore di servizi su valuta virtuale", s:"Conversione da o in valuta avente corso legale",
+   out:{"*":{st:2,n:"Art. 3 co. 5 lett. i)",a:"MEF; OAM per il registro; quadro in transizione verso la disciplina europea",
+     w:"Limitatamente all'attività di conversione di valute virtuali da ovvero in valute aventi corso forzoso",
+     note:["La formulazione nazionale limita l'obbligo all'attività di conversione: custodia e scambio fra cripto-attività seguono una logica diversa.","Il quadro è in transizione fra la disciplina nazionale e quella europea sulle cripto-attività: l'inquadramento va verificato caso per caso e alla data dell'operazione, non una volta per tutte.","È l'unica voce di questo strumento su cui consiglio esplicitamente di non fermarsi all'esito automatico."]}}},
+  {v:"prof", t:"Professionista iscritto a un albo", s:"Commercialista, esperto contabile, consulente del lavoro, notaio, avvocato, revisore",
+   out:{"*":{st:1,n:"Art. 3 co. 4",a:"Organismo di autoregolamentazione della categoria; MEF",w:"Al conferimento dell'incarico, secondo le regole tecniche della categoria",
+     note:["Per commercialisti ed esperti contabili valgono le Regole Tecniche CNDCEC aggiornate a gennaio 2025; per i consulenti del lavoro quelle del CNO del giugno 2022; per gli avvocati quelle del CNF del settembre 2019; per i notai quelle del CNN.","Per notai e avvocati l'obbligo non copre tutta l'attività ma solo le operazioni indicate dal comma 4 lettera c): le regole tecniche del CNF elencano in modo tassativo ciò che resta fuori.","Se sei commercialista o esperto contabile, lo strumento sul rischio effettivo del cliente è nella sezione Strumenti di questo sito."]}}},
+  {v:"cond", t:"Amministratore di condominio", s:"Non iscritto ad albi professionali",
+   out:{"*":{st:0,n:"Nessuna categoria dell'art. 3",a:"—",w:"—",
+     note:["L'amministratore di condominio non figura fra i soggetti obbligati elencati dall'art. 3.","Lo diventa se è anche iscritto all'Albo dei commercialisti o dei consulenti del lavoro, oppure se svolge in maniera professionale attività in materia di contabilità e tributi ai sensi del comma 4 lettera b): la contabilità condominiale, di per sé, non integra quella nozione.","Le Istruzioni UIF in vigore dal 1° luglio 2026 hanno alimentato molta comunicazione commerciale sul punto. Hanno cambiato il metodo di valutazione delle operazioni sospette per chi è già obbligato, non l'elenco di chi lo è."]}}},
+  {v:"impresa", t:"Impresa o professionista non compreso nelle voci precedenti", s:"Commercio, industria, servizi, artigianato",
+   out:{"*":{st:0,n:"Nessuna categoria dell'art. 3",a:"—",w:"—",
+     note:["L'elenco dell'art. 3 è tassativo: chi non vi rientra non è soggetto obbligato, per quanto rilevanti siano i flussi finanziari che movimenta.","Resti però destinatario dell'art. 22 come cliente di banche e professionisti: devi fornire per iscritto le informazioni sul titolare effettivo e sullo scopo del rapporto, e le dichiarazioni false o omesse sono sanzionate penalmente dall'art. 55 comma 3.","Restano applicabili le limitazioni all'uso del contante, che valgono per chiunque e non dipendono dal perimetro dell'art. 3.","Il regolamento europeo 2024/1624 amplierà la platea dei soggetti obbligati dal 10 luglio 2027: un riesame della posizione andrà fatto allora."]}}}
+]}
+];
+
+const ST = {
+  0:{lab:"Non sei un soggetto obbligato",col:"#2E9C6A",cls:"ok",sub:"L'attività che hai indicato non rientra nell'elenco tassativo dell'art. 3 del decreto 231."},
+  1:{lab:"Sei un soggetto obbligato",col:"#CF4B4B",cls:"ko",sub:"L'attività rientra nel perimetro: si applicano gli obblighi di adeguata verifica, conservazione e segnalazione."},
+  2:{lab:"Dipende dall'operazione",col:"#D69A2E",cls:"warn",sub:"Rientri nella categoria, ma gli obblighi si attivano solo al ricorrere di condizioni specifiche."}
+};
+
+/* ===================== stato ===================== */
+const S = { item:null, ans:[] };
+const find = v => { for(const g of CAT){ const it = g.items.find(x=>x.v===v); if(it) return it; } return null; };
+
+/* ===================== sheet ===================== */
+$("pAtt").addEventListener("click", ()=>{
+  $("shO").innerHTML = CAT.map(g=>
+    `<div class="grp">${g.g}</div>` + g.items.map(it=>
+      `<button type="button" class="opt" data-v="${it.v}" aria-selected="${S.item&&S.item.v===it.v}">
+         <span class="tick">✓</span><span class="tx"><b>${it.t}</b>${it.s?`<small>${it.s}</small>`:""}</span></button>`).join("")).join("");
+  $("shO").querySelectorAll(".opt").forEach(b=> b.addEventListener("click", ()=>{
+    S.item = find(b.dataset.v); S.ans = [];
+    closeSheet(); render();
+  }));
+  $("sheet").classList.add("on"); $("sheetBg").classList.add("on");
+});
+function closeSheet(){ $("sheet").classList.remove("on"); $("sheetBg").classList.remove("on"); }
+$("shC").addEventListener("click", closeSheet);
+$("sheetBg").addEventListener("click", closeSheet);
+$("btnPrint").addEventListener("click", ()=>window.print());
+$("btnReset").addEventListener("click", ()=>location.reload());
+
+document.addEventListener("change", e=>{
+  const t = e.target;
+  if(t.type==="radio" && t.name.startsWith("q")){
+    S.ans[+t.name.slice(1)] = t.value;
+    render(); return;
+  }
+});
+
+/* ===================== risoluzione esito ===================== */
+function resolve(it){
+  if(!it.q) return it.out["*"];
+  if(S.ans.length < it.q.length || S.ans.some(a=>!a)) return null;
+  const keys = S.ans;
+  /* prova la chiave esatta, poi le combinazioni con wildcard da destra */
+  const cands = [keys.join("|")];
+  for(let i=keys.length-1;i>=0;i--){
+    cands.push(keys.slice(0,i).concat(["*"]).join("|"));
+  }
+  for(const c of cands) if(it.out[c]) return it.out[c];
+  return it.out["*"] || null;
+}
+
+/* ===================== render ===================== */
+function render(){
+  const it = S.item;
+  $("vAtt").innerHTML = it ? `${it.t}<small>${it.s||""}</small>` : `Da selezionare<small>tocca per scegliere</small>`;
+
+  /* domande */
+  if(!it || !it.q){ $("boxQ").innerHTML = ""; }
+  else {
+    $("boxQ").innerHTML = it.q.map((q,i)=>`
+      <div class="qz">
+        <div class="qt">${q.t}</div>
+        <p class="qn">${q.n||""}</p>
+        <div class="ans">${q.a.map(a=>
+          `<label><input type="radio" name="q${i}" value="${a.k}" ${S.ans[i]===a.k?"checked":""}><span>${a.l}</span></label>`).join("")}</div>
+      </div>`).join("");
+  }
+
+  const r = it ? resolve(it) : null;
+
+  if(!r){
+    document.documentElement.style.setProperty("--dyn","#8B9CA8");
+    $("oV").textContent = "—";
+    $("oS").textContent = it ? "Rispondi alle domande per vedere l'esito." : "Seleziona l'attività per iniziare.";
+    $("oFacts").hidden = true; $("oBody").hidden = true; $("oNotice").innerHTML = "";
+    return;
+  }
+
+  const s = ST[r.st];
+  document.documentElement.style.setProperty("--dyn", s.col);
+  $("oV").textContent = s.lab;
+  $("oS").textContent = s.sub;
+
+  $("oFacts").hidden = false;
+  $("oFacts").innerHTML =
+    `<div><div class="k">Norma</div><div class="v">${r.n}</div></div>
+     <div><div class="k">Vigilanza</div><div class="v">${r.a}</div></div>
+     <div style="grid-column:1/-1;border-right:0"><div class="k">Quando scatta l'adeguata verifica</div><div class="v">${r.w}</div></div>`;
+
+  $("oNotice").innerHTML = r.st===1
+    ? `<div class="notice ko"><span class="ic">!</span><div>Gli adempimenti decorrono dal momento in cui l'attività è esercitata, non da quando ci si organizza. L'assenza di autovalutazione del rischio è essa stessa una violazione e pesa sulla misura delle sanzioni.</div></div>`
+    : r.st===2
+    ? `<div class="notice warn"><span class="ic">!</span><div>Appartenere alla categoria e avere obblighi attivi sono due cose diverse. Le procedure vanno predisposte comunque: la prima operazione sopra soglia non lascia il tempo di costruirle.</div></div>`
+    : `<div class="notice ok"><span class="ic">i</span><div>Non essere soggetto obbligato non significa essere estraneo alla normativa: come cliente di banche e professionisti restano in capo a te gli obblighi dichiarativi dell'art. 22.</div></div>`;
+
+  $("oBody").hidden = false;
+  $("oBody").innerHTML =
+    `<h4>Perché</h4><ul>${r.note.map(n=>`<li>${n}</li>`).join("")}</ul>` +
+    (r.st===1 ? `<h4>Obblighi che ne discendono</h4><ul>${OBB.gen.map(o=>`<li>${o}</li>`).join("")}</ul>` : "");
+}
+
+render();
+</script>
+</body>
+</html>

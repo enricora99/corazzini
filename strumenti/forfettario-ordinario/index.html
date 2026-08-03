@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAQAElEQVR4AexcB3gU1Rb+Z4OUFESko0hH4WEoT0WJlS4gNpqK8IzSiw2UKIqooCj4CIgRQVFQISBShVBEJJSAoepDuoLSgihCKEoy7/7jbsiGye7M7s5kd3Pzzc3M3Hvuuef+559bZ9aBAP5F1WrQILpmg35R1WMnR9eIXS2CKkNsIDBYrWFKbAXGAXQZ/CZATM36NwsnjxMhS8lWN0NVJygK4oWRcSLIIzAIxGmYEluBMbEWYRyx91e9zwSIrhnbSRiRqqqOtcKIgSL4rEvklYc5BIj1QGJPH9AX5rJflKaii3cGrqKq128uCl0NFTOFeFMR5FGwCDSlL+iTqOoNm5s1xRQBRCGJiuJYJgqRzbsAIcgO0U1kL6OPzNhliADa4K5GbLpQPEAEeQQ3AgMECTbRZ0bM9EqAmJrXt9cGd0AjIwqlTFAg0JA+o++8WeORAIJJnVVVme9NiUwPTgToO/pQzzpXXL4EcLJnhktQnkMWgRlOX+pWQJcA7D/IHt0cMjLkEKAv6VM9w3UJIPqPD/WEZVzoIiB8OkXP+ksIIPqMRCHYUAR5hBcCjZy+dauVGwGcCwlyqucGUVjdDOBCXu4auRFAUbJfzp0or8MPAbGQ5+bjHAI415PlCl/4+TxvjeKcvtbicwgg1pO5oaNFyn/hi4BWMxU5vtYIECO2dEWC3NgRIBSSo6nT59AIoKqOLoWk4rKaTgRcPtcIIOL6iyCPwoWA5nOHc4XIRYTCBUHhrq3me4eiQvb9hZQI9L1DzVblql8BECCyWgOUbRmPKt1Holr/JC3wmnFMs8Mk+t6hKKhjR2GyjH8QKFbuGlS6/1lUaNcXMXVuQpGSZaAoDigi8JpxTKMMZf/JZc1/+t4hVMvFHwGCHQef7EqdhqJ45dpei6MMZZnHq7ABgXxE4kiAfNJkdCAR4NNcvm1vKOJJN6qXsszDvEbzmJWTBDCLmI/yV8Z1hGLC+a5imId5XfeBPksCBBpRHX1sxtmk6yQZimJe6jAkbFJIEsAkYL6IR9Vq7Es2tzyB0OGm0HkjCeAEwspTiYo1/FYfCB16RkgC6KES4LiImNJ+awyEDj0jJAH0UClEcZIANjg769QJv0vxVYe3giUBvCEUgPSzh/f6rSUQOvSMkATQQyXAcZm7+Vmlf0oDoUPPAkkAPVQCHHdm/xac+3WXz1qZlzp8VuAhoySAB3ACmfRb6iyoarZplczDvKYzGswgCWAQKH/Fzh/7GUcXJZkiAZ3PPMzrb/n55ZcEyA8ZC+LZjB9KHmWoO2CzT1nmscCUHJWSADlQ2HPBp/nQnLdxZOFEnNqZhgt/HtdaBT7tvGYc0yhDWautkgSwGuF89PPJzlg6BQc+TsD+Cb21wGvGMS2fbIajjQpKAhhFKkzlJAHC1LFGqyUJYBSpMJWTBAhTxxqtliSAUaTCVE4SwIRjFUVBsaJFUbrU5Sh7ZWntXKJ4MTgcDhNagks0dC23AUdFUUAH39jwevx3xAtYu2AmNi2di/Vfzca6hcna+buUuUhP+RKLpn+AJx7uhJIx0VAUxQbrAlOEJIATxyuvKIWO7dvg+QG98OVHE/FjagoyfkjDse/TsGLWJ4h/qCP+dW1tVLmqEiqWK4vyZcto5yqVK6JmtWtwW5MbMPaVBPy6ORVbV8zHi0/2Ras7b0XxYsVg55/ZssKOABERDhS97DKtqWZz7QqMKxIRAVfgfWSJ4oi7sbF4spOxf8NKfPjOKLwwqA+a33oLKlcor+kwCyjlq1W5Gs/174nZH4zHvrSvcW/rFj7roj4rQ1gQ4LIiRXBPq2ZIGv0qlnz2IbZ/swi71i7DnnXLtSeZ9xsWf4EVs6chZcZHWJY8FZuXz8eB9G+x+LMpqH9dbcua7ZjoKEyb8BY2LvkCIxOeQanLS1rpT9O6Q5oAV4jBGJvZbSsX4tN3x+Dh+9ujSeMGqFS+nDZAI9hlSl+hNdU1qlZBo/p1wf7837H1waabrYNpxHzMwFZhwGPdkCbGDzc1igVbKh9VBTRbSBKA4PV+tCtWzZmOWZMScVXFCgEFxUplJOeCTyZh5NBnLGt1zNgfUgRwiOkWn3iOuEcPGwI+VYqimKlvUMhyZtG3x8OYOu5NsPsqSKNChgBVr74Ku9YsRfL749D0hsZB8fT467j7726JdYtmFWh3EPQE4Cj948TRSF/6pTb1YivgL/DBlL9OjWp488UhBWZSUBKAU7Va1ati7tT3tFE6nxRO2woMJYsL7vlIZzSod51fpfiaOegIUKFcGUwXI/rUeTPQLO5mX+sVUvkURRFT2BGIjoqy3e6gIcA1V1XGS0/3x47VKWjb/A5wkcZ2NAqwwLq1a6JD62a2W1CgBGB/rigKunW8F6nzPsfgvo9rK3W2oxAEBSqKok0NiYmd5hQYAbgYw7V2brBMHDUcXLSxs+LBWFZpsbB1Q4P6tppWYASoJTZQOLDjBoutNQ7iwrKystGn+0O2WlggBGAl3xmRYGtFQ6EwrnD6swnlSx1tJYCiKHigbSu8MngQoiIjfbE37PNwXSAysoRt9bSVANxTTxo9QnvJwrYahlBB367fiGO/nTBlsb/CthGAu28vPtk36F+Q8BdQf/JzKjhz3iKcO3fOHzWm8tpGgBeE8/nWjSnrCpkwt67vEotfHAzaVXXbCBAnNnDsqlQol/P7Hyfx94ULtlXBFgJwJ+/qyhVtq1QoF8Q3iCIctrhFg8mWkoY91S8stm81xCz+dyTjOLKyzf+QhK9mWU6AlrfH4cF2rXy1r9Dly8w8A1VVbau3pQTgoGbymNcD9uFEtngyMs+cQco3qbb2k7Z5QxS0dNUa8d++w1ICtGtxJ/xd46fTGTZu2YZOvQbhrgcfRe8hw1DvtjZYuSbNPqRsKOnAr4ex+OtVhkoKlJClBBjSr6fXvp/OvZCVheMnfseWH3Zg7pJlmJ+yAtNmzUXilE/QoUcf1IlridZd45GycjX+t2uPJnv4WAZWrdsQKByCQs+vh4/Y2vyz0pYS4L7/9MEfJ/9kOZeEDLHitWP3XrwxYRLuebQXWnTugXbdeiL+qQT0GPQcBr86Gi+MGotv1qbhyLHj+Ovvvy/RcSQj45K4UI6Y/Fmy7eZbSoCde/fj7kcex5TPZmF9+haw/z7wyyG8P20G6jRtiRvbPIBRiUlYnfYd9uz/GSf/PKU5mvNgynpD41jGb8gSO2je5EIhnQO/IhFFbDfVUgKwNtt37MKTL72uPd11Rb/dpF1HDB7xZkAGcYeOHsOFLPsWTVgfq8IF0Q3uO3DQKvX56rWcAK6Sz//1F06IVa5TpzMD1s+dO38+YLpcdrrOR8V8/I4HHsEb49/HzHlfaS2TK41nPrFvvzcZBw8d4a3fQVEK5vsG2wjgN0I6Cvhpl6JYAxy//lWg4PVx7+HxZxLQpG1HDBr2Goa/PR7PDB+FjVu2Y+S4JHCc8+ep0zrWmYvim9AF8YVTSBOA3+Jb+Q7dfXe3yPHi7n0/4cPPZ2NM0hRMmj4T98f307oxjnPuerBbQFqCenVq5pRn10VIE6B0qVKIcBirAmcSHIuwKzIKboyH17Q5YHXpIQluv+8hcFbjivPl3PW+9l7flfBFr6c8xtDzpKEA02KiIw2tMtLpk6bPwPTZ8zB15hzDFnMcYFSY09p7uveCP90BXwerUfUao0UGRC6kCXB1pUqGQODg88vFy0AiJIwcow1GjWSMjo4yIpYjw1am3h13a1PanEiTF7WrVzWZwz/xkCZAy9ubGqr9xs3bwPUHCnNBafbCJbz0GooXLepVJq8AF75efjsxb7Th+9Z33WZYNhCCIUuAy0vG4IaG13vFYNuOnfh87kK3aRwXorIMLCBxJuDLIHPR8pXakrZX43QE6tSobutrcyFJAEVRkDCwt8eviDhP5/7CytT1WLhspRvUu8QKZfzTQ7VRvFtCnptmt96M2LrXmv6Gn+R67Z2JYpEqK49G77fX1qwuNtBivAsGSCIkCVChbBnc2+biFE0Pi6NimXjWgsXa06+Xzg2nuWJcoJfmiossUQJLZ36EN4eZ/3z7tNjX596+S5fRc2SJ4qhYrpxRcb/lQo4A/HhicL8ntN8B0qs9n3xOx1auXY8hYkOJu4d6ctxv6Pnsi+D2K/PoyTCOP/PG3/8bM3woWDbjjISoqEiUEM40IptXplZ1+2YCIUUA9sdJo1/VfpAxL2i577l0u1VsLTPOk3MviPX3bv0HI33b9xT1GDq1bwO+2+hRyJnIn315d+TL2s/VOaMMn7i+QALnzWDVfVATgO/J88PRjUvm4GD6tzix4zt06dDWIxYbxIj/95MnMXthikc5VyKnhs06dseIsRM87iucPnMGh49muLLle+ar78uSPwZ/rSxfIQ8JZ86dC8iqooci3JKClgBRkZHajyjx0/F/BkYlDTXB4yZ/rC3ZHhWbOW419XDDl1LemjgZ3QYMdpst5M7ChZ4zZ8/mjtK95g9YNb6+nm6akcgdu/bi7Nkw/DDESOVzy5QUizBGm1xXPs7BUzeku25NnxeJ2YKr68ibeWRiUt6oS+45XuBP21ySYDCC45IRY8drC1YGs/gtFrQtAF/56vjEAKR8k4q9Px3QXgXj62K8ppO/WJSizbU5iONo/5UxE9B36HD8LracfUGFAzzOLGJ1fquHi0er1qZ5VcuWhMGroI4Ay5g2a64Yj/ygk2pdVNASgFXmO3+deg5EXIeuuPOBbnh0wBDtukP33tprY7zv0vspxD+dAO7NL1j6NbP5FLgRM2XsSN2B27wly3H23HmveunEr1ZcfKmTTzTfhPI0EKXS/QcOgjOS519/i7e2hqAmAJHgE3U6MxPsfwkkrwk003jPdJ5570+oXa3qJRtL1L124ya8O/VTw6p7DR6Grn2e0t5crntba7Tq+hgatuiAto88gabtO6P+ne1QT+wXMK1Gk2YoX/9mNGjeAWzRjJDMsCEGBYOeAAbr4bfYmu82geSiIhKK4wm2LK0fikf6Vu/TROZj4FtKXHn8dM4C7WVWkojdFj/95rL0Twd/0fYl+CbRseO/acSmDPMWRJAEcKLOV86bd+ohupOh6D5wCNo8/LiYSi7xODV0ZrX0ZLVySYBcCP+wczeS5y8Gt46//3FXrpTwvZQECF/fGqqZJIAhmMJXSBIgfH1rqGaSAIZgCl8hSYDw9a2hmkkCGIIpfIUkAYLUt3aZJQlgF9JBWg4JkBqktkmzrEcg1aGq2Gl9ObKEYESAvncoDmVzMBonbbIeAfreoSqw92eprK+XLMEgAvS9I3P3li1C3r5fJhSFySMoEMim7zkIpDUT+E+GQoWA5nONAIqSPaNQVT2IK2uXaS6fawQ4tWf7OlGwHAsIEArJscbpc2gE0CqtIFE7y3/hj0AuX+cQ4PSercmi5nJRSIAQ5keq09daNXMIwDtVzX6FZxnCFwFVdbj52I0Amfu2LxdVHy+CPMITgfGZ+zbTxzm1XE5OogAAATJJREFUcyMAY0/v3TpQnDeJII/wQmCz07dutbqEAExVHUo8zzKEDwLCp4/p1UaXAFwhUhT1Hr0MMs4aBKzUSl/Sp3pl6BKAgqf2bFsgzl1EkEdoI9DF6UvdWuRLAEqLPmMm2cNrGUIPAfqOPvRkuUcCMCPZI/qPhuJabhsLEELk2ESf0Xfe7PVKACpg/yGY1EhcyymiACHIj/HCV43pMyN2GiKAS5FQPFAsJLQQ93LFUIAQZEeqqma3oI/M2GWKAFTMhQRRyK1Q0Fncyw0kAUIBH2voC/rEuZBnyhzTBHBp53qyKDROUbJvEXHcSJIvlQggbDqIdSKxpw/oC1/L9ZkArgJPia1kYcQgESI48ICi9FdVTBHpspsQIHg7DKaL5l1gSmwdSkNiLcIgYm8wf75i/wcAAP//ytbwWwAAAAZJREFUAwCjNQYN4/chxQAAAABJRU5ErkJggg==">
+<title>Forfettario o ordinario — Corazzini</title>
+<meta name="description" content="Confronto fra regime forfettario e regime ordinario: imposta, contributi e netto al variare dei costi effettivi, con il punto di pareggio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --snow-0:#FFFFFF; --snow-50:#F6F8FA; --snow-100:#EDF1F5; --snow-200:#DEE6EC; --frost-300:#C5D4DF;
+  --slate-400:#8B9CA8; --slate-500:#607180; --slate-600:#455560;
+  --ink-700:#2B3B45; --ink-800:#16313F; --ink-900:#0C232F;
+  --glacier-50:#EAF4FA; --glacier-100:#CFE8F5; --glacier-200:#A4D2EC; --glacier-300:#6FB7E0;
+  --glacier-400:#449FD4; --glacier-500:#2E90C9; --glacier-600:#1E76A8; --glacier-700:#185C84; --glacier-800:#164B6B;
+  --brass-400:#CDA45A; --brass-500:#B0822F; --brass-600:#8F6824;
+  --green-500:#2E9C6A; --green-50:#E7F4EE; --red-500:#CF4B4B; --red-50:#FAEAEA;
+  --amber-500:#D69A2E; --amber-50:#FBF1DE;
+  --bg-page:var(--snow-50); --surface-card:var(--snow-0); --surface-sunken:var(--snow-100);
+  --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-muted:var(--slate-500); --text-faint:var(--slate-400);
+  --accent:var(--glacier-500); --accent-strong:var(--glacier-600); --accent-soft:var(--glacier-50);
+  --warm:var(--brass-500); --warm-soft:#F6EEDD;
+  --border:var(--snow-200); --border-strong:var(--frost-300);
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --r-md:12px; --r-lg:18px; --r-xl:26px; --r-pill:999px;
+  --shadow-xs:0 1px 2px rgba(12,35,47,.06); --shadow-sm:0 2px 8px rgba(12,35,47,.07);
+  --shadow-md:0 8px 24px rgba(12,35,47,.09); --shadow-lg:0 18px 48px rgba(12,35,47,.13);
+  --ring-focus:0 0 0 3px rgba(46,144,201,.35);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+.wrap{width:min(800px,100% - 44px);margin-inline:auto}
+h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,250,.86);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:66px}
+.bear{width:38px;height:38px;flex:none;object-fit:contain}
+.brand{display:flex;flex-direction:column;line-height:1.02}
+.brand b{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--text-strong)}
+.brand span{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong)}
+.nav a{margin-left:auto;color:var(--glacier-600);text-decoration:none;font-size:.9rem;font-weight:600}
+
+.hero{padding:56px 0 26px}
+.hero .eyebrow{display:block;margin-bottom:14px}
+.hero h1{font-size:clamp(2.1rem,1.4rem+2.6vw,3rem);max-width:17ch;text-wrap:balance}
+
+.card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+.card-t{padding:20px 22px 2px}
+.card-t h2{font-size:1.3rem}
+.card-t p{margin:7px 0 0;color:var(--text-muted);font-size:.88rem;line-height:1.5}
+.list{padding:4px 0}
+.row{display:flex;align-items:center;gap:14px;min-height:54px;padding:10px 22px;position:relative}
+.row+.row::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.row .lbl{flex:1;font-size:.97rem;font-weight:500;color:var(--text-strong);display:flex;align-items:center;gap:7px}
+.row .lbl small{display:block;color:var(--text-faint);font-size:.76rem;line-height:1.35;margin-top:2px;font-weight:400}
+.row .ctl{flex:none;display:flex;align-items:center;gap:8px}
+.row.stack{flex-direction:column;align-items:stretch;gap:11px;padding-top:16px;padding-bottom:18px}
+.row.stack .lbl{flex:none}
+
+.info{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--frost-300);color:var(--slate-400);
+  font:700 11px/1 var(--font-serif);font-style:italic;display:inline-flex;align-items:center;justify-content:center;
+  background:none;cursor:pointer;padding:0;flex:none}
+.info:hover{border-color:var(--accent);color:var(--accent-strong)}
+.tip{position:fixed;z-index:95;max-width:min(340px,calc(100vw - 32px));background:var(--ink-900);color:var(--snow-50);
+  padding:13px 15px;border-radius:var(--r-md);font-size:.83rem;line-height:1.5;box-shadow:0 24px 60px rgba(8,25,35,.3);
+  opacity:0;pointer-events:none;transition:opacity .16s;transform:translateY(4px)}
+.tip.on{opacity:1;transform:translateY(0)}
+
+/* importi grandi */
+.money{padding:26px 22px 0;text-align:center}
+.money .cap{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+.money .big{display:flex;align-items:baseline;justify-content:center;gap:6px;margin:10px 0 4px}
+.money input[type=text],.money .cur{font:800 clamp(40px,9.5vw,58px)/1 var(--font-sans);letter-spacing:-.045em;
+  color:var(--accent-strong);font-variant-numeric:tabular-nums}
+.money input[type=text]{border:0;background:transparent;text-align:right;padding:0;width:5ch}
+.money input[type=text]:focus{outline:none}
+.money .foot{font-size:.88rem;color:var(--text-muted);min-height:22px;font-weight:500}
+.money .foot b{font-weight:800;font-size:1.06rem;color:var(--text-strong)}
+.track{position:relative;height:42px;margin:14px -22px 0}
+.track .fill{position:absolute;inset:0;background:var(--surface-sunken);overflow:hidden;border-top:1px solid var(--border)}
+.track .fill i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--glacier-200),var(--accent))}
+.track .mk{position:absolute;top:0;bottom:0;width:1.5px;background:rgba(12,35,47,.18)}
+.track .mk b{position:absolute;bottom:6px;left:7px;font-size:.66rem;font-weight:700;color:var(--text-muted);white-space:nowrap}
+.track input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:100%;background:transparent;margin:0;cursor:pointer}
+.track input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:7px;height:42px;border-radius:4px;background:#fff;box-shadow:0 0 0 1px rgba(12,35,47,.16),0 2px 8px rgba(12,35,47,.22)}
+.track input[type=range]::-moz-range-thumb{width:7px;height:42px;border:0;border-radius:4px;background:#fff;box-shadow:0 0 0 1px rgba(12,35,47,.16)}
+
+/* picker */
+.pick{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.pick .val{margin-left:auto;color:var(--glacier-600);font-size:.95rem;text-align:right;font-weight:600}
+.pick .val small{display:block;color:var(--text-faint);font-size:.74rem;font-weight:500}
+.pick::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(-45deg);margin-left:2px}
+.sheet-bg{position:fixed;inset:0;background:rgba(8,25,35,.38);backdrop-filter:blur(3px);z-index:90;opacity:0;pointer-events:none;transition:opacity .22s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:91;background:var(--surface-card);border-radius:var(--r-xl);width:min(470px,calc(100% - 32px));
+  left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s var(--ease-out);max-height:80vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(8,25,35,.3)}
+.sheet.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sheet header{padding:20px 22px 14px;border-bottom:1px solid var(--border)}
+.sheet header h3{font-size:1.3rem}
+.sheet header p{margin:7px 0 0;font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.sheet .opts{overflow-y:auto;padding:6px 0 8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;padding:12px 22px;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.opt:hover{background:var(--snow-50)}
+.opt .tx{flex:1}
+.opt .tx b{display:block;font-weight:500;font-size:.97rem;color:var(--text-strong)}
+.opt .tx small{color:var(--text-faint);font-size:.78rem}
+.opt .tick{flex:none;width:20px;color:var(--accent);opacity:0;font-size:1.05rem;font-weight:700}
+.opt[aria-selected=true]{background:var(--accent-soft)}
+.opt[aria-selected=true] .tick{opacity:1}
+.opt[aria-selected=true] .tx b{color:var(--accent-strong);font-weight:700}
+.sheet footer{padding:12px 22px 18px;border-top:1px solid var(--border)}
+.sheet footer button{width:100%}
+@media(max-width:560px){.sheet{top:auto;bottom:0;left:0;transform:translateY(14px);width:100%;border-radius:var(--r-xl) var(--r-xl) 0 0}.sheet.on{transform:translateY(0)}}
+
+.seg{display:flex;background:var(--surface-sunken);border-radius:var(--r-md);padding:3px;gap:3px;border:1px solid var(--border)}
+.seg label{flex:1;position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;font-size:.88rem;font-weight:600;padding:10px 12px;border-radius:9px;cursor:pointer;white-space:nowrap;color:var(--text-muted);transition:all .15s}
+.seg input:checked+span{background:var(--surface-card);box-shadow:var(--shadow-xs);color:var(--accent-strong)}
+input[type=number]{width:96px;border:0;background:transparent;color:var(--text-strong);text-align:right;font:600 .97rem/1 var(--font-sans);padding:6px 0;font-variant-numeric:tabular-nums}
+input[type=number]:focus{outline:none;color:var(--accent-strong)}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+.unit{color:var(--text-faint);font-size:.9rem;font-weight:500}
+
+/* verdetto */
+.verdict{padding:34px 22px 26px;text-align:center}
+.verdict .k{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+.verdict .w{font-family:var(--font-serif);font-size:clamp(1.9rem,5vw,2.6rem);font-weight:600;margin:10px 0 6px;color:var(--text-strong);letter-spacing:-.02em}
+.verdict .d{font-size:1.02rem;color:var(--text-muted)}
+.verdict .d b{color:var(--text-strong);font-weight:800;font-variant-numeric:tabular-nums}
+.verdict.pari .w{color:var(--warm)}
+
+/* colonne */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border)}
+.col{padding:22px}
+.col+.col{border-left:1px solid var(--border)}
+@media(max-width:600px){.cols{grid-template-columns:1fr}.col+.col{border-left:0;border-top:1px solid var(--border)}}
+.col .tag{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-pill);margin-bottom:12px}
+.col.f .tag{color:var(--accent-strong);background:var(--accent-soft)}
+.col.o .tag{color:var(--warm);background:var(--warm-soft)}
+.col .net{font:800 clamp(26px,5.5vw,34px)/1 var(--font-sans);letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:var(--text-strong)}
+.col .sub{font-size:.82rem;color:var(--text-faint);margin-top:5px}
+.col.win{background:linear-gradient(180deg,var(--accent-soft),transparent 70%)}
+.col.o.win{background:linear-gradient(180deg,var(--warm-soft),transparent 70%)}
+.col table{margin-top:16px}
+.col table td{padding:7px 0;font-size:.86rem;border-bottom:1px solid var(--border)}
+.col table tr:last-child td{border-bottom:0}
+.col table td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--text-strong)}
+.col table td:first-child{color:var(--text-muted)}
+
+/* grafico */
+.chartwrap{padding:6px 22px 22px}
+svg.chart{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;padding:0 22px 20px;font-size:.86rem;color:var(--text-muted)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:16px;height:3px;border-radius:2px;flex:none}
+
+/* avvisi */
+.notice{display:flex;gap:12px;padding:15px 18px;border-radius:var(--r-md);font-size:.92rem;line-height:1.5;margin-bottom:10px;border:1px solid}
+.notice .ic{flex:none;width:20px;height:20px;border-radius:50%;color:#fff;font-size:.76rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.notice.ko{background:var(--red-50);border-color:#EFCFCF;color:#7C2B2B}.notice.ko .ic{background:var(--red-500)}
+.notice.warn{background:var(--amber-50);border-color:#EFDCB4;color:#6E4E14}.notice.warn .ic{background:var(--amber-500)}
+.notice.ok{background:var(--accent-soft);border-color:var(--glacier-100);color:var(--glacier-800)}.notice.ok .ic{background:var(--accent)}
+.notice b{font-weight:700}
+
+details{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:1.08rem;font-weight:600;color:var(--text-strong)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-3px}
+details[open] summary::after{transform:rotate(-135deg);margin-top:3px}
+summary:hover{background:var(--snow-50)}
+.det{padding:0 22px 22px}
+details .list{padding:0 0 6px}
+details .list .row:first-child::before{content:"";position:absolute;left:22px;right:0;top:0;height:1px;background:var(--border)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;align-items:start}
+@media(max-width:660px){.duo{grid-template-columns:1fr}}
+.duo details{margin-bottom:0}
+.duo .row{padding-left:20px;padding-right:20px}
+.duo .row+.row::before{left:20px}
+
+table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+.det p{margin:0 0 12px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det h4{margin:22px 0 9px;font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--text-strong)}
+.det h4:first-child{margin-top:0}
+.det ul{margin:0 0 4px;padding-left:20px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det li{margin-bottom:7px}
+.det a{color:var(--glacier-600);text-decoration:none}
+.det a:hover{text-decoration:underline}
+.srcs div{padding:11px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.srcs div:last-child{border-bottom:0}
+.srcs b{display:block;font-weight:700;font-size:.68rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+
+.act{display:flex;gap:10px;justify-content:center;padding:6px 0 16px}
+button.btn{font:700 .95rem/1 var(--font-sans);padding:14px 26px;border-radius:var(--r-pill);border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.btn:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+button.btn.sec{background:transparent;color:var(--text-body);border-color:var(--border-strong)}
+button.btn.sec:hover{background:var(--snow-100)}
+
+footer{padding:32px 0 64px;color:var(--text-faint);font-size:.82rem;line-height:1.6;text-align:center}
+footer p{margin:0 auto 10px;max-width:64ch}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:16px;color:var(--text-muted)}
+footer .fb img{width:26px;height:26px}
+footer .fb b{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);font-weight:600}
+.print-head{display:none}
+
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  body{background:#fff;font-size:10pt;color:#000}
+  .nav,.hero,.act,footer,.track,.tip,.sheet,.sheet-bg,.no-print{display:none!important}
+  .print-head{display:flex;align-items:center;gap:10px;border-bottom:1.5px solid #000;padding-bottom:8px;margin-bottom:13px}
+  .print-head img{width:26px;height:26px}
+  .print-head .t{font-family:var(--font-serif);font-size:14pt;font-weight:600}
+  .print-head .s{margin-left:auto;text-align:right;font-size:8pt;color:#555}
+  .wrap{width:auto}
+  .card,details{border:.5pt solid #BBB;border-radius:8px;margin-bottom:6mm;break-inside:avoid;box-shadow:none}
+  .duo{display:block}
+  details>.det,details>.list{display:block!important}
+  summary::after{display:none}
+  .money{padding:12px}
+  .money input[type=text],.money .cur{color:#000!important;font-size:20pt}
+  .pick::after{display:none}.pick .val{color:#000}
+  .col.win{background:none!important}
+  input{color:#000!important}
+  a{color:#000}
+  .det a::after{content:" — " attr(href);font-size:7.5pt;color:#666;word-break:break-all}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav no-print">
+  <div class="wrap">
+    <img class="bear" id="bearNav" alt="" src="">
+    <span class="brand"><b>Corazzini</b><span>Strumenti</span></span>
+    <a href="../">Tutti gli strumenti</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero no-print">
+    <span class="eyebrow">Strumento aperto</span>
+    <h1>Forfettario o ordinario, dipende dai costi</h1>
+  </header>
+
+  <div class="print-head">
+    <img id="bearPrint" alt="" src="">
+    <div class="t">Confronto forfettario / ordinario</div>
+    <div class="s"><div>Corazzini · corazzini.it</div><div id="printDate"></div></div>
+  </div>
+
+  <form id="f" autocomplete="off">
+    <input type="hidden" id="coeff" value="0.78">
+    <input type="hidden" id="gest"  value="gs">
+
+    <section class="card">
+      <div class="money">
+        <div class="cap">Compensi incassati in un anno</div>
+        <div class="big"><input type="text" id="ric" inputmode="numeric" value="45.000" aria-label="Compensi"><span class="cur">€</span></div>
+        <div class="foot" id="ricFoot"></div>
+        <div class="track">
+          <div class="fill"><i id="fillR"></i></div>
+          <div class="mk" style="left:85%"><b>85.000</b></div>
+          <input type="range" id="ricR" value="45000" min="0" max="100000" step="500" aria-label="Compensi">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="money">
+        <div class="cap">Costi effettivi documentati e deducibili</div>
+        <div class="big"><input type="text" id="cos" inputmode="numeric" value="9.000" aria-label="Costi"><span class="cur">€</span></div>
+        <div class="foot" id="cosFoot"></div>
+        <div class="track">
+          <div class="fill"><i id="fillC"></i></div>
+          <input type="range" id="cosR" value="9000" min="0" max="60000" step="250" aria-label="Costi">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="list">
+        <div class="row">
+          <button type="button" class="pick" data-pick="coeff"><span class="lbl">Attività</span><span class="val" id="vCoeff"></span></button>
+        </div>
+        <div class="row">
+          <button type="button" class="pick" data-pick="gest"><span class="lbl">Previdenza</span><span class="val" id="vGest"></span></button>
+        </div>
+        <div class="row stack">
+          <div class="lbl">Aliquota nel forfettario
+            <button type="button" class="info" data-tip="Il 5% spetta per i primi cinque anni se l'attività è davvero nuova. Poi si passa al 15%.">i</button>
+          </div>
+          <div class="seg">
+            <label><input type="radio" name="aliq" value="0.15" checked><span>15% ordinaria</span></label>
+            <label><input type="radio" name="aliq" value="0.05"><span>5% nuova attività</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="duo">
+      <details>
+        <summary>Addizionali locali</summary>
+        <div class="list">
+          <div class="row">
+            <div class="lbl">Addizionale regionale
+              <button type="button" class="info" data-tip="Preimpostata sull'Abruzzo: 1,67% fino a 28.000 €, 2,87% fino a 50.000 €, 3,33% oltre. Dati MEF pubblicati il 28 gennaio 2026. Con la spunta tolta si applica un'aliquota unica.">i</button>
+              <small>Abruzzo, a scaglioni</small>
+            </div>
+            <div class="ctl"><input type="checkbox" id="abr" checked style="width:20px;height:20px;accent-color:var(--accent)"></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Aliquota regionale unica<small>Usata se la spunta sopra è tolta.</small></div>
+            <div class="ctl"><input type="number" id="reg" value="1.73" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Addizionale comunale
+              <button type="button" class="info" data-tip="Varia da comune a comune, di norma fra 0 e 0,8%. Verifica la delibera del tuo comune sul portale del Dipartimento delle Finanze.">i</button>
+            </div>
+            <div class="ctl"><input type="number" id="com" value="0.80" step="0.01" min="0" style="width:64px"><span class="unit">%</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Altre variabili</summary>
+        <div class="list">
+          <div class="row">
+            <div class="lbl">Costo contabile in più nell'ordinario
+              <button type="button" class="info" data-tip="La contabilità ordinaria o semplificata costa più della forfettaria: registri IVA, liquidazioni periodiche, dichiarazione IVA, ISA. Qui indichi la differenza annua di parcella, che è un costo deducibile in più.">i</button>
+              <small>Differenza annua di parcella</small>
+            </div>
+            <div class="ctl"><input type="number" id="extra" value="800" step="50" min="0" style="width:86px"><span class="unit">€</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Altre detrazioni d'imposta
+              <button type="button" class="info" data-tip="Carichi di famiglia, spese sanitarie, interessi sul mutuo, ristrutturazioni e ogni altro onere detraibile. Vanno inseriti a mano perché dipendono dalla singola posizione. Nel forfettario queste detrazioni si perdono se non c'è altro reddito IRPEF.">i</button>
+              <small>Carichi di famiglia, oneri al 19%</small>
+            </div>
+            <div class="ctl"><input type="number" id="detr" value="0" step="100" min="0" style="width:86px"><span class="unit">€</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Oneri deducibili<small>Previdenza complementare, assegni al coniuge.</small></div>
+            <div class="ctl"><input type="number" id="oneri" value="0" step="100" min="0" style="width:86px"><span class="unit">€</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Riduzione contributiva 35%<small>Solo artigiani e commercianti, forfettari.</small></div>
+            <div class="ctl"><input type="checkbox" id="rid35" style="width:20px;height:20px;accent-color:var(--accent)"></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </form>
+
+  <div id="alerts"></div>
+
+  <section class="card">
+    <div class="verdict" id="verdict">
+      <div class="k">Conviene</div>
+      <div class="w" id="vW">—</div>
+      <div class="d" id="vD">—</div>
+    </div>
+    <div class="cols">
+      <div class="col f" id="colF">
+        <span class="tag">Forfettario</span>
+        <div class="net" id="netF">—</div>
+        <div class="sub" id="subF">—</div>
+        <table><tbody id="tF"></tbody></table>
+      </div>
+      <div class="col o" id="colO">
+        <span class="tag">Ordinario</span>
+        <div class="net" id="netO">—</div>
+        <div class="sub" id="subO">—</div>
+        <table><tbody id="tO"></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-t">
+      <h2>Il punto di pareggio</h2>
+      <p>Quanto resta in tasca con i due regimi, al variare dei costi effettivi. Il punto in cui le due linee si incrociano è il livello di costi oltre il quale l'ordinario inizia a convenire.</p>
+    </div>
+    <div class="chartwrap"><svg class="chart" id="chart" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet" role="img"></svg></div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>Forfettario</span>
+      <span><i style="background:var(--warm)"></i>Ordinario</span>
+      <span><i style="background:var(--frost-300)"></i>Costi attuali</span>
+    </div>
+  </section>
+
+  <div class="act no-print">
+    <button type="button" class="btn" id="stampa">Stampa</button>
+    <button type="button" class="btn sec" id="reset">Azzera</button>
+  </div>
+
+  <details>
+    <summary>Cosa il confronto non misura</summary>
+    <div class="det">
+      <h4>L'IVA</h4>
+      <p>Nel forfettario non si addebita IVA e non si detrae quella sugli acquisti. Se lavori con privati, il tuo prezzo finale è più basso a parità di incasso: è un vantaggio commerciale che qui non compare. Se lavori con imprese, l'IVA è neutra per il cliente e il non poterla detrarre sugli acquisti diventa un costo puro, che invece pesa. Su investimenti importanti la differenza è rilevante.</p>
+      <h4>Il tempo</h4>
+      <p>Il forfettario non tiene registri IVA, non fa liquidazioni periodiche, non presenta la dichiarazione IVA, non applica gli ISA, non subisce ritenuta d'acconto. Il costo in più della contabilità puoi inserirlo fra le variabili; il tempo tuo no.</p>
+      <h4>Le perdite</h4>
+      <p>Nel forfettario il reddito è sempre positivo perché si calcola in percentuale sugli incassi, anche in un anno chiuso in perdita. Nell'ordinario la perdita si può portare in avanti. Per un'attività che parte con investimenti pesanti la differenza è sostanziale.</p>
+      <h4>Le detrazioni che si perdono</h4>
+      <p>Chi sta nel forfettario e non ha altri redditi IRPEF non può usare detrazioni e deduzioni: spese sanitarie, mutuo, ristrutturazioni, previdenza complementare restano inutilizzate. Se hai un reddito da lavoro dipendente o da locazione a tassazione ordinaria, invece, le recuperi lì.</p>
+      <h4>Le soglie</h4>
+      <p>Sopra 85.000 € di incassi il forfettario finisce l'anno dopo; sopra 100.000 € cessa subito. Il confronto ha senso solo sotto quelle soglie.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Metodo e fonti</summary>
+    <div class="det">
+      <h4>Forfettario</h4>
+      <ul>
+        <li>Reddito imponibile: incassi per il coefficiente di redditività del gruppo ATECO. I costi effettivi non si deducono, ma nel confronto vengono comunque sottratti dal netto perché li paghi davvero.</li>
+        <li>Dal reddito si deducono i contributi previdenziali versati. Il modello ipotizza un'attività a regime, in cui i contributi versati nell'anno coincidono con quelli di competenza. Nei primi due anni la cassa segue un andamento diverso: per quello serve il simulatore dedicato.</li>
+        <li>Imposta sostitutiva del 15%, oppure 5% per i primi cinque periodi d'imposta in caso di nuova attività.</li>
+      </ul>
+      <h4>Ordinario</h4>
+      <ul>
+        <li>Reddito: incassi meno costi deducibili, secondo il principio di cassa per i professionisti.</li>
+        <li>I contributi previdenziali si deducono dal reddito complessivo.</li>
+        <li>IRPEF a scaglioni: 23% fino a 28.000 €, 33% da 28.001 a 50.000 €, 43% oltre. La seconda aliquota è scesa dal 35% al 33% dal 1° gennaio 2026.</li>
+        <li>Detrazione per redditi di lavoro autonomo calcolata automaticamente secondo l'art. 13 comma 5 del TUIR, con la maggiorazione di 50 € prevista dal comma 5-ter per i redditi fra 11.000 e 17.000 €. I rapporti si assumono alle prime quattro cifre decimali, come prescrive il comma 6.</li>
+        <li>Addizionale regionale e comunale sul reddito complessivo al netto degli oneri deducibili.</li>
+        <li>L'IRAP non è dovuta: dal 2022 non si applica più alle persone fisiche esercenti attività d'impresa, arti e professioni.</li>
+      </ul>
+      <h4>Cosa resta fuori</h4>
+      <ul>
+        <li>Limiti di deducibilità specifici: auto, telefonia, spese di rappresentanza, alberghi e ristoranti hanno percentuali proprie. Qui i costi sono presi al valore che inserisci, già al netto di quelle riduzioni.</li>
+        <li>Ammortamenti, rimanenze, plusvalenze e sopravvenienze.</li>
+        <li>Bollo da 2 € sulle fatture oltre 77,47 €, diritto camerale, INAIL.</li>
+        <li>Le detrazioni per carichi di famiglia vanno inserite a mano: dipendono da età dei figli, redditi del coniuge e convivenza, e dal 2025 sono soggette a limiti che un modulo non può presumere.</li>
+        <li>Per i redditi oltre 200.000 € opera un taglio delle detrazioni al 19% che il modello non applica.</li>
+      </ul>
+      <h4>Fonti</h4>
+      <div class="srcs">
+        <div><b>Aliquote IRPEF 2026</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199" target="_blank" rel="noopener">L. 30 dicembre 2025 n. 199, art. 1 commi 3 e 4 — seconda aliquota dal 35% al 33%</a></div>
+        <div><b>Detrazione lavoro autonomo</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917" target="_blank" rel="noopener">Art. 13 commi 5, 5-ter e 6 TUIR, D.P.R. 917/1986</a></div>
+        <div><b>Regime forfettario</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190" target="_blank" rel="noopener">L. 23 dicembre 2014 n. 190, art. 1 commi 54-89 e Allegato 4</a></div>
+        <div><b>Addizionale regionale Abruzzo 2026</b><a href="https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/addregirpef/addregirpef.php?reg=01" target="_blank" rel="noopener">Dipartimento delle Finanze — aliquote pubblicate il 28 gennaio 2026 (L.R. Abruzzo 9/2025)</a></div>
+        <div><b>Addizionale comunale</b><a href="https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/addirpef_newDF/abruzzo.htm" target="_blank" rel="noopener">Dipartimento delle Finanze — ricerca per comune</a></div>
+        <div><b>Contributi artigiani e commercianti 2026</b><a href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html" target="_blank" rel="noopener">Circolare INPS 9 febbraio 2026 n. 14</a></div>
+        <div><b>Gestione separata 2026</b><a href="https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html" target="_blank" rel="noopener">Circolare INPS 3 febbraio 2026 n. 8</a></div>
+        <div><b>Abolizione IRAP per le persone fisiche</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2021-12-30;234" target="_blank" rel="noopener">L. 30 dicembre 2021 n. 234, art. 1 comma 8</a></div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <div class="fb"><img id="bearFoot" alt="" src=""><b>Corazzini</b> · Pescara</div>
+    <p>Questa è una stima. Non è un parere professionale. La scelta del regime dipende da elementi che un modulo non conosce.</p>
+    <p>Il calcolo avviene nel tuo browser. Nessun dato viene trasmesso o conservato.</p>
+  </footer>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <header><h3 id="shT"></h3><p id="shP"></p></header>
+  <div class="opts" id="shO"></div>
+  <footer><button type="button" class="btn sec" id="shC">Chiudi</button></footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+"use strict";
+const BEAR = "data:image/png;base64,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";
+["bearNav","bearPrint","bearFoot"].forEach(i=>{const e=document.getElementById(i); if(e) e.src=BEAR;});
+
+/* ============ parametri normativi 2026 ============ */
+const P = {
+  sogliaRicavi:85000, sogliaUscita:100000,
+  irpef:[[28000,.23],[50000,.33],[Infinity,.43]],
+  addReg:[[28000,.0167],[50000,.0287],[Infinity,.0333]],
+  gs:{piena:.2607, ridotta:.24, massimale:122295},
+  ac:{minimale:18808, primaFascia:56224, massimale:122295, ivs:.24, ivsOltre:.25, aggCom:.0048, mat:7.44}
+};
+const eur=n=>new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n||0);
+const eur2=n=>new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR",minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0);
+const pct=n=>new Intl.NumberFormat("it-IT",{style:"percent",maximumFractionDigits:1}).format(n||0);
+const mig=n=>new Intl.NumberFormat("it-IT").format(Math.round(n||0));
+const num=s=>+String(s).replace(/[^\d]/g,"")||0;
+const $=id=>document.getElementById(id);
+
+const OPZ={
+  coeff:{titolo:"Attività",nota:"Il coefficiente di redditività dice quanta parte degli incassi è considerata reddito nel forfettario. Lo stabilisce la legge in base al codice ATECO.",voci:[
+    {v:"0.78",t:"Attività professionali",s:"Scientifiche, tecniche, sanitarie, istruzione, servizi finanziari · 78%"},
+    {v:"0.86",t:"Costruzioni e attività immobiliari",s:"Edilizia, impiantistica, agenzie immobiliari · 86%"},
+    {v:"0.67",t:"Altre attività economiche",s:"Manifattura, informatica, servizi alla persona, trasporti, sport · 67%"},
+    {v:"0.62",t:"Intermediari del commercio",s:"Agenti e rappresentanti · 62%"},
+    {v:"0.54",t:"Commercio ambulante di altri prodotti",s:"Non alimentari · 54%"},
+    {v:"0.40",t:"Commercio all'ingrosso e al dettaglio",s:"Negozi, e-commerce, distribuzione · 40%"},
+    {v:"0.40",t:"Alloggio e ristorazione",s:"Bar, ristoranti, B&B, affittacamere · 40%"},
+    {v:"0.40",t:"Industrie alimentari e delle bevande",s:"Produzione · 40%"},
+    {v:"0.40",t:"Commercio ambulante di alimentari e bevande",s:"Mercati e ambulanti · 40%"}]},
+  gest:{titolo:"Previdenza",nota:"Cambia sia l'aliquota sia la base di calcolo, che nei due regimi è diversa.",voci:[
+    {v:"gs",t:"Gestione separata INPS",s:"Professionista senza cassa · 26,07%, nessun minimo"},
+    {v:"gs24",t:"Gestione separata ridotta",s:"Già pensionato o iscritto ad altra gestione · 24%"},
+    {v:"art",t:"Artigiani",s:"Contributo fisso 4.521,36 € più quota sul reddito eccedente"},
+    {v:"com",t:"Commercianti",s:"Contributo fisso 4.611,64 € più quota sul reddito eccedente"}]}
+};
+
+/* ============ motore ============ */
+function scaglioni(base, tab){
+  let t=0, prec=0;
+  for(const [lim,al] of tab){
+    if(base<=prec) break;
+    t += (Math.min(base,lim)-prec)*al;
+    prec = lim;
+  }
+  return t;
+}
+function contributi(reddito, gest, rid35){
+  if(gest==="gs"||gest==="gs24"){
+    const al = gest==="gs" ? P.gs.piena : P.gs.ridotta;
+    return Math.max(0,Math.min(reddito,P.gs.massimale))*al;
+  }
+  const agg = gest==="com" ? P.ac.aggCom : 0;
+  let fisso = P.ac.minimale*(P.ac.ivs+agg) + P.ac.mat;
+  let ecc = 0;
+  if(reddito > P.ac.minimale){
+    const cap = Math.min(reddito, P.ac.massimale);
+    const q1 = Math.max(0, Math.min(cap,P.ac.primaFascia) - P.ac.minimale);
+    const q2 = Math.max(0, cap - P.ac.primaFascia);
+    ecc = q1*(P.ac.ivs+agg) + q2*(P.ac.ivsOltre+agg);
+  }
+  const tot = fisso + ecc;
+  return rid35 ? tot*0.65 : tot;
+}
+/* art. 13 c. 5 e 5-ter TUIR — il rapporto si assume alle prime 4 cifre decimali (c. 6) */
+function detrAutonomo(rc){
+  let d = 0;
+  if(rc <= 0) return 0;
+  if(rc <= 5500) d = 1265;
+  else if(rc <= 28000){
+    const r = Math.trunc((28000-rc)/22500*10000)/10000;
+    d = 500 + 765*r;
+  } else if(rc <= 50000){
+    const r = Math.trunc((50000-rc)/22000*10000)/10000;
+    d = 500*r;
+  } else d = 0;
+  if(rc > 11000 && rc <= 17000) d += 50;
+  return d;
+}
+function leggi(){
+  return {
+    ric:num($("ric").value), cos:num($("cos").value),
+    coeff:+$("coeff").value, gest:$("gest").value,
+    aliq:+document.querySelector('input[name=aliq]:checked').value,
+    rid35:$("rid35").checked,
+    abr:$("abr").checked, reg:(+$("reg").value||0)/100, com:(+$("com").value||0)/100,
+    extra:+$("extra").value||0, detr:+$("detr").value||0, oneri:+$("oneri").value||0
+  };
+}
+function calcolaForf(c, costi){
+  const rf = c.ric*c.coeff;
+  const contr = contributi(rf, c.gest, c.rid35);
+  const imponibile = Math.max(0, rf - contr);
+  const imposta = imponibile*c.aliq;
+  return { reddito:rf, contr, imponibile, imposta, prelievo:contr+imposta,
+           netto: c.ric - costi - contr - imposta };
+}
+function calcolaOrd(c, costi){
+  const costiTot = costi + c.extra;
+  const reddito = c.ric - costiTot;
+  const contr = contributi(Math.max(0,reddito), c.gest, false);
+  const rc = Math.max(0, reddito - contr - c.oneri);
+  const lorda = scaglioni(rc, P.irpef);
+  const dAut = detrAutonomo(rc);
+  const netta = Math.max(0, lorda - dAut - c.detr);
+  const aReg = c.abr ? scaglioni(rc, P.addReg) : rc*c.reg;
+  const aCom = rc*c.com;
+  return { reddito, contr, rc, lorda, dAut, netta, aReg, aCom,
+           prelievo: contr+netta+aReg+aCom,
+           netto: c.ric - costiTot - contr - netta - aReg - aCom };
+}
+/* costi ai quali i due netti coincidono */
+function pareggio(c){
+  const d = x => calcolaOrd(c,x).netto - calcolaForf(c,x).netto;
+  let lo=0, hi=c.ric;
+  if(d(lo)>0) return 0;
+  if(d(hi)<0) return null;
+  for(let i=0;i<60;i++){ const m=(lo+hi)/2; if(d(m)<0) lo=m; else hi=m; }
+  return (lo+hi)/2;
+}
+
+/* ============ picker e tooltip ============ */
+let pickCorrente=null;
+function apriPicker(k){
+  pickCorrente=k; const o=OPZ[k], cur=$(k).value;
+  $("shT").textContent=o.titolo; $("shP").textContent=o.nota;
+  $("shO").innerHTML=o.voci.map((x,i)=>`<button type="button" class="opt" data-i="${i}" aria-selected="${String(x.v===cur)}"><span class="tx"><b>${x.t}</b><small>${x.s}</small></span><span class="tick">✓</span></button>`).join("");
+  $("sheet").classList.add("on"); $("sheetBg").classList.add("on"); document.body.classList.add("locked");
+}
+function chiudiPicker(){ $("sheet").classList.remove("on"); $("sheetBg").classList.remove("on"); document.body.classList.remove("locked"); pickCorrente=null; }
+function mostraTip(b){ const t=$("tip"); t.textContent=b.dataset.tip; t.classList.add("on");
+  const r=b.getBoundingClientRect();
+  t.style.left=Math.max(12,Math.min(window.innerWidth-t.offsetWidth-12,r.left-10))+"px"; t.style.top=(r.bottom+8)+"px"; }
+function nascondiTip(){ $("tip").classList.remove("on"); }
+document.addEventListener("click",e=>{
+  const inf=e.target.closest(".info"); if(inf){ $("tip").classList.contains("on")?nascondiTip():mostraTip(inf); return; }
+  nascondiTip();
+  const p=e.target.closest("[data-pick]"); if(p){ apriPicker(p.dataset.pick); return; }
+  const o=e.target.closest(".opt");
+  if(o&&pickCorrente){ $(pickCorrente).value=OPZ[pickCorrente].voci[+o.dataset.i].v; chiudiPicker(); sync(); }
+});
+document.addEventListener("mouseover",e=>{const i=e.target.closest(".info"); if(i) mostraTip(i);});
+document.addEventListener("mouseout",e=>{if(e.target.closest(".info")) nascondiTip();});
+$("sheetBg").addEventListener("click",chiudiPicker);
+$("shC").addEventListener("click",chiudiPicker);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){chiudiPicker();nascondiTip();}});
+
+/* ============ campi importo ============ */
+function legaImporto(idTxt,idRange,idFill,max){
+  const t=$(idTxt), r=$(idRange), f=$(idFill);
+  const agg=()=>{ const v=num(t.value);
+    t.style.width=Math.max(3,t.value.length+0.2)+"ch";
+    r.value=Math.min(v,+r.max); f.style.width=Math.min(100,v/max*100)+"%"; };
+  t.addEventListener("input",()=>{ const v=num(t.value); t.value=v?mig(v):""; agg(); render(); });
+  t.addEventListener("blur",()=>{ const v=num(t.value); t.value=v?mig(v):"0"; agg(); render(); });
+  r.addEventListener("input",()=>{ t.value=mig(+r.value); agg(); render(); });
+  return agg;
+}
+const aggRic=legaImporto("ric","ricR","fillR",100000);
+const aggCos=legaImporto("cos","cosR","fillC",60000);
+
+/* ============ grafico ============ */
+function disegna(c, bep){
+  const W=720,H=300, m={l:64,r:16,t:14,b:34};
+  const xMax=Math.max(1000, Math.min(c.ric, c.ric*0.75)) || 1000;
+  const N=60, pf=[], po=[];
+  for(let i=0;i<=N;i++){ const x=xMax*i/N; pf.push([x,calcolaForf(c,x).netto]); po.push([x,calcolaOrd(c,x).netto]); }
+  const ys=pf.concat(po).map(p=>p[1]);
+  let yMin=Math.min(...ys,0), yMax=Math.max(...ys,1);
+  const pad=(yMax-yMin)*0.08||1; yMin-=pad; yMax+=pad;
+  const X=v=>m.l+(v/xMax)*(W-m.l-m.r);
+  const Y=v=>m.t+(1-(v-yMin)/(yMax-yMin))*(H-m.t-m.b);
+  const path=p=>p.map((q,i)=>(i?"L":"M")+X(q[0]).toFixed(1)+" "+Y(q[1]).toFixed(1)).join(" ");
+  let g="";
+  for(let i=0;i<=4;i++){
+    const v=yMin+(yMax-yMin)*i/4, y=Y(v);
+    g+=`<line x1="${m.l}" y1="${y.toFixed(1)}" x2="${W-m.r}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`;
+    g+=`<text x="${m.l-9}" y="${(y+4).toFixed(1)}" text-anchor="end" font-size="11" font-weight="600" fill="var(--text-faint)">${mig(v/1000)}k</text>`;
+  }
+  for(let i=0;i<=4;i++){
+    const v=xMax*i/4, x=X(v);
+    g+=`<text x="${x.toFixed(1)}" y="${H-12}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text-faint)">${mig(v/1000)}k</text>`;
+  }
+  g+=`<text x="${W/2}" y="${H+2}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-faint)" opacity="0">costi</text>`;
+  if(bep!==null && bep<=xMax){
+    g+=`<line x1="${X(bep).toFixed(1)}" y1="${m.t}" x2="${X(bep).toFixed(1)}" y2="${H-m.b}" stroke="var(--text-strong)" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+    g+=`<circle cx="${X(bep).toFixed(1)}" cy="${Y(calcolaForf(c,bep).netto).toFixed(1)}" r="5" fill="var(--ink-900)"/>`;
+    const lab=`pareggio ${mig(bep)} €`;
+    const lx=Math.min(W-m.r-6, Math.max(m.l+6, X(bep)));
+    g+=`<text x="${lx.toFixed(1)}" y="${m.t+12}" text-anchor="${X(bep)>W*0.6?"end":"start"}" font-size="11.5" font-weight="700" fill="var(--ink-900)">${lab}</text>`;
+  }
+  const cx=Math.min(c.cos,xMax);
+  g+=`<line x1="${X(cx).toFixed(1)}" y1="${m.t}" x2="${X(cx).toFixed(1)}" y2="${H-m.b}" stroke="var(--frost-300)" stroke-width="2"/>`;
+  g+=`<path d="${path(po)}" fill="none" stroke="var(--warm)" stroke-width="2.5" stroke-linejoin="round"/>`;
+  g+=`<path d="${path(pf)}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>`;
+  $("chart").innerHTML=g;
+}
+
+/* ============ render ============ */
+function render(){
+  const c=leggi();
+  const F=calcolaForf(c,c.cos), O=calcolaOrd(c,c.cos);
+  const diff=F.netto-O.netto, bep=pareggio(c);
+
+  $("ricFoot").innerHTML = c.ric>P.sogliaUscita ? "Sopra <b>100.000 €</b> il forfettario non è ammesso"
+    : c.ric>P.sogliaRicavi ? "Sopra <b>85.000 €</b>: fuori dal regime dall'anno prossimo"
+    : c.ric>0 ? "Reddito forfettario <b>"+mig(F.reddito)+" €</b>" : "";
+  $("cosFoot").innerHTML = c.ric>0 ? "Incidenza sui compensi <b>"+pct(c.cos/c.ric)+"</b>" : "";
+
+  const vince = Math.abs(diff)<50 ? "pari" : (diff>0?"f":"o");
+  $("verdict").classList.toggle("pari", vince==="pari");
+  $("vW").textContent = vince==="pari" ? "Sono equivalenti" : (vince==="f"?"Il forfettario":"L'ordinario");
+  $("vD").innerHTML = vince==="pari"
+    ? "La differenza è sotto i 50 € l'anno: scegli in base agli adempimenti, non ai numeri."
+    : "Ti restano <b>"+eur(Math.abs(diff))+"</b> in più all'anno";
+  $("colF").classList.toggle("win", vince==="f");
+  $("colO").classList.toggle("win", vince==="o");
+
+  $("netF").textContent=eur(F.netto);
+  $("subF").textContent="prelievo "+(c.ric?pct(F.prelievo/c.ric):"—")+" sugli incassi";
+  $("tF").innerHTML=`
+    <tr><td>Reddito imponibile</td><td>${eur(F.reddito)}</td></tr>
+    <tr><td>Contributi</td><td>${eur(F.contr)}</td></tr>
+    <tr><td>Imposta sostitutiva ${pct(c.aliq)}</td><td>${eur(F.imposta)}</td></tr>
+    <tr><td>Costi non deducibili</td><td>${eur(c.cos)}</td></tr>`;
+
+  $("netO").textContent=eur(O.netto);
+  $("subO").textContent="prelievo "+(c.ric?pct(O.prelievo/c.ric):"—")+" sugli incassi";
+  $("tO").innerHTML=`
+    <tr><td>Reddito (incassi − costi)</td><td>${eur(O.reddito)}</td></tr>
+    <tr><td>Contributi</td><td>${eur(O.contr)}</td></tr>
+    <tr><td>Reddito complessivo</td><td>${eur(O.rc)}</td></tr>
+    <tr><td>IRPEF lorda</td><td>${eur(O.lorda)}</td></tr>
+    <tr><td>Detrazione lav. autonomo</td><td>−${eur(O.dAut)}</td></tr>
+    <tr><td>IRPEF netta</td><td>${eur(O.netta)}</td></tr>
+    <tr><td>Addizionali</td><td>${eur(O.aReg+O.aCom)}</td></tr>`;
+
+  disegna(c,bep);
+
+  const A=[];
+  if(c.ric>P.sogliaUscita) A.push(["ko","!","Sopra 100.000 € di incassi <b>il forfettario non si può usare</b>: il confronto qui sotto è solo teorico."]);
+  else if(c.ric>P.sogliaRicavi) A.push(["warn","!","Sopra 85.000 € resti nel forfettario per quest'anno, ma <b>dall'anno prossimo passi all'ordinario</b> comunque."]);
+  if(bep===null) A.push(["ok","i","Con questi parametri il forfettario resta più conveniente a qualsiasi livello di costi."]);
+  else if(bep===0) A.push(["ok","i","Con questi parametri l'ordinario conviene già a costi zero: succede quando il coefficiente di redditività è alto e le detrazioni personali sono consistenti."]);
+  else A.push(["ok","i",`Il pareggio è a <b>${eur(bep)}</b> di costi, cioè il <b>${pct(c.ric?bep/c.ric:0)}</b> degli incassi. Sotto quella soglia conviene il forfettario, sopra l'ordinario.`]);
+  if(c.detr>0) A.push(["warn","!","Le detrazioni che hai inserito valgono solo nell'ordinario. Nel forfettario si perdono, a meno che tu non abbia altri redditi tassati in via ordinaria su cui recuperarle."]);
+  if(c.gest==="art"||c.gest==="com") A.push(["warn","!","Per artigiani e commercianti il contributo fisso sul minimale è dovuto in entrambi i regimi, anche a reddito basso o nullo. La riduzione del 35% spetta però solo nel forfettario."]);
+  $("alerts").innerHTML=A.map(a=>`<div class="notice ${a[0]}"><span class="ic">${a[1]}</span><span>${a[2]}</span></div>`).join("");
+}
+
+function etichette(){
+  const set=(k,el)=>{const x=OPZ[k].voci.find(v=>v.v===$(k).value)||OPZ[k].voci[0];
+    $(el).innerHTML=x.t+"<small>"+x.s.split(" · ").pop()+"</small>";};
+  set("coeff","vCoeff"); set("gest","vGest");
+}
+function sync(){ etichette(); aggRic(); aggCos(); render(); }
+document.addEventListener("input",e=>{ if(e.target.closest&&e.target.closest("#f")&&!["ric","ricR","cos","cosR"].includes(e.target.id)) sync(); });
+document.addEventListener("change",e=>{ if(e.target.closest&&e.target.closest("#f")) sync(); });
+$("stampa").addEventListener("click",()=>window.print());
+$("reset").addEventListener("click",()=>{ $("f").reset(); $("coeff").value="0.78"; $("gest").value="gs";
+  $("ric").value="45.000"; $("cos").value="9.000"; sync(); });
+$("printDate").textContent=new Date().toLocaleDateString("it-IT");
+sync();
+</script>
+</body>
+</html>
