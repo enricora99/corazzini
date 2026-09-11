@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Lean Canvas: valida la tua idea di business — Corazzini</title>
+<meta name="description" content="Strumento gratuito per validare un'idea di business con il Lean Canvas e il Value Proposition Canvas: nove blocchi da compilare, il grado di verifica di ogni ipotesi e l'ordine in cui conviene metterle alla prova.">
+<link rel="canonical" href="https://www.corazzini.it/strumenti/lean-canvas/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corazzini">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://www.corazzini.it/strumenti/lean-canvas/">
+<meta property="og:title" content="Lean Canvas: valida la tua idea di business — Corazzini">
+<meta property="og:description" content="Nove blocchi per scomporre un'idea in ipotesi, il grado di verifica di ciascuna e l'ordine in cui conviene metterle alla prova.">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --snow-0:#FFFFFF; --snow-50:#F6F8FA; --snow-100:#EDF1F5; --snow-200:#DEE6EC; --frost-300:#C5D4DF;
+  --slate-400:#8B9CA8; --slate-500:#607180;
+  --ink-700:#2B3B45; --ink-800:#16313F; --ink-900:#0C232F;
+  --glacier-50:#EAF4FA; --glacier-100:#CFE8F5; --glacier-300:#6FB7E0; --glacier-500:#2E90C9; --glacier-600:#1E76A8; --glacier-700:#185C84;
+  --brass-500:#B0822F;
+  --green-500:#2E9C6A; --green-50:#E7F4EE;
+  --red-500:#CF4B4B; --red-50:#FAEAEA;
+  --amber-500:#D69A2E; --amber-50:#FBF1DE;
+  --bg-page:var(--snow-50); --surface-card:var(--snow-0); --surface-sunken:var(--snow-100);
+  --text-strong:var(--ink-900); --text-body:var(--ink-700); --text-muted:var(--slate-500); --text-faint:var(--slate-400);
+  --accent:var(--glacier-500); --accent-strong:var(--glacier-600); --accent-soft:var(--glacier-50);
+  --warm:var(--brass-500); --warm-soft:#F6EEDD;
+  --border:var(--snow-200); --border-strong:var(--frost-300); --link:var(--glacier-600);
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --ls-eyebrow:.16em; --ls-tight:-.02em;
+  --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:26px; --r-pill:999px;
+  --shadow-xs:0 1px 2px rgba(12,35,47,.06); --shadow-sm:0 2px 8px rgba(12,35,47,.07); --shadow-md:0 8px 24px rgba(12,35,47,.09);
+  --ring-focus:0 0 0 3px rgba(46,144,201,.35);
+  --ease-out:cubic-bezier(.22,.61,.36,1); --ease-soft:cubic-bezier(.4,0,.2,1);
+  --dyn:#8B9CA8;
+}
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg-page);color:var(--text-body);font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{width:min(760px,100% - 44px);margin-inline:auto}
+.wrap.wide{width:min(1180px,100% - 44px)}
+h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;line-height:1.08;letter-spacing:var(--ls-tight);margin:0}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent-strong)}
+
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,248,250,.86);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:66px}
+.bear{width:38px;height:38px;flex:none;object-fit:contain}
+.brand{display:flex;flex-direction:column;line-height:1.02}
+.brand b{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--text-strong)}
+.brand span{font-size:.66rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent-strong)}
+.nav a{margin-left:auto;color:var(--link);text-decoration:none;font-size:.9rem;font-weight:600}
+
+.hero{padding:56px 0 26px}
+.hero .eyebrow{display:block;margin-bottom:14px}
+.hero h1{font-size:clamp(2.1rem,1.4rem + 2.6vw,3rem);max-width:16ch;text-wrap:balance}
+.hero p{margin:20px 0 0;font-size:1.06rem;line-height:1.7;color:var(--text-muted);max-width:60ch}
+
+.card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+
+.tabs{display:flex;gap:6px;padding:6px;background:var(--surface-sunken);border-radius:var(--r-pill);margin:0 auto 22px;width:fit-content;max-width:100%;flex-wrap:wrap;justify-content:center}
+.tabs button{font:600 .92rem/1 var(--font-sans);padding:12px 22px;border-radius:var(--r-pill);border:1px solid transparent;background:none;color:var(--text-muted);cursor:pointer;transition:all .16s var(--ease-out)}
+.tabs button:hover{color:var(--text-strong)}
+.tabs button[aria-selected=true]{background:var(--surface-card);color:var(--accent-strong);border-color:var(--border);box-shadow:var(--shadow-xs)}
+
+.cvhead{text-align:center;max-width:64ch;margin:0 auto 20px}
+.cvhead h2{font-size:1.4rem;margin-bottom:9px}
+.cvhead p{margin:0;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.cvhead cite{display:block;margin-top:9px;font-style:normal;font-size:.78rem;color:var(--text-faint)}
+
+.cv{display:none}
+.cv.on{display:block}
+.canvas{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-xs);margin-bottom:18px}
+.canvas.lean{grid-template-columns:repeat(10,1fr);
+  grid-template-areas:
+    "pro pro sol sol uvp uvp unf unf seg seg"
+    "pro pro met met uvp uvp can can seg seg"
+    "cos cos cos cos cos rev rev rev rev rev"}
+.canvas.vpc{grid-template-columns:repeat(2,1fr);
+  grid-template-areas:"prd job" "rel pai" "gen gai"}
+
+.blk{background:var(--surface-card);display:flex;flex-direction:column;min-height:186px;position:relative}
+.bh{display:flex;align-items:flex-start;gap:8px;padding:13px 14px 7px}
+.bn{flex:none;width:19px;height:19px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);
+  font:800 .66rem/19px var(--font-sans);text-align:center}
+.bh h3{font-size:.93rem;line-height:1.3;flex:1}
+.bh .why{flex:none;width:19px;height:19px;border-radius:50%;border:1px solid var(--border-strong);background:none;
+  color:var(--text-faint);font:700 .7rem/1 var(--font-sans);cursor:pointer;transition:all .14s}
+.bh .why:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.blk textarea{flex:1 0 auto;width:100%;border:0;background:none;resize:none;padding:0 14px 6px;overflow:hidden;
+  font:400 .855rem/1.55 var(--font-sans);color:var(--text-body);min-height:56px}
+.blk textarea::placeholder{color:var(--slate-400);opacity:.74}
+.blk textarea:focus{outline:none}
+.blk:focus-within{box-shadow:inset 0 0 0 2px var(--accent);z-index:2}
+.prv{display:none}
+.bf{padding:5px 12px 11px;display:flex;align-items:center}
+.conf{display:flex;gap:3px;margin-left:auto}
+.conf button{font:700 .62rem/1 var(--font-sans);letter-spacing:.03em;padding:5px 8px;border-radius:var(--r-pill);
+  border:1px solid var(--border);background:var(--surface-card);color:var(--text-faint);cursor:pointer;transition:all .14s}
+.conf button:hover{border-color:var(--border-strong);color:var(--text-muted)}
+.conf button[aria-pressed=true][data-c="0"]{background:var(--red-50);border-color:#EFCFCF;color:#9B3535}
+.conf button[aria-pressed=true][data-c="1"]{background:var(--amber-50);border-color:#EFDCB4;color:#8A6318}
+.conf button[aria-pressed=true][data-c="2"]{background:var(--green-50);border-color:#C3E3D2;color:#1F7A50}
+.blk[data-empty="1"] .conf{opacity:.32;pointer-events:none}
+
+[data-k=problema]{grid-area:pro} [data-k=soluzione]{grid-area:sol} [data-k=uvp]{grid-area:uvp}
+[data-k=vantaggio]{grid-area:unf} [data-k=segmenti]{grid-area:seg} [data-k=metriche]{grid-area:met}
+[data-k=canali]{grid-area:can} [data-k=costi]{grid-area:cos} [data-k=ricavi]{grid-area:rev}
+[data-k=prodotti]{grid-area:prd} [data-k=attivita]{grid-area:job} [data-k=riduttori]{grid-area:rel}
+[data-k=problemi]{grid-area:pai} [data-k=generatori]{grid-area:gen} [data-k=vantaggi]{grid-area:gai}
+
+.vpc .blk{min-height:200px}
+.sidelbl{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:0 0 11px}
+.sidelbl div{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);text-align:center}
+
+@media(max-width:980px){
+  .canvas.lean{grid-template-columns:repeat(2,1fr);
+    grid-template-areas:"pro sol" "pro met" "uvp unf" "uvp can" "seg seg" "cos cos" "rev rev"}
+}
+@media(max-width:640px){
+  .canvas.lean{grid-template-columns:1fr;
+    grid-template-areas:"pro" "seg" "uvp" "sol" "can" "rev" "cos" "met" "unf"}
+  .canvas.vpc{grid-template-columns:1fr;grid-template-areas:"job" "pai" "gai" "prd" "rel" "gen"}
+  .sidelbl{display:none}
+  .blk{min-height:154px}
+}
+
+.headline{text-align:center;padding:34px 22px 24px;
+  background:radial-gradient(120% 130% at 50% 0%, color-mix(in srgb,var(--dyn) 13%,transparent) 0%, transparent 64%);
+  transition:background .4s var(--ease-soft)}
+.headline .k{font-size:.74rem;font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-faint)}
+.headline .v{font:800 clamp(30px,7.5vw,44px)/1.06 var(--font-sans);letter-spacing:-.038em;color:var(--dyn);margin:10px 0 8px;transition:color .35s var(--ease-soft)}
+.headline .s{font-size:.95rem;color:var(--text-muted);max-width:54ch;margin-inline:auto;line-height:1.6}
+.bar{height:6px;background:var(--snow-100);border-radius:var(--r-pill);overflow:hidden;max-width:340px;margin:18px auto 0}
+.bar i{display:block;height:100%;width:0;background:var(--dyn);border-radius:var(--r-pill);transition:width .45s var(--ease-out),background .35s}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.facts div{padding:15px 20px;border-right:1px solid var(--border)}
+.facts div:last-child{border-right:0}
+.facts .k{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
+.facts .v{font-size:.9rem;color:var(--text-strong);font-weight:600;line-height:1.4}
+@media(max-width:560px){.facts{grid-template-columns:1fr}.facts div{border-right:0;border-bottom:1px solid var(--border)}.facts div:last-child{border-bottom:0}}
+
+.prio{padding:2px 22px 18px}
+.prio>p{margin:16px 0 4px;font-size:.88rem;color:var(--text-muted);line-height:1.55}
+.pi{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--border)}
+.pi:first-of-type{border-top:0}
+.pi .rk{flex:none;width:23px;height:23px;border-radius:50%;color:#fff;font:800 .72rem/23px var(--font-sans);text-align:center}
+.pi .tx{flex:1}
+.pi .tx em{font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
+.pi .tx b{display:block;font-size:.97rem;color:var(--text-strong);font-weight:700;margin:2px 0 4px}
+.pi .tx p{margin:0;font-size:.87rem;color:var(--text-muted);line-height:1.55}
+.pi .tx p a{color:var(--link);text-decoration:none}
+.pi .tx p a:hover{text-decoration:underline}
+
+.notice{display:flex;gap:12px;padding:15px 18px;border-radius:var(--r-md);font-size:.9rem;line-height:1.55;margin:0 22px 18px;border:1px solid}
+.notice .ic{flex:none;width:20px;height:20px;border-radius:50%;color:#fff;font-size:.76rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.notice.ok{background:var(--accent-soft);border-color:var(--glacier-100);color:#164B6B} .notice.ok .ic{background:var(--accent)}
+.notice.warn{background:var(--amber-50);border-color:#EFDCB4;color:#6E4E14} .notice.warn .ic{background:var(--amber-500)}
+.notice b{font-weight:700}
+
+.sheet-bg{position:fixed;inset:0;background:rgba(8,25,35,.38);backdrop-filter:blur(3px);z-index:90;opacity:0;pointer-events:none;transition:opacity .22s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:91;background:var(--surface-card);border-radius:var(--r-xl);width:min(520px,calc(100% - 32px));
+  left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s var(--ease-out);max-height:82vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(8,25,35,.3)}
+.sheet.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sheet header{padding:20px 22px 14px;border-bottom:1px solid var(--border)}
+.sheet header h3{font-size:1.3rem}
+.sheet header p{margin:7px 0 0;font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.sheet .opts{overflow-y:auto;padding:18px 22px 6px}
+.sheet .opts h5{margin:0 0 8px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+.sheet .opts ul{margin:0 0 20px;padding-left:19px;color:var(--text-muted);font-size:.9rem;line-height:1.6}
+.sheet .opts li{margin-bottom:7px}
+.sheet .opts .tst{background:var(--accent-soft);border:1px solid var(--glacier-100);border-radius:var(--r-md);padding:13px 15px;margin-bottom:18px}
+.sheet .opts .tst h5{color:var(--accent-strong);margin-bottom:5px}
+.sheet .opts .tst p{margin:0;font-size:.89rem;line-height:1.55;color:#1B4F6E}
+.sheet .opts .tst a{color:var(--accent-strong);font-weight:600;text-decoration:none}
+.sheet .opts .tst a:hover{text-decoration:underline}
+.sheet footer{padding:12px 22px 18px;border-top:1px solid var(--border)}
+.sheet footer button{width:100%}
+@media(max-width:560px){
+  .sheet{top:auto;bottom:0;left:0;transform:translateY(14px);width:100%;border-radius:var(--r-xl) var(--r-xl) 0 0;max-height:88vh}
+  .sheet.on{transform:translateY(0)}
+}
+
+details{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-xs)}
+summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:10px;
+  font-family:var(--font-serif);font-size:1.08rem;font-weight:600;color:var(--text-strong)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--frost-300);border-bottom:2px solid var(--frost-300);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-3px}
+details[open] summary::after{transform:rotate(-135deg);margin-top:3px}
+summary:hover{background:var(--snow-50)}
+.det{padding:0 22px 22px}
+.det p{margin:0 0 12px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det h4{margin:22px 0 9px;font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--text-strong)}
+.det h4:first-child{margin-top:0}
+.det ul{margin:0 0 4px;padding-left:20px;color:var(--text-muted);font-size:.92rem;line-height:1.6}
+.det li{margin-bottom:7px}
+.det a{color:var(--link);text-decoration:none}
+.det a:hover{text-decoration:underline}
+.det b.tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--warm);background:var(--warm-soft);padding:3px 8px;border-radius:var(--r-pill);margin-right:7px;vertical-align:1px}
+.srcs div{padding:11px 0;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--text-muted);line-height:1.55}
+.srcs div:last-child{border-bottom:0}
+.srcs b{display:block;font-weight:700;font-size:.68rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+
+.act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 0 10px}
+button.btn{font:700 .95rem/1 var(--font-sans);padding:14px 26px;border-radius:var(--r-pill);border:1px solid var(--accent);
+  background:var(--accent);color:#fff;cursor:pointer;transition:all .14s var(--ease-out)}
+button.btn:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+button.btn.sec{background:transparent;color:var(--text-body);border-color:var(--border-strong)}
+button.btn.sec:hover{background:var(--snow-100);color:var(--text-strong)}
+button.btn.qt{padding:11px 18px;font-size:.86rem}
+
+.saved{text-align:center;font-size:.79rem;color:var(--text-faint);padding:0 0 20px;min-height:22px}
+.saved b{color:var(--green-500);font-weight:700}
+
+footer{padding:32px 0 64px;color:var(--text-faint);font-size:.82rem;line-height:1.6;text-align:center}
+footer p{margin:0 auto 10px;max-width:64ch}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:16px;color:var(--text-muted)}
+footer .fb img{width:26px;height:26px}
+footer .fb b{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);font-weight:600}
+.print-head{display:none}
+
+@media print{
+  @page{size:A4 landscape;margin:11mm}
+  body{background:#fff;font-size:9pt;color:#000}
+  .nav,.hero,.act,.tabs,.saved,footer,.sheet,.sheet-bg,details,.notice,.bh .why,.no-print{display:none!important}
+  .print-head{display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--ink-900);padding-bottom:8px;margin-bottom:10px}
+  .print-head img{width:26px;height:26px}
+  .print-head .t{font-family:var(--font-serif);font-size:13pt;font-weight:600}
+  .print-head .s{margin-left:auto;text-align:right;font-size:7.5pt;color:#555}
+  .wrap,.wrap.wide{width:auto}
+  .cv{display:none!important}
+  .cv[data-print="1"]{display:block!important}
+  .cv[data-print="1"]~.cv[data-print="1"]{break-before:page;padding-top:4mm}
+  .cvhead{max-width:none;text-align:left;margin-bottom:9px}
+  .cvhead h2{font-size:12pt} .cvhead p{font-size:8pt} .cvhead cite{font-size:7pt;margin-top:4px}
+  .canvas{border:.5pt solid #999;box-shadow:none;gap:.5pt;background:#999;break-inside:avoid;border-radius:6px}
+  .blk{min-height:31mm;break-inside:avoid}
+  .bh{padding:7px 8px 3px}
+  .bh h3{font-size:8.5pt}
+  .bn{background:none;border:.5pt solid #666;color:#000;width:15px;height:15px;line-height:14px;font-size:6.5pt}
+  .blk textarea{display:none}
+  .prv{display:block;padding:0 8px 5px;font:400 8pt/1.45 var(--font-sans);color:#000;white-space:pre-wrap;flex:1}
+  .bf{padding:2px 7px 6px}
+  .conf button{display:none}
+  .conf button[aria-pressed=true]{display:block;font-size:6pt;padding:2px 6px;border:.5pt solid #666;background:none!important;color:#000!important}
+  .blk[data-empty="1"] .conf{display:none}
+  .card{border:.5pt solid #BBB;border-radius:8px;margin-bottom:4mm;break-inside:avoid;box-shadow:none}
+  .headline{padding:13px;background:none}
+  .headline .v{font-size:17pt;color:#000!important}
+  .bar{border:.5pt solid #999}
+  .bar i{background:#000}
+  .pi .rk{border:.5pt solid #666;color:#000!important;background:none!important;line-height:22px}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav no-print">
+  <div class="wrap wide">
+    <img class="bear" id="bearNav" alt="" src="">
+    <span class="brand"><b>Corazzini</b><span>Strumenti</span></span>
+    <a href="../">Tutti gli strumenti</a>
+  </div>
+</nav>
+
+<div class="wrap wide">
+
+  <header class="hero no-print">
+    <span class="eyebrow">Strumento aperto</span>
+    <h1>L'idea, scomposta in ipotesi</h1>
+    <p>Un'idea di business non si valuta discutendone, e nemmeno scrivendo quaranta pagine di business plan che nessuno leggerà. Si scompone nelle ipotesi che la tengono in piedi, si riconosce quali possono farla cadere per prime, e si va a verificare quelle. Qui trovi i due canvas più usati al mondo per farlo, con sopra la domanda che di solito manca: quanto di ciò che hai scritto è verificato, e quanto è soltanto plausibile.</p>
+  </header>
+
+  <div class="print-head">
+    <img id="bearPrint" alt="" src="">
+    <div class="t" id="printT">Canvas di validazione</div>
+    <div class="s"><div>Corazzini · corazzini.it</div><div id="printDate"></div></div>
+  </div>
+
+  <div class="tabs no-print" role="tablist">
+    <button type="button" role="tab" id="tabLean" aria-selected="true" aria-controls="cvLean">Lean Canvas</button>
+    <button type="button" role="tab" id="tabVpc" aria-selected="false" aria-controls="cvVpc">Value Proposition Canvas</button>
+  </div>
+
+  <section class="cv on" id="cvLean" role="tabpanel">
+    <div class="cvhead">
+      <h2>Lean Canvas</h2>
+      <p>Nove blocchi su una pagina sola. Sostituisce il business plan nella fase in cui il piano è fatto quasi solo di ipotesi: serve a vederle tutte insieme, non a nasconderle dentro un documento lungo.</p>
+      <cite>Ash Maurya, <em>Running Lean</em> — adattato dal Business Model Canvas di Osterwalder e Pigneur</cite>
+    </div>
+    <div class="canvas lean" id="gridLean"></div>
+  </section>
+
+  <section class="cv" id="cvVpc" role="tabpanel">
+    <div class="cvhead">
+      <h2>Value Proposition Canvas</h2>
+      <p>Lo zoom sui due blocchi che nel Lean Canvas contano di più: chi è il cliente e cosa gli offri. A sinistra quello che costruisci tu, a destra quello che il cliente ha già in testa. Il lavoro consiste nel farli combaciare, non nel riempirli entrambi.</p>
+      <cite>Osterwalder, Pigneur, Bernarda e Smith, <em>Value Proposition Design</em></cite>
+    </div>
+    <div class="sidelbl no-print"><div>Mappa del valore — cosa fai tu</div><div>Profilo del cliente — cosa vive lui</div></div>
+    <div class="canvas vpc" id="gridVpc"></div>
+  </section>
+
+  <div class="card" id="cardOut">
+    <div class="headline" id="hl">
+      <div class="k">Grado di verifica</div>
+      <div class="v" id="oV">—</div>
+      <div class="s" id="oS">Compila il primo blocco per iniziare. Nessuno ha mai avuto un canvas verde al primo giorno.</div>
+      <div class="bar"><i id="oBar"></i></div>
+    </div>
+    <div class="facts" id="oFacts"></div>
+    <div id="oNotice"></div>
+    <div class="prio" id="oPrio"></div>
+  </div>
+
+  <div class="act no-print">
+    <button type="button" class="btn" id="btnPrint">Stampa il canvas</button>
+    <button type="button" class="btn sec" id="btnExport">Scarica il file</button>
+    <button type="button" class="btn sec" id="btnImport">Carica un file</button>
+    <button type="button" class="btn sec qt" id="btnClear">Cancella tutto</button>
+    <input type="file" id="fileIn" accept="application/json,.json" hidden>
+  </div>
+  <div class="saved no-print" id="savedMsg"></div>
+
+  <details>
+    <summary>Come si usa, senza perderci una settimana</summary>
+    <div class="det">
+      <p>Il canvas si compila in venti minuti, non in venti giorni. Se una casella ti blocca, scrivi la prima cosa che ti viene e vai avanti: serve a far emergere i buchi, e un buco si vede meglio scritto che pensato.</p>
+      <h4>L'ordine dei numeri non è decorativo</h4>
+      <p>I blocchi sono numerati nell'ordine in cui conviene affrontarli. Si parte dal problema e dal cliente, non dalla soluzione: è l'unico modo per accorgersi in tempo di avere una soluzione elegante a un problema che non interessa a nessuno. La soluzione arriva quarta, e va scritta in una riga per problema.</p>
+      <h4>Le tre etichette sotto ogni blocco</h4>
+      <ul>
+        <li><b>Ipotesi</b> — l'hai pensato tu. Vale come una scommessa, non come un dato. All'inizio è normale che sia tutto qui.</li>
+        <li><b>Indizi</b> — qualcuno fuori dal tuo tavolo l'ha confermato: conversazioni, un concorrente che campa facendo quella cosa, dati di mercato pertinenti.</li>
+        <li><b>Verificata</b> — c'è una prova che regge anche se te la contestano: clienti che pagano, una lista d'attesa, numeri tuoi.</li>
+      </ul>
+      <p>Etichettare onestamente è tutto il valore dell'esercizio. Un canvas pieno di verde falso è più pericoloso di un canvas vuoto, perché toglie la voglia di andare a controllare.</p>
+      <h4>Quando rifarlo</h4>
+      <p>Ogni volta che una verifica smentisce un blocco. Il canvas è un documento che si butta e si riscrive, non un allegato da tenere. Scarica il file e confronta la versione di oggi con quella di tre mesi fa: la distanza fra le due dice quanto stai imparando.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Quale dei due canvas usare</summary>
+    <div class="det">
+      <h4><b class="tag">Lean Canvas</b>Quando l'idea è ancora tutta da verificare</h4>
+      <p>Ash Maurya lo ha costruito nel 2010 partendo dal Business Model Canvas e sostituendo quattro blocchi — partner chiave, attività chiave, risorse chiave e relazioni con i clienti — con problema, soluzione, metriche chiave e vantaggio sleale. Il motivo è semplice: un'impresa che esiste già ha partner e risorse da descrivere, una che deve ancora nascere ha soprattutto rischi da misurare. È il canvas giusto per chi sta decidendo se partire.</p>
+      <h4><b class="tag">Value Proposition</b>Quando sai chi è il cliente ma non lo convinci</h4>
+      <p>Serve quando il problema è a valle: hai un segmento identificato, parli con le persone giuste, e comunque non comprano. Il canvas mette in fila cosa il cliente sta cercando di fare, cosa gli va storto e cosa spera di ottenere, e costringe a dire per ciascuna voce quale pezzo della tua offerta ci risponde. Le voci che restano senza corrispondenza sono la ragione per cui non comprano.</p>
+      <h4><b class="tag">Business Model</b>Quando l'impresa esiste già</h4>
+      <p>Il Business Model Canvas originale di Osterwalder e Pigneur resta lo strumento migliore per descrivere un'attività avviata e ragionare su come cambiarla. Non è incluso qui perché questo strumento guarda alla fase precedente, quella in cui il modello è ancora un'ipotesi. Se hai già clienti, fatturato e fornitori, è quello il foglio da usare.</p>
+      <h4>Il canvas non è un business plan</h4>
+      <p>Non lo sostituisce quando serve davvero un business plan: per una domanda di finanziamento, per una banca, per un bando. Serve a costruirlo con qualcosa di verificato dentro, invece che con proiezioni a cinque anni scritte il giorno prima della scadenza.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Metodo e fonti</summary>
+    <div class="det">
+      <h4>Come funziona il punteggio</h4>
+      <p>Lo strumento non giudica il contenuto di ciò che scrivi: non può sapere se la tua proposta di valore è buona. Misura una cosa sola, e la misura su quello che dichiari tu: quanta parte del canvas poggia su verifiche e quanta su convinzioni.</p>
+      <p>Ogni blocco ha un peso, perché non tutti pesano uguale nella fase iniziale. Problema, segmenti di clientela e proposta di valore valgono il triplo del vantaggio sleale o delle metriche: sbagliare il problema manda a monte tutto il resto, mentre un vantaggio difendibile che ancora non esiste è la norma e non un allarme. Il punteggio è la somma dei pesi moltiplicata per il grado di verifica dichiarato, rapportata al massimo ottenibile.</p>
+      <p>La priorità di verifica combina il peso del blocco con quanto è poco verificato: in cima finisce ciò che conta molto e sai poco, che è la definizione operativa di rischio in una fase iniziale. Un blocco vuoto pesa più di un blocco compilato e dichiarato come semplice ipotesi, perché non aver ancora formulato l'ipotesi è peggio che averla formulata male.</p>
+      <h4>Limiti</h4>
+      <ul>
+        <li>Il grado di verifica lo dichiari tu. Lo strumento non ha modo di controllarlo, e chi bara ottiene un bel numero e nessuna informazione.</li>
+        <li>I pesi valgono per un'impresa che deve ancora partire. In un'attività avviata la gerarchia cambia: i costi e le metriche contano molto più di quanto valgano qui.</li>
+        <li>Un canvas ben compilato non dice che l'idea è buona. Dice che sai cosa stai assumendo, che è un'altra cosa e viene prima.</li>
+        <li>Nessuna valutazione fiscale o societaria. La forma giuridica, il regime e la convenienza dei numeri sono un discorso a parte: per quelli ci sono <a href="../forfettario/">il simulatore del forfettario</a> e <a href="../forfettario-ordinario/">il confronto fra regimi</a>.</li>
+      </ul>
+      <h4>Fonti</h4>
+      <div class="srcs">
+        <div><b>Lean Canvas</b>Ash Maurya, <em>Running Lean</em>, O'Reilly, 2012. Il canvas è un adattamento del Business Model Canvas, distribuito con licenza Creative Commons BY-SA 3.0. <a href="https://leanstack.com/lean-canvas" target="_blank" rel="noopener">leanstack.com</a></div>
+        <div><b>Business Model Canvas</b>Alexander Osterwalder e Yves Pigneur, <em>Business Model Generation</em>, Wiley, 2010. Distribuito da Strategyzer con licenza Creative Commons BY-SA 3.0. <a href="https://www.strategyzer.com/library/the-business-model-canvas" target="_blank" rel="noopener">strategyzer.com</a></div>
+        <div><b>Value Proposition Canvas</b>Alexander Osterwalder, Yves Pigneur, Greg Bernarda e Alan Smith, <em>Value Proposition Design</em>, Wiley, 2014. <a href="https://www.strategyzer.com/library/the-value-proposition-canvas" target="_blank" rel="noopener">strategyzer.com</a></div>
+        <div><b>Sviluppo guidato dal cliente</b>Steve Blank, <em>The Four Steps to the Epiphany</em>, 2005, e Eric Ries, <em>The Lean Startup</em>, Crown Business, 2011, per l'idea di apprendimento convalidato e di ciclo costruisci-misura-impara.</div>
+        <div><b>Come si conducono le interviste</b>Rob Fitzpatrick, <em>The Mom Test</em>, 2013. Il criterio adottato nei suggerimenti di verifica: chiedere del passato e dei comportamenti, mai del futuro e delle opinioni.</div>
+      </div>
+      <h4>Attribuzione</h4>
+      <p>I canvas riprodotti sono opera dei rispettivi autori e sono usati qui nella loro struttura originale, in italiano, alle condizioni della licenza Creative Commons BY-SA con cui sono stati pubblicati. Le domande guida, i suggerimenti di verifica e il sistema di punteggio sono invece originali di questo strumento.</p>
+    </div>
+  </details>
+
+  <footer>
+    <div class="fb"><img id="bearFoot" alt="" src=""><b>Corazzini</b> · Pescara</div>
+    <p>Il canvas è uno strumento di ragionamento, non una valutazione dell'idea né un parere professionale. Serve a rendere visibile quello che stai dando per scontato.</p>
+    <p id="privacyLine">Tutto avviene nel tuo browser. Quello che scrivi resta salvato su questo dispositivo, così non lo perdi chiudendo la pagina, e non viene trasmesso a nessuno. Il pulsante «Cancella tutto» lo rimuove davvero.</p>
+  </footer>
+
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
+  <header><h3 id="shT"></h3><p id="shP"></p></header>
+  <div class="opts" id="shO"></div>
+  <footer><button type="button" class="btn sec" id="shC">Chiudi</button></footer>
+</div>
+
+<script>
+"use strict";
+
+/* emblema Corazzini */
+const BEAR = "data:image/png;base64,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";
+["bearNav","bearPrint","bearFoot"].forEach(id=>{ const e=document.getElementById(id); if(e) e.src=BEAR; });
+
+const $ = id => document.getElementById(id);
+
+/* ================= i due canvas ================= */
+/* n  = ordine di compilazione suggerito dall'autore
+   w  = peso del blocco nella fase iniziale (3 = può far cadere tutto)
+   why= domande guida
+   test = l'esperimento più economico per togliere il blocco dalle ipotesi */
+
+const CANVAS = {
+  lean: {
+    label: "Lean Canvas",
+    print: "Lean Canvas",
+    blocks: [
+      { k:"problema", n:1, w:3, t:"Problema",
+        ph:"I primi tre problemi, in ordine di quanto fanno male.\n\nE sotto: come li risolve oggi, senza di te?",
+        why:["Quali sono i tre problemi principali, ordinati per quanto fanno male e non per quanto sai risolverli?",
+             "Quali sono le alternative attuali? Contano più dei concorrenti diretti: spesso l'alternativa è un foglio di calcolo, un cognato o il non fare nulla.",
+             "Chi ha questo problema se ne lamenta, o ci convive senza farci caso? Un problema tollerato non si vende."],
+        test:"Quindici conversazioni con persone che hanno il problema, senza mai nominare la tua soluzione. Si chiede cosa hanno fatto l'ultima volta che il problema si è presentato, quanto tempo o denaro è costato, e se hanno già provato a risolverlo in qualche modo. Se non hanno mai cercato una soluzione, il problema non fa abbastanza male." },
+      { k:"segmenti", n:2, w:3, t:"Segmenti di clientela",
+        ph:"Chi ha il problema.\n\nE dentro quel gruppo, chi lo sente al punto da muoversi per primo?",
+        why:["Chi è il cliente e chi è l'utente? Non sempre coincidono, e chi paga non sempre è chi usa.",
+             "Chi sono gli early adopter: quelli che hanno il problema così acuto da accettare una soluzione ancora imperfetta?",
+             "Se il segmento è «le piccole imprese», è troppo largo per essere verificato. Restringi finché non diventa una lista di nomi."],
+        test:"Prova a scrivere venti contatti concreti — nomi di persone o ragioni sociali — che potresti chiamare domani mattina. Se non arrivi a venti, il segmento è ancora un'astrazione e ogni altra ipotesi che ci appoggi sopra è indimostrabile." },
+      { k:"uvp", n:3, w:3, t:"Proposta di valore unica",
+        ph:"Una frase sola: perché sei diverso e perché vale la pena ascoltarti.\n\nRivolta al cliente, non a te.",
+        why:["Sapresti dirla in una riga a qualcuno che non sa nulla di te e non ha tempo?",
+             "Il concetto in una riga: a quale cosa già nota assomigli? Serve a farsi capire in tre secondi, non a essere originali.",
+             "Se togli tutti gli aggettivi — innovativo, unico, su misura — resta ancora qualcosa di verificabile?"],
+        test:"Falla leggere a dieci persone del segmento e chiedi di ripetertela con parole loro. Se devono chiederti cosa fai, o se la ripetono diversa, non è ancora una proposta di valore: è una descrizione interna." },
+      { k:"soluzione", n:4, w:2, t:"Soluzione",
+        ph:"Una riga per ciascun problema. La cosa più piccola che lo toglie.",
+        why:["Per ognuno dei problemi elencati, qual è la funzione minima che lo risolve?",
+             "Cosa puoi evitare di costruire e comunque verificare l'ipotesi?",
+             "Stai risolvendo i problemi che hai scritto, o quelli che ti diverte risolvere?"],
+        test:"La prima versione dovrebbe poter funzionare a mano: un foglio di calcolo, qualche messaggio e del lavoro umano dietro le quinte, prima di una riga di codice. Se il valore non si vede nemmeno così, non lo produce il software." },
+      { k:"canali", n:5, w:2, t:"Canali",
+        ph:"Come arrivi ai clienti, e come loro arrivano a te.",
+        why:["Quali canali puoi provare subito, con poco, senza aspettare che il prodotto sia finito?",
+             "Quanto costa acquisire un cliente su quel canale, anche solo a spanne?",
+             "Il canale regge quando finiscono i conoscenti e il passaparola iniziale? È qui che quasi tutti si fermano."],
+        test:"Una pagina, un annuncio e un budget piccolo. Serve a misurare se qualcuno clicca e lascia un contatto, non a vendere. Il numero che cerchi è il costo per contatto: confrontalo con quanto vale un cliente." },
+      { k:"ricavi", n:6, w:2, t:"Flussi di ricavo",
+        ph:"Modello di ricavo, prezzo, e da chi arrivano i soldi.",
+        why:["Il prezzo è un'ipotesi come tutte le altre: su cosa si basa, oltre al confronto con i concorrenti?",
+             "Si paga una volta o in modo ricorrente? E chi paga è chi usa?",
+             "Quanto vale un cliente nel tempo, e in quanto tempo recuperi quello che è costato acquisirlo?"],
+        test:"Il prezzo si verifica chiedendo di pagare, non chiedendo «quanto pagheresti». Un preordine, un acconto o una lettera d'intenti firmata valgono più di cento risposte a un questionario, perché costano qualcosa a chi le dà." },
+      { k:"costi", n:7, w:1, t:"Struttura dei costi",
+        ph:"Cosa costa arrivare al lancio e cosa costa restare in piedi ogni mese.",
+        why:["Quali sono le tre voci più pesanti, fra fisse e variabili?",
+             "Quanti clienti servono al mese per arrivare al pareggio?",
+             "Quanti mesi di autonomia hai ai ritmi attuali, e cosa succede al mese prima della fine?"],
+        test:"Metti a terra i numeri con il fisco dentro, perché è la voce che nei primi conti sparisce sempre: <a href=\"../forfettario/\">il simulatore del forfettario</a> mostra imposta, contributi e scadenze sui primi cinque anni, e <a href=\"../forfettario-ordinario/\">il confronto fra regimi</a> dice da che punto in poi conviene cambiare." },
+      { k:"metriche", n:8, w:1, t:"Metriche chiave",
+        ph:"L'unico numero che ti dice se stai andando da qualche parte.",
+        why:["Qual è la metrica che, se sale, dice davvero che funziona?",
+             "Sai distinguere i numeri che contano da quelli che consolano — visite, follower, iscritti, impression?",
+             "Con che frequenza la guardi, e cosa faresti diversamente se scendesse per tre settimane?"],
+        test:"Scegline una sola e scrivi accanto il valore di oggi e quello che ti aspetti fra un mese. Una metrica senza un numero atteso non serve a decidere niente: serve solo a essere mostrata." },
+      { k:"vantaggio", n:9, w:1, t:"Vantaggio sleale",
+        ph:"Quello che non si compra e non si copia.\n\nSe per ora è vuoto, va bene così.",
+        why:["Cosa hai che un concorrente ben finanziato non può replicare in sei mesi?",
+             "Non sono vantaggi difendibili: la passione, l'essere arrivato primo, le funzionalità, il team affiatato.",
+             "Lo sono più spesso: un'informazione che hai solo tu, una comunità già tua, un'autorevolezza costruita negli anni, un accordo esclusivo, un effetto rete."],
+        test:"È l'unico blocco che all'inizio è legittimamente vuoto: il vantaggio difendibile quasi sempre si costruisce strada facendo. Lasciarlo vuoto e saperlo è corretto; riempirlo con «la nostra passione» è il modo di smettere di cercarlo." }
+    ]
+  },
+  vpc: {
+    label: "Value Proposition Canvas",
+    print: "Value Proposition Canvas",
+    blocks: [
+      { k:"attivita", n:1, w:3, t:"Attività del cliente",
+        ph:"Cosa sta cercando di fare, in concreto.\n\nCompiti pratici, ma anche sociali ed emotivi.",
+        why:["Quali compiti pratici sta cercando di portare a termine?",
+             "Quali compiti sociali: come vuole essere visto dagli altri mentre lo fa?",
+             "Quali emotivi: cosa vuole sentire, o smettere di sentire?"],
+        test:"Osserva invece di chiedere. Farsi raccontare l'ultima volta in cui ha svolto quell'attività, passo per passo, fa emergere compiti che nessuno elenca spontaneamente perché li dà per scontati." },
+      { k:"problemi", n:2, w:3, t:"Problemi",
+        ph:"Cosa va storto prima, durante e dopo.\n\nOstacoli, rischi, costi, tempo perso.",
+        why:["Cosa trova troppo costoso: soldi, tempo, fatica, figuracce?",
+             "Cosa lo fa sentire male mentre svolge l'attività?",
+             "Quali rischi teme, e cosa succede in concreto se va male?"],
+        test:"Chiedi di quantificare: quante ore, quanti euro, quante volte al mese. Un problema che nessuno riesce a quantificare di solito è un fastidio, e i fastidi non finanziano un'impresa." },
+      { k:"vantaggi", n:3, w:2, t:"Vantaggi attesi",
+        ph:"Quali risultati spera di ottenere.\n\nNecessari, attesi, desiderati, inattesi.",
+        why:["Quali risultati considera indispensabili, senza i quali la soluzione non è utilizzabile?",
+             "Cosa lo farebbe passare da soddisfatto a entusiasta?",
+             "A cosa misura il successo: che numero guarda, o che cosa si aspetta di poter dire?"],
+        test:"Distingui i vantaggi necessari da quelli desiderati. Costruire per primi quelli desiderati, saltando i necessari, è il modo più comune di fare un prodotto che piace a tutti e non usa nessuno." },
+      { k:"prodotti", n:4, w:2, t:"Prodotti e servizi",
+        ph:"L'elenco di ciò che offri, nudo, senza aggettivi.",
+        why:["Cosa offri esattamente: prodotti fisici, servizi, digitale, accesso a qualcosa?",
+             "Quali voci servono i compiti più importanti del cliente, e quali servono solo a completare il catalogo?",
+             "Cosa potresti togliere senza che il cliente se ne accorga?"],
+        test:"Metti ogni voce accanto a un'attività del cliente. Quelle che non si agganciano a niente sono costi che ti sei dato da solo." },
+      { k:"riduttori", n:5, w:3, t:"Riduttori di problema",
+        ph:"Come, precisamente, togli ciascun problema della colonna a destra.",
+        why:["Per ciascun problema elencato, quale pezzo della tua offerta lo riduce e di quanto?",
+             "Riduci i problemi che il cliente ha messo in cima, o quelli che ti è più comodo affrontare?",
+             "Quali problemi restano scoperti, e riesci a conviverci?"],
+        test:"Il fit si vede dalle corrispondenze, non dal riempimento. Traccia una riga da ogni problema al riduttore che lo copre: i problemi importanti senza riga sono il motivo per cui la vendita si blocca." },
+      { k:"generatori", n:6, w:2, t:"Generatori di vantaggio",
+        ph:"Come produci i risultati che il cliente si aspetta.",
+        why:["Quali vantaggi attesi produci in modo evidente, e quali solo in teoria?",
+             "Superi le aspettative su qualcosa che al cliente interessa davvero?",
+             "Il cliente se ne accorge da solo, o glielo devi spiegare ogni volta?"],
+        test:"Chiedi a chi ha già provato la soluzione di descrivere cosa ci ha guadagnato. Se la risposta non somiglia a quello che hai scritto qui, il vantaggio esiste nella tua testa e non nella sua." }
+    ]
+  }
+};
+
+const CONF = [
+  { c:0, lbl:"Ipotesi",    full:"Ipotesi non verificata", col:"#CF4B4B" },
+  { c:1, lbl:"Indizi",     full:"Qualche indizio",        col:"#D69A2E" },
+  { c:2, lbl:"Verificata", full:"Verificata sul campo",   col:"#2E9C6A" }
+];
+
+/* ================= stato ================= */
+const KEY = "corazzini-canvas-v1";
+let state = { lean:{}, vpc:{} };
+let active = "lean";
+
+function blank(){
+  const s = { lean:{}, vpc:{} };
+  for (const set of ["lean","vpc"])
+    CANVAS[set].blocks.forEach(b => s[set][b.k] = { v:"", c:0 });
+  return s;
+}
+
+function load(){
+  state = blank();
+  let raw = null;
+  try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+  if (!raw) return;
+  try {
+    const d = JSON.parse(raw);
+    merge(d);
+  } catch(e) { /* dato illeggibile: si riparte dal canvas vuoto */ }
+}
+
+function merge(d){
+  if (!d || typeof d !== "object") return;
+  for (const set of ["lean","vpc"]) {
+    if (!d[set] || typeof d[set] !== "object") continue;
+    CANVAS[set].blocks.forEach(b => {
+      const src = d[set][b.k];
+      if (!src || typeof src !== "object") return;
+      state[set][b.k] = {
+        v: typeof src.v === "string" ? src.v : "",
+        c: [0,1,2].includes(src.c) ? src.c : 0
+      };
+    });
+  }
+}
+
+let saveT = null;
+function save(){
+  clearTimeout(saveT);
+  saveT = setTimeout(()=>{
+    try {
+      localStorage.setItem(KEY, JSON.stringify(state));
+      flash("Salvato sul dispositivo");
+    } catch(e) {
+      flash("Non riesco a salvare in questo browser: scarica il file per non perdere il lavoro.", true);
+    }
+  }, 550);
+}
+
+let flashT = null;
+function flash(msg, warn){
+  const el = $("savedMsg");
+  el.innerHTML = warn ? msg : "<b>&#10003;</b> " + msg;
+  clearTimeout(flashT);
+  if (!warn) flashT = setTimeout(()=>{ el.textContent = ""; }, 2600);
+}
+
+/* ================= render ================= */
+function grow(ta){
+  ta.style.height = "auto";
+  ta.style.height = Math.max(56, ta.scrollHeight) + "px";
+}
+
+function buildGrid(set, host){
+  host.innerHTML = "";
+  CANVAS[set].blocks.forEach(b=>{
+    const d = document.createElement("div");
+    d.className = "blk";
+    d.dataset.k = b.k;
+    d.dataset.set = set;
+
+    const h = document.createElement("div");
+    h.className = "bh";
+    h.innerHTML = '<span class="bn">' + b.n + '</span><h3></h3>' +
+                  '<button type="button" class="why" aria-label="Domande guida">?</button>';
+    h.querySelector("h3").textContent = b.t;
+    h.querySelector(".why").addEventListener("click", ()=>openSheet(set, b.k));
+    d.appendChild(h);
+
+    const ta = document.createElement("textarea");
+    ta.placeholder = b.ph;
+    ta.setAttribute("aria-label", b.t);
+    ta.value = state[set][b.k].v;
+    ta.addEventListener("input", ()=>{
+      state[set][b.k].v = ta.value;
+      d.querySelector(".prv").textContent = ta.value;
+      grow(ta); refresh(); save();
+    });
+    d.appendChild(ta);
+
+    const prv = document.createElement("div");
+    prv.className = "prv";
+    prv.textContent = state[set][b.k].v;
+    d.appendChild(prv);
+
+    const f = document.createElement("div");
+    f.className = "bf";
+    const c = document.createElement("div");
+    c.className = "conf";
+    c.setAttribute("role","group");
+    c.setAttribute("aria-label","Grado di verifica");
+    CONF.forEach(o=>{
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.dataset.c = o.c;
+      btn.textContent = o.lbl;
+      btn.title = o.full;
+      btn.addEventListener("click", ()=>{
+        state[set][b.k].c = o.c;
+        paint(d, set, b.k); refresh(); save();
+      });
+      c.appendChild(btn);
+    });
+    f.appendChild(c);
+    d.appendChild(f);
+
+    host.appendChild(d);
+    paint(d, set, b.k);
+    requestAnimationFrame(()=>grow(ta));
+  });
+}
+
+function paint(d, set, k){
+  const st = state[set][k];
+  const empty = st.v.trim() === "";
+  d.dataset.empty = empty ? "1" : "0";
+  d.querySelectorAll(".conf button").forEach(btn=>{
+    btn.setAttribute("aria-pressed", (!empty && +btn.dataset.c === st.c) ? "true" : "false");
+  });
+}
+
+function repaintAll(){
+  document.querySelectorAll(".blk").forEach(d=>paint(d, d.dataset.set, d.dataset.k));
+}
+
+/* ================= punteggio ================= */
+function score(set){
+  const bs = CANVAS[set].blocks;
+  let got = 0, max = 0, filled = 0, verified = 0;
+  const rank = [];
+  bs.forEach(b=>{
+    const st = state[set][b.k];
+    const empty = st.v.trim() === "";
+    max += b.w * 2;
+    if (!empty) { filled++; got += b.w * st.c; if (st.c === 2) verified++; }
+    /* blocco vuoto = 3, ipotesi = 2, indizi = 1, verificata = 0 */
+    const gap = empty ? 3 : (2 - st.c);
+    if (gap > 0) rank.push({ b, gap, empty, p: b.w * gap });
+  });
+  rank.sort((x,y)=> y.p - x.p || x.b.n - y.b.n);
+  return { pct: max ? Math.round(got / max * 100) : 0, filled, verified, tot: bs.length, rank };
+}
+
+function hue(pct, filled){
+  if (!filled) return "#8B9CA8";
+  if (pct < 25) return "#CF4B4B";
+  if (pct < 60) return "#D69A2E";
+  return "#2E9C6A";
+}
+
+function verdict(s){
+  if (!s.filled) return ["—","Compila il primo blocco per iniziare. Nessuno ha mai avuto un canvas verde al primo giorno."];
+  if (s.filled < s.tot) return [s.pct + "%","Il canvas non è ancora completo: " + (s.tot - s.filled) + " blocchi su " + s.tot + " sono vuoti. Un blocco vuoto non è un'assenza di rischio, è un rischio che non hai ancora guardato."];
+  if (s.pct < 25) return [s.pct + "%","Tutto in piedi sulle tue convinzioni. È la condizione normale del primo giorno: diventa un problema solo se ci si costruisce sopra qualcosa di costoso prima di verificare."];
+  if (s.pct < 60) return [s.pct + "%","Qualcosa è stato verificato, il resto è ancora da controllare. È la fase in cui conviene resistere alla tentazione di costruire e continuare a parlare con le persone."];
+  if (s.pct < 85) return [s.pct + "%","La maggior parte delle ipotesi ha retto alla prova. Restano da chiudere le ultime, che di solito sono le più scomode."];
+  return [s.pct + "%","Poco è rimasto allo stato di ipotesi. Se è onesto, non stai più validando un'idea: stai facendo impresa e i conti iniziano a contare più del canvas."];
+}
+
+function refresh(){
+  const set = active;
+  const s = score(set);
+  const col = hue(s.pct, s.filled);
+  const [v, txt] = verdict(s);
+
+  document.documentElement.style.setProperty("--dyn", col);
+  $("oV").textContent = v;
+  $("oS").textContent = txt;
+  $("oBar").style.width = (s.filled ? s.pct : 0) + "%";
+
+  $("oFacts").innerHTML =
+    fact("Canvas", CANVAS[set].label) +
+    fact("Blocchi compilati", s.filled + " su " + s.tot) +
+    fact("Verificate sul campo", s.verified + " su " + s.tot);
+
+  const note = $("oNotice");
+  if (s.filled === s.tot && s.verified === 0) {
+    note.innerHTML = notice("warn","!","<b>Canvas completo, nulla di verificato.</b> È il momento più pericoloso: il foglio pieno dà la sensazione di avere un piano, ma per ora contiene soltanto ipotesi ordinate bene.");
+  } else if (s.pct >= 85 && s.filled === s.tot) {
+    note.innerHTML = notice("ok","&#10003;","<b>Le ipotesi hanno retto.</b> Da qui in avanti le domande diventano di struttura: forma giuridica, regime fiscale, contributi, soglie. È il punto in cui vale la pena parlarne con un commercialista, e in cui gli <a href=\"../\">altri strumenti</a> iniziano a servire.");
+  } else {
+    note.innerHTML = "";
+  }
+
+  const p = $("oPrio");
+  if (!s.rank.length) {
+    p.innerHTML = s.filled ? "<p>Ogni blocco è dichiarato verificato. Non resta niente da mettere alla prova: rileggi le etichette e chiediti se reggerebbero davanti a qualcuno che non ha interesse a darti ragione.</p>" : "";
+    return;
+  }
+  const top = s.rank.slice(0, 3);
+  p.innerHTML = "<p>Da verificare per primo, tenendo insieme quanto pesa il blocco e quanto poco ne sai:</p>" +
+    top.map((r,i)=>{
+      const st = state[set][r.b.k];
+      const lab = r.empty ? "Blocco vuoto" : CONF[st.c].full;
+      return '<div class="pi">' +
+        '<span class="rk" style="background:' + (i===0 ? "#CF4B4B" : i===1 ? "#D69A2E" : "#8B9CA8") + '">' + (i+1) + '</span>' +
+        '<div class="tx"><em>' + lab + '</em><b>' + r.b.t + '</b><p>' + r.b.test + '</p></div></div>';
+    }).join("");
+}
+
+function fact(k, v){ return '<div><div class="k">' + k + '</div><div class="v">' + v + '</div></div>'; }
+function notice(cls, ic, html){ return '<div class="notice ' + cls + '"><span class="ic">' + ic + '</span><div>' + html + '</div></div>'; }
+
+/* ================= sheet ================= */
+function openSheet(set, k){
+  const b = CANVAS[set].blocks.find(x=>x.k === k);
+  $("shT").textContent = b.t;
+  $("shP").textContent = "Blocco " + b.n + " di " + CANVAS[set].blocks.length + " · " + CANVAS[set].label;
+  $("shO").innerHTML =
+    "<h5>Domande guida</h5><ul>" + b.why.map(q=>"<li>" + q + "</li>").join("") + "</ul>" +
+    '<div class="tst"><h5>Come si toglie dalle ipotesi</h5><p>' + b.test + "</p></div>";
+  $("sheetBg").classList.add("on");
+  $("sheet").classList.add("on");
+}
+function closeSheet(){
+  $("sheetBg").classList.remove("on");
+  $("sheet").classList.remove("on");
+}
+$("shC").addEventListener("click", closeSheet);
+$("sheetBg").addEventListener("click", closeSheet);
+document.addEventListener("keydown", e=>{ if (e.key === "Escape") closeSheet(); });
+
+/* ================= tab ================= */
+function setTab(which){
+  active = which;
+  $("tabLean").setAttribute("aria-selected", which === "lean" ? "true" : "false");
+  $("tabVpc").setAttribute("aria-selected", which === "vpc" ? "true" : "false");
+  $("cvLean").classList.toggle("on", which === "lean");
+  $("cvVpc").classList.toggle("on", which === "vpc");
+  document.querySelectorAll(".cv.on textarea").forEach(grow);
+  refresh();
+}
+$("tabLean").addEventListener("click", ()=>setTab("lean"));
+$("tabVpc").addEventListener("click", ()=>setTab("vpc"));
+
+/* ================= azioni ================= */
+function hasContent(set){
+  return CANVAS[set].blocks.some(b=>state[set][b.k].v.trim() !== "");
+}
+
+$("btnPrint").addEventListener("click", ()=>{
+  /* stampa entrambi i canvas se entrambi hanno contenuto, altrimenti quello attivo */
+  const l = hasContent("lean"), v = hasContent("vpc");
+  const both = l && v;
+  $("cvLean").dataset.print = (both || (l && !v) || (!l && !v && active === "lean")) ? "1" : "0";
+  $("cvVpc").dataset.print  = (both || (v && !l) || (!l && !v && active === "vpc"))  ? "1" : "0";
+  $("printT").textContent = both ? "Lean Canvas e Value Proposition Canvas"
+                                 : ($("cvLean").dataset.print === "1" ? CANVAS.lean.print : CANVAS.vpc.print);
+  $("printDate").textContent = new Date().toLocaleDateString("it-IT", { day:"numeric", month:"long", year:"numeric" });
+  window.print();
+});
+
+$("btnExport").addEventListener("click", ()=>{
+  const payload = {
+    strumento: "corazzini-canvas",
+    versione: 1,
+    salvato: new Date().toISOString(),
+    lean: state.lean,
+    vpc: state.vpc
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type:"application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "canvas-" + new Date().toISOString().slice(0,10) + ".json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  flash("File scaricato");
+});
+
+$("btnImport").addEventListener("click", ()=>$("fileIn").click());
+$("fileIn").addEventListener("change", e=>{
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    let d = null;
+    try { d = JSON.parse(r.result); }
+    catch(err) { flash("Il file non è leggibile: dev'essere un canvas scaricato da questa pagina.", true); return; }
+    state = blank();
+    merge(d);
+    buildGrid("lean", $("gridLean"));
+    buildGrid("vpc", $("gridVpc"));
+    setTab(active);
+    save();
+    flash("Canvas caricato");
+  };
+  r.readAsText(f);
+  e.target.value = "";
+});
+
+$("btnClear").addEventListener("click", ()=>{
+  if (!confirm("Cancella tutto quello che hai scritto nei due canvas. L'operazione non si annulla: se vuoi conservarne una copia, scarica prima il file.")) return;
+  state = blank();
+  try { localStorage.removeItem(KEY); } catch(e) {}
+  buildGrid("lean", $("gridLean"));
+  buildGrid("vpc", $("gridVpc"));
+  setTab(active);
+  flash("Cancellato");
+});
+
+window.addEventListener("resize", ()=>{
+  document.querySelectorAll(".cv.on textarea").forEach(grow);
+});
+
+/* ================= avvio ================= */
+load();
+buildGrid("lean", $("gridLean"));
+buildGrid("vpc", $("gridVpc"));
+setTab("lean");
+if (hasContent("lean") || hasContent("vpc")) flash("Ripreso da dove avevi lasciato");
+</script>
+</body>
+</html>
