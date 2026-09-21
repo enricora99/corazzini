@@ -489,3 +489,38 @@ create policy "items storage: cancellazione solo dei propri file" on storage.obj
     bucket_id = 'items'
     and (storage.foldername(name))[1] = (select auth.uid())::text
   );
+
+
+-- ---------------------------------------------------------------------------
+-- Immagini degli outfit generate dai modelli.
+--
+-- Bucket separato e non una cartella dentro `items`: là dentro gli amici
+-- hanno accesso in lettura, e il permesso è pensato per i capi. Un outfit
+-- generato non è un capo di nessuno, quindi lo vede soltanto chi l'ha
+-- chiesto.
+-- ---------------------------------------------------------------------------
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'outfits',
+  'outfits',
+  false,
+  8 * 1024 * 1024,
+  array['image/png', 'image/webp', 'image/jpeg']
+)
+on conflict (id) do update
+  set public = false,
+      file_size_limit = excluded.file_size_limit,
+      allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "outfits storage: solo il proprietario" on storage.objects;
+create policy "outfits storage: solo il proprietario" on storage.objects
+  for all to authenticated
+  using (
+    bucket_id = 'outfits'
+    and (storage.foldername(name))[1] = (select auth.uid())::text
+  )
+  with check (
+    bucket_id = 'outfits'
+    and (storage.foldername(name))[1] = (select auth.uid())::text
+  );
