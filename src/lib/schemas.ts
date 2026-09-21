@@ -15,6 +15,18 @@ export const waitlistSchema = z.object({
 
 export type WaitlistInput = z.infer<typeof waitlistSchema>;
 
+/** Accesso: email più la dichiarazione di essere maggiorenne. */
+export const loginSchema = z.object({
+  email: z
+    .email({ error: "Controlla l'indirizzo: manca qualcosa." })
+    .trim()
+    .toLowerCase()
+    .max(254, { error: "Questo indirizzo è troppo lungo." }),
+  adult: z.literal(true, {
+    error: "VESTA è riservata ai maggiorenni.",
+  }),
+});
+
 /** Le occasioni previste dall'MVP. Le usa anche il prompt degli outfit. */
 export const OCCASIONS = [
   "lavoro",

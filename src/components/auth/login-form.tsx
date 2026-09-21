@@ -2,23 +2,23 @@
 
 import Link from "next/link";
 import { useActionState, useId } from "react";
-import { CircleAlert, PartyPopper } from "lucide-react";
+import { CircleAlert, MailCheck } from "lucide-react";
 
-import { joinWaitlist } from "@/app/actions/waitlist";
-import { initialWaitlistState } from "@/lib/waitlist";
+import { inviaLinkAccesso } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import { CheckField } from "@/components/ui/check-field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { statoIniziale } from "@/lib/form-state";
 
-export function WaitlistForm() {
+export function LoginForm({ prossima }: { prossima: string }) {
   const [state, formAction, isPending] = useActionState(
-    joinWaitlist,
-    initialWaitlistState
+    inviaLinkAccesso,
+    statoIniziale
   );
 
   const emailId = useId();
-  const consentId = useId();
+  const adultId = useId();
   const emailErrorId = `${emailId}-errore`;
 
   if (state.status === "success") {
@@ -28,15 +28,22 @@ export function WaitlistForm() {
         className="flex flex-col items-center gap-4 rounded-3xl border border-border bg-card px-7 py-12 text-center"
       >
         <span className="flex size-14 items-center justify-center rounded-2xl bg-primary">
-          <PartyPopper
+          <MailCheck
             className="size-7 text-primary-foreground"
             aria-hidden
             strokeWidth={2}
           />
         </span>
-        <p className="font-heading text-xl font-extrabold">{state.message}</p>
-        <p className="text-muted-foreground">
-          Nel frattempo, inizia a pensare a quel capo che non metti da mesi.
+        <h2 className="font-heading text-xl font-extrabold">
+          Guarda la tua email
+        </h2>
+        <p className="text-muted-foreground text-pretty">
+          Abbiamo mandato un link a{" "}
+          <strong className="text-foreground">{state.message}</strong>. Aprilo
+          da questo stesso dispositivo: è lì che sei già a metà dell&apos;accesso.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Non arriva? Controlla lo spam, poi riprova tra un minuto.
         </p>
       </div>
     );
@@ -48,18 +55,7 @@ export function WaitlistForm() {
       noValidate
       className="space-y-5 rounded-3xl border border-border bg-card p-7 sm:p-10"
     >
-      {/* Esca per i bot. Nascosto agli occhi e alle tecnologie assistive,
-          e fuori dall'ordine di tabulazione: un umano non lo incontra mai. */}
-      <div aria-hidden className="hidden">
-        <label htmlFor="website">Non compilare questo campo</label>
-        <input
-          id="website"
-          name="website"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-        />
-      </div>
+      <input type="hidden" name="prossima" value={prossima} />
 
       <div className="space-y-2">
         <Label htmlFor={emailId} className="text-base font-bold">
@@ -72,10 +68,13 @@ export function WaitlistForm() {
           inputMode="email"
           autoComplete="email"
           required
+          autoFocus
           placeholder="nome@esempio.it"
-          // Rimette quello che aveva scritto: dopo un errore il campo
-          // altrimenti torna vuoto e tocca ribattere l'indirizzo.
-          defaultValue={state.values?.email}
+          defaultValue={
+            typeof state.values?.email === "string"
+              ? state.values.email
+              : undefined
+          }
           aria-invalid={Boolean(state.errors?.email)}
           aria-describedby={state.errors?.email ? emailErrorId : undefined}
           className="h-12 text-base"
@@ -85,16 +84,18 @@ export function WaitlistForm() {
             {state.errors.email}
           </p>
         ) : null}
+        <p className="text-sm text-muted-foreground">
+          Niente password: ti mandiamo un link e sei dentro.
+        </p>
       </div>
 
       <CheckField
-        id={consentId}
-        name="consent"
-        defaultChecked={state.values?.consent}
-        error={state.errors?.consent}
+        id={adultId}
+        name="adult"
+        defaultChecked={state.values?.adult === true}
+        error={state.errors?.adult}
       >
-        Acconsento al trattamento dei miei dati per essere avvisato
-        all&apos;uscita di VESTA, come descritto nella{" "}
+        Confermo di avere almeno 18 anni e accetto la{" "}
         <Link
           href="/privacy"
           className="font-semibold text-foreground underline underline-offset-4"
@@ -120,7 +121,7 @@ export function WaitlistForm() {
         disabled={isPending}
         className="h-13 w-full text-base font-bold"
       >
-        {isPending ? "Un attimo…" : "Entra in lista d'attesa"}
+        {isPending ? "Un attimo…" : "Mandami il link"}
       </Button>
     </form>
   );
