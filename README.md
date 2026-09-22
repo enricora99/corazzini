@@ -272,15 +272,32 @@ generato non è un capo di nessuno.
 ## Deploy
 
 Vercel, regione **`fra1`** (Francoforte), la stessa del database: ogni query
-che attraversa l'Atlantico si paga in millisecondi.
+che attraversa l'Atlantico si paga in millisecondi. La regione e le
+intestazioni di sicurezza stanno già in [`vercel.json`](vercel.json), quindi
+non vanno reimpostate a mano.
 
 1. Importa il repository su Vercel
 2. Copia le variabili di `.env.local` nelle impostazioni del progetto
-3. In *Settings → Functions*, imposta la regione su `fra1`
-4. Metti `NEXT_PUBLIC_SITE_URL` al dominio vero
-5. In Supabase, aggiungi `https://<dominio>/auth/callback` fra i *Redirect
+3. Metti `NEXT_PUBLIC_SITE_URL` al dominio vero
+4. In Supabase, aggiungi `https://<dominio>/auth/callback` fra i *Redirect
    URLs* dell'autenticazione, altrimenti i link di accesso rimandano a
    localhost
+
+### Metterlo sotto un sottodominio
+
+Se il dominio ospita anche altro (un sito su un'altra piattaforma, una casella
+di posta), la via sicura è un sottodominio: si **aggiunge** un record, non se
+ne modifica nessuno.
+
+1. Su Vercel, *Settings → Domains*, aggiungi `vesta.iltuodominio.it`
+2. Sul pannello DNS del dominio, crea un record:
+   `vesta`  CNAME  `cname.vercel-dns.com`
+3. Aspetta la propagazione e metti quel dominio in `NEXT_PUBLIC_SITE_URL`
+
+> **Non toccare i record MX e il TXT che inizia con `v=spf1`.** Sono la posta
+> elettronica del dominio: il sito e le email vivono sugli stessi record DNS
+> ma su righe diverse, e cancellare la riga sbagliata fa sparire le email
+> senza nessun avviso. Per il sito servono solo `A`, `AAAA` e `CNAME`.
 
 ## Brand
 
