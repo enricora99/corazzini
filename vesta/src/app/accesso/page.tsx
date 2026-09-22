@@ -7,10 +7,17 @@ import { protezioneAttiva } from "@/lib/access";
 import { conBase } from "@/lib/base-path";
 import { PORTALE, portaleOspitato } from "@/lib/portal";
 
-export const metadata: Metadata = {
-  title: "Accesso riservato",
-  robots: { index: false, follow: false },
-};
+/**
+ * Il titolo usa `absolute` per scavalcare il modello «%s · VESTA» del layout:
+ * quando il portale porta il nome di chi ospita l'app, la scheda del browser
+ * non deve annunciare un marchio diverso da quello sulla pagina.
+ */
+export function generateMetadata(): Metadata {
+  return {
+    title: { absolute: `Accesso riservato · ${PORTALE.nome}` },
+    robots: { index: false, follow: false },
+  };
+}
 
 /**
  * Valutata a ogni richiesta, non una volta sola al build.
