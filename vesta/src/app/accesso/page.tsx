@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+/**
+ * Deve essere valutata a ogni richiesta, non una volta sola al build.
+ *
+ * Altrimenti: se durante il build `ACCESS_CODE` non è leggibile — su Vercel
+ * capita con le variabili marcate come sensibili — questa pagina viene
+ * generata nella sua forma «protezione spenta», cioè un reindirizzamento
+ * verso la home. Risultato: il cancello rimanda sempre indietro e nessuno
+ * può più inserire il codice, nemmeno chi ce l'ha.
+ */
+export const dynamic = "force-dynamic";
+
 function destinazioneSicura(prossima: string | string[] | undefined): string {
   if (typeof prossima !== "string") return "/";
   if (!prossima.startsWith("/") || prossima.startsWith("//")) return "/";
