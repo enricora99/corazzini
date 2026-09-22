@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import { ServiceWorker } from "@/components/service-worker";
 import { Toaster } from "@/components/ui/sonner";
+import { PORTALE } from "@/lib/portal";
 import { SITE_URL } from "@/lib/site";
 import { conBase } from "@/lib/base-path";
 import "./globals.css";
@@ -27,7 +28,18 @@ export const metadata: Metadata = {
   applicationName: "VESTA",
   manifest: conBase("/manifest.webmanifest"),
   // Le icone le prende Next da src/app/icon.png e src/app/apple-icon.png,
-  // aggiungendo da sé dimensioni e impronta per la cache.
+  // aggiungendo da sé dimensioni e impronta per la cache. Quando l'app gira
+  // dentro il sito di qualcun altro, però, la scheda del browser mostra il
+  // dominio di quel sito: l'icona giusta è la sua, non la nostra.
+  ...(PORTALE.favicon
+    ? {
+        icons: {
+          icon: PORTALE.favicon,
+          shortcut: PORTALE.favicon,
+          apple: PORTALE.favicon,
+        },
+      }
+    : {}),
   appleWebApp: {
     capable: true,
     title: "VESTA",

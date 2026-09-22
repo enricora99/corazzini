@@ -366,7 +366,106 @@ strong { font-weight: var(--fw-bold); color: var(--text-strong); }
 .btn-ink { background: var(--ink-900); color: var(--text-on-ink); border: 1px solid var(--ink-900); box-shadow: var(--shadow-sm); }
 .btn-ink:hover { color: var(--text-on-ink); }
 .btn-outline { background: transparent; color: var(--text-strong); border: 1px solid var(--border-strong); }
+
+/* ---- Gradiente dinamico sui pulsanti d'azione ----
+   La sfumatura e' piu' larga del pulsante e scorre quando ci passi sopra o
+   lo premi. Lo stato premuto conta quanto l'altro: su telefono l'hover non
+   esiste, e senza di quello l'effetto si vedrebbe solo da computer.
+   Tutti e tre i toni sono nella famiglia glacier e il testo sopra resta
+   bianco: il contrasto non scende sotto quello del blu pieno. */
+.btn-primary, .header-cta {
+  background-image: linear-gradient(118deg,
+    var(--glacier-600) 0%,
+    var(--glacier-500) 30%,
+    var(--glacier-400) 56%,
+    var(--glacier-500) 78%,
+    var(--glacier-600) 100%);
+  background-size: 210% 210%;
+  background-position: 12% 50%;
+  border-color: var(--glacier-600);
+  color: var(--snow-0);
+  transition: background-position .55s cubic-bezier(.22,.61,.36,1),
+              box-shadow .25s var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.btn-primary:hover, .header-cta:hover {
+  background-position: 88% 50%;
+  color: var(--snow-0);
+  /* `filter: brightness` di .btn sbiadirebbe la sfumatura: qui basta l'ombra. */
+  filter: none;
+  box-shadow: 0 8px 22px -10px var(--glacier-600);
+}
+.btn-primary:active, .header-cta:active { background-position: 100% 50%; }
+
 .btn-outline:hover { color: var(--text-strong); }
+
+/* ============================================================
+   Sfondo geometrico animato
+   ------------------------------------------------------------
+   Un velo di forme sottili — anelli, punti, un quadrato ruotato —
+   che derivano lentamente e si accendono e spengono su tempi lunghi
+   e diversi fra loro, cosi' non si sincronizzano mai e l'occhio non
+   riconosce un ciclo.
+
+   Sta dietro a tutto (`z-index: 0`) ed e' fisso: le sezioni con uno
+   sfondo pieno lo coprono da sole, quelle chiare lo lasciano
+   trasparire. Cosi' non serve aggiungerlo sezione per sezione.
+
+   Le opacita' sono volutamente bassissime: deve accorgersene solo chi
+   guarda un momento di troppo. Un motivo che si nota e' un motivo che
+   disturba la lettura.
+   ============================================================ */
+.geo-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.geo {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.geo-ring {
+  border-radius: 50%;
+  border: 1.5px solid var(--glacier-200);
+}
+.geo-ring-dash { border-style: dashed; border-color: var(--frost-300); }
+.geo-dot { border-radius: 50%; background: var(--glacier-200); }
+.geo-square { border: 1.5px solid var(--glacier-100); border-radius: 6px; }
+.geo-line { height: 1.5px; background: linear-gradient(90deg, transparent, var(--glacier-200), transparent); }
+
+/* Il contenuto deve stare sopra il velo. Senza queste due righe l'ordine di
+   sovrapposizione dipenderebbe da dettagli dell'ordine nel documento, che e'
+   il tipo di cosa che funziona finche' qualcuno non sposta una sezione. */
+.cz-header, #app > main, #app > footer { position: relative; z-index: 1; }
+
+@keyframes geoDrift {
+  0%   { opacity: 0;   transform: translate3d(0,0,0) rotate(0deg); }
+  18%  { opacity: var(--geo-max, .5); }
+  72%  { opacity: var(--geo-max, .5); }
+  100% { opacity: 0;   transform: translate3d(var(--geo-dx, 30px), var(--geo-dy, -40px), 0) rotate(var(--geo-rot, 25deg)); }
+}
+
+.geo-1 { top: 12%;  left: -6%;  width: 260px; height: 260px; --geo-dx: 60px;  --geo-dy: -50px; --geo-max: .55; animation: geoDrift 38s ease-in-out infinite; }
+.geo-2 { top: 58%;  right: -8%; width: 340px; height: 340px; --geo-dx: -70px; --geo-dy: 40px;  --geo-max: .4;  animation: geoDrift 47s ease-in-out infinite 6s; }
+.geo-3 { top: 34%;  left: 22%;  width: 10px;  height: 10px;  --geo-dx: 40px;  --geo-dy: -70px; --geo-max: .7;  animation: geoDrift 29s ease-in-out infinite 3s; }
+.geo-4 { top: 76%;  left: 12%;  width: 7px;   height: 7px;   --geo-dx: -30px; --geo-dy: -60px; --geo-max: .6;  animation: geoDrift 33s ease-in-out infinite 11s; }
+.geo-5 { top: 22%;  right: 16%; width: 78px;  height: 78px;  --geo-rot: 45deg; --geo-dx: -20px; --geo-dy: 50px; --geo-max: .65; animation: geoDrift 41s ease-in-out infinite 9s; }
+.geo-6 { top: 88%;  right: 26%; width: 150px; height: 150px; --geo-dx: 30px;  --geo-dy: -45px; --geo-max: .45; animation: geoDrift 52s ease-in-out infinite 15s; }
+.geo-7 { top: 47%;  left: 4%;   width: 180px; --geo-dx: 50px; --geo-dy: 30px; --geo-rot: 0deg; --geo-max: .5; animation: geoDrift 36s ease-in-out infinite 20s; }
+
+/* Su schermi stretti restano solo le forme piccole: gli anelli grandi
+   finirebbero sotto al testo invece che intorno. */
+@media (max-width: 720px) {
+  .geo-1, .geo-2, .geo-6 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo { animation: none !important; opacity: 0 !important; }
+}
 
 /* ---- Badge ---- */
 .badge { display: inline-flex; align-items: center; gap: .4em; padding: 4px 11px; font-family: var(--font-sans);
@@ -383,8 +482,12 @@ strong { font-weight: var(--fw-bold); color: var(--text-strong); }
 .brand img { height: 40px; width: auto; }
 .brand-word { font-family: var(--font-serif); font-weight: 600; font-size: 1.5rem; color: var(--text-strong); letter-spacing: -.01em; }
 .site-nav { display: flex; align-items: center; gap: 30px; }
-.site-nav a { font-family: var(--font-sans); font-weight: 600; font-size: .92rem; color: var(--text-body); }
-.site-nav a:hover { color: var(--accent-strong); }
+/* `:not(.btn)` e' necessario: il pulsante dell'intestazione e' un <a> dentro
+   la navigazione, e questa regola ha specificita' maggiore di .btn-ink. Senza
+   l'esclusione vinceva lei, e il pulsante finiva con testo #2B3B45 su sfondo
+   #0C232F — contrasto 1,2:1, cioe' illeggibile. */
+.site-nav a:not(.btn) { font-family: var(--font-sans); font-weight: 600; font-size: .92rem; color: var(--text-body); }
+.site-nav a:not(.btn):hover { color: var(--accent-strong); }
 
 /* ---- Hero ---- */
 .hero { position: relative; overflow: hidden; min-height: calc(100vh - var(--header-h));
@@ -397,7 +500,11 @@ strong { font-weight: var(--fw-bold); color: var(--text-strong); }
 .hero-lead { font-size: 1.2rem; line-height: 1.6; color: var(--text-muted); max-width: 36ch; margin: 20px 0 30px; text-wrap: pretty; }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-bearwrap { position: relative; display: flex; justify-content: center; align-items: center; }
-.hero-bear { width: 100%; max-width: 420px; position: relative; z-index: 1; filter: drop-shadow(0 30px 50px rgba(12,35,47,.18)); }
+.hero-bear { width: 100%; height: auto; max-width: 420px; position: relative; z-index: 1; filter: drop-shadow(0 30px 50px rgba(12,35,47,.18)); }
+/* `height: auto` non e' un dettaglio: l'immagine porta gli attributi
+   width="584" height="427" (che servono a non far saltare il layout mentre
+   carica). Senza questa riga il CSS cambia solo la larghezza e l'altezza
+   resta quella dell'attributo: l'orso si schiaccia. */
 .hero-disc { position: absolute; inset: 6% 4%; border-radius: 50%;
   background: radial-gradient(circle at 50% 40%, var(--glacier-50), rgba(234,244,250,0)); z-index: 0; }
 .hero-cue { position: absolute; left: 50%; bottom: var(--sp-5); transform: translateX(-50%); z-index: 3;
@@ -788,6 +895,16 @@ a.info-val:hover { color: var(--glacier-300); }
 
 <div data-site-scroll class="dyn">
 <div id="app">
+
+  <div class="geo-layer" aria-hidden="true">
+    <span class="geo geo-ring geo-1"></span>
+    <span class="geo geo-ring geo-ring-dash geo-2"></span>
+    <span class="geo geo-dot geo-3"></span>
+    <span class="geo geo-dot geo-4"></span>
+    <span class="geo geo-square geo-5"></span>
+    <span class="geo geo-ring geo-ring-dash geo-6"></span>
+    <span class="geo geo-line geo-7"></span>
+  </div>
 
   <header class="cz-header">
     <div class="inner">

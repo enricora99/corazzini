@@ -213,6 +213,45 @@
   background-position: 100% 50%;
 }
 
+/* ---------------------------------------------------------------------------
+   Il pulsante del cancello d'ingresso.
+
+   Prende i colori dal portale quando chi ospita l'app ne ha impostati, e
+   ricade sul giallo di VESTA quando non ci sono. Stesso gradiente che scorre
+   degli altri pulsanti: cambia la famiglia di colori, non il comportamento.
+   --------------------------------------------------------------------------- */
+.portale-azione {
+  --pa: var(--portale-accento, var(--vesta-yellow));
+  --pa-scuro: var(--portale-accento-scuro, var(--vesta-yellow-hover));
+  --pa-testo: var(--portale-accento-testo, var(--vesta-ink));
+
+  background-image: linear-gradient(
+    118deg,
+    var(--pa-scuro) 0%,
+    var(--pa) 34%,
+    color-mix(in oklch, var(--pa), white 18%) 58%,
+    var(--pa) 78%,
+    var(--pa-scuro) 100%
+  );
+  background-size: 210% 210%;
+  background-position: 12% 50%;
+  color: var(--pa-testo);
+  border-color: var(--pa-scuro);
+  transition:
+    background-position 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+.portale-azione:hover {
+  background-position: 88% 50%;
+  color: var(--pa-testo);
+  box-shadow: 0 8px 22px -10px var(--pa-scuro);
+}
+
+.portale-azione:active {
+  background-position: 100% 50%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
