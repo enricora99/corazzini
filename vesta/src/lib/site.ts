@@ -33,4 +33,22 @@ function indirizzoValido(valore: string | undefined): string {
   }
 }
 
+/**
+ * L'indirizzo completo, sottocartella compresa.
+ *
+ * Serve a tutto ciò che è un collegamento vero: il ritorno dall'email di
+ * accesso, i link d'invito agli amici, la sitemap.
+ */
 export const SITE_URL = indirizzoValido(process.env.NEXT_PUBLIC_SITE_URL);
+
+/**
+ * Solo protocollo e dominio, senza la sottocartella.
+ *
+ * Va usato per `metadataBase` e basta. Next antepone già il basePath agli
+ * indirizzi che costruisce dai file (opengraph-image.png, icone, manifest):
+ * dandogli una base che contiene a sua volta la sottocartella, il risultato
+ * era `/dev/dev/opengraph-image.png` — un 404 su ogni anteprima social del
+ * sito. Non si vedeva navigando, perché quelle righe le legge solo chi
+ * incolla un link altrove.
+ */
+export const SITE_ORIGIN = new URL(SITE_URL).origin;

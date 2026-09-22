@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import { ServiceWorker } from "@/components/service-worker";
 import { Toaster } from "@/components/ui/sonner";
 import { PORTALE } from "@/lib/portal";
-import { SITE_URL } from "@/lib/site";
+import { SITE_ORIGIN } from "@/lib/site";
 import { conBase } from "@/lib/base-path";
 import "./globals.css";
 
@@ -18,7 +18,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  // Il dominio nudo, non SITE_URL: vedi la nota su SITE_ORIGIN.
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
     default: "VESTA — Da 15 minuti a 5 secondi",
     template: "%s · VESTA",

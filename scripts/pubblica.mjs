@@ -26,30 +26,36 @@ const PROGETTI = [
   { nome: "VESTA", cartella: join(radice, "vesta") },
 ];
 
-const npx = process.platform === "win32" ? "npx.cmd" : "npx";
 let falliti = 0;
 
 for (const p of PROGETTI) {
   console.log(`\n── ${p.nome} ──`);
 
-  const esito = spawnSync(
-    npx,
-    ["--yes", "vercel", "deploy", "--prod", "--yes"],
-    { cwd: p.cartella, encoding: "utf8", shell: false }
-  );
+  // Comando in una stringa sola, senza lista di argomenti: su Windows `npx`
+  // è un .cmd e da Node 20 non parte senza una shell, e passare gli argomenti
+  // a parte *con* la shell fa emettere a Node un avviso di sicurezza. Qui
+  // sono tutte parole scritte a mano sopra, niente che arrivi da fuori.
+  const esito = spawnSync("npx --yes vercel deploy --prod --yes", [], {
+    cwd: p.cartella,
+    encoding: "utf8",
+    shell: true,
+  });
 
   const uscita = `${esito.stdout ?? ""}${esito.stderr ?? ""}`;
   const indirizzo = uscita.match(/https:\/\/[a-z0-9-]+\.vercel\.app/i)?.[0];
 
   if (esito.status === 0) {
     console.log(`   pubblicato${indirizzo ? `: ${indirizzo}` : ""}`);
-  } else {
-    falliti++;
-    console.error(`   FALLITO`);
-    // Solo le righe che dicono qualcosa: il resto è rumore del CLI.
-    for (const riga of uscita.split("\n")) {
-      if (/error|Error|failed/i.test(riga)) console.error(`   ${riga.trim()}`);
-    }
+    continue;
+  }
+
+  falliti++;
+  console.error("   FALLITO");
+  // `error` è popolato quando il comando non è proprio partito: è il caso
+  // che si legge peggio, quindi va detto per primo e per esteso.
+  if (esito.error) console.error(`   ${esito.error.message}`);
+  for (const riga of uscita.split("\n")) {
+    if (/error|failed/i.test(riga)) console.error(`   ${riga.trim()}`);
   }
 }
 

@@ -11,11 +11,36 @@ import { PORTALE, portaleOspitato, titoloPortale } from "@/lib/portal";
  * Il titolo è solo il marchio, senza «Accesso riservato ·» davanti e senza
  * il modello «%s · VESTA» del layout: quando il cancello porta il nome di
  * chi ospita l'app, la scheda del browser non deve annunciare altro.
+ *
+ * Lo stesso vale per tutto il resto dell'intestazione. Il layout descrive
+ * l'applicazione che sta dietro, con tanto di immagine di anteprima: chi
+ * incollava l'indirizzo del cancello in una chat si vedeva comparire nome,
+ * slogan e copertina di ciò che il codice dovrebbe tenere coperto. Qui
+ * sopra ci passa gente che il codice non ce l'ha.
  */
 export function generateMetadata(): Metadata {
+  const marchio = titoloPortale();
+
   return {
-    title: { absolute: titoloPortale() },
+    title: { absolute: marchio },
+    description: PORTALE.sottotitolo,
     robots: { index: false, follow: false },
+    applicationName: marchio,
+    // Il manifesto porta il nome e le icone dell'applicazione: sul cancello
+    // farebbe proporre al telefono di installare una cosa che non si è
+    // ancora vista. `null` toglie la riga che il layout aveva messo.
+    manifest: null,
+    appleWebApp: { capable: true, title: marchio, statusBarStyle: "default" },
+    openGraph: {
+      type: "website",
+      locale: "it_IT",
+      siteName: marchio,
+      title: marchio,
+      description: PORTALE.sottotitolo,
+      // Lista vuota, non assente: serve a scavalcare la copertina che Next
+      // ricava da src/app/opengraph-image.png per tutte le pagine.
+      images: [],
+    },
     ...(PORTALE.favicon
       ? { icons: { icon: PORTALE.favicon, shortcut: PORTALE.favicon } }
       : {}),
