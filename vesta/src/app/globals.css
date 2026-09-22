@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Il progetto è solo chiaro: senza questo, i controlli nativi (date picker,
+     scrollbar, autofill) si scurirebbero sui telefoni in modalità notte. */
+  color-scheme: light;
+
+  /* --- Palette del brand, esattamente come nella tabella del team --- */
+  --vesta-yellow: #fcc723;
+  --vesta-yellow-hover: #e0ae12;
+  --vesta-ink: #1a1a1a;
+  --vesta-ink-soft: #383f47;
+  --vesta-bg: #faf8f3;
+  --vesta-surface: #ffffff;
+
+  /* --- Derivati. Non sono nella tabella: servono a bordi, stati e campi,
+         e sono tarati sui rapporti di contrasto richiesti dalle WCAG. --- */
+  --vesta-line: #e6e1d6;
+  --vesta-surface-2: #f2eee4;
+  --vesta-yellow-tint: #fdf3d4;
+  --vesta-field: #8e8878; /* bordo dei campi: 3,3:1 sullo sfondo, serve ≥ 3:1 */
+
+  /* Il monospazio serve solo all'export JSON e ad /admin: stack di sistema,
+     per non scaricare un secondo font che l'utente non vedrà quasi mai. */
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* --- Mappatura sui token di shadcn --- */
+  --background: var(--vesta-bg);
+  --foreground: var(--vesta-ink);
+  --card: var(--vesta-surface);
+  --card-foreground: var(--vesta-ink);
+  --popover: var(--vesta-surface);
+  --popover-foreground: var(--vesta-ink);
+
+  /* Il giallo vive solo come fondo. Sopra ci va sempre l'inchiostro: 10,9:1.
+     Testo giallo su fondo chiaro darebbe 1,6:1 ed è vietato dalle linee guida
+     del brand — per questo --primary-foreground non è mai chiaro. */
+  --primary: var(--vesta-yellow);
+  --primary-foreground: var(--vesta-ink);
+
+  --secondary: var(--vesta-surface-2);
+  --secondary-foreground: var(--vesta-ink);
+  --muted: var(--vesta-surface-2);
+  --muted-foreground: var(--vesta-ink-soft); /* 10,3:1 sullo sfondo */
+  --accent: var(--vesta-yellow-tint);
+  --accent-foreground: var(--vesta-ink);
+  --destructive: #b3261e; /* 6,5:1 su bianco */
+
+  --border: var(--vesta-line);
+  --input: var(--vesta-field);
+  --ring: var(--vesta-ink-soft); /* il giallo come anello di focus darebbe 2:1 */
+
+  --chart-1: #fcc723;
+  --chart-2: #e0ae12;
+  --chart-3: #383f47;
+  --chart-4: #8e8878;
+  --chart-5: #1a1a1a;
+
+  --radius: 0.75rem;
+
+  --sidebar: var(--vesta-surface);
+  --sidebar-foreground: var(--vesta-ink);
+  --sidebar-primary: var(--vesta-yellow);
+  --sidebar-primary-foreground: var(--vesta-ink);
+  --sidebar-accent: var(--vesta-yellow-tint);
+  --sidebar-accent-foreground: var(--vesta-ink);
+  --sidebar-border: var(--vesta-line);
+  --sidebar-ring: var(--vesta-ink-soft);
+}
+
+/* Non è attiva da nessuna parte: VESTA è un'interfaccia chiara e basta.
+   Resta qui, coi colori del brand invece dei grigi di shadcn, così se un
+   giorno il team aggiunge la classe `dark` non si ritrova un tema estraneo. */
+.dark {
+  --background: #14161a;
+  --foreground: #f7f5f0;
+  --card: #1c1f24;
+  --card-foreground: #f7f5f0;
+  --popover: #1c1f24;
+  --popover-foreground: #f7f5f0;
+  --primary: var(--vesta-yellow);
+  --primary-foreground: var(--vesta-ink);
+  --secondary: #262a30;
+  --secondary-foreground: #f7f5f0;
+  --muted: #262a30;
+  --muted-foreground: #c3c8cf;
+  --accent: #2f2a1c;
+  --accent-foreground: #fcc723;
+  --destructive: #f2685f;
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 22%);
+  --ring: #d8b64a;
+  --sidebar: #1c1f24;
+  --sidebar-foreground: #f7f5f0;
+  --sidebar-primary: var(--vesta-yellow);
+  --sidebar-primary-foreground: var(--vesta-ink);
+  --sidebar-accent: #2f2a1c;
+  --sidebar-accent-foreground: #fcc723;
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: #d8b64a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* L'MVP è pieno di griglie e caroselli: basta un elemento che sborda
+       perché sul telefono compaia lo scroll orizzontale. */
+    overflow-x: hidden;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Le ancore della landing non devono finire sotto l'intestazione fissa. */
+  :target {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

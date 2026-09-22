@@ -1,0 +1,7 @@
+# Normalizza i fine riga: il progetto passa tra PC diversi via chiavetta.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.webp binary
