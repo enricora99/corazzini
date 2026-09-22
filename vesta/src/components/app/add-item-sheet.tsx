@@ -40,7 +40,7 @@ import { createClient } from "@/lib/supabase/client";
 
 type Fase = "scelta" | "lavorazione" | "revisione" | "salvataggio";
 
-type Bozza = {
+export type Bozza = {
   id: string;
   photoPath: string;
   anteprima: string;
@@ -332,7 +332,7 @@ function haModificato(bozza: Bozza): boolean {
   return bozza.subcategory.trim().length > 0 || bozza.colors.trim().length > 0;
 }
 
-function RevisioneCapo({
+export function RevisioneCapo({
   bozza,
   setBozza,
   avviso,

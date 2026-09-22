@@ -60,6 +60,12 @@ const CAPI = [
   { slug: "stivaletti-neri", sagoma: "scarpe", colore: "#2F333A" },
   { slug: "sciarpa-senape", sagoma: "accessorio", colore: "#D9AE4C" },
   { slug: "borsa-cuoio", sagoma: "accessorio", colore: "#9A6F49" },
+
+  // Questi tre non stanno nell'armadio di partenza: servono al flusso
+  // «fotografa un capo», dove l'utente ne aggiunge uno che non c'era.
+  { slug: "felpa-grigia", sagoma: "top", colore: "#9AA0A6" },
+  { slug: "cappotto-cammello", sagoma: "giacca", colore: "#C09A6B" },
+  { slug: "mocassini-cuoio", sagoma: "scarpe", colore: "#8B5E3C" },
 ];
 
 /** Fondo: una velatura chiarissima del colore del capo, così le miniature
