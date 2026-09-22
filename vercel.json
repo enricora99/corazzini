@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/dev/:path*",
-      "destination": "https://SOSTITUIRE-CON-IL-PROGETTO-VESTA.vercel.app/dev/:path*"
+      "destination": "https://vesta-enricora99.vercel.app/dev/:path*"
     }
   ],
 
