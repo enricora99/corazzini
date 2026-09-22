@@ -1,8 +1,21 @@
+# Studio Corazzini — Pescara
+#
+# Questo sito VUOLE essere letto, citato e riassunto dagli assistenti basati
+# su modelli linguistici: è così che molte persone cercano un commercialista.
+# Non c'è nessun blocco, e la riga qui sotto vale per tutti — GPTBot,
+# ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended e gli altri
+# inclusi.
+#
+# Di proposito NON ci sono gruppi con nome per i singoli crawler: nel
+# protocollo un gruppo col nome del bot sostituisce del tutto quello
+# generico, quindi elencarli uno per uno vorrebbe dire ripetere a ciascuno
+# anche il Disallow qui sotto — e dimenticarne uno significa aprirgli
+# l'area riservata. Una regola sola, valida per tutti, non si sbaglia.
+
 User-agent: *
 Allow: /
-
-# /dev è l'MVP di VESTA, dietro codice d'invito: non c'è niente da indicizzare
-# e non deve mescolarsi ai risultati di ricerca dello studio.
+# Portale a inviti: niente da indicizzare, e non deve mescolarsi ai
+# risultati di ricerca dello studio.
 Disallow: /dev
 
 Sitemap: https://www.corazzini.it/sitemap.xml

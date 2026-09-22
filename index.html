@@ -673,13 +673,30 @@ a.info-val:hover { color: var(--glacier-300); }
       "jobTitle": "Esperto Contabile",
       "image": "https://www.corazzini.it/assets/enrico.jpg",
       "worksFor": { "@id": "https://www.corazzini.it/#studio" },
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Iscrizione all'albo professionale",
-        "recognizedBy": { "@type": "Organization", "name": "ODCEC Pescara" },
-        "identifier": "9/B"
-      },
-      "knowsAbout": ["Imprese innovative", "Modelli di business", "Sviluppo commerciale"]
+      "description": "Esperto contabile. Laureato con 110 e lode in Gestione d'Impresa e Tecnologie Digitali. Segue le start-up e la digitalizzazione delle piccole e medie imprese.",
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Iscrizione all'albo professionale",
+          "recognizedBy": { "@type": "Organization", "name": "ODCEC Pescara" },
+          "identifier": "9/B"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Laurea",
+          "name": "Gestione d'Impresa e Tecnologie Digitali",
+          "educationalLevel": "Laurea magistrale",
+          "description": "Votazione 110 e lode"
+        }
+      ],
+      "knowsAbout": [
+        "Start-up",
+        "Digitalizzazione delle PMI",
+        "Trasformazione digitale",
+        "Modelli di business",
+        "Imprese innovative",
+        "Sviluppo commerciale"
+      ]
     },
     {
       "@type": "WebSite",
@@ -688,6 +705,71 @@ a.info-val:hover { color: var(--glacier-300); }
       "name": "Corazzini",
       "inLanguage": "it-IT",
       "publisher": { "@id": "https://www.corazzini.it/#studio" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.corazzini.it/#faq",
+      "inLanguage": "it-IT",
+      "isPartOf": { "@id": "https://www.corazzini.it/#website" },
+      "about": { "@id": "https://www.corazzini.it/#studio" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Di cosa si occupa lo studio Corazzini di Pescara?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Di due cose che si completano. Da una parte l'elaborazione contabile di ogni giorno per aziende e privati: contabilità ordinaria e semplificata, dichiarazioni, bilanci, regime forfettario. Dall'altra la consulenza che accompagna le decisioni fiscali, societarie e strategiche. Lo studio si occupa anche di revisione legale dei conti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova lo studio commercialista Corazzini?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Via Eugenia Ravasco 60, 65123 Pescara (PE). Lo studio segue clienti a Pescara, in provincia di Pescara e in Abruzzo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lo studio segue solo le aziende o anche i privati?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entrambi. La contabilità viene tenuta sia per società di capitali e di persone sia per imprese individuali, professionisti e persone fisiche, comprese le partite IVA in regime forfettario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lo studio si occupa di regime forfettario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Lo studio segue dichiarazioni dei redditi, partite IVA individuali e regime forfettario per le persone fisiche. Sul sito sono pubblicati anche due strumenti gratuiti: un simulatore del carico fiscale e contributivo in regime forfettario e un confronto fra regime forfettario e ordinario con il punto di pareggio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lo studio segue start-up e digitalizzazione delle PMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Enrico Emanuele Corazzini, esperto contabile iscritto all'ODCEC di Pescara e laureato con 110 e lode in Gestione d'Impresa e Tecnologie Digitali, affianca le start-up nei primi passi e accompagna le piccole e medie imprese nella digitalizzazione, lavorando su modelli di business e innovazione d'impresa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gli strumenti pubblicati sul sito sono gratuiti?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, sono liberamente accessibili e non richiedono registrazione: simulatore del regime forfettario, confronto forfettario contro ordinario, calcolo del costo di un debito fiscale fase per fase, verifica dei soggetti obbligati antiriciclaggio e Lean Canvas per validare un'idea di business. Ogni strumento riporta le fonti normative in chiaro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si fissa un primo appuntamento con lo studio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scrivendo a staff@corazzini.it. Il primo incontro conoscitivo è senza impegno."
+          }
+        }
+      ]
     }
   ]
 }
@@ -890,11 +972,11 @@ a.info-val:hover { color: var(--glacier-300); }
             <h3>Enrico Emanuele Corazzini</h3>
             <p class="person-role">Esperto Contabile</p>
             <span class="badge">ODCEC Pescara n. 9/B</span>
-            <p class="person-bio">Laureato in Economia e Governo d'Impresa. Prima di entrare nello studio ha lavorato in Helbiz Italia nel settore della mobilità elettrica condivisa, dove è passato da Operations a Business Development: ha seguito la gestione operativa delle flotte sul territorio e sviluppato nuove partnership e mercati. Porta nello studio una sensibilità concreta per l'innovazione, i modelli di business digitali e le imprese in crescita.</p>
+            <p class="person-bio">Laureato con 110 e lode in Gestione d'Impresa e Tecnologie Digitali. Prima di entrare nello studio ha lavorato in Helbiz Italia nel settore della mobilità elettrica condivisa, dove è passato da Operations a Business Development: ha seguito la gestione operativa delle flotte sul territorio e sviluppato nuove partnership e mercati. Nello studio affianca le start-up nei primi passi e accompagna le piccole e medie imprese nella digitalizzazione.</p>
             <div class="focus-row">
-              <span class="focus-chip">Imprese innovative</span>
+              <span class="focus-chip">Start-up</span>
+              <span class="focus-chip">Digitalizzazione PMI</span>
               <span class="focus-chip">Modelli di business</span>
-              <span class="focus-chip">Sviluppo commerciale</span>
             </div>
           </div>
         </div>
