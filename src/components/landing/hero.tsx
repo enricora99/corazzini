@@ -43,6 +43,22 @@ export function Hero() {
           >
             <Link href="#lista">Entra in lista d&apos;attesa</Link>
           </Button>
+
+          {/* Secondaria di proposito: chi è già convinto lascia l'email,
+              chi vuole capire prima va a vedere. Nessuna delle due strade
+              chiede di registrarsi. */}
+          <Link
+            href="/demo"
+            // Next precarica da solo i link che entrano nello schermo. Questo
+            // sta sopra la piega, quindi tirerebbe giù tutta la pagina /demo
+            // mentre la home deve ancora disegnarsi — e la maggioranza di chi
+            // arriva qui non ci clicca. La demo è statica: anche senza
+            // precarico si apre subito.
+            prefetch={false}
+            className="mt-4 rounded-md px-3 py-2 text-base font-semibold text-foreground underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            Guarda com&apos;è fatta, senza registrarti
+          </Link>
         </div>
       </div>
     </section>

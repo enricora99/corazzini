@@ -5,13 +5,18 @@ import { usePathname } from "next/navigation";
 import { Settings, Shirt, Sparkles, Users } from "lucide-react";
 
 const VOCI = [
-  { href: "/app/armadio", label: "Armadio", icon: Shirt },
-  { href: "/app/outfit", label: "Outfit", icon: Sparkles },
-  { href: "/app/amici", label: "Amici", icon: Users },
-  { href: "/app/impostazioni", label: "Impostazioni", icon: Settings },
+  { segmento: "/armadio", label: "Armadio", icon: Shirt },
+  { segmento: "/outfit", label: "Outfit", icon: Sparkles },
+  { segmento: "/amici", label: "Amici", icon: Users },
+  { segmento: "/impostazioni", label: "Impostazioni", icon: Settings },
 ] as const;
 
-export function BottomNav() {
+/**
+ * `base` esiste perché la modalità demo vive sotto /demo e riusa questa
+ * stessa barra: così chi la guarda vede la navigazione vera dell'app, non
+ * una copia che può divergere.
+ */
+export function BottomNav({ base = "/app" }: { base?: string }) {
   const pathname = usePathname();
 
   return (
@@ -22,13 +27,13 @@ export function BottomNav() {
     >
       <ul className="mx-auto flex w-full max-w-lg items-stretch">
         {VOCI.map((voce) => {
-          const attiva =
-            pathname === voce.href || pathname.startsWith(`${voce.href}/`);
+          const href = `${base}${voce.segmento}`;
+          const attiva = pathname === href || pathname.startsWith(`${href}/`);
 
           return (
-            <li key={voce.href} className="flex-1">
+            <li key={href} className="flex-1">
               <Link
-                href={voce.href}
+                href={href}
                 aria-current={attiva ? "page" : undefined}
                 className="flex h-16 flex-col items-center justify-center gap-1 text-xs font-semibold focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
               >

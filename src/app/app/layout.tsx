@@ -17,12 +17,15 @@ export default async function AppLayout({ children }: LayoutProps<"/app">) {
         Vai al contenuto
       </a>
 
-      <div
+      {/* `main` e non `div`: è il punto di riferimento che gli screen reader
+          usano per saltare al contenuto, ed è quello che cerca il link
+          «Vai al contenuto» qui sopra. */}
+      <main
         id="contenuto-app"
         className="mx-auto w-full max-w-lg flex-1 px-5 pb-8 pt-6"
       >
         {children}
-      </div>
+      </main>
 
       <BottomNav />
     </>

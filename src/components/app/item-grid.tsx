@@ -91,7 +91,7 @@ export function ItemGrid({
         </p>
       ) : (
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {visibili.map((capo) => (
+          {visibili.map((capo, indice) => (
             <li key={capo.id}>
               <article className="group relative overflow-hidden rounded-2xl border border-border bg-card">
                 <div className="relative aspect-square bg-muted">
@@ -106,6 +106,10 @@ export function ItemGrid({
                       // collegamenti firmati cambiano a ogni richiesta,
                       // quindi la cache dell'ottimizzatore mancherebbe sempre.
                       unoptimized
+                      // La prima riga sta sopra la piega: senza priorità il
+                      // browser la tratta come le altre e il disegno del
+                      // contenuto principale arriva secondi dopo.
+                      priority={indice < 4}
                       className="object-cover"
                     />
                   ) : (
@@ -143,6 +147,10 @@ export function ItemGrid({
         </ul>
       )}
 
+      {/* Montato solo dove serve. Nel guardaroba degli amici e nella demo
+          non si cancella niente, e un dialogo sempre presente costa lavoro
+          al filo principale senza poter mai comparire. */}
+      {eliminabili ? (
       <Dialog
         open={Boolean(daEliminare)}
         onOpenChange={(o) => !o && setDaEliminare(null)}
@@ -175,6 +183,7 @@ export function ItemGrid({
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      ) : null}
     </div>
   );
 }
