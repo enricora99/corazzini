@@ -1,7 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { COOKIE_ACCESSO, codiceRichiesto, esenteDaCodice } from "@/lib/access";
+import {
+  COOKIE_ACCESSO,
+  codiciValidi,
+  esenteDaCodice,
+} from "@/lib/access";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 
 /**
@@ -26,9 +30,12 @@ export async function proxy(request: NextRequest) {
   // Prima di tutto il resto: finché l'MVP non è pubblico, chi non ha il
   // codice non deve vedere nemmeno la landing. Se ACCESS_CODE non è
   // impostata questo blocco non fa niente e il sito è aperto.
-  const codice = codiceRichiesto();
-  if (codice && !esenteDaCodice(pathname)) {
-    if (request.cookies.get(COOKIE_ACCESSO)?.value !== codice) {
+  const codici = codiciValidi();
+  if (codici.length > 0 && !esenteDaCodice(pathname)) {
+    const presentato = request.cookies.get(COOKIE_ACCESSO)?.value;
+    // Va bene uno qualsiasi dei codici configurati: revocandone uno, chi
+    // aveva quello resta fuori e gli altri non se ne accorgono.
+    if (!presentato || !codici.includes(presentato)) {
       const cancello = request.nextUrl.clone();
       cancello.pathname = "/accesso";
       cancello.search = "";

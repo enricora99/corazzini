@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 import {
   COOKIE_ACCESSO,
   DURATA_ACCESSO_S,
-  codiceRichiesto,
+  codiceCorretto,
+  protezioneAttiva,
 } from "@/lib/access";
 import type { FormState } from "@/lib/form-state";
 
@@ -23,14 +24,13 @@ export async function verificaCodice(
   _previous: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const atteso = codiceRichiesto();
-
   // Protezione spenta: non c'è niente da verificare.
-  if (!atteso) redirect("/");
+  if (!protezioneAttiva()) redirect("/");
 
-  const inserito = String(formData.get("codice") ?? "").trim();
+  const inserito = String(formData.get("codice") ?? "");
+  const riconosciuto = codiceCorretto(inserito);
 
-  if (inserito !== atteso) {
+  if (!riconosciuto) {
     // Nessun dettaglio sul perché: sbagliato è sbagliato.
     return {
       status: "error",
@@ -39,8 +39,11 @@ export async function verificaCodice(
   }
 
   const store = await cookies();
-  store.set(COOKIE_ACCESSO, atteso, {
-    // Fuori dalla portata di qualsiasi script nella pagina.
+
+  // Nel cookie finisce il codice come è scritto nella configurazione, non
+  // come l'ha battuto l'utente: così, con codici diversi per persona, dal
+  // cookie si capisce chi è entrato senza doverglielo chiedere.
+  store.set(COOKIE_ACCESSO, riconosciuto, {
     httpOnly: true,
     // In sviluppo si lavora in HTTP, e con secure il cookie non verrebbe
     // mai scritto: il cancello resterebbe chiuso per sempre in locale.

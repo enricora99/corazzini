@@ -118,6 +118,146 @@ function proposta(slugs: string[], rationale: string): PropostaDemo {
  * fisse: la modalità demo non chiama nessun modello, quindi non costa niente
  * e non può fallire davanti alla giuria.
  */
+/**
+ * Il calendario dimostrativo.
+ *
+ * I giorni si calcolano sul mese che si sta guardando invece di essere
+ * fissati a una data: un calendario che mostra outfit di due mesi fa dice
+ * a chi guarda che nessuno usa questa app.
+ *
+ * Gli stessi giorni relativi ogni mese, così la schermata è prevedibile
+ * quando la si prova più volte.
+ */
+export function giorniDemo(anno: number, mese: number) {
+  const quanti = new Date(anno, mese + 1, 0).getDate();
+  const oggi = new Date().getDate();
+
+  const piani: { scarto: number; slugs: string[]; etichetta: string }[] = [
+    { scarto: -6, slugs: ["camicia-azzurra", "pantaloni-neri", "stivaletti-neri"], etichetta: "Lavoro" },
+    { scarto: -4, slugs: ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"], etichetta: "Università" },
+    { scarto: -2, slugs: ["top-nero", "gonna-nera", "stivaletti-neri", "borsa-cuoio"], etichetta: "Sera" },
+    { scarto: 0, slugs: ["maglione-beige", "jeans-blu", "sneakers-bianche"], etichetta: "Oggi" },
+    { scarto: 1, slugs: ["camicia-azzurra", "blazer-blu", "pantaloni-neri"], etichetta: "Domani, riunione" },
+    { scarto: 3, slugs: ["vestito-verde", "stivaletti-neri"], etichetta: "Cerimonia" },
+    { scarto: 6, slugs: ["t-shirt-bianca", "giacca-denim", "pantaloni-beige"], etichetta: "Weekend" },
+  ];
+
+  return piani
+    .map((p) => ({ ...p, giorno: oggi + p.scarto }))
+    .filter((p) => p.giorno >= 1 && p.giorno <= quanti)
+    .map((p) => ({
+      giorno: p.giorno,
+      etichetta: p.etichetta,
+      anteprime: p.slugs
+        .map((s) => TUTTI.find((c) => c.id === `demo-${s}`)?.photoUrl)
+        .filter((u): u is string => Boolean(u)),
+    }));
+}
+
+/**
+ * Le rifiniture: «rendilo più formale», «più caldo», «meno pezzi».
+ *
+ * È la meccanica che racconta meglio l'idea di uno stilista con cui si
+ * parla, invece di un pulsante che sputa fuori tre risultati e basta.
+ *
+ * Nell'app vera è una seconda chiamata al modello, che riceve l'outfit
+ * precedente più la richiesta. Qui le risposte sono scritte: la demo non
+ * chiama nessun modello, quindi non costa e non può fallire in pubblico.
+ *
+ * `chiavi` serve a riconoscere la richiesta anche quando viene scritta a
+ * mano invece di toccare un suggerimento: chi prova la demo digita «più
+ * elegante», non «formale».
+ */
+export type Rifinitura = {
+  id: string;
+  etichetta: string;
+  chiavi: string[];
+  risposta: string;
+  proposte: PropostaDemo[];
+};
+
+export const RIFINITURE_DEMO: Rifinitura[] = [
+  {
+    id: "formale",
+    etichetta: "Più formale",
+    chiavi: ["formale", "elegante", "serio", "importante", "colloquio", "ufficio"],
+    risposta:
+      "Ho alzato il tono: camicia al posto della maglia e scarpe chiuse. Il blazer lo puoi togliere se l'ambiente è informale.",
+    proposte: [
+      proposta(
+        ["camicia-azzurra", "blazer-blu", "pantaloni-neri", "stivaletti-neri"],
+        "Il blazer fa tutto il lavoro. Sotto resta leggero, così non ti pesa."
+      ),
+      proposta(
+        ["camicia-azzurra", "pantaloni-neri", "stivaletti-neri"],
+        "Senza giacca resta composto: l'azzurro tiene la camicia meno rigida."
+      ),
+    ],
+  },
+  {
+    id: "caldo",
+    etichetta: "Più caldo",
+    chiavi: ["caldo", "freddo", "coprir", "inverno", "gela", "pesante"],
+    risposta:
+      "Ho aggiunto strati. La sciarpa te la fai prestare da Giulia: alza di parecchio senza appesantire.",
+    proposte: [
+      proposta(
+        ["maglione-beige", "jeans-blu", "stivaletti-neri", "sciarpa-senape"],
+        "Il maglione a coste copre davvero, la sciarpa chiude gli spifferi."
+      ),
+      proposta(
+        ["maglione-beige", "giacca-denim", "pantaloni-neri", "stivaletti-neri"],
+        "Due strati leggeri scaldano più di uno pesante, e li togli a metà giornata."
+      ),
+    ],
+  },
+  {
+    id: "semplice",
+    etichetta: "Meno pezzi",
+    chiavi: ["semplice", "meno", "veloce", "fretta", "minimal", "essenziale"],
+    risposta:
+      "Ridotto all'osso: due capi e sei fuori di casa. Il vestito risolve sopra e sotto insieme.",
+    proposte: [
+      proposta(
+        ["vestito-verde", "sneakers-bianche"],
+        "Un capo solo e le scarpe. Il verde salvia non chiede altro."
+      ),
+      proposta(
+        ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"],
+        "Il minimo che funziona sempre, senza doverci pensare."
+      ),
+    ],
+  },
+  {
+    id: "scarpe",
+    etichetta: "Cambia scarpe",
+    chiavi: ["scarpe", "stivaletti", "sneakers", "tacco", "comode", "camminare"],
+    risposta:
+      "Ho cambiato solo le scarpe, il resto regge. Se devi camminare molto, la prima.",
+    proposte: [
+      proposta(
+        ["camicia-azzurra", "jeans-blu", "sneakers-bianche"],
+        "Sneakers bianche: tengono il casual senza scendere di tono."
+      ),
+      proposta(
+        ["camicia-azzurra", "jeans-blu", "stivaletti-neri"],
+        "Con il tacco lo stesso outfit diventa da sera. Cambia solo il passo."
+      ),
+    ],
+  },
+];
+
+/** Trova la rifinitura che corrisponde a quello che l'utente ha scritto. */
+export function riconosciRifinitura(testo: string): Rifinitura | null {
+  const pulito = testo.trim().toLowerCase();
+  if (!pulito) return null;
+  return (
+    RIFINITURE_DEMO.find((r) =>
+      r.chiavi.some((chiave) => pulito.includes(chiave))
+    ) ?? null
+  );
+}
+
 export const PROPOSTE_DEMO: Record<Occasion, PropostaDemo[]> = {
   lavoro: [
     proposta(

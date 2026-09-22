@@ -37,10 +37,13 @@ type Fase = "scelta" | "analisi" | "revisione";
  */
 export function DemoAddItem({
   onAggiunto,
+  apriSubito = false,
 }: {
   onAggiunto: (capo: CapoConFoto) => void;
+  /** Il + al centro della barra manda qui con ?aggiungi=1. */
+  apriSubito?: boolean;
 }) {
-  const [aperto, setAperto] = useState(false);
+  const [aperto, setAperto] = useState(apriSubito);
   const [fase, setFase] = useState<Fase>("scelta");
   const [bozza, setBozza] = useState<Bozza | null>(null);
   const idBase = useId();

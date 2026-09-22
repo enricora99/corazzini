@@ -116,7 +116,7 @@ export function OutfitStudio({ haAmici }: { haAmici: boolean }) {
                 type="button"
                 aria-pressed={attiva}
                 onClick={() => setOccasione(o)}
-                className={`rounded-full border-2 px-4 py-2.5 text-sm font-semibold transition-colors ${
+                className={`min-h-11 rounded-full border-2 px-4 text-sm font-semibold transition-colors ${
                   attiva
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground"

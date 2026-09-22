@@ -283,7 +283,7 @@ non vanno reimpostate a mano.
    URLs* dell'autenticazione, altrimenti i link di accesso rimandano a
    localhost
 
-### VESTA sotto un sottopercorso: `corazzini.it/dev`
+### VESTA sotto un sottopercorso (`/dev`)
 
 L'app non vive alla radice del dominio ma sotto `/dev`. Il valore sta in
 [`next.config.ts`](next.config.ts) come `basePath` e viene **inlineato nel

@@ -202,7 +202,7 @@ function FiltroChip({
       type="button"
       onClick={onClick}
       aria-pressed={attivo}
-      className={`shrink-0 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`min-h-11 shrink-0 rounded-full border-2 px-4 text-sm font-semibold transition-colors ${
         attivo
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-card text-muted-foreground"

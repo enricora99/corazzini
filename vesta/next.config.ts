@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 /**
- * VESTA vive sotto un sottopercorso del dominio: corazzini.it/dev
+ * VESTA vive sotto un sottopercorso del dominio, non alla radice.
  *
  * `basePath` viene inlineato nel bundle al momento del build, quindi si
  * decide qui e non si può cambiare a caldo. Lo ripubblichiamo come variabile

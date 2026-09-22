@@ -17,7 +17,13 @@ import type { CapoConFoto } from "@/lib/items";
  * Lo stato vive in memoria: ricaricando la pagina si torna all'armadio di
  * partenza. È voluto — la demo non scrive niente da nessuna parte.
  */
-export function DemoArmadio({ iniziali }: { iniziali: CapoConFoto[] }) {
+export function DemoArmadio({
+  iniziali,
+  apriSubito = false,
+}: {
+  iniziali: CapoConFoto[];
+  apriSubito?: boolean;
+}) {
   const [capi, setCapi] = useState(iniziali);
 
   return (
@@ -27,6 +33,7 @@ export function DemoArmadio({ iniziali }: { iniziali: CapoConFoto[] }) {
       </p>
 
       <DemoAddItem
+        apriSubito={apriSubito}
         onAggiunto={(capo) =>
           // In cima: è quello appena aggiunto, deve vedersi senza scorrere.
           setCapi((precedenti) =>

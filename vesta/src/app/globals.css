@@ -68,6 +68,13 @@
   --vesta-yellow-tint: #fdf3d4;
   --vesta-field: #8e8878; /* bordo dei campi: 3,3:1 sullo sfondo, serve ≥ 3:1 */
 
+  /* Tinta dei dati nei grafici. Il giallo del brand non si può usare per una
+     barra piena: su bianco dà 1,6:1 e la forma sparisce. Questo oro scuro
+     resta nella famiglia ma sta a 3,7:1, sopra il minimo richiesto per un
+     elemento non testuale. Una tinta sola, non una scala di colori: le barre
+     misurano tutte la stessa cosa, e l'identità la portano le etichette. */
+  --vesta-data: #a97e08;
+
   /* Il monospazio serve solo all'export JSON e ad /admin: stack di sistema,
      per non scaricare un secondo font che l'utente non vedrà quasi mai. */
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
@@ -167,6 +174,43 @@
   :target {
     scroll-margin-top: 5rem;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Gradiente dei pulsanti primari.
+
+   Non è un gradiente fermo: la sfumatura è più larga del pulsante e scorre
+   quando ci passi sopra o lo premi. Su telefono l'hover non esiste, quindi
+   conta soprattutto lo stato premuto — senza quello la cosa si vedrebbe solo
+   da computer.
+
+   I tre toni sono tutti chiari e il testo sopra resta scuro: il rapporto di
+   contrasto non scende mai sotto quello del giallo pieno.
+   --------------------------------------------------------------------------- */
+.bottone-gradiente {
+  background-image: linear-gradient(
+    118deg,
+    var(--vesta-yellow-hover) 0%,
+    var(--vesta-yellow) 32%,
+    #fdd85f 58%,
+    var(--vesta-yellow) 78%,
+    var(--vesta-yellow-hover) 100%
+  );
+  background-size: 210% 210%;
+  background-position: 12% 50%;
+  transition:
+    background-position 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.25s ease,
+    transform 0.12s ease;
+}
+
+.bottone-gradiente:hover {
+  background-position: 88% 50%;
+  box-shadow: 0 6px 18px -8px color-mix(in oklch, var(--vesta-yellow-hover), transparent 35%);
+}
+
+.bottone-gradiente:active {
+  background-position: 100% 50%;
 }
 
 @media (prefers-reduced-motion: reduce) {

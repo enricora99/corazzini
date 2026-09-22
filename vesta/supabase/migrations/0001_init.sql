@@ -173,11 +173,19 @@ create table if not exists public.outfits (
   weather        jsonb,
   image_path     text,
   saved          boolean not null default false,
+  -- Il giorno per cui l'outfit è pianificato, che non è quello in cui l'hai
+  -- salvato: la promessa del prodotto è decidere domenica sera cosa mettere
+  -- giovedì, e senza questa colonna il calendario mostrerebbe solo quando
+  -- hai premuto «salva».
+  planned_for    date,
   created_at     timestamptz not null default now()
 );
 
 create index if not exists outfits_user_idx on public.outfits (user_id, created_at desc);
 create index if not exists outfits_salvati_idx on public.outfits (user_id) where saved;
+create index if not exists outfits_pianificati_idx
+  on public.outfits (user_id, planned_for)
+  where planned_for is not null;
 
 
 -- ---------------------------------------------------------------------------

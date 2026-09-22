@@ -23,7 +23,7 @@ export function DemoBanner() {
         </p>
         <Link
           href="/#lista"
-          className="shrink-0 rounded-full bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground"
+          className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-primary px-3.5 text-xs font-bold text-primary-foreground"
         >
           Lista d&apos;attesa
         </Link>

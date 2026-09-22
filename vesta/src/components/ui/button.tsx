@@ -8,7 +8,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        // `bottone-gradiente` sta in globals.css: sfumatura più larga del
+        // pulsante, che scorre al passaggio e alla pressione. Il colore
+        // pieno resta come base, così se il CSS non arrivasse il pulsante
+        // sarebbe comunque giallo e leggibile.
+        default:
+          "bottone-gradiente bg-primary text-primary-foreground",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:

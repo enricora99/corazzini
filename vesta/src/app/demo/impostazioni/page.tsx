@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Download, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { DownloadPackage } from "@/components/demo/download-package";
 
 export default function DemoImpostazioni() {
   return (
@@ -11,6 +12,18 @@ export default function DemoImpostazioni() {
           Impostazioni
         </h1>
       </header>
+
+      <section className="space-y-3 rounded-2xl border border-border bg-card p-5">
+        <div>
+          <h2 className="font-heading text-base font-extrabold">
+            Il codice di VESTA
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground text-pretty">
+            Il sorgente completo, con la guida che spiega com&apos;è fatto.
+          </p>
+        </div>
+        <DownloadPackage compatto />
+      </section>
 
       <section className="space-y-3 rounded-2xl border border-border bg-card p-5">
         <div>

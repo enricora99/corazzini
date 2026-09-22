@@ -431,7 +431,7 @@ export function RevisioneCapo({
                       : [...bozza.seasons, s],
                   })
                 }
-                className={`rounded-full border-2 px-4 py-2 text-sm font-semibold capitalize transition-colors ${
+                className={`min-h-11 rounded-full border-2 px-4 text-sm font-semibold capitalize transition-colors ${
                   attiva
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground"

@@ -125,7 +125,7 @@ export function FriendsPanel({
                   type="button"
                   onClick={() => setDaRimuovere(amico)}
                   aria-label={`Rimuovi ${amico.nome} dagli amici`}
-                  className="rounded-full p-2 text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <UserMinus className="size-5" aria-hidden />
                 </button>
@@ -165,7 +165,7 @@ export function FriendsPanel({
                   type="button"
                   onClick={() => copia(linkDi(invito.token))}
                   aria-label="Copia il link dell'invito"
-                  className="rounded-full p-2 text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <Copy className="size-4" aria-hidden />
                 </button>

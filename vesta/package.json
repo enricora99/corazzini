@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:https": "next dev --experimental-https -H 0.0.0.0",
+    "prebuild": "node scripts/build-package.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
