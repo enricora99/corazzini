@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+import { COOKIE_ACCESSO, codiceRichiesto, esenteDaCodice } from "@/lib/access";
 import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 
 /**
@@ -20,6 +21,22 @@ const PROTETTE = ["/app", "/admin"];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // --- Cancello a codice d'invito -----------------------------------------
+  // Prima di tutto il resto: finché l'MVP non è pubblico, chi non ha il
+  // codice non deve vedere nemmeno la landing. Se ACCESS_CODE non è
+  // impostata questo blocco non fa niente e il sito è aperto.
+  const codice = codiceRichiesto();
+  if (codice && !esenteDaCodice(pathname)) {
+    if (request.cookies.get(COOKIE_ACCESSO)?.value !== codice) {
+      const cancello = request.nextUrl.clone();
+      cancello.pathname = "/accesso";
+      cancello.search = "";
+      // Dove stava andando, per riportarcelo dopo.
+      if (pathname !== "/") cancello.searchParams.set("prossima", pathname);
+      return NextResponse.redirect(cancello);
+    }
+  }
 
   // Senza chiavi configurate non c'è sessione da rinnovare. Lasciamo passare:
   // la landing deve restare visitabile anche prima che Supabase esista.
@@ -86,9 +103,16 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Tutto tranne gli asset statici e le immagini generate da Next: farci
-     * girare sopra un controllo di sessione costerebbe latenza su ogni file
-     * senza servire a niente.
+     * La radice va elencata a parte. Il modello qui sotto, per come Next lo
+     * compila, NON intercetta "/": senza questa riga il cancello lascerebbe
+     * passare la landing, che è esattamente la pagina che deve proteggere.
+     * Verificato a mano, non dedotto.
+     */
+    "/",
+    /*
+     * Tutto il resto tranne gli asset statici e le immagini generate da Next:
+     * farci girare sopra un controllo di sessione costerebbe latenza su ogni
+     * file senza servire a niente.
      */
     "/((?!_next/static|_next/image|favicon.ico|icons/|brand/|sw.js|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|woff2?)$).*)",
   ],

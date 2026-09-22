@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { conBase } from "@/lib/base-path";
 
 export default function AuthLayout({ children }: LayoutProps<"/auth">) {
   return (
@@ -10,7 +11,7 @@ export default function AuthLayout({ children }: LayoutProps<"/auth">) {
           className="mx-auto flex w-fit items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
         >
           <Image
-            src="/brand/vesta-logo-alpha.png"
+            src={conBase("/brand/vesta-logo-alpha.png")}
             alt=""
             width={40}
             height={40}

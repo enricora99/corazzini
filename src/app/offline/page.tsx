@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { conBase } from "@/lib/base-path";
 
 export const metadata: Metadata = {
   title: "Sei offline",
@@ -10,7 +11,7 @@ export default function OfflinePage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
       <Image
-        src="/brand/vesta-logo-alpha.png"
+        src={conBase("/brand/vesta-logo-alpha.png")}
         alt=""
         width={72}
         height={72}

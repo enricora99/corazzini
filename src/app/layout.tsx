@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import { ServiceWorker } from "@/components/service-worker";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_URL } from "@/lib/site";
+import { conBase } from "@/lib/base-path";
 import "./globals.css";
 
 // Montserrat è variabile: un solo file copre 400, 500, 700 e 800, quindi i pesi
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "L'app che sceglie l'outfit con i vestiti che hai già. Fotografi l'armadio, dici dove vai, ricevi il look in pochi secondi.",
   applicationName: "VESTA",
-  manifest: "/manifest.webmanifest",
+  manifest: conBase("/manifest.webmanifest"),
   // Le icone le prende Next da src/app/icon.png e src/app/apple-icon.png,
   // aggiungendo da sé dimensioni e impronta per la cache.
   appleWebApp: {

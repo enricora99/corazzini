@@ -1,4 +1,5 @@
 import type { CapoConFoto } from "@/lib/items";
+import { conBase } from "@/lib/base-path";
 import type { Occasion } from "@/lib/schemas";
 import type { WeatherSnapshot } from "@/lib/ai/types";
 
@@ -58,7 +59,7 @@ function costruisci(seme: Seme, indice: number): CapoConFoto {
     id: `demo-${seme.slug}`,
     user_id: mio ? IO : `demo-amico-${seme.ownerName?.toLowerCase()}`,
     photo_path: `demo/${seme.slug}.svg`,
-    photoUrl: `/demo/${seme.slug}.svg`,
+    photoUrl: conBase(`/demo/${seme.slug}.svg`),
     category: seme.category,
     subcategory: seme.subcategory,
     colors: seme.colors,

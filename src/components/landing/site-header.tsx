@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { conBase } from "@/lib/base-path";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +13,7 @@ export function SiteHeader() {
           className="flex items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
         >
           <Image
-            src="/brand/vesta-logo-alpha.png"
+            src={conBase("/brand/vesta-logo-alpha.png")}
             alt=""
             width={32}
             height={32}

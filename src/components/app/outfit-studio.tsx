@@ -15,6 +15,7 @@ import { toast } from "sonner";
 
 import { salvaOutfit } from "@/app/actions/outfits";
 import { Button } from "@/components/ui/button";
+import { conBase } from "@/lib/base-path";
 import { OCCASIONS, OCCASION_LABELS, type Occasion } from "@/lib/schemas";
 import type { WeatherSnapshot } from "@/lib/ai/types";
 
@@ -74,7 +75,7 @@ export function OutfitStudio({ haAmici }: { haAmici: boolean }) {
     setProposte(null);
 
     try {
-      const risposta = await fetch("/api/outfits/suggest", {
+      const risposta = await fetch(conBase("/api/outfits/suggest"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -245,7 +246,7 @@ function SchedaProposta({
     setGenerando(true);
     setErrore(null);
     try {
-      const risposta = await fetch("/api/outfits/image", {
+      const risposta = await fetch(conBase("/api/outfits/image"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -283,6 +283,55 @@ non vanno reimpostate a mano.
    URLs* dell'autenticazione, altrimenti i link di accesso rimandano a
    localhost
 
+### VESTA sotto un sottopercorso: `corazzini.it/dev`
+
+L'app non vive alla radice del dominio ma sotto `/dev`. Il valore sta in
+[`next.config.ts`](next.config.ts) come `basePath` e viene **inlineato nel
+bundle al momento del build**: si decide prima di costruire, non si cambia a
+caldo.
+
+`next/link` aggiunge il prefisso da solo. Tre cose no, e per quelle c'è
+`conBase()` in [`src/lib/base-path.ts`](src/lib/base-path.ts):
+
+- `next/image` con src assoluto
+- le `fetch` verso le nostre rotte API e gli `<a href>` nativi
+- i percorsi dentro il manifest della PWA
+
+Il service worker è un file statico e non passa dal build: deduce il
+sottopercorso da dove si trova (`self.location.pathname`), così il valore
+resta scritto in un posto solo.
+
+**Nel progetto che serve il dominio** (il sito dello studio) serve una regola
+di inoltro, in `vercel.json`:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/dev/:path*",
+      "destination": "https://NOME-PROGETTO-VESTA.vercel.app/dev/:path*"
+    }
+  ]
+}
+```
+
+I percorsi combaciano uno a uno perché VESTA ha già il proprio `basePath`.
+
+### Codice d'invito
+
+Finché l'MVP non è pubblico, `ACCESS_CODE` mette un cancello davanti a
+**tutto**, landing compresa. Chi non ha il codice viene mandato su
+`/accesso`; una volta inserito, un cookie `httpOnly` lo ricorda per 30 giorni.
+
+**Se `ACCESS_CODE` è vuota o assente, il cancello è aperto.** È voluto: un
+errore di configurazione deve lasciare il sito visitabile, non spegnerlo.
+
+Non è una misura di sicurezza: è un codice condiviso, chi ce l'ha può passarlo
+a chiunque. I dati veri restano protetti dall'accesso via email e dalle regole
+del database, che valgono comunque. Restano raggiungibili senza codice solo
+gli asset che servono a disegnare la pagina del cancello, e le immagini
+statiche — che sono disegni di magliette, non informazioni.
+
 ### Metterlo sotto un sottodominio
 
 Se il dominio ospita anche altro (un sito su un'altra piattaforma, una casella

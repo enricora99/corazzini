@@ -35,6 +35,7 @@ import {
   type Style,
 } from "@/lib/ai/types";
 import { preparaFoto } from "@/lib/image";
+import { conBase } from "@/lib/base-path";
 import { createClient } from "@/lib/supabase/client";
 
 type Fase = "scelta" | "lavorazione" | "revisione" | "salvataggio";
@@ -118,7 +119,7 @@ export function AddItemSheet({
           contentType: foto.mimeType,
           upsert: false,
         }),
-        fetch("/api/items/classify", {
+        fetch(conBase("/api/items/classify"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

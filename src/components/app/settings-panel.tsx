@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { conBase } from "@/lib/base-path";
 
 /** Chi cancella deve scrivere questo. Un click solo è troppo poco per
  *  un'azione che porta via anche le foto. */
@@ -51,7 +52,7 @@ export function SettingsPanel({ email }: { email: string }) {
         <Button asChild variant="outline" className="h-11 w-full gap-2 border-2 bg-background font-bold">
           {/* Link diretto e non fetch: così il browser apre la finestra di
               salvataggio da solo, anche su iOS. */}
-          <a href="/api/me/export" download>
+          <a href={conBase("/api/me/export")} download>
             <Download className="size-4" aria-hidden />
             Scarica i miei dati
           </a>

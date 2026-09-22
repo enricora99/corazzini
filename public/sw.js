@@ -11,15 +11,24 @@
  * una si ritroverebbe in cache l'armadio dell'altra.
  */
 
-const VERSION = "vesta-v1";
+const VERSION = "vesta-v2";
 const STATIC_CACHE = `${VERSION}-static`;
 const PAGES_CACHE = `${VERSION}-pages`;
-const OFFLINE_URL = "/offline";
+
+/*
+ * Questo file è statico: non passa dal build, quindi non può leggere la
+ * variabile con il sottopercorso. Se lo deduce da solo da dove si trova:
+ * servito da /dev/sw.js, BASE diventa "/dev"; dalla radice, stringa vuota.
+ * Così l'unico posto dove il percorso è scritto resta next.config.ts.
+ */
+const BASE = self.location.pathname.replace(/\/sw\.js$/, "");
+
+const OFFLINE_URL = `${BASE}/offline`;
 
 const PRECACHE = [
   OFFLINE_URL,
-  "/brand/vesta-logo-alpha.png",
-  "/icons/icon-192.png",
+  `${BASE}/brand/vesta-logo-alpha.png`,
+  `${BASE}/icons/icon-192.png`,
 ];
 
 self.addEventListener("install", (event) => {
@@ -49,19 +58,20 @@ self.addEventListener("activate", (event) => {
 /** Rotte che non devono mai finire in cache. */
 function isPrivate(pathname) {
   return (
-    pathname.startsWith("/api/") ||
-    pathname.startsWith("/app") ||
-    pathname.startsWith("/auth") ||
-    pathname.startsWith("/admin")
+    pathname.startsWith(`${BASE}/api/`) ||
+    pathname.startsWith(`${BASE}/app`) ||
+    pathname.startsWith(`${BASE}/auth`) ||
+    pathname.startsWith(`${BASE}/admin`)
   );
 }
 
 /** Asset con hash nel nome, o immagini del brand: non cambiano mai sotto i piedi. */
 function isStaticAsset(pathname) {
   return (
-    pathname.startsWith("/_next/static/") ||
-    pathname.startsWith("/icons/") ||
-    pathname.startsWith("/brand/")
+    pathname.startsWith(`${BASE}/_next/static/`) ||
+    pathname.startsWith(`${BASE}/icons/`) ||
+    pathname.startsWith(`${BASE}/brand/`) ||
+    pathname.startsWith(`${BASE}/demo/`)
   );
 }
 

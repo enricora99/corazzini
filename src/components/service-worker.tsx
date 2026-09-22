@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { conBase } from "@/lib/base-path";
 
 /**
  * Registra il service worker, ma solo in produzione.
@@ -26,7 +27,7 @@ export function ServiceWorker() {
     }
 
     const register = () => {
-      navigator.serviceWorker.register("/sw.js").catch(() => {
+      navigator.serviceWorker.register(conBase("/sw.js")).catch(() => {
         /* Se fallisce, l'app funziona lo stesso: si perde solo l'offline. */
       });
     };

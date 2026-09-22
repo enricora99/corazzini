@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { conBase } from "@/lib/base-path";
 
 import { Button } from "@/components/ui/button";
 
@@ -17,7 +18,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-5xl px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-20">
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/brand/vesta-logo-alpha.png"
+            src={conBase("/brand/vesta-logo-alpha.png")}
             alt="VESTA"
             width={96}
             height={96}
