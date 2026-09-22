@@ -40,6 +40,21 @@ verificato. Al contrario, il sito dello studio va offline nel frattempo.
 3. Framework: *Other* — non c'è niente da costruire
 4. Deploy
 
+### Le due regole di inoltro, e perché sono due
+
+In [`vercel.json`](vercel.json) ci sono due righe quasi identiche. La prima,
+quella per `/dev` liscio, **deve restare e deve stare prima dell'altra**.
+
+Senza, `/dev` non viene inoltrato: Vercel lo tratta come una cartella e ci
+aggiunge la barra finale, VESTA la toglie perché Next normalizza al
+contrario, e si rimbalza all'infinito. Il browser si arrende dopo qualche
+giro con un errore di troppi reindirizzamenti.
+
+`/dev` è proprio l'indirizzo che si manda in giro, quindi è il caso che non
+può rompersi. (In `vercel.json` non si possono mettere commenti: il file
+viene validato e qualsiasi proprietà in più lo fa rifiutare. Per questo la
+spiegazione sta qui.)
+
 ### 3. Collega i due
 
 In [`vercel.json`](vercel.json), sostituisci
