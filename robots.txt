@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# /dev è l'MVP di VESTA, dietro codice d'invito: non c'è niente da indicizzare
+# e non deve mescolarsi ai risultati di ricerca dello studio.
+Disallow: /dev
+
 Sitemap: https://www.corazzini.it/sitemap.xml

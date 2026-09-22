@@ -1,0 +1,4 @@
+# La cartella vesta/ è un progetto Vercel a sé (Root Directory: vesta).
+# Escluderla da QUESTO deploy evita che il sito dello studio si porti dietro
+# il sorgente dell'app e lo serva su www.corazzini.it/vesta/...
+vesta/
