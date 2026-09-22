@@ -45,10 +45,10 @@ export default function DemoHome() {
             <Camera className="size-6 shrink-0" aria-hidden strokeWidth={2} />
             <span>
               <span className="block text-base font-extrabold">
-                Guarda l&apos;armadio
+                Aggiungi un capo
               </span>
               <span className="block text-sm font-medium text-muted-foreground">
-                I capi già catalogati
+                Guarda come viene riconosciuto
               </span>
             </span>
           </Link>
@@ -56,10 +56,10 @@ export default function DemoHome() {
       </div>
 
       <p className="rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground text-pretty">
-        Nell&apos;app vera fotografi un capo e un modello lo riconosce da solo:
+        Nell&apos;app fotografi un capo e un modello lo riconosce da solo:
         categoria, colori, stagione, quanto copre. Tu correggi se sbaglia, e
-        finisce nell&apos;armadio. Qui i capi sono già lì, così puoi andare
-        dritto alla parte interessante.
+        finisce nell&apos;armadio. Qui la foto la scegli da tre già pronte, ma
+        il resto del passaggio è identico.
       </p>
     </div>
   );
