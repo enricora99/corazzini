@@ -117,6 +117,21 @@ indietro, richiede fino a un'ora.
 
 ## Poi, ogni giorno
 
-Push su `main` e Vercel ricostruisce entrambi i progetti da solo. Se hai
-toccato solo la radice, il progetto «vesta» si accorge che nulla è cambiato
-nella sua cartella e salta il build.
+```bash
+node scripts/pubblica.mjs
+```
+
+Pubblica **tutti e due** i progetti, uno dopo l'altro, e dice come è andata.
+
+Va lanciato a mano perché nessuno dei due progetti è collegato a GitHub:
+`git push` manda il codice su GitHub e basta, su Vercel non arriva niente.
+Sembra una distinzione da poco finché non aggiorni qualcosa, vedi il push
+riuscito e resti convinto che sia online — è già successo con la biografia
+in home, rimasta invisibile per ore.
+
+Pubblicarne uno solo è la stessa trappola in versione più insidiosa: il
+sito si aggiorna, `/dev` no, o viceversa. Per questo lo script li fa
+entrambi e non accetta di considerarsi riuscito se uno dei due fallisce.
+
+Il giorno in cui i progetti verranno collegati a GitHub, questo script e
+questa sezione si possono buttare.
