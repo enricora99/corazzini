@@ -137,7 +137,7 @@ export function giorniDemo(anno: number, mese: number) {
 
   const piani: { scarto: number; slugs: string[]; etichetta: string }[] = [
     { scarto: -6, slugs: ["camicia-righe", "jeans-scuri", "sneakers-bianche"], etichetta: "Lavoro" },
-    { scarto: -4, slugs: ["t-shirt-bianca", "jeans-larghi", "sneakers-bianche"], etichetta: "UniversitÃ " },
+    { scarto: -4, slugs: ["t-shirt-bianca", "jeans-larghi", "sneakers-bianche"], etichetta: "Università" },
     { scarto: -2, slugs: ["polo-righe", "jeans-paisley", "sneakers-bianche", "borsa-denim"], etichetta: "Sera" },
     { scarto: 0, slugs: ["maglione-righe", "jeans-chiari", "sneakers-bianche"], etichetta: "Oggi" },
     { scarto: 1, slugs: ["camicia-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"], etichetta: "Domani, riunione" },
@@ -182,10 +182,10 @@ export type Rifinitura = {
 export const RIFINITURE_DEMO: Rifinitura[] = [
   {
     id: "formale",
-    etichetta: "PiÃ¹ formale",
+    etichetta: "Più formale",
     chiavi: ["formale", "elegante", "serio", "importante", "colloquio", "ufficio"],
     risposta:
-      "Ho alzato il tono con quello che hai: camicia al posto della maglia e i jeans scuri. PiÃ¹ su di cosÃ¬ non si arriva senza comprare un capo.",
+      "Ho alzato il tono con quello che hai: camicia al posto della maglia e i jeans scuri. Più su di così non si arriva senza comprare un capo.",
     proposte: [
       proposta(
         ["camicia-righe", "jeans-scuri", "sneakers-bianche"],
@@ -193,20 +193,20 @@ export const RIFINITURE_DEMO: Rifinitura[] = [
       ),
       proposta(
         ["camicia-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"],
-        "La giacca di jeans non Ã¨ un blazer, ma chiude la figura e toglie l'aria da fine settimana."
+        "La giacca di jeans non è un blazer, ma chiude la figura e toglie l'aria da fine settimana."
       ),
     ],
   },
   {
     id: "caldo",
-    etichetta: "PiÃ¹ caldo",
+    etichetta: "Più caldo",
     chiavi: ["caldo", "freddo", "coprir", "inverno", "gela", "pesante"],
     risposta:
-      "Ho aggiunto strati. Due leggeri scaldano piÃ¹ di uno pesante, e a metÃ  giornata ne togli uno.",
+      "Ho aggiunto strati. Due leggeri scaldano più di uno pesante, e a metà giornata ne togli uno.",
     proposte: [
       proposta(
         ["maglione-righe", "jeans-larghi", "sneakers-bianche"],
-        "Il maglione a coste copre davvero: da solo basta fino a metÃ  novembre."
+        "Il maglione a coste copre davvero: da solo basta fino a metà novembre."
       ),
       proposta(
         ["maglione-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"],
@@ -227,7 +227,7 @@ export const RIFINITURE_DEMO: Rifinitura[] = [
       ),
       proposta(
         ["t-shirt-marrone", "jeans-larghi", "sneakers-bianche"],
-        "Stessa logica, un tono piÃ¹ caldo. Il marrone regge meglio la luce di settembre."
+        "Stessa logica, un tono più caldo. Il marrone regge meglio la luce di settembre."
       ),
     ],
   },
