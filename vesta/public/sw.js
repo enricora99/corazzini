@@ -11,7 +11,10 @@
  * una si ritroverebbe in cache l'armadio dell'altra.
  */
 
-const VERSION = "vesta-v2";
+// Cambiare questo numero butta via tutte le cache vecchie alla prossima
+// visita. Va alzato quando cambia il modo di mettere in cache, non a ogni
+// pubblicazione: i file con l'impronta nel nome si rinnovano da soli.
+const VERSION = "vesta-v3";
 const STATIC_CACHE = `${VERSION}-static`;
 const PAGES_CACHE = `${VERSION}-pages`;
 
@@ -65,10 +68,25 @@ function isPrivate(pathname) {
   );
 }
 
-/** Asset con hash nel nome, o immagini del brand: non cambiano mai sotto i piedi. */
-function isStaticAsset(pathname) {
+/**
+ * File con l'impronta nel nome: quando il contenuto cambia, cambia l'indirizzo.
+ * Si possono tenere in cache per sempre senza rischiare di servirne uno vecchio.
+ */
+function isImmutabile(pathname) {
+  return pathname.startsWith(`${BASE}/_next/static/`);
+}
+
+/**
+ * File nostri che vivono a un indirizzo fisso: icone, marchio, capi della demo.
+ *
+ * Questi NON si possono trattare come i precedenti. `demo/jeans-chiari.png`
+ * resta `demo/jeans-chiari.png` anche quando la fotografia dentro cambia: con
+ * la cache che vince sempre, chi ha aperto la demo una volta si ritroverebbe
+ * l'immagine vecchia per sempre, e non avrebbe modo di accorgersene. È
+ * successo, e davanti a una giuria sarebbe successo al momento peggiore.
+ */
+function isNostro(pathname) {
   return (
-    pathname.startsWith(`${BASE}/_next/static/`) ||
     pathname.startsWith(`${BASE}/icons/`) ||
     pathname.startsWith(`${BASE}/brand/`) ||
     pathname.startsWith(`${BASE}/demo/`)
@@ -84,19 +102,44 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
   if (isPrivate(url.pathname)) return;
 
-  if (isStaticAsset(url.pathname)) {
+  // La scrittura in cache viene attesa invece che lasciata andare per conto
+  // suo: è quella che deve finire perché l'aggiornamento serva a qualcosa, e
+  // `waitUntil` più sotto può tenere in vita il worker solo se la promessa
+  // che riceve la comprende. Costa il tempo di una scrittura locale.
+  async function scarica() {
+    const response = await fetch(request);
+
+    if (response.ok) {
+      const copia = response.clone();
+      const cache = await caches.open(STATIC_CACHE);
+      await cache.put(request, copia);
+    }
+
+    return response;
+  }
+
+  if (isImmutabile(url.pathname)) {
+    event.respondWith(caches.match(request).then((hit) => hit ?? scarica()));
+    return;
+  }
+
+  if (isNostro(url.pathname)) {
+    // Si risponde subito con la copia in cache, ma intanto si va a vedere se
+    // ne esiste una nuova e la si mette da parte per la volta dopo. Resta
+    // veloce e funziona senza rete, e una versione vecchia dura al massimo
+    // una visita invece che per sempre.
     event.respondWith(
-      caches.match(request).then(
-        (hit) =>
-          hit ??
-          fetch(request).then((response) => {
-            if (response.ok) {
-              const copy = response.clone();
-              caches.open(STATIC_CACHE).then((cache) => cache.put(request, copy));
-            }
-            return response;
-          })
-      )
+      caches.match(request).then((hit) => {
+        const rete = scarica();
+
+        if (!hit) return rete;
+
+        // `waitUntil` tiene in vita il worker finché l'aggiornamento non è
+        // finito: senza, il browser può spegnerlo appena consegnata la
+        // risposta, e la copia nuova non verrebbe mai salvata.
+        event.waitUntil(rete.catch(() => undefined));
+        return hit;
+      })
     );
     return;
   }
