@@ -49,3 +49,9 @@ next-env.d.ts
 
 # pacchetto sorgente: lo rigenera `npm run prebuild` a ogni build
 public/vesta-codice.zip
+
+# fotografie di partenza dell'armadio demo: immagini di catalogo, servono
+# solo a rigenerare le miniature di public/demo/ e la repo e` pubblica.
+# Le miniature gia` lavorate invece sono versionate: senza, la demo si
+# ritroverebbe i disegni al posto delle foto a ogni nuova macchina.
+/foto-demo

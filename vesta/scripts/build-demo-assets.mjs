@@ -4,12 +4,16 @@
  *
  *   node scripts/build-demo-assets.mjs
  *
- * Sono sagome disegnate qui, non fotografie. La specifica dice di non usare
- * immagini prese dal web, e le foto vere le carica il team: finché non
- * arrivano, questi disegni fanno vedere com'è fatta l'app senza far finta
- * di essere un armadio vero.
+ * Sono sagome disegnate qui, non fotografie: appartengono al progetto e
+ * possono essere distribuite senza pensarci.
  *
- * Basta rilanciare lo script dopo aver cambiato CAPI qui sotto.
+ * Nella demo dal vivo non si vedono quasi mai, perché sopra ci sono le
+ * fotografie vere dell'armadio (vedi `import-foto-demo.mjs`). Si vedono nel
+ * pacchetto che si scarica, dove le fotografie non entrano, e ogni volta
+ * che un capo la sua foto non ce l'ha ancora.
+ *
+ * Basta rilanciare lo script dopo aver cambiato CAPI qui sotto, e tenere
+ * l'elenco allineato a quello di `import-foto-demo.mjs`.
  */
 
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -46,26 +50,30 @@ const SAGOME = {
 /** I capi dell'armadio dimostrativo. La chiave diventa il nome del file. */
 const CAPI = [
   { slug: "t-shirt-bianca", sagoma: "top", colore: "#EFEDE6", bordo: "#C9C4B6" },
-  { slug: "camicia-azzurra", sagoma: "camicia", colore: "#A9C6DF" },
-  { slug: "maglione-beige", sagoma: "top", colore: "#D8C5A4" },
-  { slug: "top-nero", sagoma: "top", colore: "#33373D" },
-  { slug: "jeans-blu", sagoma: "pantaloni", colore: "#4C6685" },
-  { slug: "pantaloni-neri", sagoma: "pantaloni", colore: "#2F333A" },
-  { slug: "pantaloni-beige", sagoma: "pantaloni", colore: "#CBB894" },
-  { slug: "gonna-nera", sagoma: "gonna", colore: "#33373D" },
-  { slug: "vestito-verde", sagoma: "vestito", colore: "#6E8F6E" },
-  { slug: "blazer-blu", sagoma: "giacca", colore: "#2E3C55" },
-  { slug: "giacca-denim", sagoma: "giacca", colore: "#6C89A8" },
-  { slug: "sneakers-bianche", sagoma: "scarpe", colore: "#EFEDE6", bordo: "#C9C4B6" },
-  { slug: "stivaletti-neri", sagoma: "scarpe", colore: "#2F333A" },
-  { slug: "sciarpa-senape", sagoma: "accessorio", colore: "#D9AE4C" },
-  { slug: "borsa-cuoio", sagoma: "accessorio", colore: "#9A6F49" },
+  { slug: "t-shirt-marrone", sagoma: "top", colore: "#5C3B35" },
+  { slug: "polo-righe", sagoma: "camicia", colore: "#3B3F46" },
+  { slug: "camicia-righe", sagoma: "camicia", colore: "#4A4E55" },
+  { slug: "maglione-righe", sagoma: "top", colore: "#C6B49B" },
+  { slug: "jeans-chiari", sagoma: "pantaloni", colore: "#A8C1D8" },
+  { slug: "jeans-scuri", sagoma: "pantaloni", colore: "#2B3450" },
+  { slug: "jeans-larghi", sagoma: "pantaloni", colore: "#6C89A8" },
+  { slug: "pantaloni-tuta", sagoma: "pantaloni", colore: "#7B3B47" },
+  { slug: "shorts-denim", sagoma: "pantaloni", colore: "#9FBBD3" },
+  { slug: "giacca-denim", sagoma: "giacca", colore: "#86A7C4" },
+  { slug: "sneakers-bianche", sagoma: "scarpe", colore: "#E4E6E9", bordo: "#B4B8BE" },
+  { slug: "scarpe-corsa", sagoma: "scarpe", colore: "#EFEDE6", bordo: "#C9C4B6" },
+  { slug: "borsa-denim", sagoma: "accessorio", colore: "#5E7B99" },
+
+  // Degli amici: nella griglia compaiono con «di …».
+  { slug: "jeans-paisley", sagoma: "pantaloni", colore: "#5D7FA6" },
+  { slug: "sneakers-rosa", sagoma: "scarpe", colore: "#C9908E" },
+  { slug: "sneakers-multicolore", sagoma: "scarpe", colore: "#3D63C4" },
 
   // Questi tre non stanno nell'armadio di partenza: servono al flusso
   // «fotografa un capo», dove l'utente ne aggiunge uno che non c'era.
-  { slug: "felpa-grigia", sagoma: "top", colore: "#9AA0A6" },
-  { slug: "cappotto-cammello", sagoma: "giacca", colore: "#C09A6B" },
-  { slug: "mocassini-cuoio", sagoma: "scarpe", colore: "#8B5E3C" },
+  { slug: "felpa-beige", sagoma: "top", colore: "#CFC0AC" },
+  { slug: "sneakers-marroni", sagoma: "scarpe", colore: "#7A4F35" },
+  { slug: "borsa-rosa", sagoma: "accessorio", colore: "#E3A6BC" },
 ];
 
 /** Fondo: una velatura chiarissima del colore del capo, così le miniature

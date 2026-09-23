@@ -47,32 +47,47 @@ const RADICE = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 /** I capi dell'armadio demo. Sono i nomi dei file che lo script si aspetta. */
 const CAPI = [
+  // Sopra
   "t-shirt-bianca",
-  "camicia-azzurra",
-  "maglione-beige",
-  "top-nero",
-  "jeans-blu",
-  "pantaloni-neri",
-  "pantaloni-beige",
-  "gonna-nera",
-  "vestito-verde",
-  "blazer-blu",
-  "sneakers-bianche",
-  "stivaletti-neri",
+  "t-shirt-marrone",
+  "polo-righe",
+  "camicia-righe",
+  "maglione-righe",
+  // Sotto
+  "jeans-chiari",
+  "jeans-scuri",
+  "jeans-larghi",
+  "pantaloni-tuta",
+  "shorts-denim",
+  // Sopra di tutto
   "giacca-denim",
-  "sciarpa-senape",
-  "borsa-cuoio",
+  // Ai piedi
+  "sneakers-bianche",
+  "scarpe-corsa",
+  // In mano
+  "borsa-denim",
+
+  // Degli amici: nella griglia compaiono con «di ...».
+  "jeans-paisley",
+  "sneakers-rosa",
+  "sneakers-multicolore",
 
   // Questi tre non stanno nell'armadio di partenza: sono i capi che si
   // aggiungono durante la dimostrazione, per far vedere il riconoscimento.
-  "felpa-grigia",
-  "cappotto-cammello",
-  "mocassini-cuoio",
+  "felpa-beige",
+  "sneakers-marroni",
+  "borsa-rosa",
 ];
 
-const LATO = 800;
-/** Un margine attorno al capo: incollato ai bordi sembra tagliato male. */
-const MARGINE = 48;
+const LATO = 640;
+/**
+ * Un margine attorno al capo: incollato ai bordi sembra tagliato male.
+ *
+ * Il lato sta a 640 e non piu' in alto di proposito: le foto di catalogo
+ * arrivano intorno ai 640 di altezza, e un quadrato piu' grande le
+ * ingrandirebbe soltanto - piu' peso, stessa nitidezza.
+ */
+const MARGINE = 40;
 
 /**
  * Il colore con cui riempire il quadrato attorno al capo.

@@ -28,17 +28,29 @@ const CARTELLE_ESCLUSE = new Set([
   ".git",
   ".claude",
   "certificates",
+  // Le fotografie di partenza dell'armadio demo: sono immagini di catalogo
+  // altrui, servono solo a rigenerare le miniature e non vanno distribuite.
+  "foto-demo",
 ]);
+
+/** Il file dell'elenco delle fotografie, come lo scrive lo script d'import. */
+const ELENCO_FOTO = join("src", "lib", "demo", "foto.json");
 
 /** File da non includere. */
 function fileEscluso(percorso) {
   const nome = percorso.split(sep).pop() ?? "";
+  const relativo = relative(radice, percorso);
+
   return (
     // Le chiavi vere non escono da qui. .env.example sì: serve a chi legge.
     (nome.startsWith(".env") && nome !== ".env.example") ||
     nome === "vesta-codice.zip" ||
     nome.endsWith(".tsbuildinfo") ||
-    nome.endsWith(".zip")
+    nome.endsWith(".zip") ||
+    // Le fotografie dei capi. Chi riceve il pacchetto trova i disegni, che
+    // sono nostri: le foto dell'armadio sono immagini di catalogo, buone a
+    // far vedere l'app dal vivo ma non da mettere dentro un file che gira.
+    (relativo.startsWith(join("public", "demo")) && nome.endsWith(".png"))
   );
 }
 
@@ -289,7 +301,13 @@ installabili servono un manifest valido **e** HTTPS.
 const file = raccogli(radice)
   .map((percorso) => ({
     nome: `vesta/${relative(radice, percorso).split(sep).join("/")}`,
-    contenuto: readFileSync(percorso),
+    // L'elenco delle fotografie esce vuoto: i PNG non sono nel pacchetto, e
+    // un elenco che li nomina farebbe cercare all'applicazione file che non
+    // ci sono. Con l'elenco vuoto ogni capo ricade sul proprio disegno.
+    contenuto:
+      relative(radice, percorso) === ELENCO_FOTO
+        ? Buffer.from("[]\n", "utf8")
+        : readFileSync(percorso),
   }))
   .sort((a, b) => a.nome.localeCompare(b.nome));
 

@@ -31,23 +31,25 @@ type Seme = {
 };
 
 const SEMI: Seme[] = [
-  { slug: "t-shirt-bianca", subcategory: "t-shirt di cotone", category: "top", colors: ["bianco"], seasons: ["primavera", "estate"], style: "casual", warmth: 1 },
-  { slug: "camicia-azzurra", subcategory: "camicia di lino", category: "top", colors: ["azzurro"], seasons: ["primavera", "estate"], style: "formale", warmth: 2 },
-  { slug: "maglione-beige", subcategory: "maglione a coste", category: "top", colors: ["beige"], seasons: ["autunno", "inverno"], style: "casual", warmth: 4 },
-  { slug: "top-nero", subcategory: "top smanicato", category: "top", colors: ["nero"], seasons: ["primavera", "estate"], style: "elegante", warmth: 1 },
-  { slug: "jeans-blu", subcategory: "jeans dritti", category: "pantaloni", colors: ["blu"], seasons: ["primavera", "autunno", "inverno"], style: "casual", warmth: 3 },
-  { slug: "pantaloni-neri", subcategory: "pantaloni sartoriali", category: "pantaloni", colors: ["nero"], seasons: ["autunno", "inverno", "primavera"], style: "formale", warmth: 3 },
-  { slug: "pantaloni-beige", subcategory: "chino beige", category: "pantaloni", colors: ["beige"], seasons: ["primavera", "estate"], style: "casual", warmth: 2 },
-  { slug: "gonna-nera", subcategory: "gonna a tubino", category: "gonna", colors: ["nero"], seasons: ["autunno", "inverno"], style: "elegante", warmth: 2 },
-  { slug: "vestito-verde", subcategory: "abito verde salvia", category: "vestito", colors: ["verde"], seasons: ["primavera", "estate"], style: "elegante", warmth: 2 },
-  { slug: "blazer-blu", subcategory: "blazer blu notte", category: "giacca", colors: ["blu"], seasons: ["autunno", "primavera"], style: "formale", warmth: 3 },
-  { slug: "sneakers-bianche", subcategory: "sneakers di pelle", category: "scarpe", colors: ["bianco"], seasons: ["primavera", "estate", "autunno"], style: "casual", warmth: 2 },
-  { slug: "stivaletti-neri", subcategory: "stivaletti con tacco", category: "scarpe", colors: ["nero"], seasons: ["autunno", "inverno"], style: "elegante", warmth: 3 },
+  { slug: "t-shirt-bianca", subcategory: "t-shirt con stampa", category: "top", colors: ["bianco"], seasons: ["primavera", "estate"], style: "casual", warmth: 1 },
+  { slug: "t-shirt-marrone", subcategory: "t-shirt di cotone", category: "top", colors: ["marrone"], seasons: ["primavera", "estate"], style: "casual", warmth: 1 },
+  { slug: "polo-righe", subcategory: "polo a righe", category: "top", colors: ["bianco", "nero"], seasons: ["primavera", "autunno"], style: "elegante", warmth: 2 },
+  { slug: "camicia-righe", subcategory: "camicia a righe", category: "top", colors: ["bianco", "nero"], seasons: ["primavera", "autunno"], style: "formale", warmth: 2 },
+  { slug: "maglione-righe", subcategory: "maglione a righe", category: "top", colors: ["beige", "bianco"], seasons: ["autunno", "inverno"], style: "casual", warmth: 4 },
+  { slug: "jeans-chiari", subcategory: "jeans dritti", category: "pantaloni", colors: ["azzurro"], seasons: ["primavera", "estate", "autunno"], style: "casual", warmth: 3 },
+  { slug: "jeans-scuri", subcategory: "jeans con borchie", category: "pantaloni", colors: ["blu"], seasons: ["autunno", "inverno", "primavera"], style: "elegante", warmth: 3 },
+  { slug: "jeans-larghi", subcategory: "jeans larghi", category: "pantaloni", colors: ["blu"], seasons: ["primavera", "autunno", "inverno"], style: "casual", warmth: 3 },
+  { slug: "pantaloni-tuta", subcategory: "pantaloni di felpa", category: "pantaloni", colors: ["bordeaux"], seasons: ["autunno", "inverno"], style: "sportivo", warmth: 3 },
+  { slug: "shorts-denim", subcategory: "shorts di jeans", category: "pantaloni", colors: ["azzurro"], seasons: ["estate"], style: "casual", warmth: 1 },
+  { slug: "giacca-denim", subcategory: "giacca di jeans corta", category: "giacca", colors: ["azzurro"], seasons: ["primavera", "autunno"], style: "casual", warmth: 3 },
+  { slug: "sneakers-bianche", subcategory: "sneakers argento", category: "scarpe", colors: ["bianco", "argento"], seasons: ["primavera", "estate", "autunno"], style: "casual", warmth: 2 },
+  { slug: "scarpe-corsa", subcategory: "scarpe da corsa", category: "scarpe", colors: ["bianco", "nero"], seasons: ["primavera", "estate", "autunno"], style: "sportivo", warmth: 2 },
+  { slug: "borsa-denim", subcategory: "borsa di denim", category: "accessorio", colors: ["blu"], seasons: ["primavera", "estate", "autunno", "inverno"], style: "casual", warmth: 1 },
 
   // Questi tre sono degli amici: nella griglia compaiono con «di …».
-  { slug: "giacca-denim", subcategory: "giacca di jeans", category: "giacca", colors: ["blu"], seasons: ["primavera", "autunno"], style: "casual", warmth: 3, ownerName: "Giulia" },
-  { slug: "sciarpa-senape", subcategory: "sciarpa di lana", category: "accessorio", colors: ["senape"], seasons: ["autunno", "inverno"], style: "casual", warmth: 4, ownerName: "Giulia" },
-  { slug: "borsa-cuoio", subcategory: "borsa di cuoio", category: "accessorio", colors: ["cuoio"], seasons: ["primavera", "estate", "autunno", "inverno"], style: "elegante", warmth: 1, ownerName: "Marco" },
+  { slug: "jeans-paisley", subcategory: "jeans larghi ricamati", category: "pantaloni", colors: ["blu"], seasons: ["primavera", "estate"], style: "elegante", warmth: 2, ownerName: "Giulia" },
+  { slug: "sneakers-rosa", subcategory: "sneakers rosa", category: "scarpe", colors: ["rosa"], seasons: ["primavera", "estate", "autunno"], style: "casual", warmth: 2, ownerName: "Giulia" },
+  { slug: "sneakers-multicolore", subcategory: "sneakers multicolore", category: "scarpe", colors: ["multicolore"], seasons: ["primavera", "estate"], style: "casual", warmth: 2, ownerName: "Marco" },
 ];
 
 /** Date fisse: con `new Date()` la pagina non sarebbe più statica e a ogni
@@ -134,13 +136,13 @@ export function giorniDemo(anno: number, mese: number) {
   const oggi = new Date().getDate();
 
   const piani: { scarto: number; slugs: string[]; etichetta: string }[] = [
-    { scarto: -6, slugs: ["camicia-azzurra", "pantaloni-neri", "stivaletti-neri"], etichetta: "Lavoro" },
-    { scarto: -4, slugs: ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"], etichetta: "Università" },
-    { scarto: -2, slugs: ["top-nero", "gonna-nera", "stivaletti-neri", "borsa-cuoio"], etichetta: "Sera" },
-    { scarto: 0, slugs: ["maglione-beige", "jeans-blu", "sneakers-bianche"], etichetta: "Oggi" },
-    { scarto: 1, slugs: ["camicia-azzurra", "blazer-blu", "pantaloni-neri"], etichetta: "Domani, riunione" },
-    { scarto: 3, slugs: ["vestito-verde", "stivaletti-neri"], etichetta: "Cerimonia" },
-    { scarto: 6, slugs: ["t-shirt-bianca", "giacca-denim", "pantaloni-beige"], etichetta: "Weekend" },
+    { scarto: -6, slugs: ["camicia-righe", "jeans-scuri", "sneakers-bianche"], etichetta: "Lavoro" },
+    { scarto: -4, slugs: ["t-shirt-bianca", "jeans-larghi", "sneakers-bianche"], etichetta: "UniversitÃ " },
+    { scarto: -2, slugs: ["polo-righe", "jeans-paisley", "sneakers-bianche", "borsa-denim"], etichetta: "Sera" },
+    { scarto: 0, slugs: ["maglione-righe", "jeans-chiari", "sneakers-bianche"], etichetta: "Oggi" },
+    { scarto: 1, slugs: ["camicia-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"], etichetta: "Domani, riunione" },
+    { scarto: 3, slugs: ["camicia-righe", "jeans-paisley", "sneakers-rosa"], etichetta: "Cerimonia" },
+    { scarto: 6, slugs: ["t-shirt-marrone", "giacca-denim", "jeans-larghi", "sneakers-bianche"], etichetta: "Weekend" },
   ];
 
   return piani
@@ -180,35 +182,35 @@ export type Rifinitura = {
 export const RIFINITURE_DEMO: Rifinitura[] = [
   {
     id: "formale",
-    etichetta: "Più formale",
+    etichetta: "PiÃ¹ formale",
     chiavi: ["formale", "elegante", "serio", "importante", "colloquio", "ufficio"],
     risposta:
-      "Ho alzato il tono: camicia al posto della maglia e scarpe chiuse. Il blazer lo puoi togliere se l'ambiente è informale.",
+      "Ho alzato il tono con quello che hai: camicia al posto della maglia e i jeans scuri. PiÃ¹ su di cosÃ¬ non si arriva senza comprare un capo.",
     proposte: [
       proposta(
-        ["camicia-azzurra", "blazer-blu", "pantaloni-neri", "stivaletti-neri"],
-        "Il blazer fa tutto il lavoro. Sotto resta leggero, così non ti pesa."
+        ["camicia-righe", "jeans-scuri", "sneakers-bianche"],
+        "La camicia fa quasi tutto. Le righe sottili non gridano."
       ),
       proposta(
-        ["camicia-azzurra", "pantaloni-neri", "stivaletti-neri"],
-        "Senza giacca resta composto: l'azzurro tiene la camicia meno rigida."
+        ["camicia-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"],
+        "La giacca di jeans non Ã¨ un blazer, ma chiude la figura e toglie l'aria da fine settimana."
       ),
     ],
   },
   {
     id: "caldo",
-    etichetta: "Più caldo",
+    etichetta: "PiÃ¹ caldo",
     chiavi: ["caldo", "freddo", "coprir", "inverno", "gela", "pesante"],
     risposta:
-      "Ho aggiunto strati. La sciarpa te la fai prestare da Giulia: alza di parecchio senza appesantire.",
+      "Ho aggiunto strati. Due leggeri scaldano piÃ¹ di uno pesante, e a metÃ  giornata ne togli uno.",
     proposte: [
       proposta(
-        ["maglione-beige", "jeans-blu", "stivaletti-neri", "sciarpa-senape"],
-        "Il maglione a coste copre davvero, la sciarpa chiude gli spifferi."
+        ["maglione-righe", "jeans-larghi", "sneakers-bianche"],
+        "Il maglione a coste copre davvero: da solo basta fino a metÃ  novembre."
       ),
       proposta(
-        ["maglione-beige", "giacca-denim", "pantaloni-neri", "stivaletti-neri"],
-        "Due strati leggeri scaldano più di uno pesante, e li togli a metà giornata."
+        ["maglione-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"],
+        "Con la giacca sopra reggi anche la sera, senza portarti dietro un cappotto."
       ),
     ],
   },
@@ -217,32 +219,32 @@ export const RIFINITURE_DEMO: Rifinitura[] = [
     etichetta: "Meno pezzi",
     chiavi: ["semplice", "meno", "veloce", "fretta", "minimal", "essenziale"],
     risposta:
-      "Ridotto all'osso: due capi e sei fuori di casa. Il vestito risolve sopra e sotto insieme.",
+      "Ridotto all'osso: tre capi e sei fuori di casa. Senza vestiti in armadio, sotto i tre non si scende.",
     proposte: [
       proposta(
-        ["vestito-verde", "sneakers-bianche"],
-        "Un capo solo e le scarpe. Il verde salvia non chiede altro."
+        ["t-shirt-bianca", "jeans-chiari", "sneakers-bianche"],
+        "Il minimo che funziona sempre, senza doverci pensare."
       ),
       proposta(
-        ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"],
-        "Il minimo che funziona sempre, senza doverci pensare."
+        ["t-shirt-marrone", "jeans-larghi", "sneakers-bianche"],
+        "Stessa logica, un tono piÃ¹ caldo. Il marrone regge meglio la luce di settembre."
       ),
     ],
   },
   {
     id: "scarpe",
     etichetta: "Cambia scarpe",
-    chiavi: ["scarpe", "stivaletti", "sneakers", "tacco", "comode", "camminare"],
+    chiavi: ["scarpe", "sneakers", "comode", "camminare", "corsa", "piedi"],
     risposta:
-      "Ho cambiato solo le scarpe, il resto regge. Se devi camminare molto, la prima.",
+      "Ho cambiato solo le scarpe, il resto regge. Se devi camminare molto, la seconda.",
     proposte: [
       proposta(
-        ["camicia-azzurra", "jeans-blu", "sneakers-bianche"],
-        "Sneakers bianche: tengono il casual senza scendere di tono."
+        ["polo-righe", "jeans-chiari", "sneakers-bianche"],
+        "Le argento tengono il casual senza scendere di tono."
       ),
       proposta(
-        ["camicia-azzurra", "jeans-blu", "stivaletti-neri"],
-        "Con il tacco lo stesso outfit diventa da sera. Cambia solo il passo."
+        ["polo-righe", "jeans-chiari", "scarpe-corsa"],
+        "Le scarpe da corsa sotto la polo: meno curate, ma a fine giornata te ne accorgi."
       ),
     ],
   },
@@ -262,72 +264,72 @@ export function riconosciRifinitura(testo: string): Rifinitura | null {
 export const PROPOSTE_DEMO: Record<Occasion, PropostaDemo[]> = {
   lavoro: [
     proposta(
-      ["camicia-azzurra", "pantaloni-neri", "stivaletti-neri"],
-      "L'azzurro tiene la camicia leggera senza smontare il resto: formale ma non rigido."
+      ["camicia-righe", "jeans-scuri", "sneakers-bianche"],
+      "La camicia a righe con i jeans scuri: le borchie si notano poco da seduta, e il resto resta sobrio."
     ),
     proposta(
-      ["camicia-azzurra", "blazer-blu", "pantaloni-neri", "stivaletti-neri"],
-      "Con il blazer regge anche una riunione; a 19 gradi non ti pesa addosso."
+      ["polo-righe", "jeans-chiari", "sneakers-bianche"],
+      "La polo tiene il colletto senza la rigidità della camicia. Per le giornate senza riunioni."
     ),
     proposta(
-      ["maglione-beige", "pantaloni-neri", "stivaletti-neri"],
-      "Quando la giornata è tranquilla: il beige smorza il nero e resta ordinato."
+      ["camicia-righe", "giacca-denim", "jeans-scuri", "sneakers-bianche"],
+      "Con la giacca sopra regge anche l'aria condizionata. A 19 gradi la togli a metà mattina."
     ),
   ],
   universita: [
     proposta(
-      ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"],
-      "Il minimo sforzo che funziona sempre. Bianco e blu non litigano mai."
+      ["t-shirt-bianca", "jeans-larghi", "sneakers-bianche"],
+      "Il minimo sforzo che funziona sempre. La stampa fa tutto da sola."
     ),
     proposta(
-      ["t-shirt-bianca", "giacca-denim", "pantaloni-beige", "sneakers-bianche"],
-      "La giacca di jeans te la fai prestare da Giulia: copre quel che serve a metà settembre."
-    ),
-    proposta(
-      ["maglione-beige", "jeans-blu", "sneakers-bianche"],
+      ["maglione-righe", "jeans-chiari", "sneakers-bianche"],
       "Per le mattine fredde in aula, dove il riscaldamento arriva sempre tardi."
+    ),
+    proposta(
+      ["t-shirt-marrone", "giacca-denim", "jeans-larghi", "sneakers-bianche"],
+      "Il marrone sotto il denim chiaro: due toni che si tengono senza sforzo."
     ),
   ],
   sera: [
     proposta(
-      ["top-nero", "gonna-nera", "stivaletti-neri"],
-      "Nero su nero: il tacco fa il lavoro, tu non devi pensarci."
+      ["polo-righe", "jeans-paisley", "sneakers-bianche", "borsa-denim"],
+      "I jeans ricamati di Giulia alzano il tono più di qualunque cosa tua. La polo li lascia parlare."
     ),
     proposta(
-      ["top-nero", "gonna-nera", "borsa-cuoio", "stivaletti-neri"],
-      "La borsa di Marco spezza il nero con un tono caldo, senza gridare."
+      ["t-shirt-marrone", "jeans-scuri", "sneakers-bianche", "borsa-denim"],
+      "Scuro su scuro, con le borchie come unico dettaglio. Non chiede altro."
     ),
     proposta(
-      ["vestito-verde", "stivaletti-neri"],
-      "Un capo solo e hai finito. Il verde salvia regge bene la luce serale."
+      ["camicia-righe", "jeans-paisley", "sneakers-rosa"],
+      "Le scarpe rosa di Giulia raccolgono il ricamo dei jeans. Righe e paisley reggono: cambia la scala."
     ),
   ],
   sport: [
     proposta(
-      ["t-shirt-bianca", "pantaloni-neri", "sneakers-bianche"],
-      "Leggero e comodo. Con 19 gradi non ti serve altro."
+      ["t-shirt-bianca", "pantaloni-tuta", "scarpe-corsa"],
+      "Quello che metteresti senza pensarci. A 19 gradi la felpa sopra non serve."
     ),
     proposta(
-      ["t-shirt-bianca", "jeans-blu", "sneakers-bianche"],
-      "Se il campo è all'aperto e resti a guardare più che a giocare."
+      ["t-shirt-marrone", "shorts-denim", "scarpe-corsa"],
+      "Se resti a guardare più che a giocare: gli shorts non sono da campo, ma il pomeriggio regge."
     ),
     proposta(
-      ["maglione-beige", "pantaloni-neri", "sneakers-bianche"],
-      "Da mettere sopra prima e dopo, quando ti fermi e senti il fresco."
+      ["maglione-righe", "pantaloni-tuta", "scarpe-corsa"],
+      "Da mettere prima e dopo, quando ti fermi e senti il fresco."
     ),
   ],
   cerimonia: [
     proposta(
-      ["vestito-verde", "stivaletti-neri", "borsa-cuoio"],
-      "Il verde salvia è composto senza essere spento: funziona di giorno."
+      ["camicia-righe", "jeans-scuri", "sneakers-bianche", "borsa-denim"],
+      "Ti dico come sta: di davvero formale nel tuo armadio non c'è niente. Questa è la cosa più composta che puoi mettere insieme oggi."
     ),
     proposta(
-      ["vestito-verde", "blazer-blu", "stivaletti-neri"],
-      "Con il blazer sopra se la cerimonia è in chiesa e dentro fa fresco."
+      ["camicia-righe", "jeans-paisley", "sneakers-bianche"],
+      "I jeans ricamati di Giulia sono il pezzo più elegante a cui puoi arrivare senza comprare nulla."
     ),
     proposta(
-      ["camicia-azzurra", "blazer-blu", "pantaloni-neri", "stivaletti-neri"],
-      "L'alternativa senza vestito: sobria, e non rischi di essere troppo."
+      ["polo-righe", "jeans-scuri", "sneakers-bianche", "borsa-denim"],
+      "L'alternativa se la camicia ti sembra troppo. Resta ordinato, ma non fingiamo che sia un completo."
     ),
   ],
 };
