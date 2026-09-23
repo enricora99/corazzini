@@ -14,7 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { conBase } from "@/lib/base-path";
+import { percorsoFoto, urlFoto } from "@/lib/demo/foto";
 import {
   CAPI_DA_RICONOSCERE,
   DURATA_ANALISI_MS,
@@ -63,8 +63,8 @@ export function DemoAddItem({
       const r = capo.riconosciuto;
       setBozza({
         id: `demo-nuovo-${capo.slug}`,
-        photoPath: `demo/${capo.slug}.svg`,
-        anteprima: conBase(`/demo/${capo.slug}.svg`),
+        photoPath: percorsoFoto(capo.slug),
+        anteprima: urlFoto(capo.slug),
         category: r.category,
         subcategory: r.subcategory,
         colors: r.colors.join(", "),
@@ -145,7 +145,7 @@ export function DemoAddItem({
                     >
                       <span className="relative block aspect-square overflow-hidden rounded-xl bg-muted">
                         <Image
-                          src={conBase(`/demo/${capo.slug}.svg`)}
+                          src={urlFoto(capo.slug)}
                           alt=""
                           fill
                           sizes="33vw"

@@ -1,15 +1,16 @@
 import type { CapoConFoto } from "@/lib/items";
-import { conBase } from "@/lib/base-path";
+import { percorsoFoto, urlFoto } from "@/lib/demo/foto";
 import type { Occasion } from "@/lib/schemas";
 import type { WeatherSnapshot } from "@/lib/ai/types";
 
 /**
  * L'armadio della modalità demo.
  *
- * Dati inventati, immagini disegnate (`public/demo/`, generate da
- * `scripts/build-demo-assets.mjs`): non c'è nessuna fotografia, né nostra né
- * presa dal web. Serve a far vedere com'è fatta l'app senza database, senza
- * chiavi e senza far finta che sia un armadio vero.
+ * Dati inventati. Le immagini stanno in `public/demo/`: le fotografie del
+ * team dove ci sono, altrimenti il disegno generato da
+ * `scripts/build-demo-assets.mjs` — se ne occupa `@/lib/demo/foto`. Serve a
+ * far vedere com'è fatta l'app senza database, senza chiavi e senza far
+ * finta che sia un armadio vero.
  *
  * La forma dei dati è la stessa che arriva dal database, così le pagine del
  * demo usano gli stessi componenti dell'app vera: quello che si vede qui è
@@ -58,8 +59,8 @@ function costruisci(seme: Seme, indice: number): CapoConFoto {
   return {
     id: `demo-${seme.slug}`,
     user_id: mio ? IO : `demo-amico-${seme.ownerName?.toLowerCase()}`,
-    photo_path: `demo/${seme.slug}.svg`,
-    photoUrl: conBase(`/demo/${seme.slug}.svg`),
+    photo_path: percorsoFoto(seme.slug),
+    photoUrl: urlFoto(seme.slug),
     category: seme.category,
     subcategory: seme.subcategory,
     colors: seme.colors,
