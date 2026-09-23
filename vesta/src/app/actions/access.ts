@@ -55,3 +55,18 @@ export async function verificaCodice(
 
   redirect(destinazioneSicura(formData.get("prossima")));
 }
+
+/**
+ * Esce dall'area riservata e torna al cancello.
+ *
+ * Serve a chi mostra il progetto: finita la dimostrazione si esce, e il
+ * prossimo che apre quel browser si ritrova davanti la richiesta del codice
+ * invece che dentro. Senza, l'unico modo era cancellare i cookie a mano.
+ *
+ * Il codice non viene ricordato da nessuna parte: per rientrare va ridigitato.
+ */
+export async function esciDallArea(): Promise<void> {
+  const store = await cookies();
+  store.delete(COOKIE_ACCESSO);
+  redirect("/accesso");
+}

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
+import { PortalBar } from "@/components/portal-bar";
 import { ServiceWorker } from "@/components/service-worker";
 import { Toaster } from "@/components/ui/sonner";
-import { PORTALE } from "@/lib/portal";
+import { protezioneAttiva } from "@/lib/access";
+import { PORTALE, titoloPortale } from "@/lib/portal";
 import { SITE_ORIGIN } from "@/lib/site";
 import { conBase } from "@/lib/base-path";
 import "./globals.css";
@@ -73,6 +75,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="it" className={`${montserrat.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        {/* Letto qui e passato giù come proprietà: `protezioneAttiva()` guarda
+            una variabile d'ambiente, e le pagine statiche la fissano al
+            momento del build. Accenderlo o spegnerlo richiede quindi una
+            ripubblicazione — che è comunque ciò che succede quando si cambia
+            una variabile su Vercel. */}
+        <PortalBar attiva={protezioneAttiva()} marchio={titoloPortale()} />
         {children}
         <Toaster position="top-center" />
         <ServiceWorker />

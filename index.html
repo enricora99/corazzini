@@ -17,11 +17,11 @@
 <meta property="og:url" content="https://www.corazzini.it/">
 <meta property="og:title" content="Studio Commercialista a Pescara | Corazzini">
 <meta property="og:description" content="Contabilità di aziende e privati e consulenza fiscale e societaria a Pescara. Numeri in ordine, decisioni in chiaro.">
-<meta property="og:image" content="https://www.corazzini.it/assets/bearInk.png">
+<meta property="og:image" content="https://www.corazzini.it/assets/bearInk-2x.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Studio Commercialista a Pescara | Corazzini">
 <meta name="twitter:description" content="Contabilità di aziende e privati e consulenza fiscale e societaria a Pescara.">
-<meta name="twitter:image" content="https://www.corazzini.it/assets/bearInk.png">
+<meta name="twitter:image" content="https://www.corazzini.it/assets/bearInk-2x.png">
 
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/favicon.png">
@@ -717,8 +717,8 @@ a.info-val:hover { color: var(--glacier-300); }
       "name": "Corazzini — Studio Commercialista",
       "legalName": "CORAZZINI S.R.L.",
       "url": "https://www.corazzini.it/",
-      "logo": "https://www.corazzini.it/assets/bearInk.png",
-      "image": "https://www.corazzini.it/assets/bearInk.png",
+      "logo": "https://www.corazzini.it/assets/bearInk-2x.png",
+      "image": "https://www.corazzini.it/assets/bearInk-2x.png",
       "email": "staff@corazzini.it",
       "vatID": "IT02152470684",
       "taxID": "02152470684",
@@ -939,7 +939,15 @@ a.info-val:hover { color: var(--glacier-300); }
         <div class="hero-orbit" aria-hidden="true"></div>
         <div class="hero-orbit hero-orbit-2" aria-hidden="true"></div>
         <div class="hero-disc"></div>
-        <img class="hero-bear" src="/assets/bearInk.png" alt="L'orsetto Corazzini" width="584" height="427">
+        <!-- Due misure dello stesso disegno. L'originale basta agli schermi
+             normali; su quelli ad alta densita' 584 px per un'immagine larga
+             420 vengono ingranditi e il bordo si impasta. `sizes` ripete le
+             misure che il CSS usa davvero (220 px sotto i 720, 420 sopra),
+             cosi' il telefono non scarica il file grande per niente. -->
+        <img class="hero-bear" src="/assets/bearInk.png"
+             srcset="/assets/bearInk.png 584w, /assets/bearInk-2x.png 1168w"
+             sizes="(max-width: 720px) 220px, 420px"
+             alt="L'orsetto Corazzini" width="584" height="427">
       </div>
     </div>
     <button type="button" class="hero-cue" id="heroCue" aria-label="Scorri verso il basso">
