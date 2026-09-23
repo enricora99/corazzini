@@ -157,8 +157,12 @@ for (const nome of file) {
         top: Math.round((LATO - height) / 2),
       },
     ])
-    .png({ compressionLevel: 9 })
-    .toFile(join(destinazione, `${slug}.png`));
+    // WebP e non PNG. Il PNG non comprime le fotografie: lo stesso armadio
+    // pesava 5,7 MB, che su una connessione di sala si vedono tutti. Qui la
+    // qualità è alta e il peso scende di circa dieci volte — su capi su
+    // fondo bianco la differenza non si vede, quella nell'attesa sì.
+    .webp({ quality: 82, effort: 6 })
+    .toFile(join(destinazione, `${slug}.webp`));
 
   fatti.push(slug);
   console.log(`  ${slug}`);

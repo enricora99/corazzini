@@ -50,7 +50,11 @@ function fileEscluso(percorso) {
     // Le fotografie dei capi. Chi riceve il pacchetto trova i disegni, che
     // sono nostri: le foto dell'armadio sono immagini di catalogo, buone a
     // far vedere l'app dal vivo ma non da mettere dentro un file che gira.
-    (relativo.startsWith(join("public", "demo")) && nome.endsWith(".png"))
+    //
+    // La regola è al contrario - tutto tranne gli .svg - così cambiare il
+    // formato delle fotografie non riapre il buco senza che nessuno se ne
+    // accorga.
+    (relativo.startsWith(join("public", "demo")) && !nome.endsWith(".svg"))
   );
 }
 
