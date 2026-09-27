@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Commercialista a Pescara | Corazzini</title>
+<script>(function(){try{var q=new URLSearchParams(location.search).get("lang"),l=/^(it|en|de|zh)$/.test(q)?q:localStorage.getItem("cz-lang");if(/^(en|de|zh)$/.test(l)){var h=document.documentElement;h.lang=l;h.classList.add("lang-pending");setTimeout(function(){h.classList.remove("lang-pending");},900);}}catch(e){}})();</script>
+<title data-i18n="title">Studio Commercialista a Pescara | Corazzini</title>
 <meta name="description" content="Studio commercialista a Pescara: contabilità ordinaria e semplificata, dichiarazioni e bilanci per aziende e privati, consulenza fiscale e societaria. Corazzini S.R.L., Via Eugenia Ravasco 60.">
 <link rel="canonical" href="https://www.corazzini.it/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -706,6 +707,31 @@ a.info-val:hover { color: var(--glacier-300); }
 
 .sec-head.wide { max-width: 60ch; }
 .sec-head.wider { max-width: 58ch; }
+
+/* ---- selettore lingua ---- */
+html.lang-pending [data-i18n]{visibility:hidden}
+.lang{position:relative;flex:none}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 10px 0 9px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-body);font:700 .78rem/1 var(--font-sans);letter-spacing:.06em;cursor:pointer;transition:border-color .14s,color .14s,background .14s}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent-strong)}
+.lang-btn svg{width:16px;height:16px;stroke-width:1.75}
+.lang-btn .lang-chev{width:12px;height:12px;transition:transform .18s}
+.lang.open .lang-btn .lang-chev{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:150px;background:var(--surface-card);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(12,35,47,.09);padding:6px;display:none;z-index:120}
+.lang.open .lang-menu{display:block}
+.lang-menu button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:0;border-radius:8px;padding:9px 11px;font:600 .88rem/1.2 var(--font-sans);color:var(--text-body);cursor:pointer;text-align:left}
+.lang-menu button:hover{background:var(--snow-50);color:var(--text-strong)}
+.lang-menu button[aria-checked=true]{color:var(--accent-strong);background:var(--accent-soft)}
+.lang-menu button[aria-checked=true]::after{content:"✓";font-weight:800}
+@media(max-width:480px){.lang-btn{padding:0 8px;gap:0}.lang-btn .lang-chev,.lang-btn .lang-cur{display:none}}
+@media print{.lang{display:none!important}}
+html[lang="zh"]{--font-sans:'Manrope','Noto Sans SC','PingFang SC','Microsoft YaHei',system-ui,sans-serif;--font-serif:'Spectral','Noto Serif SC','Songti SC','SimSun',Georgia,serif;--ls-eyebrow:.1em}
+html[lang="zh"] .lang-btn .lang-cur{letter-spacing:0;font-size:.82rem}
+html[lang="zh"] .hero h1{max-width:24ch;letter-spacing:0}
+html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-reverse}
+.site-nav .lang { margin-left: -6px; }
+@media (max-width: 480px) { .site-nav { gap: 12px !important; } .site-nav a { font-size: .84rem; } .brand img { height: 36px; } .site-nav .lang { margin-left: -2px; } }
+@media (max-width: 360px) { .site-nav { gap: 9px !important; } .site-nav a { font-size: .78rem; } }
+@media (max-width: 340px) { .site-nav { gap: 7px !important; } .site-nav a { font-size: .72rem; } .brand img { height: 32px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -865,7 +891,7 @@ a.info-val:hover { color: var(--glacier-300); }
           "name": "Gli strumenti pubblicati sul sito sono gratuiti?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sì, sono liberamente accessibili e non richiedono registrazione: simulatore del regime forfettario, confronto forfettario contro ordinario, calcolo del costo di un debito fiscale fase per fase, verifica dei soggetti obbligati antiriciclaggio e Lean Canvas per validare un'idea di business. Ogni strumento riporta le fonti normative in chiaro."
+            "text": "Sì, sono liberamente accessibili e non richiedono registrazione: simulatore del regime forfettario, confronto forfettario contro ordinario, calcolo del costo di un debito fiscale fase per fase, verifica dei soggetti obbligati antiriciclaggio, territorialità IVA delle operazioni con l'estero e Lean Canvas per validare un'idea di business. Ogni strumento riporta le fonti normative in chiaro."
           }
         },
         {
@@ -908,16 +934,29 @@ a.info-val:hover { color: var(--glacier-300); }
 
   <header class="cz-header">
     <div class="inner">
-      <a class="brand" href="#top" aria-label="Corazzini, torna all'inizio">
+      <a class="brand" href="#top" aria-label="Corazzini, torna all'inizio" data-i18n-a="aria-label:a.brand">
         <img src="/assets/bearInk.png" alt="Corazzini" width="58" height="42">
         <span class="brand-word">Corazzini</span>
       </a>
-      <nav class="site-nav" aria-label="Navigazione principale">
-        <a href="#ced">CED</a>
-        <a href="#consulenza">Consulenza</a>
-        <a href="#strumenti">Strumenti</a>
-        <a href="#contact">Contatti</a>
-        <a class="btn btn-ink btn-sm header-cta" href="#contact">Prenota un incontro</a>
+      <nav class="site-nav" aria-label="Navigazione principale" data-i18n-a="aria-label:a.nav">
+        <a href="#ced" data-i18n="nav.ced">CED</a>
+        <a href="#consulenza" data-i18n="nav.cons">Consulenza</a>
+        <a href="#strumenti" data-i18n="nav.tools">Strumenti</a>
+        <a href="#contact" data-i18n="nav.contact">Contatti</a>
+        <a class="btn btn-ink btn-sm header-cta" href="#contact" data-i18n="nav.cta">Prenota un incontro</a>
+        <div class="lang" data-lang-switch>
+          <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Lingua · Language · Sprache">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span class="lang-cur">IT</span>
+            <svg class="lang-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitemradio" data-lang="it" aria-checked="true">Italiano</button>
+            <button type="button" role="menuitemradio" data-lang="en" aria-checked="false">English</button>
+            <button type="button" role="menuitemradio" data-lang="de" aria-checked="false">Deutsch</button>
+            <button type="button" role="menuitemradio" data-lang="zh" aria-checked="false">中文</button>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -927,12 +966,12 @@ a.info-val:hover { color: var(--glacier-300); }
   <section class="hero" id="top">
     <div class="inner">
       <div class="hero-stack">
-        <span class="eyebrow">Amministrazioni e consulenze</span>
-        <h1 class="hero-h1">Numeri in ordine,<br>decisioni in <em>chiaro</em>.</h1>
-        <p class="hero-lead">Teniamo la contabilità di aziende e privati e li affianchiamo nelle scelte che contano, con il rigore di chi i numeri li conosce davvero.</p>
+        <span class="eyebrow" data-i18n="hero.eye">Amministrazioni e consulenze</span>
+        <h1 class="hero-h1" data-i18n="hero.h1">Numeri in ordine,<br>decisioni in <em>chiaro</em>.</h1>
+        <p class="hero-lead" data-i18n="hero.lead">Teniamo la contabilità di aziende e privati e li affianchiamo nelle scelte che contano, con il rigore di chi i numeri li conosce davvero.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="#contact">Prenota un incontro</a>
-          <a class="btn btn-outline btn-lg" href="#divisions">Cosa facciamo <span>→</span></a>
+          <a class="btn btn-primary btn-lg" href="#contact" data-i18n="hero.cta1">Prenota un incontro</a>
+          <a class="btn btn-outline btn-lg" href="#divisions" data-i18n="hero.cta2">Cosa facciamo <span>→</span></a>
         </div>
       </div>
       <div class="hero-bearwrap">
@@ -947,21 +986,21 @@ a.info-val:hover { color: var(--glacier-300); }
         <img class="hero-bear" src="/assets/bearInk.png"
              srcset="/assets/bearInk.png 584w, /assets/bearInk-2x.png 1168w"
              sizes="(max-width: 720px) 220px, 420px"
-             alt="L'orsetto Corazzini" width="584" height="427">
+             alt="L'orsetto Corazzini" data-i18n-a="alt:a.bear" width="584" height="427">
       </div>
     </div>
-    <button type="button" class="hero-cue" id="heroCue" aria-label="Scorri verso il basso">
-      <span>Scorri</span>
+    <button type="button" class="hero-cue" id="heroCue" aria-label="Scorri verso il basso" data-i18n-a="aria-label:a.cue">
+      <span data-i18n="hero.cue">Scorri</span>
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px"><path d="m6 9 6 6 6-6"/></svg>
     </button>
   </section>
 
-  <section class="quote" aria-label="Citazione">
+  <section class="quote" aria-label="Citazione" data-i18n-a="aria-label:a.quote">
     <img class="quote-wm" src="/assets/bearWhite.png" alt="" aria-hidden="true">
     <div class="inner">
       <div class="quote-mark" aria-hidden="true">&ldquo;</div>
       <div class="quote-block" id="quoteBlock">
-        <blockquote>Il sistema economico attuale è, grazie soprattutto all'applicazione della contabilità, altamente razionalizzato, e in un certo verso e in certi limiti l'intera storia dell'economia è la storia del <span>razionalismo economico costruito sul calcolo, oggi vittorioso.</span></blockquote>
+        <blockquote data-i18n="quote.text">Il sistema economico attuale è, grazie soprattutto all'applicazione della contabilità, altamente razionalizzato, e in un certo verso e in certi limiti l'intera storia dell'economia è la storia del <span>razionalismo economico costruito sul calcolo, oggi vittorioso.</span></blockquote>
         <div class="quote-attr">
           <span class="quote-rule"></span>
           <span class="quote-name">Max Weber</span>
@@ -973,38 +1012,38 @@ a.info-val:hover { color: var(--glacier-300); }
   <section class="sec" id="divisions">
     <div class="inner">
       <div class="sec-head">
-        <span class="eyebrow">Cosa facciamo</span>
-        <h2>Due attività che si completano.</h2>
-        <p>Da una parte l'elaborazione contabile di ogni giorno, dall'altra la consulenza che accompagna le decisioni. Due competenze che lavorano insieme, sotto lo stesso tetto.</p>
+        <span class="eyebrow" data-i18n="div.eye">Cosa facciamo</span>
+        <h2 data-i18n="div.h2">Due attività che si completano.</h2>
+        <p data-i18n="div.p">Da una parte l'elaborazione contabile di ogni giorno, dall'altra la consulenza che accompagna le decisioni. Due competenze che lavorano insieme, sotto lo stesso tetto.</p>
       </div>
       <div class="div-grid">
 
         <div class="panel panel-ink">
           <span class="panel-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></span>
-          <span class="panel-eye">Centro Elaborazione Dati</span>
-          <h3>Corazzini S.R.L.</h3>
-          <p>La contabilità di aziende e privati, tenuta con metodo e puntualità: ordinaria o semplificata, persone fisiche e società.</p>
+          <span class="panel-eye" data-i18n="ced.eye">Centro Elaborazione Dati</span>
+          <h3 data-i18n="ced.h3">Corazzini S.R.L.</h3>
+          <p data-i18n="ced.p">La contabilità di aziende e privati, tenuta con metodo e puntualità: ordinaria o semplificata, persone fisiche e società.</p>
           <div class="chip-row">
-            <span class="chip">Contabilità ordinaria</span>
-            <span class="chip">Contabilità semplificata</span>
-            <span class="chip">Dichiarazioni</span>
-            <span class="chip">Bilanci</span>
-            <span class="chip">Forfettari</span>
+            <span class="chip" data-i18n="ced.c1">Contabilità ordinaria</span>
+            <span class="chip" data-i18n="ced.c2">Contabilità semplificata</span>
+            <span class="chip" data-i18n="ced.c3">Dichiarazioni</span>
+            <span class="chip" data-i18n="ced.c4">Bilanci</span>
+            <span class="chip" data-i18n="ced.c5">Forfettari</span>
           </div>
-          <a class="panel-link" href="#ced">Scopri il CED <span class="arw">→</span></a>
+          <a class="panel-link" href="#ced" data-i18n="ced.link">Scopri il CED <span class="arw">→</span></a>
         </div>
 
         <div class="panel panel-light">
           <span class="panel-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg></span>
-          <span class="panel-eye">Consulenza</span>
-          <h3>Studio commerciale Corazzini</h3>
-          <p>Accanto ai numeri, affianchiamo imprese e privati nelle scelte fiscali, societarie e strategiche, con il supporto di una rete di professionisti esterni.</p>
+          <span class="panel-eye" data-i18n="cons.eye">Consulenza</span>
+          <h3 data-i18n="cons.h3">Studio commerciale Corazzini</h3>
+          <p data-i18n="cons.p">Accanto ai numeri, affianchiamo imprese e privati nelle scelte fiscali, societarie e strategiche, con il supporto di una rete di professionisti esterni.</p>
           <div class="chip-row">
-            <span class="chip">Fiscale e societario</span>
-            <span class="chip">Strategia d'impresa</span>
-            <span class="chip">Rete di esperti</span>
+            <span class="chip" data-i18n="cons.c1">Fiscale e societario</span>
+            <span class="chip" data-i18n="cons.c2">Strategia d'impresa</span>
+            <span class="chip" data-i18n="cons.c3">Rete di esperti</span>
           </div>
-          <a class="panel-link" href="#consulenza">Scopri la consulenza <span class="arw">→</span></a>
+          <a class="panel-link" href="#consulenza" data-i18n="cons.link">Scopri la consulenza <span class="arw">→</span></a>
         </div>
 
       </div>
@@ -1014,54 +1053,54 @@ a.info-val:hover { color: var(--glacier-300); }
   <section class="sec" id="ced">
     <div class="inner">
       <div class="sec-head wide">
-        <span class="eyebrow">Centro Elaborazione Dati</span>
-        <h2>Corazzini S.R.L., il motore contabile.</h2>
-        <p>Il nostro CED tiene la contabilità di aziende e privati. Ordinaria o semplificata, persone fisiche o società: metodo, puntualità e numeri sempre in ordine.</p>
+        <span class="eyebrow" data-i18n="ceds.eye">Centro Elaborazione Dati</span>
+        <h2 data-i18n="ceds.h2">Corazzini S.R.L., il motore contabile.</h2>
+        <p data-i18n="ceds.p">Il nostro CED tiene la contabilità di aziende e privati. Ordinaria o semplificata, persone fisiche o società: metodo, puntualità e numeri sempre in ordine.</p>
       </div>
       <div class="ced-grid">
 
         <div class="svc">
           <span class="svc-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V7"/><path d="m16 12 2 2 4-4"/><path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3"/></svg></span>
-          <h3>Contabilità ordinaria</h3>
-          <p>La tenuta più completa, obbligatoria per le società di capitali e per chi supera le soglie di ricavi previste dalla legge: libro giornale, registri IVA, scritture e bilancio d'esercizio.</p>
+          <h3 data-i18n="svc1.h">Contabilità ordinaria</h3>
+          <p data-i18n="svc1.p">La tenuta più completa, obbligatoria per le società di capitali e per chi supera le soglie di ricavi previste dalla legge: libro giornale, registri IVA, scritture e bilancio d'esercizio.</p>
         </div>
 
         <div class="svc">
           <span class="svc-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
-          <h3>Contabilità semplificata</h3>
-          <p>Riservata a imprese individuali, società di persone e professionisti che restano sotto le soglie di ricavi: regime di cassa e adempimenti ridotti, senza perdere il controllo dei conti.</p>
+          <h3 data-i18n="svc2.h">Contabilità semplificata</h3>
+          <p data-i18n="svc2.p">Riservata a imprese individuali, società di persone e professionisti che restano sotto le soglie di ricavi: regime di cassa e adempimenti ridotti, senza perdere il controllo dei conti.</p>
         </div>
 
         <div class="svc">
           <span class="svc-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-          <h3>Persone fisiche</h3>
-          <p>Dichiarazioni dei redditi, partite IVA individuali e regime forfettario, seguiti in ogni adempimento e scadenza.</p>
+          <h3 data-i18n="svc3.h">Persone fisiche</h3>
+          <p data-i18n="svc3.p">Dichiarazioni dei redditi, partite IVA individuali e regime forfettario, seguiti in ogni adempimento e scadenza.</p>
         </div>
 
         <div class="svc">
           <span class="svc-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg></span>
-          <h3>Società</h3>
-          <p>Gestione contabile e fiscale di S.r.l., S.p.A., S.n.c. e S.a.s., con reportistica chiara e puntuale.</p>
+          <h3 data-i18n="svc4.h">Società</h3>
+          <p data-i18n="svc4.p">Gestione contabile e fiscale di S.r.l., S.p.A., S.n.c. e S.a.s., con reportistica chiara e puntuale.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <section class="stats" aria-label="Numeri dello studio">
+  <section class="stats" aria-label="Numeri dello studio" data-i18n-a="aria-label:a.stats">
     <img class="stats-wm" src="/assets/bearWhite.png" alt="" aria-hidden="true">
     <div class="inner">
       <div>
         <div class="stat-num">100K<span>+</span></div>
-        <div class="stat-lab">Movimentazioni contabili gestite</div>
+        <div class="stat-lab" data-i18n="stat1">Movimentazioni contabili gestite</div>
       </div>
       <div>
         <div class="stat-num">~50</div>
-        <div class="stat-lab">Aziende e privati seguiti</div>
+        <div class="stat-lab" data-i18n="stat2">Aziende e privati seguiti</div>
       </div>
       <div>
         <div class="stat-num">0</div>
-        <div class="stat-lab">Rilievi dall'Amministrazione finanziaria</div>
+        <div class="stat-lab" data-i18n="stat3">Rilievi dall'Amministrazione finanziaria</div>
       </div>
     </div>
   </section>
@@ -1069,9 +1108,9 @@ a.info-val:hover { color: var(--glacier-300); }
   <section class="sec sec-alt" id="consulenza">
     <div class="inner">
       <div class="sec-head wider">
-        <span class="eyebrow">Consulenza</span>
-        <h2>Al fianco di chi decide.</h2>
-        <p>Oltre alla contabilità, affianchiamo imprese e privati nelle scelte fiscali, societarie e strategiche. Competenze interne consolidate e una rete di professionisti esterni, per dare a ogni esigenza la risposta giusta.</p>
+        <span class="eyebrow" data-i18n="co.eye">Consulenza</span>
+        <h2 data-i18n="co.h2">Al fianco di chi decide.</h2>
+        <p data-i18n="co.p">Oltre alla contabilità, affianchiamo imprese e privati nelle scelte fiscali, societarie e strategiche. Competenze interne consolidate e una rete di professionisti esterni, per dare a ogni esigenza la risposta giusta.</p>
       </div>
 
       <div class="consul-people">
@@ -1080,13 +1119,13 @@ a.info-val:hover { color: var(--glacier-300); }
           <img class="avatar" src="/assets/francesco.jpg" alt="Francesco Corazzini" width="120" height="120" loading="lazy">
           <div class="person-body">
             <h3>Francesco Corazzini</h3>
-            <p class="person-role">Dottore Commercialista e Revisore Contabile</p>
-            <span class="badge">ODCEC Pescara n. 285/A</span>
-            <p class="person-bio">Laureato in Economia e Commercio alla LUISS con 110 e lode e dignità di stampa. Dopo le esperienze in IBM Italia e SIV S.p.A. e l'attività di docenza in corsi professionali, dal 1992 assiste imprese e privati in materia fiscale, societaria e contabile. È il riferimento dello studio per la pianificazione fiscale e la revisione.</p>
+            <p class="person-role" data-i18n="fr.role">Dottore Commercialista e Revisore Contabile</p>
+            <span class="badge" data-i18n="fr.badge">ODCEC Pescara n. 285/A</span>
+            <p class="person-bio" data-i18n="fr.bio">Laureato in Economia e Commercio alla LUISS con 110 e lode e dignità di stampa. Dopo le esperienze in IBM Italia e SIV S.p.A. e l'attività di docenza in corsi professionali, dal 1992 assiste imprese e privati in materia fiscale, societaria e contabile. È il riferimento dello studio per la pianificazione fiscale e la revisione.</p>
             <div class="focus-row">
-              <span class="focus-chip">Pianificazione fiscale</span>
-              <span class="focus-chip">Revisione contabile</span>
-              <span class="focus-chip">Operazioni societarie</span>
+              <span class="focus-chip" data-i18n="fr.c1">Pianificazione fiscale</span>
+              <span class="focus-chip" data-i18n="fr.c2">Revisione contabile</span>
+              <span class="focus-chip" data-i18n="fr.c3">Operazioni societarie</span>
             </div>
           </div>
         </div>
@@ -1095,13 +1134,13 @@ a.info-val:hover { color: var(--glacier-300); }
           <img class="avatar" src="/assets/enrico.jpg" alt="Enrico Emanuele Corazzini" width="120" height="120" loading="lazy">
           <div class="person-body">
             <h3>Enrico Emanuele Corazzini</h3>
-            <p class="person-role">Esperto Contabile</p>
-            <span class="badge">ODCEC Pescara n. 9/B</span>
-            <p class="person-bio">Laureato con 110 e lode in Gestione d'Impresa e Tecnologie Digitali. Prima di entrare nello studio ha lavorato in Helbiz Italia nel settore della mobilità elettrica condivisa, dove è passato da Operations a Business Development: ha seguito la gestione operativa delle flotte sul territorio e sviluppato nuove partnership e mercati. Nello studio affianca le start-up nei primi passi e accompagna le piccole e medie imprese nella digitalizzazione.</p>
+            <p class="person-role" data-i18n="en.role">Esperto Contabile</p>
+            <span class="badge" data-i18n="en.badge">ODCEC Pescara n. 9/B</span>
+            <p class="person-bio" data-i18n="en.bio">Laureato con 110 e lode in Gestione d'Impresa e Tecnologie Digitali. Prima di entrare nello studio ha lavorato in Helbiz Italia nel settore della mobilità elettrica condivisa, dove è passato da Operations a Business Development: ha seguito la gestione operativa delle flotte sul territorio e sviluppato nuove partnership e mercati. Nello studio affianca le start-up nei primi passi e accompagna le piccole e medie imprese nella digitalizzazione.</p>
             <div class="focus-row">
-              <span class="focus-chip">Start-up</span>
-              <span class="focus-chip">Digitalizzazione PMI</span>
-              <span class="focus-chip">Modelli di business</span>
+              <span class="focus-chip" data-i18n="en.c1">Start-up</span>
+              <span class="focus-chip" data-i18n="en.c2">Digitalizzazione PMI</span>
+              <span class="focus-chip" data-i18n="en.c3">Modelli di business</span>
             </div>
           </div>
         </div>
@@ -1109,26 +1148,26 @@ a.info-val:hover { color: var(--glacier-300); }
       </div>
 
       <div class="net-wrap">
-        <div class="net-head">Una rete di professionisti esterni</div>
-        <p class="net-lead">Quando serve, lavoriamo a stretto contatto con specialisti esterni di fiducia, selezionati negli anni, per coprire ogni ambito con la giusta competenza.</p>
+        <div class="net-head" data-i18n="net.h">Una rete di professionisti esterni</div>
+        <p class="net-lead" data-i18n="net.p">Quando serve, lavoriamo a stretto contatto con specialisti esterni di fiducia, selezionati negli anni, per coprire ogni ambito con la giusta competenza.</p>
         <div class="consul-net">
 
           <div class="net-card">
             <span class="net-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="m19 8 3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1"/><path d="m5 8 3 8a5 5 0 0 1-6 0zV7"/><path d="M7 21h10"/></svg></span>
-            <p class="net-title">Area legale</p>
-            <p class="net-desc">Avvocati e notai di fiducia per atti, contratti e operazioni societarie.</p>
+            <p class="net-title" data-i18n="net1.h">Area legale</p>
+            <p class="net-desc" data-i18n="net1.p">Avvocati e notai di fiducia per atti, contratti e operazioni societarie.</p>
           </div>
 
           <div class="net-card">
             <span class="net-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span>
-            <p class="net-title">Consulenza del lavoro</p>
-            <p class="net-desc">Consulenti del lavoro per gestione del personale, buste paga e adempimenti.</p>
+            <p class="net-title" data-i18n="net2.h">Consulenza del lavoro</p>
+            <p class="net-desc" data-i18n="net2.p">Consulenti del lavoro per gestione del personale, buste paga e adempimenti.</p>
           </div>
 
           <div class="net-card">
             <span class="net-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
-            <p class="net-title">Finanza e credito</p>
-            <p class="net-desc">Specialisti per pianificazione finanziaria, accesso al credito e finanza agevolata.</p>
+            <p class="net-title" data-i18n="net3.h">Finanza e credito</p>
+            <p class="net-desc" data-i18n="net3.p">Specialisti per pianificazione finanziaria, accesso al credito e finanza agevolata.</p>
           </div>
 
         </div>
@@ -1141,13 +1180,13 @@ a.info-val:hover { color: var(--glacier-300); }
       <div class="strumenti-card">
         <span class="str-glyph" aria-hidden="true"></span>
         <div>
-          <span class="str-eye">Open innovation</span>
-          <h2>Scopri gli strumenti.</h2>
-          <p class="str-lead">Mettiamo a disposizione di chiunque i calcoli che di solito restano dentro uno studio: simulatori liberi, senza registrazione, con il metodo dichiarato e le fonti normative in chiaro. Un modo per decidere in modo più consapevole.</p>
-          <p class="str-note">Danno una stima e non sostituiscono un parere professionale: per una scelta definitiva, parliamone insieme.</p>
+          <span class="str-eye" data-i18n="str.eye">Open innovation</span>
+          <h2 data-i18n="str.h2">Scopri gli strumenti.</h2>
+          <p class="str-lead" data-i18n="str.lead">Mettiamo a disposizione di chiunque i calcoli che di solito restano dentro uno studio: simulatori liberi, senza registrazione, con il metodo dichiarato e le fonti normative in chiaro. Un modo per decidere in modo più consapevole.</p>
+          <p class="str-note" data-i18n="str.note">Danno una stima e non sostituiscono un parere professionale: per una scelta definitiva, parliamone insieme.</p>
         </div>
         <div class="strumenti-cta-col">
-          <a href="/strumenti/" class="str-cta">Vai agli strumenti <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a href="/strumenti/" class="str-cta"><span data-i18n="str.cta">Vai agli strumenti</span> <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1157,14 +1196,14 @@ a.info-val:hover { color: var(--glacier-300); }
     <div class="inner">
 
       <div class="contact-panel">
-        <span class="eyebrow">Contatti</span>
-        <h2>Parliamo di te.</h2>
-        <p class="contact-sub">Scrivici: fissiamo un primo incontro conoscitivo, senza impegno.</p>
+        <span class="eyebrow" data-i18n="ct.eye">Contatti</span>
+        <h2 data-i18n="ct.h2">Parliamo di te.</h2>
+        <p class="contact-sub" data-i18n="ct.sub">Scrivici: fissiamo un primo incontro conoscitivo, senza impegno.</p>
 
         <div class="inforow">
           <span class="info-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
           <div>
-            <div class="info-lab">Email</div>
+            <div class="info-lab" data-i18n="ct.email">Email</div>
             <a class="info-val" href="mailto:staff@corazzini.it">staff@corazzini.it</a>
           </div>
         </div>
@@ -1172,7 +1211,7 @@ a.info-val:hover { color: var(--glacier-300); }
         <div class="inforow">
           <span class="info-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
           <div>
-            <div class="info-lab">PEC</div>
+            <div class="info-lab" data-i18n="ct.pec">PEC</div>
             <a class="info-val" href="mailto:francesco@pec.corazzini.it">francesco@pec.corazzini.it</a>
           </div>
         </div>
@@ -1180,7 +1219,7 @@ a.info-val:hover { color: var(--glacier-300); }
         <div class="inforow">
           <span class="info-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
           <div>
-            <div class="info-lab">Sede</div>
+            <div class="info-lab" data-i18n="ct.sede">Sede</div>
             <address class="info-val mono" style="font-style:normal">Via Eugenia Ravasco 60, 65123 Pescara (PE)</address>
           </div>
         </div>
@@ -1190,29 +1229,29 @@ a.info-val:hover { color: var(--glacier-300); }
         <form class="form-grid" id="contactForm" action="mailto:staff@corazzini.it" method="post" enctype="text/plain">
           <div class="form-two">
             <div class="field">
-              <label for="f-nome">Nome e cognome<span class="req"> *</span></label>
-              <input id="f-nome" name="nome" type="text" placeholder="Mario Rossi" required>
+              <label for="f-nome" data-i18n="f.nome">Nome e cognome<span class="req"> *</span></label>
+              <input id="f-nome" name="nome" type="text" placeholder="Mario Rossi" data-i18n-a="placeholder:ph.nome" required>
             </div>
             <div class="field">
-              <label for="f-azienda">Azienda</label>
-              <input id="f-azienda" name="azienda" type="text" placeholder="Rossi S.r.l.">
+              <label for="f-azienda" data-i18n="f.azienda">Azienda</label>
+              <input id="f-azienda" name="azienda" type="text" placeholder="Rossi S.r.l." data-i18n-a="placeholder:ph.azienda">
             </div>
           </div>
           <div class="field">
-            <label for="f-email">Email<span class="req"> *</span></label>
-            <input id="f-email" name="email" type="email" placeholder="nome@azienda.it" required>
+            <label for="f-email" data-i18n="f.email">Email<span class="req"> *</span></label>
+            <input id="f-email" name="email" type="email" placeholder="nome@azienda.it" data-i18n-a="placeholder:ph.email" required>
           </div>
           <div class="field">
-            <label for="f-messaggio">Come possiamo aiutarti?</label>
-            <textarea id="f-messaggio" name="messaggio" rows="4" placeholder="Descrivi brevemente la tua esigenza…"></textarea>
+            <label for="f-messaggio" data-i18n="f.msg">Come possiamo aiutarti?</label>
+            <textarea id="f-messaggio" name="messaggio" rows="4" placeholder="Descrivi brevemente la tua esigenza…" data-i18n-a="placeholder:ph.msg"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-full">Invia richiesta</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-full" data-i18n="f.send">Invia richiesta</button>
         </form>
 
         <div class="form-done" id="formDone" hidden>
           <div class="form-done-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <h3>Ci siamo quasi</h3>
-          <p>Abbiamo aperto la tua email con il messaggio già pronto: controlla e premi invio.</p>
+          <h3 data-i18n="f.done.h">Ci siamo quasi</h3>
+          <p data-i18n="f.done.p">Abbiamo aperto la tua email con il messaggio già pronto: controlla e premi invio.</p>
         </div>
       </div>
 
@@ -1229,27 +1268,27 @@ a.info-val:hover { color: var(--glacier-300); }
             <img src="/assets/bearWhite.png" alt="" aria-hidden="true" width="52" height="38">
             <span class="foot-name">Corazzini</span>
           </div>
-          <p class="foot-desc">Teniamo i conti in ordine e affianchiamo aziende e privati nelle scelte che contano. A Pescara, con metodo e attenzione.</p>
+          <p class="foot-desc" data-i18n="ft.desc">Teniamo i conti in ordine e affianchiamo aziende e privati nelle scelte che contano. A Pescara, con metodo e attenzione.</p>
         </div>
         <div class="foot-cols">
           <div>
-            <div class="foot-colh">Attività</div>
-            <a href="#divisions">Cosa facciamo</a>
-            <a href="#ced">CED · Contabilità</a>
-            <a href="#consulenza">Consulenza</a>
-            <a href="/strumenti/">Strumenti</a>
+            <div class="foot-colh" data-i18n="ft.col1">Attività</div>
+            <a href="#divisions" data-i18n="ft.l1">Cosa facciamo</a>
+            <a href="#ced" data-i18n="ft.l2">CED · Contabilità</a>
+            <a href="#consulenza" data-i18n="ft.l3">Consulenza</a>
+            <a href="/strumenti/" data-i18n="ft.l4">Strumenti</a>
           </div>
           <div>
-            <div class="foot-colh">Studio</div>
-            <a href="#consulenza">I professionisti</a>
-            <a href="#contact">Contatti</a>
+            <div class="foot-colh" data-i18n="ft.col2">Studio</div>
+            <a href="#consulenza" data-i18n="ft.l5">I professionisti</a>
+            <a href="#contact" data-i18n="ft.l6">Contatti</a>
             <a href="mailto:staff@corazzini.it">staff@corazzini.it</a>
           </div>
         </div>
       </div>
       <div class="foot-legal">
         <span>CORAZZINI S.R.L. · Via Eugenia Ravasco 60, 65123 Pescara (PE)</span>
-        <span>P. IVA 02152470684 · REA PE 157552 · © 2026</span>
+        <span data-i18n="ft.legal2">P. IVA 02152470684 · REA PE 157552 · © 2026</span>
       </div>
     </div>
   </footer>
@@ -1343,21 +1382,254 @@ a.info-val:hover { color: var(--glacier-300); }
   })();
 
   /* ---- Form contatti: apre il client di posta ---- */
+  var FORM_TX = {
+    it:{ subj:"Richiesta di contatto dal sito", nome:"Nome e cognome: ", az:"Azienda: ", na:"non indicata", em:"Email: ", msg:"Messaggio:" },
+    en:{ subj:"Contact request from the website", nome:"Full name: ", az:"Company: ", na:"not provided", em:"Email: ", msg:"Message:" },
+    de:{ subj:"Kontaktanfrage über die Website", nome:"Name: ", az:"Unternehmen: ", na:"nicht angegeben", em:"E-Mail: ", msg:"Nachricht:" },
+    zh:{ subj:"来自网站的联系请求", nome:"姓名：", az:"公司：", na:"未填写", em:"电子邮件：", msg:"留言：" }
+  };
   var form = document.getElementById('contactForm');
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var T = FORM_TX[(window.czLang && window.czLang()) || 'it'] || FORM_TX.it;
     var v = function (n) { return (form.elements[n] && form.elements[n].value || '').trim(); };
-    var subject = 'Richiesta di contatto dal sito' + (v('nome') ? ': ' + v('nome') : '');
-    var body = 'Nome e cognome: ' + v('nome') + '\n' +
-               'Azienda: ' + (v('azienda') || 'non indicata') + '\n' +
-               'Email: ' + v('email') + '\n\n' +
-               'Messaggio:\n' + v('messaggio');
+    var subject = T.subj + (v('nome') ? ': ' + v('nome') : '');
+    var body = T.nome + v('nome') + '\n' +
+               T.az + (v('azienda') || T.na) + '\n' +
+               T.em + v('email') + '\n\n' +
+               T.msg + '\n' + v('messaggio');
     window.location.href = 'mailto:staff@corazzini.it?subject=' +
       encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     form.hidden = true;
     var done = document.getElementById('formDone');
     if (done) done.hidden = false;
   });
+})();
+</script>
+<script>
+window.CZ_I18N = {
+en:{ui:{
+  "title":"Chartered Accountants in Pescara | Corazzini",
+  "nav.ced":"CED","nav.cons":"Advisory","nav.tools":"Tools","nav.contact":"Contact","nav.cta":"Book a meeting",
+  "hero.eye":"Accounting and advisory",
+  "hero.h1":"Numbers in order,<br>decisions made <em>clear</em>.",
+  "hero.lead":"We keep the books of businesses and individuals and stand beside them in the choices that matter, with the rigour of people who truly know the numbers.",
+  "hero.cta1":"Book a meeting","hero.cta2":"What we do <span>→</span>","hero.cue":"Scroll",
+  "quote.text":"The modern economic system is, above all thanks to the application of accounting, highly rationalised, and in a certain sense and within certain limits the whole history of the economy is the history of <span>economic rationalism built on calculation, victorious today.</span>",
+  "div.eye":"What we do","div.h2":"Two activities that complete each other.",
+  "div.p":"On one side the day-to-day bookkeeping, on the other the advisory work that accompanies decisions. Two skills working together, under one roof.",
+  "ced.eye":"Data Processing Centre","ced.h3":"Corazzini S.R.L.",
+  "ced.p":"The accounts of businesses and individuals, kept with method and punctuality: ordinary or simplified, individuals and companies.",
+  "ced.c1":"Ordinary accounting","ced.c2":"Simplified accounting","ced.c3":"Tax returns","ced.c4":"Financial statements","ced.c5":"Flat-rate taxpayers",
+  "ced.link":"Discover the CED <span class=\"arw\">→</span>",
+  "cons.eye":"Advisory","cons.h3":"Corazzini accounting practice",
+  "cons.p":"Beyond the numbers, we support businesses and individuals in tax, corporate and strategic choices, backed by a network of external professionals.",
+  "cons.c1":"Tax and corporate","cons.c2":"Business strategy","cons.c3":"Network of experts",
+  "cons.link":"Discover the advisory work <span class=\"arw\">→</span>",
+  "ceds.eye":"Data Processing Centre","ceds.h2":"Corazzini S.R.L., the accounting engine.",
+  "ceds.p":"Our CED keeps the books of businesses and individuals. Ordinary or simplified, individuals or companies: method, punctuality and numbers always in order.",
+  "svc1.h":"Ordinary accounting","svc1.p":"The most complete form of bookkeeping, mandatory for corporations and for those above the statutory revenue thresholds: general journal, VAT ledgers, accounting entries and annual financial statements.",
+  "svc2.h":"Simplified accounting","svc2.p":"Reserved for sole traders, partnerships and professionals below the revenue thresholds: cash basis and lighter obligations, without losing control of the accounts.",
+  "svc3.h":"Individuals","svc3.p":"Income tax returns, individual VAT numbers and the flat-rate scheme, followed through every filing and deadline.",
+  "svc4.h":"Companies","svc4.p":"Accounting and tax management of S.r.l., S.p.A., S.n.c. and S.a.s. companies, with clear and timely reporting.",
+  "stat1":"Accounting entries handled","stat2":"Businesses and individuals served","stat3":"Findings raised by the tax authorities",
+  "co.eye":"Advisory","co.h2":"Beside those who decide.",
+  "co.p":"Beyond bookkeeping, we support businesses and individuals in tax, corporate and strategic choices. Established in-house expertise and a network of external professionals, to give every need the right answer.",
+  "fr.role":"Chartered Accountant and Statutory Auditor","fr.badge":"ODCEC Pescara no. 285/A",
+  "fr.bio":"Graduated in Economics and Business from LUISS with full marks, honours and a publication award. After experience at IBM Italia and SIV S.p.A. and teaching on professional courses, has been assisting businesses and individuals in tax, corporate and accounting matters since 1992. The firm's reference for tax planning and audit.",
+  "fr.c1":"Tax planning","fr.c2":"Audit","fr.c3":"Corporate transactions",
+  "en.role":"Accounting Expert (Esperto Contabile)","en.badge":"ODCEC Pescara no. 9/B",
+  "en.bio":"Graduated with full marks and honours in Business Management and Digital Technologies. Before joining the firm, worked at Helbiz Italia in shared electric mobility, moving from Operations to Business Development: ran the field operations of the fleets and developed new partnerships and markets. At the firm, supports start-ups in their first steps and guides small and medium-sized businesses through digitalisation.",
+  "en.c1":"Start-ups","en.c2":"SME digitalisation","en.c3":"Business models",
+  "net.h":"A network of external professionals",
+  "net.p":"When needed, we work closely with trusted external specialists, selected over the years, to cover every area with the right expertise.",
+  "net1.h":"Legal","net1.p":"Trusted lawyers and notaries for deeds, contracts and corporate transactions.",
+  "net2.h":"Employment and payroll","net2.p":"Labour consultants for staff management, payroll and compliance.",
+  "net3.h":"Finance and credit","net3.p":"Specialists in financial planning, access to credit and subsidised finance.",
+  "str.eye":"Open innovation","str.h2":"Discover the tools.",
+  "str.lead":"We make available to anyone the calculations that usually stay inside a firm: free simulators, no registration, with the method stated and the legal sources in the open. A way to decide with more awareness.",
+  "str.note":"They give an estimate and do not replace professional advice: for a final choice, let's talk it through together.",
+  "str.cta":"Go to the tools",
+  "ct.eye":"Contact","ct.h2":"Let's talk about you.","ct.sub":"Write to us: we'll set up a first, no-obligation meeting.",
+  "ct.email":"Email","ct.pec":"PEC (certified email)","ct.sede":"Office",
+  "f.nome":"Full name<span class=\"req\"> *</span>","f.azienda":"Company","f.email":"Email<span class=\"req\"> *</span>","f.msg":"How can we help?",
+  "f.send":"Send request","f.done.h":"Almost there","f.done.p":"We've opened your email client with the message ready: check it and press send.",
+  "ft.desc":"We keep the accounts in order and stand beside businesses and individuals in the choices that matter. In Pescara, with method and care.",
+  "ft.col1":"Activities","ft.l1":"What we do","ft.l2":"CED · Accounting","ft.l3":"Advisory","ft.l4":"Tools",
+  "ft.col2":"The firm","ft.l5":"The professionals","ft.l6":"Contact",
+  "ft.legal2":"VAT no. IT02152470684 · REA PE 157552 · © 2026"
+},attr:{
+  "a.brand":"Corazzini, back to top","a.nav":"Main navigation","a.bear":"The Corazzini bear","a.cue":"Scroll down","a.quote":"Quotation","a.stats":"The firm in numbers",
+  "ph.nome":"Jane Smith","ph.azienda":"Smith Ltd","ph.email":"name@company.com","ph.msg":"Briefly describe what you need…"
+}},
+de:{ui:{
+  "title":"Steuerberatung in Pescara | Corazzini",
+  "nav.ced":"CED","nav.cons":"Beratung","nav.tools":"Tools","nav.contact":"Kontakt","nav.cta":"Termin vereinbaren",
+  "hero.eye":"Buchhaltung und Beratung",
+  "hero.h1":"Zahlen in Ordnung,<br>Entscheidungen mit <em>Klarheit</em>.",
+  "hero.lead":"Wir führen die Buchhaltung von Unternehmen und Privatpersonen und begleiten sie bei den Entscheidungen, die zählen, mit der Sorgfalt derer, die die Zahlen wirklich kennen.",
+  "hero.cta1":"Termin vereinbaren","hero.cta2":"Was wir tun <span>→</span>","hero.cue":"Scrollen",
+  "quote.text":"Das heutige Wirtschaftssystem ist, vor allem dank der Anwendung der Buchführung, in hohem Maße rationalisiert, und in gewissem Sinne und in gewissen Grenzen ist die gesamte Wirtschaftsgeschichte die Geschichte des <span>auf Rechnung gegründeten, heute siegreichen ökonomischen Rationalismus.</span>",
+  "div.eye":"Was wir tun","div.h2":"Zwei Tätigkeiten, die sich ergänzen.",
+  "div.p":"Auf der einen Seite die tägliche Buchhaltung, auf der anderen die Beratung, die Entscheidungen begleitet. Zwei Kompetenzen, die unter einem Dach zusammenarbeiten.",
+  "ced.eye":"Datenverarbeitungszentrum","ced.h3":"Corazzini S.R.L.",
+  "ced.p":"Die Buchhaltung von Unternehmen und Privatpersonen, mit Methode und Pünktlichkeit geführt: ordentlich oder vereinfacht, natürliche Personen und Gesellschaften.",
+  "ced.c1":"Ordentliche Buchführung","ced.c2":"Vereinfachte Buchführung","ced.c3":"Steuererklärungen","ced.c4":"Jahresabschlüsse","ced.c5":"Pauschalbesteuerte",
+  "ced.link":"Das CED entdecken <span class=\"arw\">→</span>",
+  "cons.eye":"Beratung","cons.h3":"Kanzlei Corazzini",
+  "cons.p":"Über die Zahlen hinaus begleiten wir Unternehmen und Privatpersonen bei steuerlichen, gesellschaftsrechtlichen und strategischen Entscheidungen, unterstützt von einem Netzwerk externer Fachleute.",
+  "cons.c1":"Steuern und Gesellschaftsrecht","cons.c2":"Unternehmensstrategie","cons.c3":"Expertennetzwerk",
+  "cons.link":"Die Beratung entdecken <span class=\"arw\">→</span>",
+  "ceds.eye":"Datenverarbeitungszentrum","ceds.h2":"Corazzini S.R.L., der Buchhaltungsmotor.",
+  "ceds.p":"Unser CED führt die Buchhaltung von Unternehmen und Privatpersonen. Ordentlich oder vereinfacht, natürliche Personen oder Gesellschaften: Methode, Pünktlichkeit und Zahlen, die immer in Ordnung sind.",
+  "svc1.h":"Ordentliche Buchführung","svc1.p":"Die vollständigste Form der Buchführung, Pflicht für Kapitalgesellschaften und für alle, die die gesetzlichen Umsatzschwellen überschreiten: Journal, MwSt-Register, Buchungen und Jahresabschluss.",
+  "svc2.h":"Vereinfachte Buchführung","svc2.p":"Für Einzelunternehmen, Personengesellschaften und Freiberufler unterhalb der Umsatzschwellen: Ist-Besteuerung und reduzierte Pflichten, ohne die Kontrolle über die Konten zu verlieren.",
+  "svc3.h":"Natürliche Personen","svc3.p":"Einkommensteuererklärungen, Einzelunternehmer mit MwSt-Nummer und Pauschalregime, begleitet bei jeder Pflicht und jeder Frist.",
+  "svc4.h":"Gesellschaften","svc4.p":"Buchhalterische und steuerliche Betreuung von S.r.l., S.p.A., S.n.c. und S.a.s., mit klarem und pünktlichem Reporting.",
+  "stat1":"Verbuchte Geschäftsvorfälle","stat2":"Betreute Unternehmen und Privatpersonen","stat3":"Beanstandungen der Finanzverwaltung",
+  "co.eye":"Beratung","co.h2":"An der Seite derer, die entscheiden.",
+  "co.p":"Über die Buchhaltung hinaus begleiten wir Unternehmen und Privatpersonen bei steuerlichen, gesellschaftsrechtlichen und strategischen Entscheidungen. Gefestigte interne Kompetenz und ein Netzwerk externer Fachleute, um jedem Anliegen die richtige Antwort zu geben.",
+  "fr.role":"Steuerberater und Abschlussprüfer (Dottore Commercialista e Revisore Contabile)","fr.badge":"ODCEC Pescara Nr. 285/A",
+  "fr.bio":"Studium der Wirtschaftswissenschaften an der LUISS, Abschluss mit Auszeichnung (110 e lode) und Druckempfehlung. Nach Stationen bei IBM Italia und SIV S.p.A. sowie Lehrtätigkeit in berufsbildenden Kursen berät er seit 1992 Unternehmen und Privatpersonen in Steuer-, Gesellschafts- und Buchhaltungsfragen. In der Kanzlei ist er die Referenz für Steuerplanung und Abschlussprüfung.",
+  "fr.c1":"Steuerplanung","fr.c2":"Abschlussprüfung","fr.c3":"Gesellschaftsrechtliche Transaktionen",
+  "en.role":"Esperto Contabile (Buchhaltungsexperte)","en.badge":"ODCEC Pescara Nr. 9/B",
+  "en.bio":"Studium Unternehmensführung und digitale Technologien, Abschluss mit Auszeichnung (110 e lode). Vor dem Eintritt in die Kanzlei war er bei Helbiz Italia im Bereich der geteilten Elektromobilität tätig, wo er von Operations zu Business Development wechselte: Er verantwortete den operativen Betrieb der Flotten vor Ort und entwickelte neue Partnerschaften und Märkte. In der Kanzlei begleitet er Start-ups bei den ersten Schritten und kleine und mittlere Unternehmen bei der Digitalisierung.",
+  "en.c1":"Start-ups","en.c2":"Digitalisierung von KMU","en.c3":"Geschäftsmodelle",
+  "net.h":"Ein Netzwerk externer Fachleute",
+  "net.p":"Wenn nötig, arbeiten wir eng mit vertrauenswürdigen externen Spezialisten zusammen, die wir über die Jahre ausgewählt haben, um jeden Bereich mit der richtigen Kompetenz abzudecken.",
+  "net1.h":"Rechtliches","net1.p":"Vertrauensanwälte und Notare für Urkunden, Verträge und gesellschaftsrechtliche Vorgänge.",
+  "net2.h":"Arbeits- und Lohnberatung","net2.p":"Arbeitsrechtsberater für Personalverwaltung, Lohnabrechnung und Meldepflichten.",
+  "net3.h":"Finanzierung und Kredit","net3.p":"Spezialisten für Finanzplanung, Kreditzugang und Fördermittel.",
+  "str.eye":"Open Innovation","str.h2":"Entdecken Sie die Tools.",
+  "str.lead":"Wir stellen allen die Berechnungen zur Verfügung, die sonst in einer Kanzlei bleiben: freie Simulatoren, ohne Registrierung, mit offengelegter Methode und klaren Rechtsquellen. Ein Weg, bewusster zu entscheiden.",
+  "str.note":"Sie liefern eine Schätzung und ersetzen keine fachliche Beratung: Für eine endgültige Entscheidung sprechen wir am besten gemeinsam darüber.",
+  "str.cta":"Zu den Tools",
+  "ct.eye":"Kontakt","ct.h2":"Sprechen wir über Sie.","ct.sub":"Schreiben Sie uns: Wir vereinbaren ein erstes, unverbindliches Kennenlerngespräch.",
+  "ct.email":"E-Mail","ct.pec":"PEC (zertifizierte E-Mail)","ct.sede":"Sitz",
+  "f.nome":"Vor- und Nachname<span class=\"req\"> *</span>","f.azienda":"Unternehmen","f.email":"E-Mail<span class=\"req\"> *</span>","f.msg":"Wie können wir helfen?",
+  "f.send":"Anfrage senden","f.done.h":"Fast geschafft","f.done.p":"Wir haben Ihr E-Mail-Programm mit der fertigen Nachricht geöffnet: Prüfen Sie sie und klicken Sie auf Senden.",
+  "ft.desc":"Wir halten die Zahlen in Ordnung und begleiten Unternehmen und Privatpersonen bei den Entscheidungen, die zählen. In Pescara, mit Methode und Sorgfalt.",
+  "ft.col1":"Tätigkeiten","ft.l1":"Was wir tun","ft.l2":"CED · Buchhaltung","ft.l3":"Beratung","ft.l4":"Tools",
+  "ft.col2":"Kanzlei","ft.l5":"Die Fachleute","ft.l6":"Kontakt",
+  "ft.legal2":"USt-IdNr. IT02152470684 · REA PE 157552 · © 2026"
+},attr:{
+  "a.brand":"Corazzini, zum Anfang","a.nav":"Hauptnavigation","a.bear":"Der Corazzini-Bär","a.cue":"Nach unten scrollen","a.quote":"Zitat","a.stats":"Die Kanzlei in Zahlen",
+  "ph.nome":"Max Mustermann","ph.azienda":"Mustermann GmbH","ph.email":"name@firma.de","ph.msg":"Beschreiben Sie kurz Ihr Anliegen…"
+}},
+zh:{ui:{
+  "title":"佩斯卡拉注册会计师事务所 | Corazzini",
+  "nav.ced":"CED","nav.cons":"咨询","nav.tools":"工具","nav.contact":"联系","nav.cta":"预约会面",
+  "hero.eye":"会计与咨询",
+  "hero.h1":"账目井然，<br>决策<em>清晰</em>。",
+  "hero.lead":"我们为企业和个人记账，并在关键抉择上陪伴左右，以真正懂数字的人应有的严谨。",
+  "hero.cta1":"预约会面","hero.cta2":"我们做什么 <span>→</span>","hero.cue":"向下滚动",
+  "quote.text":"当今的经济体系，尤其得益于会计的运用，已高度理性化；从某种意义上、在一定限度内，整部经济史就是<span>建立在计算之上、如今取得胜利的经济理性主义的历史。</span>",
+  "div.eye":"我们做什么","div.h2":"两项相辅相成的业务。",
+  "div.p":"一边是日常的会计处理，另一边是陪伴决策的咨询服务。两种能力在同一屋檐下协同工作。",
+  "ced.eye":"数据处理中心","ced.h3":"Corazzini S.R.L.",
+  "ced.p":"为企业和个人记账，讲究方法、按时完成：普通或简化记账，自然人与公司。",
+  "ced.c1":"普通记账","ced.c2":"简化记账","ced.c3":"纳税申报","ced.c4":"财务报表","ced.c5":"单一税率制纳税人",
+  "ced.link":"了解 CED <span class=\"arw\">→</span>",
+  "cons.eye":"咨询","cons.h3":"Corazzini 会计事务所",
+  "cons.p":"在数字之外，我们在税务、公司和战略决策上陪伴企业与个人，并有外部专业人士网络的支持。",
+  "cons.c1":"税务与公司","cons.c2":"企业战略","cons.c3":"专家网络",
+  "cons.link":"了解咨询服务 <span class=\"arw\">→</span>",
+  "ceds.eye":"数据处理中心","ceds.h2":"Corazzini S.R.L.，会计引擎。",
+  "ceds.p":"我们的 CED 为企业和个人记账。普通或简化，自然人或公司：方法、准时，账目始终井然有序。",
+  "svc1.h":"普通记账","svc1.p":"最完整的记账形式，对资本公司以及超过法定营业额门槛者为强制要求：日记账、增值税登记簿、会计分录和年度财务报表。",
+  "svc2.h":"简化记账","svc2.p":"适用于营业额低于门槛的个体企业、合伙企业和自由职业者：收付实现制和较少的义务，同时不失对账目的掌控。",
+  "svc3.h":"自然人","svc3.p":"所得税申报、个人增值税号和单一税率制，每一项义务和期限都有跟进。",
+  "svc4.h":"公司","svc4.p":"S.r.l.、S.p.A.、S.n.c. 和 S.a.s. 公司的会计与税务管理，报告清晰、及时。",
+  "stat1":"处理的会计业务笔数","stat2":"服务的企业与个人","stat3":"税务机关提出的异议",
+  "co.eye":"咨询","co.h2":"站在决策者身旁。",
+  "co.p":"除记账之外，我们在税务、公司和战略决策上陪伴企业与个人。成熟的内部专业能力和外部专业人士网络，为每一项需求提供恰当的答案。",
+  "fr.role":"注册会计师兼法定审计师","fr.badge":"佩斯卡拉 ODCEC 注册号 285/A",
+  "fr.bio":"毕业于罗马 LUISS 大学经济与商业专业，满分并获荣誉及出版推荐。曾任职于 IBM Italia 和 SIV S.p.A.，并在职业培训课程中授课；自 1992 年起为企业和个人提供税务、公司和会计方面的协助。是事务所在税务筹划和审计方面的核心人物。",
+  "fr.c1":"税务筹划","fr.c2":"审计","fr.c3":"公司交易",
+  "en.role":"会计专家（Esperto Contabile）","en.badge":"佩斯卡拉 ODCEC 注册号 9/B",
+  "en.bio":"以满分并获荣誉毕业于企业管理与数字技术专业。加入事务所前曾任职于共享电动出行企业 Helbiz Italia，从运营部转至业务发展部：负责车队的现场运营管理，并开拓新的合作伙伴和市场。在事务所中陪伴初创企业迈出第一步，并帮助中小企业推进数字化。",
+  "en.c1":"初创企业","en.c2":"中小企业数字化","en.c3":"商业模式",
+  "net.h":"外部专业人士网络",
+  "net.p":"在需要时，我们与多年精选的可信外部专家紧密合作，以恰当的专业能力覆盖每一个领域。",
+  "net1.h":"法律","net1.p":"可信赖的律师和公证人，负责契约、合同和公司交易。",
+  "net2.h":"劳动与薪酬","net2.p":"劳动顾问负责人事管理、工资单和合规事务。",
+  "net3.h":"金融与信贷","net3.p":"财务规划、信贷获取和优惠融资方面的专家。",
+  "str.eye":"开放创新","str.h2":"探索我们的工具。",
+  "str.lead":"我们把通常只留在事务所内部的计算工具向所有人开放：免费模拟器，无需注册，方法公开，法律依据透明。一种更明智的决策方式。",
+  "str.note":"它们提供的是估算，不能替代专业意见：最终决定前，我们一起谈谈。",
+  "str.cta":"前往工具",
+  "ct.eye":"联系","ct.h2":"聊聊您的情况。","ct.sub":"给我们写信：我们安排一次不设义务的初次会面。",
+  "ct.email":"电子邮件","ct.pec":"PEC（认证邮件）","ct.sede":"地址",
+  "f.nome":"姓名<span class=\"req\"> *</span>","f.azienda":"公司","f.email":"电子邮件<span class=\"req\"> *</span>","f.msg":"我们能如何帮助您？",
+  "f.send":"发送请求","f.done.h":"就快好了","f.done.p":"我们已打开您的邮件客户端并准备好了邮件：请检查后点击发送。",
+  "ft.desc":"我们让账目井然有序，并在关键抉择上陪伴企业和个人。在佩斯卡拉，讲究方法、用心细致。",
+  "ft.col1":"业务","ft.l1":"我们做什么","ft.l2":"CED · 会计","ft.l3":"咨询","ft.l4":"工具",
+  "ft.col2":"事务所","ft.l5":"专业人士","ft.l6":"联系",
+  "ft.legal2":"增值税号 IT02152470684 · REA PE 157552 · © 2026"
+},attr:{
+  "a.brand":"Corazzini，回到顶部","a.nav":"主导航","a.bear":"Corazzini 的小熊","a.cue":"向下滚动","a.quote":"引言","a.stats":"事务所数据",
+  "ph.nome":"王小明","ph.azienda":"小明有限公司","ph.email":"name@company.com","ph.msg":"请简要描述您的需求……"
+}}
+};
+</script>
+<script>
+/* ===== Corazzini · i18n (IT/EN/DE/ZH) ===== */
+(function(){
+  "use strict";
+  var LANGS=["it","en","de","zh"];
+  var D=window.CZ_I18N||{}; D.it={ui:{},attr:{}};
+  var cur="it";
+  function pref(){
+    var q=new URLSearchParams(location.search).get("lang");
+    if(LANGS.indexOf(q)>-1){ try{localStorage.setItem("cz-lang",q);}catch(e){} return q; }
+    try{ var s=localStorage.getItem("cz-lang"); if(LANGS.indexOf(s)>-1) return s; }catch(e){}
+    return "it";
+  }
+  function capture(){
+    document.querySelectorAll("[data-i18n]").forEach(function(el){ D.it.ui[el.dataset.i18n]=el.innerHTML; });
+    document.querySelectorAll("[data-i18n-a]").forEach(function(el){
+      el.dataset.i18nA.split(",").forEach(function(p){ var a=p.split(":"); D.it.attr[a[1]]=el.getAttribute(a[0]); });
+    });
+  }
+  function apply(lang){
+    var L=D[lang]||D.it;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k=el.dataset.i18n, v=(L.ui&&L.ui[k]!=null)?L.ui[k]:D.it.ui[k];
+      if(v!=null) el.innerHTML=v;
+    });
+    document.querySelectorAll("[data-i18n-a]").forEach(function(el){
+      el.dataset.i18nA.split(",").forEach(function(p){
+        var a=p.split(":"), v=(L.attr&&L.attr[a[1]]!=null)?L.attr[a[1]]:D.it.attr[a[1]];
+        if(v!=null) el.setAttribute(a[0],v);
+      });
+    });
+    document.documentElement.lang=lang;
+    document.querySelectorAll("[data-lang-switch] .lang-cur").forEach(function(e){ e.textContent=(lang==="zh"?"中文":lang.toUpperCase()); });
+    if(lang==="zh" && !document.getElementById("cz-font-zh")){ var lk=document.createElement("link"); lk.id="cz-font-zh"; lk.rel="stylesheet"; lk.href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap"; document.head.appendChild(lk); }
+    document.querySelectorAll("[data-lang-switch] [data-lang]").forEach(function(o){ o.setAttribute("aria-checked",String(o.dataset.lang===lang)); });
+    cur=lang;
+    if(typeof window.czOnLang==="function") window.czOnLang(lang);
+    document.documentElement.classList.remove("lang-pending");
+  }
+  function closeAll(){
+    document.querySelectorAll("[data-lang-switch].open").forEach(function(s){
+      s.classList.remove("open"); var b=s.querySelector(".lang-btn"); if(b) b.setAttribute("aria-expanded","false");
+    });
+  }
+  function set(lang){ if(LANGS.indexOf(lang)<0) return; try{localStorage.setItem("cz-lang",lang);}catch(e){} apply(lang); closeAll(); }
+  document.addEventListener("click",function(e){
+    var s=e.target.closest("[data-lang-switch]");
+    if(!s){ closeAll(); return; }
+    var o=e.target.closest("[data-lang]"); if(o){ set(o.dataset.lang); return; }
+    if(e.target.closest(".lang-btn")){
+      var open=!s.classList.contains("open"); closeAll();
+      s.classList.toggle("open",open); s.querySelector(".lang-btn").setAttribute("aria-expanded",String(open));
+    }
+  });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeAll(); });
+  window.czLang=function(){ return cur; };
+  window.czSetLang=set;
+  capture(); apply(pref());
 })();
 </script>
 </body>
