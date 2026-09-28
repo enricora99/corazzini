@@ -88,6 +88,13 @@ h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg span{display:block;text-align:center;font-size:.86rem;font-weight:600;padding:10px 10px;border-radius:9px;cursor:pointer;color:var(--text-muted);transition:all .15s;line-height:1.3}
 .seg input:checked+span{background:var(--surface-card);box-shadow:var(--shadow-xs);color:var(--accent-strong)}
+.seg .qi{position:absolute;top:5px;right:6px;width:16px;height:16px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-card);color:var(--text-muted);font:700 .62rem/14px var(--font-sans);font-style:normal;text-align:center;cursor:help;z-index:2}
+.seg label:hover .qi,.seg .qi:focus-visible{border-color:var(--accent);color:var(--accent-strong);outline:none}
+.seg .tip{display:none;position:absolute;top:calc(100% + 10px);right:0;width:min(340px,calc(100vw - 64px));background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-md);box-shadow:0 10px 30px rgba(12,35,47,.12);padding:12px 14px;font-size:.8rem;font-weight:400;line-height:1.5;color:var(--text-body);text-align:left;cursor:auto;z-index:130}
+.seg .tip b{font-weight:700;color:var(--text-strong)}
+.seg label:hover .tip,.seg .qi:focus-visible+.tip,.seg .tip.on{display:block}
+@media(hover:none){.seg label:hover .tip:not(.on){display:none}}
+@media print{.seg .qi,.seg .tip{display:none!important}}
 
 .sheet-bg{position:fixed;inset:0;background:rgba(8,25,35,.38);backdrop-filter:blur(3px);z-index:90;opacity:0;pointer-events:none;transition:opacity .22s}
 .sheet-bg.on{opacity:1;pointer-events:auto}
@@ -269,7 +276,7 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
   <header class="hero no-print">
     <span class="eyebrow" data-i18n="hero.eye">Strumento aperto</span>
     <h1 data-i18n="hero.h1">Territorialità IVA, operazione per operazione</h1>
-    <p data-i18n="hero.p">Un servizio reso a un'impresa tedesca, un abbonamento venduto a un privato svizzero, un corso online seguito da Parigi: prima di chiedersi quanta IVA applicare bisogna sapere se l'operazione è italiana. Gli articoli da 7 a 7-octies del DPR 633/72 rispondono con una regola generale e una serie di deroghe che ribaltano il risultato. Qui si ricostruisce il percorso, si vede chi assolve l'imposta e cosa scrivere in fattura.</p>
+    <p data-i18n="hero.p">Verifica se un'operazione si considera effettuata in Italia (artt. 7-bis – 7-octies DPR 633/72; D.L. 331/93), chi assolve l'IVA e cosa scrivere in fattura. Copre cessioni e servizi con l'estero, stabili organizzazioni, operazioni a catena e regimi speciali.</p>
   </header>
 
   <div class="print-head">
@@ -300,7 +307,7 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
         <div class="lbl" data-i18n="lbl.stat">Status del cliente</div>
         <div class="seg">
           <label><input type="radio" name="b2b" value="1"><span data-i18n="seg.b2b">Soggetto passivo IVA</span></label>
-          <label><input type="radio" name="b2b" value="0"><span data-i18n="seg.b2c">Privato o ente non soggetto passivo</span></label>
+          <label class="has-tip"><input type="radio" name="b2b" value="0"><span data-i18n="seg.b2c">Privato o ente non soggetto passivo</span><b class="qi" role="button" tabindex="0" aria-label="Che cos'è un ente non soggetto passivo" data-i18n-a="aria-label:a.tipb2c">i</b><span class="tip" role="tooltip" data-i18n="tip.b2c"><b>Ente non soggetto passivo</b>: ente pubblico, associazione, fondazione o altra organizzazione che non svolge attività d'impresa e non ha una partita IVA. Se l'ente è identificato ai fini IVA, anche solo per gli acquisti intracomunitari, oppure svolge anche attività commerciale, per i servizi si considera soggetto passivo (art. 7-ter c. 2 DPR 633/72): scegli «Soggetto passivo IVA». Il privato è soggetto passivo solo se riceve l'operazione nell'esercizio di impresa, arte o professione.</span></label>
         </div>
       </div>
       <div class="row stack">
@@ -2870,6 +2877,12 @@ $("sheetBg").addEventListener("click",closeSheet);
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
 $("btnPrint").addEventListener("click",()=>window.print());
 $("btnReset").addEventListener("click",()=>location.reload());
+document.querySelectorAll(".seg .qi").forEach(q=>{
+  const tip=q.nextElementSibling, toggle=e=>{ e.preventDefault(); e.stopPropagation(); tip.classList.toggle("on"); };
+  q.addEventListener("click", toggle);
+  q.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" ") toggle(e); else if(e.key==="Escape") tip.classList.remove("on"); });
+});
+document.addEventListener("click", e=>{ if(!e.target.closest(".seg .qi,.seg .tip")) document.querySelectorAll(".seg .tip.on").forEach(t=>t.classList.remove("on")); });
 
 document.addEventListener("change",e=>{
   const t=e.target;
@@ -2952,10 +2965,10 @@ en:{ui:{
   "title":"VAT place of supply: where the tax applies — Corazzini",
   "nav.sub":"Tools","nav.back":"All tools",
   "hero.eye":"Open tool","hero.h1":"VAT place of supply, transaction by transaction",
-  "hero.p":"A service supplied to a German company, a subscription sold to a Swiss consumer, an online course followed from Paris: before asking how much VAT to apply you need to know whether the transaction is Italian at all. Articles 7 to 7-octies of Presidential Decree 633/72 answer with a general rule and a series of exceptions that overturn the result. Here the path is reconstructed, showing who accounts for the tax and what to write on the invoice.",
+  "hero.p":"Determines whether a transaction is deemed to take place in Italy (arts. 7-bis to 7-octies Presidential Decree 633/72; Decree-Law 331/93), who accounts for VAT and what to write on the invoice. It covers cross-border supplies of goods and services, fixed establishments, chain transactions and special schemes.",
   "print.t":"VAT place of supply check","print.s":"Arts. 7-bis to 7-octies Presidential Decree 633/72<br>consolidated text",
   "card.h":"The transaction","card.p":"Describe who sells, who buys and what. Nationality and where the contract is signed do not matter: what counts is where the parties are established, the customer's status and, for the exceptions, the physical place of the transaction.",
-  "lbl.sup":"Supplier","lbl.cus":"Customer","lbl.stat":"Customer status","seg.b2b":"VAT taxable person","seg.b2c":"Consumer or non-taxable body",
+  "lbl.sup":"Supplier","lbl.cus":"Customer","lbl.stat":"Customer status","seg.b2b":"VAT taxable person","seg.b2c":"Consumer or non-taxable body","tip.b2c":"<b>Non-taxable body</b>: a public body, association, foundation or other organisation that carries on no business activity and has no VAT number. If the body is identified for VAT, even only for intra-EU acquisitions, or also carries on a commercial activity, it counts as a taxable person for services (art. 7-ter para. 2 Presidential Decree 633/72): choose «VAT taxable person». A private individual is a taxable person only when receiving the transaction in the course of a business, art or profession.",
   "lbl.obj":"Subject","seg.beni":"Supply of goods","seg.serv":"Supply of services","seg.catena":"Chain transaction","lbl.tipo":"Type of transaction",
   "hl.k":"Outcome","btn.print":"Print the outcome","btn.reset":"Start again",
   "d1.s":"How place of supply works",
@@ -2967,15 +2980,15 @@ en:{ui:{
   "f.p1":"The outcome is guidance on the place of supply, not an opinion. The classification of the service, the customer's status and the documentary evidence can change the result: before invoicing, let's check it together.",
   "f.p2":"Everything happens in your browser. No data is transmitted or stored.",
   "sh.close":"Close"
-},attr:{}},
+},attr:{"a.tipb2c":"What is a non-taxable body"}},
 de:{ui:{
   "title":"Ort der MwSt-Leistung: wo die Steuer anfällt — Corazzini",
   "nav.sub":"Tools","nav.back":"Alle Tools",
   "hero.eye":"Offenes Tool","hero.h1":"Ort der Besteuerung, Umsatz für Umsatz",
-  "hero.p":"Eine Dienstleistung für ein deutsches Unternehmen, ein Abonnement an eine Schweizer Privatperson, ein Online-Kurs aus Paris: Bevor man fragt, wie viel MwSt anzuwenden ist, muss man wissen, ob der Umsatz überhaupt italienisch ist. Die Artikel 7 bis 7-octies des D.P.R. 633/72 antworten mit einer Grundregel und einer Reihe von Ausnahmen, die das Ergebnis umkehren. Hier wird der Weg nachvollzogen, mit Angabe, wer die Steuer abführt und was auf die Rechnung gehört.",
+  "hero.p":"Prüft, ob ein Umsatz als in Italien ausgeführt gilt (Art. 7-bis bis 7-octies D.P.R. 633/72; D.L. 331/93), wer die MwSt schuldet und was auf die Rechnung gehört. Erfasst grenzüberschreitende Lieferungen und Dienstleistungen, Betriebsstätten, Reihengeschäfte und Sonderregelungen.",
   "print.t":"Prüfung des Orts der MwSt-Leistung","print.s":"Art. 7-bis bis 7-octies D.P.R. 633/72<br>geltende Fassung",
   "card.h":"Der Umsatz","card.p":"Beschreiben Sie, wer verkauft, wer kauft und was. Staatsangehörigkeit und Ort der Vertragsunterzeichnung spielen keine Rolle: Es zählen die Ansässigkeit der Parteien, der Status des Kunden und, für die Ausnahmen, der physische Ort des Umsatzes.",
-  "lbl.sup":"Lieferant oder Leistender","lbl.cus":"Kunde","lbl.stat":"Status des Kunden","seg.b2b":"MwSt-Steuerpflichtiger","seg.b2c":"Privatperson oder nicht steuerpflichtige Einrichtung",
+  "lbl.sup":"Lieferant oder Leistender","lbl.cus":"Kunde","lbl.stat":"Status des Kunden","seg.b2b":"MwSt-Steuerpflichtiger","seg.b2c":"Privatperson oder nicht steuerpflichtige Einrichtung","tip.b2c":"<b>Nicht steuerpflichtige Einrichtung</b>: öffentliche Einrichtung, Verein, Stiftung oder andere Organisation ohne unternehmerische Tätigkeit und ohne MwSt-Nummer. Ist die Einrichtung für MwSt-Zwecke registriert, auch nur für innergemeinschaftliche Erwerbe, oder übt sie auch eine gewerbliche Tätigkeit aus, gilt sie bei Dienstleistungen als Steuerpflichtiger (Art. 7-ter Abs. 2 D.P.R. 633/72): Wählen Sie «MwSt-Steuerpflichtiger». Eine Privatperson ist nur Steuerpflichtiger, wenn sie den Umsatz im Rahmen eines Unternehmens, einer Kunst oder eines freien Berufs empfängt.",
   "lbl.obj":"Gegenstand","seg.beni":"Lieferung von Gegenständen","seg.serv":"Dienstleistung","seg.catena":"Reihengeschäft","lbl.tipo":"Art des Umsatzes",
   "hl.k":"Ergebnis","btn.print":"Ergebnis drucken","btn.reset":"Neu beginnen",
   "d1.s":"Wie der Leistungsort bestimmt wird",
@@ -2987,15 +3000,15 @@ de:{ui:{
   "f.p1":"Das Ergebnis ist eine Orientierung zum Leistungsort, kein Gutachten. Die Einordnung der Leistung, der Status des Kunden und die Nachweise können das Ergebnis ändern: Prüfen wir es gemeinsam, bevor Sie fakturieren.",
   "f.p2":"Alles geschieht in Ihrem Browser. Es werden keine Daten übertragen oder gespeichert.",
   "sh.close":"Schließen"
-},attr:{}},
+},attr:{"a.tipb2c":"Was ist eine nicht steuerpflichtige Einrichtung"}},
 zh:{ui:{
   "title":"增值税征税地：税款在哪里缴纳 — Corazzini",
   "nav.sub":"工具","nav.back":"所有工具",
   "hero.eye":"开放工具","hero.h1":"增值税征税地，逐笔交易判定",
-  "hero.p":"向德国企业提供的服务、卖给瑞士个人的订阅、在巴黎参加的在线课程：在问适用多少增值税之前，必须先知道这笔交易是否属于意大利。第 633/72 号总统令第 7 条至第 7-octies 条以一条一般规则和一系列足以颠覆结果的例外作出回答。这里重建判定路径，展示由谁缴税以及发票上应注明什么。",
+  "hero.p":"判定一项交易是否视为在意大利进行（第 633/72 号总统令第 7-bis 至 7-octies 条；第 331/93 号法令）、由谁缴纳增值税以及发票上应注明什么。涵盖跨境货物与服务交易、常设机构、连锁交易和特别制度。",
   "print.t":"增值税征税地核查","print.s":"第 633/72 号总统令第 7-bis 至 7-octies 条<br>现行文本",
   "card.h":"交易","card.p":"描述谁卖、谁买、卖什么。国籍和合同签署地无关紧要：重要的是双方的设立地、客户的身份，以及对例外规则而言交易的实际地点。",
-  "lbl.sup":"供应商或服务提供方","lbl.cus":"客户","lbl.stat":"客户身份","seg.b2b":"增值税纳税人","seg.b2c":"个人或非纳税主体",
+  "lbl.sup":"供应商或服务提供方","lbl.cus":"客户","lbl.stat":"客户身份","seg.b2b":"增值税纳税人","seg.b2c":"个人或非纳税主体","tip.b2c":"<b>非纳税主体</b>：不从事经营活动且没有增值税号的公共机构、协会、基金会或其他组织。若该机构已办理增值税登记（即使仅为欧盟内购进），或同时从事商业活动，则对服务而言视为纳税人（第 633/72 号总统令第 7-ter 条第 2 款）：请选择«增值税纳税人»。个人仅在以企业、艺术或职业活动身份接受交易时才是纳税人。",
   "lbl.obj":"交易对象","seg.beni":"货物供应","seg.serv":"服务提供","seg.catena":"连锁交易","lbl.tipo":"交易类型",
   "hl.k":"结果","btn.print":"打印结果","btn.reset":"重新开始",
   "d1.s":"征税地的判断逻辑",
@@ -3007,7 +3020,7 @@ zh:{ui:{
   "f.p1":"结果是关于征税地的指引，而非专业意见。服务的定性、客户身份和书面证据都可能改变结果：开票前，我们一起核实。",
   "f.p2":"一切都在您的浏览器中进行。不会传输或保存任何数据。",
   "sh.close":"关闭"
-},attr:{}}
+},attr:{"a.tipb2c":"什么是非纳税主体"}}
 };
 </script>
 <script>
