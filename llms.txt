@@ -50,7 +50,10 @@ chiaro. Sono utilizzabili da chiunque, senza registrazione.
   se un'attività rientra fra gli obbligati ex art. 3 d.lgs. 231/2007
 - [Territorialità IVA](https://www.corazzini.it/strumenti/territorialita-iva/):
   se un'operazione con l'estero è imponibile in Italia, chi assolve l'IVA e
-  cosa scrivere in fattura, secondo gli artt. 7-bis - 7-octies del DPR 633/72
+  cosa scrivere in fattura, secondo gli artt. 7-bis - 7-octies del DPR 633/72;
+  comprende stabili organizzazioni, triangolazioni e operazioni a catena
+  (art. 41-ter D.L. 331/93) e i regimi speciali di agenzie di viaggio, beni
+  usati, oro ed editoria
 - [Lean Canvas](https://www.corazzini.it/strumenti/lean-canvas/):
   validare un'idea di business con Lean Canvas e Value Proposition Canvas
 
