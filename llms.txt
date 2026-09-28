@@ -7,7 +7,9 @@
 > dichiarazioni, bilanci, regime forfettario, revisione legale dei conti.
 > Segue anche start-up e digitalizzazione delle piccole e medie imprese.
 
-Lingua: italiano. Ambito servito: Pescara, provincia di Pescara, Abruzzo.
+Lingua: italiano; ogni pagina è leggibile anche in inglese, tedesco e cinese
+tramite il selettore lingua in alto. Ambito servito: Pescara, provincia di
+Pescara, Abruzzo.
 Partita IVA: IT02152470684.
 
 ## Chi lavora nello studio
@@ -46,6 +48,9 @@ chiaro. Sono utilizzabili da chiunque, senza registrazione.
   quanto costa in ogni fase, da ravvedimento a rottamazione
 - [Soggetti obbligati antiriciclaggio](https://www.corazzini.it/strumenti/antiriciclaggio/):
   se un'attività rientra fra gli obbligati ex art. 3 d.lgs. 231/2007
+- [Territorialità IVA](https://www.corazzini.it/strumenti/territorialita-iva/):
+  se un'operazione con l'estero è imponibile in Italia, chi assolve l'IVA e
+  cosa scrivere in fattura, secondo gli artt. 7-bis - 7-octies del DPR 633/72
 - [Lean Canvas](https://www.corazzini.it/strumenti/lean-canvas/):
   validare un'idea di business con Lean Canvas e Value Proposition Canvas
 
