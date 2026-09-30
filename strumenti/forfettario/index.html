@@ -131,6 +131,12 @@ h1,h2,h3{font-family:var(--font-serif);color:var(--text-strong);font-weight:600;
 .money input[type=text]:focus{outline:none}
 .money .foot{font-size:.9rem;color:var(--text-muted);min-height:24px;font-weight:500}
 .money .foot b{font-weight:800;font-size:1.12rem;color:var(--dyn);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.money .seg{max-width:440px;margin:14px auto 4px}
+.money .seg label{display:flex}
+.money .seg span{flex:1;display:flex;align-items:center;justify-content:center;white-space:normal;line-height:1.2;font-size:.84rem;padding:9px 6px}
+.money .seg #rifX::after{content:"";flex:none;width:6px;height:6px;margin:-3px 0 0 7px;border-right:1.75px solid currentColor;border-bottom:1.75px solid currentColor;transform:rotate(45deg)}
+.money .nota{max-width:48ch;margin:4px auto 0;font-size:.84rem;line-height:1.5;color:var(--text-faint)}
+.money .nota b{font-weight:700;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .chips{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:16px 0 20px}
 .chip{border:1px solid var(--border);background:var(--surface-sunken);color:var(--text-muted);
   font:600 .82rem/1 var(--font-sans);padding:9px 14px;border-radius:var(--r-pill);cursor:pointer;font-variant-numeric:tabular-nums}
@@ -338,6 +344,10 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
   summary::after{display:none}
   .money{padding:14px;background:none}
   .money input[type=text],.money .cur{color:#000!important;font-size:22pt}
+  .money .seg{border:0;background:none;justify-content:center;margin:6px auto 0}
+  .money .seg label{flex:none}
+  .money .seg input:not(:checked)+span,.money .seg #rifX::after{display:none}
+  .money .seg span{color:#000!important;box-shadow:none!important;padding:0}
   .pick::after{display:none}
   .pick .val{color:#000}
   .tl-year{position:static;background:none;backdrop-filter:none}
@@ -398,19 +408,26 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
     <input type="hidden" id="coeff" value="0.78">
     <input type="hidden" id="gest"  value="gs">
     <input type="hidden" id="rid"   value="0">
+    <input type="hidden" id="annoK" value="1">
 
     <section class="card">
       <div class="money" id="money">
-        <div class="cap" data-i18n="m.cap">Compensi incassati in un anno</div>
+        <div class="cap" data-i18n="m.cap">Compensi incassati</div>
+        <div class="seg" role="radiogroup" aria-label="Periodo a cui si riferiscono i compensi" data-i18n-a="aria-label:a.rif">
+          <label><input type="radio" name="rif" value="anno" checked><span data-i18n="rif.a">In un anno</span></label>
+          <label><input type="radio" name="rif" value="fine"><span data-i18n="rif.b">Fino a fine anno</span></label>
+          <label><input type="radio" name="rif" value="x"><span id="rifX">Nel 2027</span></label>
+        </div>
         <div class="big">
           <input type="text" id="fatt" inputmode="numeric" value="35.000" aria-label="Compensi incassati" data-i18n-a="aria-label:a.fatt">
           <span class="cur">€</span>
         </div>
         <div class="foot" id="fattFoot"></div>
+        <div class="nota" id="fattNota"></div>
         <div class="chips" id="chips"></div>
         <div class="track">
           <div class="fill"><i id="fill"></i></div>
-          <div class="mk" style="left:70.83%"><b data-i18n="mk85">85.000</b></div>
+          <div class="mk" id="mk85" style="left:70.83%"><b>85.000</b></div>
           <div class="mk" style="left:83.33%"></div>
           <input type="range" id="fattR" value="35000" min="0" max="120000" step="500" aria-label="Regola i compensi" data-i18n-a="aria-label:a.fattR">
         </div>
@@ -447,7 +464,7 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
           </div>
           <div class="row">
             <div class="lbl"><span data-i18n="lbl.inizio">Inizio attività</span>
-              <button type="button" class="info" data-tip="Se apri in corso d'anno, il primo anno dura meno di dodici mesi. Il simulatore riduce in proporzione i compensi e i contributi fissi del primo anno." data-i18n-a="data-tip:tip.inizio">i</button>
+              <button type="button" class="info" data-tip="Se apri in corso d'anno, il primo anno dura meno di dodici mesi. Il simulatore riduce in proporzione i contributi fissi del primo anno e, se hai indicato i compensi di un anno intero, anche i compensi." data-i18n-a="data-tip:tip.inizio">i</button>
             </div>
             <div class="ctl"><input type="date" id="inizio"></div>
           </div>
@@ -558,6 +575,8 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
         <li>Gestione separata: acconti pari all'80% del contributo dell'anno precedente, in due rate del 40%.</li>
         <li>Artigiani e commercianti: quattro rate fisse sul minimale (16 maggio, 20 agosto, 16 novembre, 16 febbraio dell'anno dopo) e contributi sull'eccedenza alle scadenze delle imposte, con acconti del 50% + 50%.</li>
         <li>La riduzione del 35% opera sull'intero contributo dovuto; quella del 50% sulla sola quota IVS, restando pieni maternità e aliquota aggiuntiva dello 0,48% dei commercianti. Non sono cumulabili.</li>
+        <li>La soglia di 85.000 € si misura sui compensi <b>ragguagliati ad anno</b>: chi apre in corso d'anno la confronta con quanto incassa riportato a dodici mesi. Quella di 100.000 € guarda invece agli incassi effettivi, senza ragguaglio.</li>
+        <li>I compensi si possono indicare per dodici mesi, fino alla fine dell'anno di apertura o per un anno preciso. In ogni caso il simulatore ricava gli altri anni in proporzione ai giorni e alla crescita impostata.</li>
       </ul>
       <h4>Cosa non fa</h4>
       <ul>
@@ -571,6 +590,7 @@ html[lang="en"] .money .big,html[lang="zh"] .money .big{flex-direction:row-rever
       <h4>Fonti</h4>
       <div class="srcs">
         <div><b>Regime forfettario</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190" target="_blank" rel="noopener">L. 23 dicembre 2014 n. 190, art. 1 commi 54-89 e Allegato 4</a></div>
+        <div><b>Soglie e ragguaglio ad anno</b><a href="https://www.agenziaentrate.gov.it/portale/documents/20143/5718712/Circolare_n_32_Regime+forfetario_05_12_2023.pdf/23d1370d-6bba-0eb7-70b8-d1d24d5a1c0f" target="_blank" rel="noopener">Circolare Agenzia delle Entrate 5 dicembre 2023 n. 32/E</a></div>
         <div><b>Soglia redditi da dipendente 2026</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199" target="_blank" rel="noopener">L. 30 dicembre 2025 n. 199, art. 1 comma 27</a></div>
         <div><b>Coefficienti e ATECO 2025</b><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81" target="_blank" rel="noopener">D.L. 81/2025 — restano applicabili i coefficienti su classificazione previgente</a></div>
         <div><b>Contributi artigiani e commercianti 2026</b><a href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html" target="_blank" rel="noopener">Circolare INPS 9 febbraio 2026 n. 14</a></div>
@@ -743,12 +763,21 @@ it:{
        saldoI:y=>"Saldo imposta sostitutiva "+y, nSaldoI:"conguaglio sull'anno chiuso", acc1I:y=>"1° acconto imposta "+y, n50I:y=>"50% dell'imposta "+y, acc2I:y=>"2° acconto imposta "+y,
        accU:y=>"Acconto imposta "+y, nU:"unica soluzione, sotto 257,52 €", none:"Nessun versamento", noneN:"Saldi e acconti partono dall'anno dopo.", b1:"primo anno", bN:n=>"anno "+n },
   over:"Sopra <b>100.000 €</b> il forfettario non si può usare", warn:"Sopra <b>85.000 €</b>: esci dal regime l'anno prossimo", manca:v=>"Mancano <b>"+v+"</b> alla soglia",
+  mancaR:(m,a)=>"Mancano <b>"+m+"</b> alla soglia: su dodici mesi sono "+a, warnR:a=>"Su dodici mesi sono <b>"+a+"</b>: sopra 85.000 € esci dal regime l'anno prossimo",
+  rifX:y=>"Nel "+y, xT:"Anno di riferimento", xN:"Scegli l'anno intero a cui si riferiscono i compensi. Gli altri anni si ricavano da questo, con la crescita che hai impostato.",
+  nA:(v,g,d,y)=>"Dodici mesi di attività. Per il "+y+" il simulatore ne conta <b>"+v+"</b>: i "+g+" giorni dal "+d+" a fine anno.",
+  nA1:y=>"Dodici mesi di attività: tutto il "+y+".",
+  nB:(d,y0,y1)=>"Quello che incassi dal "+d+" al 31 dicembre "+y0+". Dal "+y1+" il simulatore conta l'anno intero, allo stesso ritmo.",
+  nB1:y=>"Quello che incassi in tutto il "+y+", dal 1° gennaio al 31 dicembre.",
+  nX:(yx,v,g,d,y0)=>"Quello che incassi in tutto il "+yx+". Per il "+y0+" il simulatore conta <b>"+v+"</b>: i "+g+" giorni dal "+d+" a fine anno.",
+  nX1:yx=>"Quello che incassi in tutto il "+yx+".",
   hK:(y,p)=>p?"Ti resta nel "+y+" (anno parziale)":"Ti resta nel "+y, notApp:"Regime non applicabile", hS:(p,e)=>p+" di "+e+" incassati", hS0:"Inserisci i compensi per iniziare",
   pro:(d,g,gA,q,y0,y1)=>"Hai indicato l'inizio attività al "+d+". Restano "+g+" giorni sui "+gA+" dell'anno. Il simulatore prende i compensi annui che hai inserito e ne considera "+q+" per il "+y0+". Dal "+y1+" conta l'anno intero.",
+  proB:(d,g,gA,a,y0,y1)=>"Hai indicato l'inizio attività al "+d+" e i compensi fino a fine anno. Il simulatore li usa così come sono per il "+y0+". Restano "+g+" giorni sui "+gA+" dell'anno: riportati a dodici mesi fanno "+a+", ed è da questa cifra che parte il "+y1+".",
   proFull:"Hai indicato un inizio attività al 1° gennaio, quindi il primo anno è pieno e non serve alcun ragguaglio.",
   tb:["Compensi incassati","Ragguaglio primo anno","Coefficiente di redditività","Reddito forfettario","Contributi di competenza","Contributi versati nell'anno, deducibili","Base imponibile","Imposta sostitutiva","Integrativo in rivalsa, a carico del cliente","Netto per competenza"],
   a1:f=>`Con ${f} di compensi <b>non puoi usare il forfettario</b>. Superati i 100.000 € il regime cessa subito: dall'incasso che sfonda la soglia si applica l'IVA e tutto il reddito dell'anno va tassato in via ordinaria.`,
-  a2:y=>`Sopra 85.000 €. Resti nel forfettario per quest'anno, ma <b>dal ${y} passi all'ordinario</b>. La proiezione degli anni dopo non vale più.`,
+  a2:(y0,y1,a)=>(a?`Su dodici mesi i tuoi compensi fanno ${a}: più di 85.000 €, e la soglia si misura ragguagliata ad anno.`:`Sopra 85.000 €.`)+` Nel ${y0} resti nel forfettario, ma <b>dal ${y1} passi all'ordinario</b>. La proiezione degli anni dopo non vale più.`,
   a3:d=>`Hai ${d} di redditi da dipendente o pensione. <b>Il limite è 35.000 €</b>: sopra questa cifra il regime non si applica. Il limite non vale se il rapporto è cessato e non percepisci altri redditi da lavoro o pensione.`,
   a4:p=>`Hai ${p} di spese per personale. <b>Il limite è 20.000 € lordi</b>: sopra questa cifra sei escluso.`,
   a5:"Le quote di società di persone, associazioni professionali o imprese familiari ti escludono dal regime. Vanno cedute entro la fine dell'anno prima.",
@@ -769,12 +798,21 @@ en:{
        saldoI:y=>"Substitute tax balance "+y, nSaldoI:"adjustment on the closed year", acc1I:y=>"1st tax advance "+y, n50I:y=>"50% of the tax for "+y, acc2I:y=>"2nd tax advance "+y,
        accU:y=>"Tax advance "+y, nU:"single payment, below €257.52", none:"No payments", noneN:"Balances and advances start the following year.", b1:"first year", bN:n=>"year "+n },
   over:"Above <b>€100,000</b> the flat-rate scheme cannot be used", warn:"Above <b>€85,000</b>: you leave the scheme next year", manca:v=>"<b>"+v+"</b> left to the threshold",
+  mancaR:(m,a)=>"<b>"+m+"</b> left to the threshold: over twelve months it is "+a, warnR:a=>"Over twelve months it is <b>"+a+"</b>: above €85,000 you leave the scheme next year",
+  rifX:y=>"In "+y, xT:"Reference year", xN:"Choose the full year your receipts refer to. The other years are derived from it, using the growth you set.",
+  nA:(v,g,d,y)=>"Twelve months of activity. For "+y+" the simulator counts <b>"+v+"</b> of it: the "+g+" days from "+d+" to year-end.",
+  nA1:y=>"Twelve months of activity: the whole of "+y+".",
+  nB:(d,y0,y1)=>"What you collect from "+d+" to 31 December "+y0+". From "+y1+" the simulator counts the full year, at the same pace.",
+  nB1:y=>"What you collect in the whole of "+y+", from 1 January to 31 December.",
+  nX:(yx,v,g,d,y0)=>"What you collect in the whole of "+yx+". For "+y0+" the simulator counts <b>"+v+"</b>: the "+g+" days from "+d+" to year-end.",
+  nX1:yx=>"What you collect in the whole of "+yx+".",
   hK:(y,p)=>p?"Left in your pocket in "+y+" (partial year)":"Left in your pocket in "+y, notApp:"Scheme not applicable", hS:(p,e)=>p+" of "+e+" collected", hS0:"Enter your receipts to start",
   pro:(d,g,gA,q,y0,y1)=>"You set the start of activity at "+d+". "+g+" days remain out of the "+gA+" in the year. The simulator takes the annual receipts you entered and counts "+q+" of them for "+y0+". From "+y1+" the full year counts.",
+  proB:(d,g,gA,a,y0,y1)=>"You set the start of activity at "+d+" and the receipts up to year-end. The simulator uses them as they are for "+y0+". "+g+" days remain out of the "+gA+" in the year: scaled to twelve months they come to "+a+", and "+y1+" starts from that figure.",
   proFull:"You set the start of activity at 1 January, so the first year is full and no proration is needed.",
   tb:["Receipts collected","First-year proration","Profitability coefficient","Flat-rate income","Contributions accrued","Contributions paid in the year, deductible","Taxable base","Substitute tax","Supplementary contribution recharged to the client","Net on an accrual basis"],
   a1:f=>`With ${f} of receipts <b>you cannot use the flat-rate scheme</b>. Above €100,000 the scheme ends immediately: from the receipt that breaks the threshold VAT applies and the whole year's income is taxed under ordinary rules.`,
-  a2:y=>`Above €85,000. You stay in the flat-rate scheme this year, but <b>from ${y} you move to the ordinary regime</b>. The projection for the following years no longer holds.`,
+  a2:(y0,y1,a)=>(a?`Over twelve months your receipts come to ${a}: more than €85,000, and the threshold is measured on an annualised basis.`:`Above €85,000.`)+` In ${y0} you stay in the flat-rate scheme, but <b>from ${y1} you move to the ordinary regime</b>. The projection for the following years no longer holds.`,
   a3:d=>`You have ${d} of employment or pension income. <b>The limit is €35,000</b>: above this figure the scheme does not apply. The limit does not apply if the employment has ended and you receive no other employment or pension income.`,
   a4:p=>`You have ${p} of staff costs. <b>The limit is €20,000 gross</b>: above this figure you are excluded.`,
   a5:"Holdings in partnerships, professional associations or family businesses exclude you from the scheme. They must be disposed of by the end of the previous year.",
@@ -795,12 +833,21 @@ de:{
        saldoI:y=>"Saldo Ersatzsteuer "+y, nSaldoI:"Ausgleich für das abgeschlossene Jahr", acc1I:y=>"1. Steuervorauszahlung "+y, n50I:y=>"50 % der Steuer "+y, acc2I:y=>"2. Steuervorauszahlung "+y,
        accU:y=>"Steuervorauszahlung "+y, nU:"Einmalzahlung, unter 257,52 €", none:"Keine Zahlungen", noneN:"Saldo und Vorauszahlungen beginnen im Folgejahr.", b1:"erstes Jahr", bN:n=>"Jahr "+n },
   over:"Über <b>100.000 €</b> ist das Pauschalregime nicht nutzbar", warn:"Über <b>85.000 €</b>: Sie verlassen das Regime nächstes Jahr", manca:v=>"Noch <b>"+v+"</b> bis zur Schwelle",
+  mancaR:(m,a)=>"Noch <b>"+m+"</b> bis zur Schwelle: auf zwölf Monate sind es "+a, warnR:a=>"Auf zwölf Monate sind es <b>"+a+"</b>: über 85.000 € verlassen Sie das Regime nächstes Jahr",
+  rifX:y=>"Im Jahr "+y, xT:"Bezugsjahr", xN:"Wählen Sie das volle Jahr, auf das sich die Einnahmen beziehen. Die anderen Jahre werden daraus abgeleitet, mit dem eingestellten Wachstum.",
+  nA:(v,g,d,y)=>"Zwölf Monate Tätigkeit. Für "+y+" rechnet der Simulator davon <b>"+v+"</b>: die "+g+" Tage vom "+d+" bis Jahresende.",
+  nA1:y=>"Zwölf Monate Tätigkeit: das ganze Jahr "+y+".",
+  nB:(d,y0,y1)=>"Was Sie vom "+d+" bis zum 31. Dezember "+y0+" einnehmen. Ab "+y1+" rechnet der Simulator das volle Jahr im gleichen Tempo.",
+  nB1:y=>"Was Sie im ganzen Jahr "+y+" einnehmen, vom 1. Januar bis zum 31. Dezember.",
+  nX:(yx,v,g,d,y0)=>"Was Sie im ganzen Jahr "+yx+" einnehmen. Für "+y0+" rechnet der Simulator <b>"+v+"</b>: die "+g+" Tage vom "+d+" bis Jahresende.",
+  nX1:yx=>"Was Sie im ganzen Jahr "+yx+" einnehmen.",
   hK:(y,p)=>p?"Ihnen bleibt im Jahr "+y+" (Teiljahr)":"Ihnen bleibt im Jahr "+y, notApp:"Regime nicht anwendbar", hS:(p,e)=>p+" von "+e+" Einnahmen", hS0:"Geben Sie die Einnahmen ein, um zu beginnen",
   pro:(d,g,gA,q,y0,y1)=>"Sie haben den Tätigkeitsbeginn auf den "+d+" gesetzt. Es bleiben "+g+" der "+gA+" Tage des Jahres. Der Simulator nimmt die eingegebenen Jahreseinnahmen und rechnet davon "+q+" für "+y0+". Ab "+y1+" zählt das ganze Jahr.",
+  proB:(d,g,gA,a,y0,y1)=>"Sie haben den Tätigkeitsbeginn auf den "+d+" gesetzt und die Einnahmen bis Jahresende angegeben. Der Simulator übernimmt sie unverändert für "+y0+". Es bleiben "+g+" der "+gA+" Tage des Jahres: auf zwölf Monate hochgerechnet sind es "+a+", und von diesem Betrag geht "+y1+" aus.",
   proFull:"Sie haben den Tätigkeitsbeginn auf den 1. Januar gesetzt: Das erste Jahr ist voll, eine Umrechnung ist nicht nötig.",
   tb:["Einnahmen","Umrechnung erstes Jahr","Rentabilitätskoeffizient","Pauschales Einkommen","Zuzurechnende Beiträge","Im Jahr gezahlte, abzugsfähige Beiträge","Bemessungsgrundlage","Ersatzsteuer","Integrativbeitrag, dem Kunden weiterbelastet","Netto nach Zurechnung"],
   a1:f=>`Mit ${f} Einnahmen <b>können Sie das Pauschalregime nicht nutzen</b>. Über 100.000 € endet das Regime sofort: Ab der Einnahme, die die Schwelle überschreitet, gilt die MwSt, und das gesamte Jahreseinkommen wird normal besteuert.`,
-  a2:y=>`Über 85.000 €. Sie bleiben dieses Jahr im Pauschalregime, aber <b>ab ${y} wechseln Sie zur Normalbesteuerung</b>. Die Projektion der Folgejahre gilt nicht mehr.`,
+  a2:(y0,y1,a)=>(a?`Auf zwölf Monate hochgerechnet betragen Ihre Einnahmen ${a}: mehr als 85.000 €, und die Schwelle wird auf das Jahr hochgerechnet geprüft.`:`Über 85.000 €.`)+` Im Jahr ${y0} bleiben Sie im Pauschalregime, aber <b>ab ${y1} wechseln Sie zur Normalbesteuerung</b>. Die Projektion der Folgejahre gilt nicht mehr.`,
   a3:d=>`Sie haben ${d} Einkünfte aus nichtselbständiger Arbeit oder Rente. <b>Die Grenze liegt bei 35.000 €</b>: Darüber ist das Regime nicht anwendbar. Die Grenze gilt nicht, wenn das Arbeitsverhältnis beendet ist und Sie keine anderen Arbeits- oder Renteneinkünfte beziehen.`,
   a4:p=>`Sie haben ${p} Personalkosten. <b>Die Grenze liegt bei 20.000 € brutto</b>: Darüber sind Sie ausgeschlossen.`,
   a5:"Beteiligungen an Personengesellschaften, Berufsvereinigungen oder Familienbetrieben schließen Sie vom Regime aus. Sie sind bis Ende des Vorjahres abzugeben.",
@@ -821,12 +868,21 @@ zh:{
        saldoI:y=>y+" 年替代税结算", nSaldoI:"已结束年度的差额", acc1I:y=>y+" 年税款第一次预缴", n50I:y=>y+" 年税款的 50%", acc2I:y=>y+" 年税款第二次预缴",
        accU:y=>y+" 年税款预缴", nU:"一次性缴纳，低于 €257.52", none:"无需缴款", noneN:"结算和预缴从次年开始。", b1:"第一年", bN:n=>"第 "+n+" 年" },
   over:"超过 <b>€100,000</b> 不能使用单一税率制", warn:"超过 <b>€85,000</b>：明年退出该税制", manca:v=>"距门槛还有 <b>"+v+"</b>",
+  mancaR:(m,a)=>"距门槛还有 <b>"+m+"</b>：折算为十二个月是 "+a, warnR:a=>"折算为十二个月是 <b>"+a+"</b>：超过 €85,000，明年退出该税制",
+  rifX:y=>y+" 年", xT:"参考年份", xN:"选择收入所对应的完整年度。其他年份按您设定的增长率由此推算。",
+  nA:(v,g,d,y)=>"十二个月的经营收入。"+y+" 年模拟器按 <b>"+v+"</b> 计入：自 "+d+" 至年底的 "+g+" 天。",
+  nA1:y=>"十二个月的经营收入："+y+" 年全年。",
+  nB:(d,y0,y1)=>"您自 "+d+" 至 "+y0+" 年 12 月 31 日收取的金额。自 "+y1+" 年起，模拟器按相同节奏计算全年。",
+  nB1:y=>"您在 "+y+" 年全年（1 月 1 日至 12 月 31 日）收取的金额。",
+  nX:(yx,v,g,d,y0)=>"您在 "+yx+" 年全年收取的金额。"+y0+" 年模拟器按 <b>"+v+"</b> 计入：自 "+d+" 至年底的 "+g+" 天。",
+  nX1:yx=>"您在 "+yx+" 年全年收取的金额。",
   hK:(y,p)=>p?y+" 年（部分年度）您留下":y+" 年您留下", notApp:"税制不适用", hS:(p,e)=>"占所收 "+e+" 的 "+p, hS0:"输入收入以开始",
   pro:(d,g,gA,q,y0,y1)=>"您设定的开业日期为 "+d+"。当年 "+gA+" 天中还剩 "+g+" 天。模拟器采用您输入的年收入，并按 "+q+" 计入 "+y0+" 年。自 "+y1+" 年起按全年计算。",
+  proB:(d,g,gA,a,y0,y1)=>"您设定的开业日期为 "+d+"，并输入了到年底的收入。模拟器在 "+y0+" 年按原金额计算。当年 "+gA+" 天中还剩 "+g+" 天：折算为十二个月是 "+a+"，"+y1+" 年即以此为基础。",
   proFull:"您设定的开业日期为 1 月 1 日，因此第一年是完整年度，无需按比例折算。",
   tb:["收取的收入","第一年按比例折算","盈利系数","单一税率制所得","应计社保缴费","当年已缴、可扣除的社保缴费","应税基数","替代税","向客户转嫁的补充缴费","权责发生制净额"],
   a1:f=>`收入 ${f} 时<b>您不能使用单一税率制</b>。超过 100,000 欧元该税制立即终止：从突破门槛的那笔收入起适用增值税，当年全部所得按普通方式征税。`,
-  a2:y=>`超过 85,000 欧元。今年您仍留在单一税率制，但<b>从 ${y} 年起转入普通税制</b>。之后年份的预测不再有效。`,
+  a2:(y0,y1,a)=>(a?`折算为十二个月，您的收入为 ${a}：超过 85,000 欧元，而该门槛按年度折算后衡量。`:`超过 85,000 欧元。`)+`${y0} 年您仍留在单一税率制，但<b>从 ${y1} 年起转入普通税制</b>。之后年份的预测不再有效。`,
   a3:d=>`您有 ${d} 的雇佣或养老金所得。<b>上限为 35,000 欧元</b>：超过此金额该税制不适用。如果雇佣关系已终止且您没有其他劳动或养老金所得，则该上限不适用。`,
   a4:p=>`您有 ${p} 的人员费用。<b>上限为 20,000 欧元（毛额）</b>：超过此金额您被排除在外。`,
   a5:"持有合伙企业、专业协会或家族企业的份额会使您被排除在该税制之外。须在上一年年底前转让。",
@@ -894,6 +950,19 @@ function ragguaglio(){
            mesi: 12 - d.getMonth(), giorni:gResidui, gAnno };
 }
 
+/* ================= periodo a cui si riferiscono i compensi =================
+   anno = dodici mesi di attività (il primo anno è ragguagliato ai giorni residui)
+   fine = dall'inizio attività al 31 dicembre dello stesso anno
+   x    = un anno intero preciso, il (annoK+1)-esimo della simulazione            */
+const rifSel = () => document.querySelector('input[name=rif]:checked').value;
+const annoK  = () => Math.max(1, Math.min(4, +$("annoK").value || 1));
+/* compensi ragguagliati ad anno: è su questi che si misura la soglia di 85.000 € */
+const ragguagliati = (v, rif, rg) => rif==="fine" ? v/rg.quota : v;
+function opzAnno(){
+  const L = T(), a0 = ragguaglio().anno;
+  return { titolo:L.xT, nota:L.xN, voci:[1,2,3,4].map(k=>({v:String(k), t:String(a0+k), s:L.ev.bN(k+1)})) };
+}
+
 /* ================= contributi ================= */
 function contributiCompetenza(redditoForf, fatturato, cfg){
   const L = T();
@@ -953,13 +1022,19 @@ function calcola(){
     gest: $("gest").value,
     rid: +$("rid").value,
     cSog:+$("cSog").value, cSogMin:+$("cSogMin").value, cInt:+$("cInt").value, cAltro:+$("cAltro").value,
+    rif: rifSel(),
     rg
   };
   const N = 5, y = i => cfg.anno + i;
+  /* k = anno a cui si riferisce l'importo; base = compensi di dodici mesi all'anno 0 */
+  const k = cfg.rif==="x" ? annoK() : 0;
+  cfg.base = cfg.rif==="fine" ? cfg.fatt/rg.quota
+           : cfg.rif==="x"    ? cfg.fatt/Math.pow(1+cfg.cres, k)
+           : cfg.fatt;
 
   const fatt=[], rf=[], C=[], F=[], E_=[], INT=[];
   for(let i=0;i<N;i++){
-    const annuo = cfg.fatt * Math.pow(1+cfg.cres, i);
+    const annuo = cfg.base * Math.pow(1+cfg.cres, i);
     fatt[i] = i===0 ? annuo*rg.quota : annuo;
     rf[i]   = fatt[i]*cfg.coeff;
     const c = contributiCompetenza(rf[i], fatt[i], cfg);
@@ -1053,7 +1128,7 @@ function calcola(){
     eventi[i].sort((a,b)=> a.m-b.m || rank(a)-rank(b));
   }
 
-  return {cfg,N,y,rg,fatt,rf,C,F,E:E_,INT,I,imponibile,contribPagati,eventi};
+  return {cfg,N,y,k,rg,fatt,rf,C,F,E:E_,INT,I,imponibile,contribPagati,eventi};
 }
 
 /* ================= UI: profili ================= */
@@ -1074,6 +1149,7 @@ function applicaProfilo(id){
   if (!p) return;
   $("coeff").value = p.coeff; $("gest").value = p.gest; $("rid").value = p.rid;
   document.querySelector('input[name=aliq][value="'+p.aliq+'"]').checked = true;
+  document.querySelector('input[name=rif][value=anno]').checked = true;   /* i profili sono importi annui */
   setImporto(p.fatt);
   profiloAttivo = id; segnaProfilo(); sync();
 }
@@ -1097,15 +1173,21 @@ function aggiornaImporto(){
   const L = T();
   const el = $("fatt"), v = num(el.value);
   el.style.width = Math.max(3, el.value.length + 0.2) + "ch";
+  /* 100.000 € sugli incassi effettivi, 85.000 € sui compensi ragguagliati ad anno */
+  const rg = ragguaglio(), rif = rifSel(), ragg = ragguagliati(v, rif, rg);
+  const parz = rif==="fine" && rg.quota < 1;
   const oltre = v > P.sogliaUscitaImmediata;
-  document.documentElement.style.setProperty("--dyn", oltre ? "#CF4B4B" : coloreImporto(v));
+  document.documentElement.style.setProperty("--dyn", oltre ? "#CF4B4B" : coloreImporto(ragg));
   $("fill").style.width = Math.min(100, v/MAXSLIDER*100) + "%";
   $("money").classList.toggle("over", oltre);
+  const s85 = P.sogliaRicavi * (parz ? rg.quota : 1);
+  $("mk85").style.left = (s85/MAXSLIDER*100).toFixed(2) + "%";
+  $("mk85").firstElementChild.textContent = mig(s85);
   const foot = $("fattFoot");
-  if (oltre)                    foot.innerHTML = L.over;
-  else if (v > P.sogliaRicavi)  foot.innerHTML = L.warn;
-  else if (v > 0)              foot.innerHTML = L.manca(eur(P.sogliaRicavi - v));
-  else                          foot.innerHTML = "";
+  if (oltre)                       foot.innerHTML = L.over;
+  else if (ragg > P.sogliaRicavi)  foot.innerHTML = parz ? L.warnR(eur(ragg)) : L.warn;
+  else if (v > 0)                  foot.innerHTML = parz ? L.mancaR(eur(P.sogliaRicavi - ragg), eur(ragg)) : L.manca(eur(P.sogliaRicavi - v));
+  else                             foot.innerHTML = "";
   document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(+c.dataset.chip===v)));
 }
 $("fatt").addEventListener("input", ()=>{
@@ -1122,9 +1204,10 @@ $("fattR").addEventListener("input", ()=>{
 
 /* ================= UI: picker e tooltip ================= */
 let pickCorrente = null;
+const opz = k => k==="annoK" ? opzAnno() : OPZ()[k];
 function apriPicker(k){
   pickCorrente = k;
-  const o = OPZ()[k], cur = $(k).value;
+  const o = opz(k), cur = k==="annoK" ? String(annoK()) : $(k).value;
   $("shT").textContent = o.titolo;
   $("shP").textContent = o.nota;
   $("shO").innerHTML = o.voci.map((x,i)=>`
@@ -1157,9 +1240,11 @@ document.addEventListener("click", e=>{
   nascondiTip();
   const p = e.target.closest("[data-pick]");
   if (p){ apriPicker(p.dataset.pick); return; }
+  /* «Nel 2027»: il terzo segmento apre la scelta dell'anno */
+  if (e.target.matches('input[name=rif][value=x]')){ apriPicker("annoK"); return; }
   const o = e.target.closest(".opt");
   if (o && pickCorrente){
-    $(pickCorrente).value = OPZ()[pickCorrente].voci[+o.dataset.i].v;
+    $(pickCorrente).value = opz(pickCorrente).voci[+o.dataset.i].v;
     profiloAttivo = null; segnaProfilo(); chiudiPicker(); sync();
   }
 });
@@ -1186,35 +1271,47 @@ function etichettePicker(){
 function render(){
   const L = T(), E = L.ev;
   const R = calcola(), c = R.cfg;
-  const rf0=R.rf[0], C0=R.C[0], I0=R.I[0], netto = R.fatt[0]-C0-I0;
+  /* fi = anno in primo piano: quello a cui si riferisce l'importo inserito */
+  const fi = R.k, parz0 = R.rg.quota < 1;
+  const rf0=R.rf[fi], C0=R.C[fi], I0=R.I[fi], netto = R.fatt[fi]-C0-I0;
   const bloccato = c.fatt > P.sogliaUscitaImmediata;
+  const ragg = ragguagliati(c.fatt, c.rif, R.rg);
+
+  /* periodo: etichetta del terzo segmento e nota sotto l'importo */
+  $("rifX").textContent = L.rifX(R.y(annoK()));
+  const dIn = R.rg.data.toLocaleDateString(LOC(), {day:"numeric", month:"long"});
+  $("fattNota").innerHTML = !c.fatt ? ""
+    : c.rif==="fine" ? (parz0 ? L.nB(dIn, R.y(0), R.y(1)) : L.nB1(R.y(0)))
+    : c.rif==="x"    ? (parz0 ? L.nX(R.y(fi), eur(R.fatt[0]), R.rg.giorni, dIn, R.y(0)) : L.nX1(R.y(fi)))
+    :                  (parz0 ? L.nA(eur(R.fatt[0]), R.rg.giorni, dIn, R.y(0)) : L.nA1(R.y(0)));
 
   $("esito").classList.toggle("dimmed", bloccato);
-  $("hK").textContent = L.hK(R.y(0), R.rg.quota < 1);
+  $("hK").textContent = L.hK(R.y(fi), fi===0 && parz0);
   $("hV").textContent = bloccato ? "—" : eur(netto);
   $("hS").textContent = bloccato ? L.notApp
-    : (R.fatt[0] > 0 ? L.hS(pct(netto/R.fatt[0]), eur(R.fatt[0])) : L.hS0);
+    : (R.fatt[fi] > 0 ? L.hS(pct(netto/R.fatt[fi]), eur(R.fatt[fi])) : L.hS0);
 
-  const tot = Math.max(R.fatt[0], 1);
+  const tot = Math.max(R.fatt[fi], 1);
   $("b1").style.flexBasis = Math.max(0,C0)/tot*100 + "%";
   $("b2").style.flexBasis = Math.max(0,I0)/tot*100 + "%";
   $("b3").style.flexBasis = Math.max(0,netto)/tot*100 + "%";
   $("lg1").textContent = eur(C0); $("lg2").textContent = eur(I0); $("lg3").textContent = eur(netto);
 
-  $("proNota").textContent = R.rg.quota < 1
-    ? L.pro(R.rg.data.toLocaleDateString(LOC()), R.rg.giorni, R.rg.gAnno, pct(R.rg.quota), R.y(0), R.y(1))
-    : L.proFull;
+  const dLunga = R.rg.data.toLocaleDateString(LOC());
+  $("proNota").textContent = !parz0 ? L.proFull
+    : c.rif==="fine" ? L.proB(dLunga, R.rg.giorni, R.rg.gAnno, eur(c.base), R.y(0), R.y(1))
+    : L.pro(dLunga, R.rg.giorni, R.rg.gAnno, pct(R.rg.quota), R.y(0), R.y(1));
 
-  const cd = contributiCompetenza(rf0, R.fatt[0], c);
+  const cd = contributiCompetenza(rf0, R.fatt[fi], c);
   const tb = L.tb;
-  let rows = `<tr><td>${tb[0]}</td><td>${eur2(R.fatt[0])}</td></tr>`;
-  if (R.rg.quota < 1) rows += `<tr class="dim"><td>${tb[1]}</td><td>${pct(R.rg.quota)}</td></tr>`;
+  let rows = `<tr><td>${tb[0]} · ${R.y(fi)}</td><td>${eur2(R.fatt[fi])}</td></tr>`;
+  if (fi===0 && parz0 && c.rif!=="fine") rows += `<tr class="dim"><td>${tb[1]}</td><td>${pct(R.rg.quota)}</td></tr>`;
   rows += `<tr class="dim"><td>${tb[2]}</td><td>${pct(c.coeff)}</td></tr>
   <tr><td>${tb[3]}</td><td>${eur2(rf0)}</td></tr>`;
   cd.dettaglio.forEach(d => rows += `<tr class="dim"><td>${d[0]}</td><td>${eur2(d[1])}</td></tr>`);
   rows += `<tr><td>${tb[4]}</td><td>${eur2(C0)}</td></tr>
-  <tr class="dim"><td>${tb[5]}</td><td>−${eur2(R.contribPagati[0])}</td></tr>
-  <tr><td>${tb[6]}</td><td>${eur2(R.imponibile[0])}</td></tr>
+  <tr class="dim"><td>${tb[5]}</td><td>−${eur2(R.contribPagati[fi])}</td></tr>
+  <tr><td>${tb[6]}</td><td>${eur2(R.imponibile[fi])}</td></tr>
   <tr><td>${tb[7]} ${pct(c.aliq)}</td><td>${eur2(I0)}</td></tr>`;
   if (cd.integrativo>0) rows += `<tr class="dim"><td>${tb[8]}</td><td>${eur2(cd.integrativo)}</td></tr>`;
   rows += `<tr class="tot"><td>${tb[9]}</td><td>${eur2(netto)}</td></tr>`;
@@ -1249,7 +1346,7 @@ function render(){
 
   const A=[], f=c.fatt;
   if (bloccato) A.push(["ko","!",L.a1(eur(f))]);
-  else if (f > P.sogliaRicavi) A.push(["warn","!",L.a2(R.y(1))]);
+  else if (ragg > P.sogliaRicavi) A.push(["warn","!",L.a2(R.y(fi), R.y(fi+1), c.rif==="fine" && parz0 ? eur(ragg) : null)]);
   const dip=+$("dip").value||0, pers=+$("pers").value||0;
   if (dip > P.limiteDipendente) A.push(["ko","!",L.a3(eur(dip))]);
   if (pers > P.limiteSpesePersonale) A.push(["ko","!",L.a4(eur(pers))]);
@@ -1274,7 +1371,7 @@ document.addEventListener("input",  e=>{ if (e.target.closest && e.target.closes
 document.addEventListener("change", e=>{ if (e.target.closest && e.target.closest("#f")) sync(); });
 $("stampa").addEventListener("click", ()=>window.print());
 $("reset").addEventListener("click", ()=>{
-  $("f").reset(); $("coeff").value="0.78"; $("gest").value="gs"; $("rid").value="0";
+  $("f").reset(); $("coeff").value="0.78"; $("gest").value="gs"; $("rid").value="0"; $("annoK").value="1";
   $("inizio").value = new Date().toISOString().slice(0,10);
   profiloAttivo=null; segnaProfilo(); setImporto(35000); sync();
 });
@@ -1302,7 +1399,7 @@ en:{ui:{
   "hero.eye":"Open tool","hero.h1":"The flat-rate scheme, year by year",
   "print.t":"Flat-rate scheme simulation",
   "pf.cap":"Choose the profile closest to yours.",
-  "m.cap":"Receipts collected in a year","mk85":"85,000",
+  "m.cap":"Receipts collected","rif.a":"In a year","rif.b":"Until year-end",
   "lbl.aliq":"Substitute tax","seg1":"15% standard","seg2":"5% new activity",
   "d.var.s":"Main variables","lbl.att":"Activity","lbl.prev":"Social security","lbl.inizio":"Start of activity",
   "d.alt.s":"Other variables","lbl.rid":"Contribution relief","lbl.cres":"Annual growth of receipts",
@@ -1319,14 +1416,14 @@ en:{ui:{
   "d3.s":"Accrual summary","th1":"Year","th2":"Receipts","th3":"Income","th4":"Contributions","th5":"Taxable","th6":"Tax","th7":"Net","th8":"Burden",
   "d3.p":"These figures are on an accrual basis. The timeline instead says when the money leaves the account.",
   "d4.s":"Method and sources",
-  "d4":"<h4>About the profiles</h4><p>The profiles load typical values for that trade. They are not your situation. The coefficient depends on your actual ATECO code: two similar activities may end up in different groups.</p><h4>Rules applied</h4><ul><li>Taxable income is the receipts collected multiplied by the profitability coefficient of the ATECO group, with no deduction of actual costs.</li><li>From that income the contributions <b>actually paid in the year</b> are deducted. In the first year the deduction is normally zero: that is why the first-year tax turns out higher than expected.</li><li>The social security base is instead the flat-rate income gross of contributions.</li><li>Tax advances: two instalments of 50%, historical method. No advance in the first year the scheme applies. Below €51.65 nothing is paid; between €51.65 and €257.52 a single payment is made in November.</li><li>Separate scheme: advances equal to 80% of the previous year's contribution, in two instalments of 40%.</li><li>Artisans and traders: four fixed instalments on the minimum income (16 May, 20 August, 16 November, 16 February of the following year) and contributions on the excess at the tax deadlines, with 50% + 50% advances.</li><li>The 35% reduction applies to the whole contribution due; the 50% one to the IVS share only, with maternity and the traders' additional 0.48% rate remaining full. They cannot be combined.</li></ul><h4>What it does not do</h4><ul><li>It does not calculate stamp duty on invoices, chamber of commerce fee, INAIL, local taxes and running costs.</li><li>It does not compare with the ordinary regime: with high actual costs the flat-rate scheme may pay less even below the threshold.</li><li>It does not apply instalments up to December nor the thirty-day deferral with surcharge.</li><li>The extension to 20 July applies to 2026 only and is decided year by year: from 2027 the timeline shows the ordinary 30 June deadline, to be re-checked every spring.</li><li>Advance overpayments are carried forward against later payments, not claimed as refunds.</li><li>For professional funds the model is simplified. Minimums, brackets and deadlines vary from fund to fund.</li></ul><h4>Sources</h4><div class=\"srcs\"><div><b>Flat-rate scheme</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">Law 190 of 23 December 2014, art. 1 paras. 54-89 and Annex 4</a></div><div><b>Employment income threshold 2026</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">Law 199 of 30 December 2025, art. 1 para. 27</a></div><div><b>Coefficients and ATECO 2025</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">Decree-Law 81/2025 — coefficients on the previous classification remain applicable</a></div><div><b>Artisans' and traders' contributions 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 14 of 9 February 2026</a></div><div><b>Separate scheme 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 8 of 3 February 2026</a></div><div><b>50% reduction for new enrolments</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 83 of 24 April 2025 — Law 207/2024, art. 1 para. 186</a></div><div><b>Size of advances</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">Decree-Law 124 of 26 October 2019, art. 58</a></div><div><b>Payment deadlines 2026</b>Decree-Law 89/2026, art. 6 — extension to 20 July 2026 for flat-rate taxpayers and ISA subjects</div></div>",
+  "d4":"<h4>About the profiles</h4><p>The profiles load typical values for that trade. They are not your situation. The coefficient depends on your actual ATECO code: two similar activities may end up in different groups.</p><h4>Rules applied</h4><ul><li>Taxable income is the receipts collected multiplied by the profitability coefficient of the ATECO group, with no deduction of actual costs.</li><li>From that income the contributions <b>actually paid in the year</b> are deducted. In the first year the deduction is normally zero: that is why the first-year tax turns out higher than expected.</li><li>The social security base is instead the flat-rate income gross of contributions.</li><li>Tax advances: two instalments of 50%, historical method. No advance in the first year the scheme applies. Below €51.65 nothing is paid; between €51.65 and €257.52 a single payment is made in November.</li><li>Separate scheme: advances equal to 80% of the previous year's contribution, in two instalments of 40%.</li><li>Artisans and traders: four fixed instalments on the minimum income (16 May, 20 August, 16 November, 16 February of the following year) and contributions on the excess at the tax deadlines, with 50% + 50% advances.</li><li>The 35% reduction applies to the whole contribution due; the 50% one to the IVS share only, with maternity and the traders' additional 0.48% rate remaining full. They cannot be combined.</li><li>The €85,000 threshold is measured on receipts <b>scaled to a full year</b>: if you open during the year, you compare it with what you collect scaled to twelve months. The €100,000 one looks at actual receipts, with no scaling.</li><li>Receipts can be entered for twelve months, up to the end of the opening year, or for a specific year. In each case the simulator derives the other years in proportion to the days and the growth you set.</li></ul><h4>What it does not do</h4><ul><li>It does not calculate stamp duty on invoices, chamber of commerce fee, INAIL, local taxes and running costs.</li><li>It does not compare with the ordinary regime: with high actual costs the flat-rate scheme may pay less even below the threshold.</li><li>It does not apply instalments up to December nor the thirty-day deferral with surcharge.</li><li>The extension to 20 July applies to 2026 only and is decided year by year: from 2027 the timeline shows the ordinary 30 June deadline, to be re-checked every spring.</li><li>Advance overpayments are carried forward against later payments, not claimed as refunds.</li><li>For professional funds the model is simplified. Minimums, brackets and deadlines vary from fund to fund.</li></ul><h4>Sources</h4><div class=\"srcs\"><div><b>Flat-rate scheme</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">Law 190 of 23 December 2014, art. 1 paras. 54-89 and Annex 4</a></div><div><b>Thresholds and annualisation</b><a href=\"https://www.agenziaentrate.gov.it/portale/documents/20143/5718712/Circolare_n_32_Regime+forfetario_05_12_2023.pdf/23d1370d-6bba-0eb7-70b8-d1d24d5a1c0f\" target=\"_blank\" rel=\"noopener\">Revenue Agency Circular no. 32/E of 5 December 2023</a></div><div><b>Employment income threshold 2026</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">Law 199 of 30 December 2025, art. 1 para. 27</a></div><div><b>Coefficients and ATECO 2025</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">Decree-Law 81/2025 — coefficients on the previous classification remain applicable</a></div><div><b>Artisans' and traders' contributions 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 14 of 9 February 2026</a></div><div><b>Separate scheme 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 8 of 3 February 2026</a></div><div><b>50% reduction for new enrolments</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">INPS Circular no. 83 of 24 April 2025 — Law 207/2024, art. 1 para. 186</a></div><div><b>Size of advances</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">Decree-Law 124 of 26 October 2019, art. 58</a></div><div><b>Payment deadlines 2026</b>Decree-Law 89/2026, art. 6 — extension to 20 July 2026 for flat-rate taxpayers and ISA subjects</div></div>",
   "f.p1":"This is an estimate. It is not professional advice. Access to the scheme and the amount due depend on elements a form does not know.",
   "f.p2":"The calculation runs in your browser. No data is transmitted or stored.",
   "sh.close":"Close"
 },attr:{
-  "a.fatt":"Receipts collected","a.fattR":"Adjust receipts",
+  "a.fatt":"Receipts collected","a.fattR":"Adjust receipts","a.rif":"Period the receipts refer to",
   "tip.aliq":"The flat-rate scheme pays neither IRPEF nor surtaxes. A single tax replaces them. The rate is 15%. It drops to 5% for the first five years if the activity is genuinely new.",
-  "tip.inizio":"If you open during the year, the first year lasts less than twelve months. The simulator prorates the receipts and the fixed contributions of the first year accordingly."
+  "tip.inizio":"If you open during the year, the first year lasts less than twelve months. The simulator prorates the first year's fixed contributions and, if you entered a full year's receipts, the receipts too."
 }},
 de:{ui:{
   "title":"Simulator Pauschalregime 2026 — Corazzini",
@@ -1334,7 +1431,7 @@ de:{ui:{
   "hero.eye":"Offenes Tool","hero.h1":"Das Pauschalregime, Jahr für Jahr",
   "print.t":"Simulation Pauschalregime",
   "pf.cap":"Wählen Sie das Profil, das Ihrem am nächsten kommt.",
-  "m.cap":"Jahreseinnahmen","mk85":"85.000",
+  "m.cap":"Einnahmen","rif.a":"In einem Jahr","rif.b":"Bis Jahresende",
   "lbl.aliq":"Ersatzsteuer","seg1":"15 % regulär","seg2":"5 % Neugründung",
   "d.var.s":"Hauptvariablen","lbl.att":"Tätigkeit","lbl.prev":"Sozialversicherung","lbl.inizio":"Tätigkeitsbeginn",
   "d.alt.s":"Weitere Variablen","lbl.rid":"Beitragsermäßigung","lbl.cres":"Jährliches Wachstum der Einnahmen",
@@ -1351,14 +1448,14 @@ de:{ui:{
   "d3.s":"Übersicht nach Zurechnung","th1":"Jahr","th2":"Einnahmen","th3":"Einkommen","th4":"Beiträge","th5":"Bemessung","th6":"Steuer","th7":"Netto","th8":"Abgaben",
   "d3.p":"Diese Zahlen gelten nach Zurechnung. Der Zeitplan sagt hingegen, wann das Geld vom Konto abgeht.",
   "d4.s":"Methode und Quellen",
-  "d4":"<h4>Zu den Profilen</h4><p>Die Profile laden typische Werte dieses Berufs. Sie sind nicht Ihre Situation. Der Koeffizient hängt von Ihrem tatsächlichen ATECO-Code ab: Zwei ähnliche Tätigkeiten können in verschiedenen Gruppen landen.</p><h4>Angewandte Regeln</h4><ul><li>Das steuerpflichtige Einkommen ergibt sich aus den Einnahmen mal Rentabilitätskoeffizient der ATECO-Gruppe, ohne Abzug der tatsächlichen Kosten.</li><li>Von diesem Einkommen werden die <b>im Jahr tatsächlich gezahlten</b> Beiträge abgezogen. Im ersten Jahr ist der Abzug in der Regel null: Deshalb fällt die Steuer des ersten Jahres höher aus als erwartet.</li><li>Die Beitragsbemessungsgrundlage ist hingegen das pauschale Einkommen vor Abzug der Beiträge.</li><li>Steuervorauszahlungen: zwei Raten zu 50 %, historische Methode. Keine Vorauszahlung im ersten Jahr der Anwendung. Unter 51,65 € wird nichts gezahlt; zwischen 51,65 und 257,52 € erfolgt eine Einmalzahlung im November.</li><li>Gestione separata: Vorauszahlungen von 80 % des Vorjahresbeitrags in zwei Raten zu 40 %.</li><li>Handwerker und Händler: vier Fixraten auf das Mindesteinkommen (16. Mai, 20. August, 16. November, 16. Februar des Folgejahres) und Beiträge auf den übersteigenden Teil zu den Steuerterminen, mit Vorauszahlungen 50 % + 50 %.</li><li>Die 35-%-Ermäßigung wirkt auf den gesamten geschuldeten Beitrag; die 50-%-Ermäßigung nur auf den IVS-Anteil, während Mutterschaft und der Zusatzsatz von 0,48 % der Händler voll bleiben. Sie sind nicht kumulierbar.</li></ul><h4>Was es nicht tut</h4><ul><li>Berechnet weder Stempelsteuer auf Rechnungen noch Handelskammergebühr, INAIL, Gemeindeabgaben und Betriebskosten.</li><li>Vergleicht nicht mit der Normalbesteuerung: Bei hohen tatsächlichen Kosten kann das Pauschalregime auch unter der Schwelle weniger vorteilhaft sein.</li><li>Wendet weder die Ratenzahlung bis Dezember noch den Aufschub um dreißig Tage mit Zuschlag an.</li><li>Die Verlängerung bis 20. Juli gilt nur für 2026 und wird jährlich festgelegt: Ab 2027 zeigt der Zeitplan den ordentlichen Termin 30. Juni, jedes Frühjahr neu zu prüfen.</li><li>Überzahlte Vorauszahlungen werden mit späteren Zahlungen verrechnet, nicht erstattet.</li><li>Für die Berufskassen ist das Modell vereinfacht. Mindestbeiträge, Stufen und Termine unterscheiden sich von Kasse zu Kasse.</li></ul><h4>Quellen</h4><div class=\"srcs\"><div><b>Pauschalregime</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">Gesetz Nr. 190 vom 23. Dezember 2014, Art. 1 Abs. 54-89 und Anhang 4</a></div><div><b>Schwelle Arbeitseinkünfte 2026</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">Gesetz Nr. 199 vom 30. Dezember 2025, Art. 1 Abs. 27</a></div><div><b>Koeffizienten und ATECO 2025</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">Gesetzesdekret 81/2025 — Koeffizienten nach der bisherigen Klassifikation bleiben anwendbar</a></div><div><b>Beiträge Handwerker und Händler 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 14 vom 9. Februar 2026</a></div><div><b>Gestione separata 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 8 vom 3. Februar 2026</a></div><div><b>50-%-Ermäßigung für Neuanmeldungen</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 83 vom 24. April 2025 — Gesetz 207/2024, Art. 1 Abs. 186</a></div><div><b>Höhe der Vorauszahlungen</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">Gesetzesdekret Nr. 124 vom 26. Oktober 2019, Art. 58</a></div><div><b>Zahlungstermine 2026</b>Gesetzesdekret 89/2026, Art. 6 — Verlängerung bis 20. Juli 2026 für Pauschalbesteuerte und ISA-Pflichtige</div></div>",
+  "d4":"<h4>Zu den Profilen</h4><p>Die Profile laden typische Werte dieses Berufs. Sie sind nicht Ihre Situation. Der Koeffizient hängt von Ihrem tatsächlichen ATECO-Code ab: Zwei ähnliche Tätigkeiten können in verschiedenen Gruppen landen.</p><h4>Angewandte Regeln</h4><ul><li>Das steuerpflichtige Einkommen ergibt sich aus den Einnahmen mal Rentabilitätskoeffizient der ATECO-Gruppe, ohne Abzug der tatsächlichen Kosten.</li><li>Von diesem Einkommen werden die <b>im Jahr tatsächlich gezahlten</b> Beiträge abgezogen. Im ersten Jahr ist der Abzug in der Regel null: Deshalb fällt die Steuer des ersten Jahres höher aus als erwartet.</li><li>Die Beitragsbemessungsgrundlage ist hingegen das pauschale Einkommen vor Abzug der Beiträge.</li><li>Steuervorauszahlungen: zwei Raten zu 50 %, historische Methode. Keine Vorauszahlung im ersten Jahr der Anwendung. Unter 51,65 € wird nichts gezahlt; zwischen 51,65 und 257,52 € erfolgt eine Einmalzahlung im November.</li><li>Gestione separata: Vorauszahlungen von 80 % des Vorjahresbeitrags in zwei Raten zu 40 %.</li><li>Handwerker und Händler: vier Fixraten auf das Mindesteinkommen (16. Mai, 20. August, 16. November, 16. Februar des Folgejahres) und Beiträge auf den übersteigenden Teil zu den Steuerterminen, mit Vorauszahlungen 50 % + 50 %.</li><li>Die 35-%-Ermäßigung wirkt auf den gesamten geschuldeten Beitrag; die 50-%-Ermäßigung nur auf den IVS-Anteil, während Mutterschaft und der Zusatzsatz von 0,48 % der Händler voll bleiben. Sie sind nicht kumulierbar.</li><li>Die Schwelle von 85.000 € wird an den <b>auf das Jahr hochgerechneten</b> Einnahmen gemessen: Wer im Laufe des Jahres eröffnet, vergleicht sie mit den auf zwölf Monate hochgerechneten Einnahmen. Die Schwelle von 100.000 € bezieht sich dagegen auf die tatsächlichen Einnahmen, ohne Hochrechnung.</li><li>Die Einnahmen können für zwölf Monate, bis zum Ende des Eröffnungsjahres oder für ein bestimmtes Jahr angegeben werden. In jedem Fall leitet der Simulator die übrigen Jahre im Verhältnis zu den Tagen und dem eingestellten Wachstum ab.</li></ul><h4>Was es nicht tut</h4><ul><li>Berechnet weder Stempelsteuer auf Rechnungen noch Handelskammergebühr, INAIL, Gemeindeabgaben und Betriebskosten.</li><li>Vergleicht nicht mit der Normalbesteuerung: Bei hohen tatsächlichen Kosten kann das Pauschalregime auch unter der Schwelle weniger vorteilhaft sein.</li><li>Wendet weder die Ratenzahlung bis Dezember noch den Aufschub um dreißig Tage mit Zuschlag an.</li><li>Die Verlängerung bis 20. Juli gilt nur für 2026 und wird jährlich festgelegt: Ab 2027 zeigt der Zeitplan den ordentlichen Termin 30. Juni, jedes Frühjahr neu zu prüfen.</li><li>Überzahlte Vorauszahlungen werden mit späteren Zahlungen verrechnet, nicht erstattet.</li><li>Für die Berufskassen ist das Modell vereinfacht. Mindestbeiträge, Stufen und Termine unterscheiden sich von Kasse zu Kasse.</li></ul><h4>Quellen</h4><div class=\"srcs\"><div><b>Pauschalregime</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">Gesetz Nr. 190 vom 23. Dezember 2014, Art. 1 Abs. 54-89 und Anhang 4</a></div><div><b>Schwellen und Hochrechnung auf das Jahr</b><a href=\"https://www.agenziaentrate.gov.it/portale/documents/20143/5718712/Circolare_n_32_Regime+forfetario_05_12_2023.pdf/23d1370d-6bba-0eb7-70b8-d1d24d5a1c0f\" target=\"_blank\" rel=\"noopener\">Rundschreiben der Agenzia delle Entrate Nr. 32/E vom 5. Dezember 2023</a></div><div><b>Schwelle Arbeitseinkünfte 2026</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">Gesetz Nr. 199 vom 30. Dezember 2025, Art. 1 Abs. 27</a></div><div><b>Koeffizienten und ATECO 2025</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">Gesetzesdekret 81/2025 — Koeffizienten nach der bisherigen Klassifikation bleiben anwendbar</a></div><div><b>Beiträge Handwerker und Händler 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 14 vom 9. Februar 2026</a></div><div><b>Gestione separata 2026</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 8 vom 3. Februar 2026</a></div><div><b>50-%-Ermäßigung für Neuanmeldungen</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">INPS-Rundschreiben Nr. 83 vom 24. April 2025 — Gesetz 207/2024, Art. 1 Abs. 186</a></div><div><b>Höhe der Vorauszahlungen</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">Gesetzesdekret Nr. 124 vom 26. Oktober 2019, Art. 58</a></div><div><b>Zahlungstermine 2026</b>Gesetzesdekret 89/2026, Art. 6 — Verlängerung bis 20. Juli 2026 für Pauschalbesteuerte und ISA-Pflichtige</div></div>",
   "f.p1":"Dies ist eine Schätzung. Sie ist keine fachliche Beratung. Der Zugang zum Regime und der geschuldete Betrag hängen von Elementen ab, die ein Formular nicht kennt.",
   "f.p2":"Die Berechnung läuft in Ihrem Browser. Es werden keine Daten übertragen oder gespeichert.",
   "sh.close":"Schließen"
 },attr:{
-  "a.fatt":"Einnahmen","a.fattR":"Einnahmen anpassen",
+  "a.fatt":"Einnahmen","a.fattR":"Einnahmen anpassen","a.rif":"Zeitraum, auf den sich die Einnahmen beziehen",
   "tip.aliq":"Im Pauschalregime fallen weder IRPEF noch Zuschlagsteuern an. An ihre Stelle tritt eine einzige Steuer. Der Satz beträgt 15 %. Er sinkt auf 5 % für die ersten fünf Jahre, wenn die Tätigkeit wirklich neu ist.",
-  "tip.inizio":"Wenn Sie im Laufe des Jahres eröffnen, dauert das erste Jahr weniger als zwölf Monate. Der Simulator kürzt Einnahmen und Fixbeiträge des ersten Jahres entsprechend."
+  "tip.inizio":"Wenn Sie im Laufe des Jahres eröffnen, dauert das erste Jahr weniger als zwölf Monate. Der Simulator kürzt die Fixbeiträge des ersten Jahres entsprechend und, wenn Sie die Einnahmen eines ganzen Jahres angegeben haben, auch die Einnahmen."
 }},
 zh:{ui:{
   "title":"2026 年单一税率制模拟器 — Corazzini",
@@ -1366,7 +1463,7 @@ zh:{ui:{
   "hero.eye":"开放工具","hero.h1":"单一税率制，逐年看",
   "print.t":"单一税率制模拟",
   "pf.cap":"选择最接近您情况的档案。",
-  "m.cap":"一年内收取的收入","mk85":"85,000",
+  "m.cap":"收取的收入","rif.a":"一年内","rif.b":"到年底",
   "lbl.aliq":"替代税","seg1":"15% 标准","seg2":"5% 新业务",
   "d.var.s":"主要变量","lbl.att":"业务","lbl.prev":"社保","lbl.inizio":"开业日期",
   "d.alt.s":"其他变量","lbl.rid":"社保减免","lbl.cres":"收入年增长率",
@@ -1383,14 +1480,14 @@ zh:{ui:{
   "d3.s":"权责发生制汇总","th1":"年份","th2":"收入","th3":"所得","th4":"社保","th5":"应税额","th6":"税款","th7":"净额","th8":"税负",
   "d3.p":"这些数字按权责发生制计算。时间表则说明资金何时从账户支出。",
   "d4.s":"方法与来源",
-  "d4":"<h4>关于档案</h4><p>档案加载的是该行业的典型数值。它们不是您的实际情况。系数取决于您实际的 ATECO 代码：两项相似的业务可能属于不同组别。</p><h4>适用的规则</h4><ul><li>应税所得为所收收入乘以 ATECO 组别的盈利系数，不扣除实际成本。</li><li>从该所得中扣除<b>当年实际缴纳</b>的社保缴费。第一年的扣除通常为零：这就是第一年税款高于预期的原因。</li><li>社保的计费基数则是扣除缴费前的单一税率制所得。</li><li>税款预缴：两期各 50%，历史法。适用该税制的第一年不预缴。低于 51.65 欧元不缴；51.65 至 257.52 欧元之间在 11 月一次性缴纳。</li><li>独立管理制度：预缴额为上一年缴费的 80%，分两期各 40%。</li><li>手工业者和商人：最低所得上四期固定缴费（5 月 16 日、8 月 20 日、11 月 16 日、次年 2 月 16 日），超额部分的缴费在纳税期限缴纳，预缴 50% + 50%。</li><li>35% 减免作用于全部应缴缴费；50% 减免仅作用于 IVS 部分，生育保险和商人 0.48% 的附加费率保持全额。两者不可叠加。</li></ul><h4>不做的事</h4><ul><li>不计算发票印花税、商会年费、INAIL、地方税和经营成本。</li><li>不与普通税制比较：实际成本较高时，即使低于门槛，单一税率制也可能不如普通税制划算。</li><li>不适用延至 12 月的分期，也不适用加收附加费的三十天延期。</li><li>延至 7 月 20 日仅适用于 2026 年，逐年决定：自 2027 年起时间表显示 6 月 30 日的常规期限，每年春季须重新核实。</li><li>预缴的超额部分结转抵减后续缴款，不申请退还。</li><li>对职业基金，模型作了简化。最低额、分档和期限因基金而异。</li></ul><h4>来源</h4><div class=\"srcs\"><div><b>单一税率制</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">2014 年 12 月 23 日第 190 号法律第 1 条第 54-89 款及附件 4</a></div><div><b>2026 年雇佣所得门槛</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">2025 年 12 月 30 日第 199 号法律第 1 条第 27 款</a></div><div><b>系数与 2025 年 ATECO</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">第 81/2025 号法令 — 旧分类下的系数继续适用</a></div><div><b>2026 年手工业者和商人缴费</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">2026 年 2 月 9 日 INPS 第 14 号通告</a></div><div><b>2026 年独立管理制度</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">2026 年 2 月 3 日 INPS 第 8 号通告</a></div><div><b>新登记者 50% 减免</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">2025 年 4 月 24 日 INPS 第 83 号通告 — 第 207/2024 号法律第 1 条第 186 款</a></div><div><b>预缴额度</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">2019 年 10 月 26 日第 124 号法令第 58 条</a></div><div><b>2026 年缴款期限</b>第 89/2026 号法令第 6 条 — 单一税率制纳税人和 ISA 主体延至 2026 年 7 月 20 日</div></div>",
+  "d4":"<h4>关于档案</h4><p>档案加载的是该行业的典型数值。它们不是您的实际情况。系数取决于您实际的 ATECO 代码：两项相似的业务可能属于不同组别。</p><h4>适用的规则</h4><ul><li>应税所得为所收收入乘以 ATECO 组别的盈利系数，不扣除实际成本。</li><li>从该所得中扣除<b>当年实际缴纳</b>的社保缴费。第一年的扣除通常为零：这就是第一年税款高于预期的原因。</li><li>社保的计费基数则是扣除缴费前的单一税率制所得。</li><li>税款预缴：两期各 50%，历史法。适用该税制的第一年不预缴。低于 51.65 欧元不缴；51.65 至 257.52 欧元之间在 11 月一次性缴纳。</li><li>独立管理制度：预缴额为上一年缴费的 80%，分两期各 40%。</li><li>手工业者和商人：最低所得上四期固定缴费（5 月 16 日、8 月 20 日、11 月 16 日、次年 2 月 16 日），超额部分的缴费在纳税期限缴纳，预缴 50% + 50%。</li><li>35% 减免作用于全部应缴缴费；50% 减免仅作用于 IVS 部分，生育保险和商人 0.48% 的附加费率保持全额。两者不可叠加。</li><li>85,000 欧元的门槛按<b>折算为全年</b>的收入衡量：年中开业的，以折算为十二个月的收入进行比较。100,000 欧元的门槛则看实际收取的金额，不作折算。</li><li>收入可以按十二个月、按开业当年年底前或按某一具体年度输入。无论哪种方式，模拟器都会按天数和设定的增长率推算其他年份。</li></ul><h4>不做的事</h4><ul><li>不计算发票印花税、商会年费、INAIL、地方税和经营成本。</li><li>不与普通税制比较：实际成本较高时，即使低于门槛，单一税率制也可能不如普通税制划算。</li><li>不适用延至 12 月的分期，也不适用加收附加费的三十天延期。</li><li>延至 7 月 20 日仅适用于 2026 年，逐年决定：自 2027 年起时间表显示 6 月 30 日的常规期限，每年春季须重新核实。</li><li>预缴的超额部分结转抵减后续缴款，不申请退还。</li><li>对职业基金，模型作了简化。最低额、分档和期限因基金而异。</li></ul><h4>来源</h4><div class=\"srcs\"><div><b>单一税率制</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190\" target=\"_blank\" rel=\"noopener\">2014 年 12 月 23 日第 190 号法律第 1 条第 54-89 款及附件 4</a></div><div><b>门槛与年度折算</b><a href=\"https://www.agenziaentrate.gov.it/portale/documents/20143/5718712/Circolare_n_32_Regime+forfetario_05_12_2023.pdf/23d1370d-6bba-0eb7-70b8-d1d24d5a1c0f\" target=\"_blank\" rel=\"noopener\">税务局 2023 年 12 月 5 日第 32/E 号通函</a></div><div><b>2026 年雇佣所得门槛</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199\" target=\"_blank\" rel=\"noopener\">2025 年 12 月 30 日第 199 号法律第 1 条第 27 款</a></div><div><b>系数与 2025 年 ATECO</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2025;81\" target=\"_blank\" rel=\"noopener\">第 81/2025 号法令 — 旧分类下的系数继续适用</a></div><div><b>2026 年手工业者和商人缴费</b><a href=\"https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.02.circolare-numero-14-del-09-02-2026_15162.html\" target=\"_blank\" rel=\"noopener\">2026 年 2 月 9 日 INPS 第 14 号通告</a></div><div><b>2026 年独立管理制度</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.gestione-separata-le-aliquote-contributive-per-il-2026.html\" target=\"_blank\" rel=\"noopener\">2026 年 2 月 3 日 INPS 第 8 号通告</a></div><div><b>新登记者 50% 减免</b><a href=\"https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2025.04.artigiani-e-commercianti-riduzione-contributiva-ai-nuovi-iscritti.html\" target=\"_blank\" rel=\"noopener\">2025 年 4 月 24 日 INPS 第 83 号通告 — 第 207/2024 号法律第 1 条第 186 款</a></div><div><b>预缴额度</b><a href=\"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2019-10-26;124\" target=\"_blank\" rel=\"noopener\">2019 年 10 月 26 日第 124 号法令第 58 条</a></div><div><b>2026 年缴款期限</b>第 89/2026 号法令第 6 条 — 单一税率制纳税人和 ISA 主体延至 2026 年 7 月 20 日</div></div>",
   "f.p1":"这是一个估算。不是专业意见。能否适用该税制以及应缴金额取决于表格所不知道的因素。",
   "f.p2":"计算在您的浏览器中进行。不会传输或保存任何数据。",
   "sh.close":"关闭"
 },attr:{
-  "a.fatt":"收取的收入","a.fattR":"调整收入",
+  "a.fatt":"收取的收入","a.fattR":"调整收入","a.rif":"收入所对应的期间",
   "tip.aliq":"单一税率制既不缴纳 IRPEF 也不缴纳附加税。取而代之的是一项单一税。税率为 15%。如果业务确实是新的，前五年降至 5%。",
-  "tip.inizio":"如果您在年中开业，第一年不足十二个月。模拟器会按比例折算第一年的收入和固定缴费。"
+  "tip.inizio":"如果您在年中开业，第一年不足十二个月。模拟器会按比例折算第一年的固定缴费；如果您输入的是全年收入，也会折算收入。"
 }}
 };
 </script>
